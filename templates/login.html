@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="id">
+{% load static %}
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Masuk — EduPath</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+<meta name="description" content="Login ke EduPath — Sistem Rekomendasi Jurusan Berbasis AI">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+  (function() {
+    const theme = localStorage.getItem('theme') || 'dark';
+    if (theme === 'light') {
+      document.documentElement.classList.add('light-mode');
+    } else if (theme === 'contrast') {
+      document.documentElement.classList.add('high-contrast-mode');
+    }
+    const fs = localStorage.getItem('font-size');
+    if (fs) {
+      document.documentElement.style.fontSize = fs + '%';
+    }
+  })();
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root {
+  --blue:#4f8ef7; --indigo:#6366f1; --dark:#0a0e1a;
+  --card:rgba(255,255,255,0.04); --border:rgba(255,255,255,0.08);
+  --text:#e2e8f0; --muted:#94a3b8;
+  --footer-bg: #020205;
+  --dev-card-bg: rgba(255, 255, 255, 0.02);
+  --dev-card-border: rgba(255, 255, 255, 0.06);
+}
+.light-mode {
+  --dark: #f8fafc;
+  --card: rgba(15, 23, 42, 0.03);
+  --border: rgba(15, 23, 42, 0.08);
+  --text: #0f172a;
+  --muted: #475569;
+  --footer-bg: #f1f5f9;
+  --dev-card-bg: rgba(15, 23, 42, 0.02);
+  --dev-card-border: rgba(15, 23, 42, 0.06);
+}
+body {
+  background:var(--dark); color:var(--text);
+  font-family:'Inter',sans-serif;
+  min-height:100vh; display:flex; flex-direction:column;
+  position:relative;
+}
+.btn-theme-toggle-floating {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 1.25rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.btn-theme-toggle-floating:hover {
+  background: var(--card);
+  border-color: var(--blue);
+  transform: scale(1.08);
+}
+body.light-mode .btn-theme-toggle-floating {
+  background: rgba(0, 0, 0, 0.04);
+}
+.bg-orbs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.15;animation:float 8s ease-in-out infinite;}
+.orb1{width:500px;height:500px;background:radial-gradient(#6366f1,transparent);top:-100px;left:-100px;}
+.orb2{width:400px;height:400px;background:radial-gradient(#4f8ef7,transparent);bottom:-80px;right:-80px;animation-delay:-3s;}
+.orb3{width:300px;height:300px;background:radial-gradient(#10b981,transparent);top:50%;right:20%;animation-delay:-5s;}
+@keyframes float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-30px) scale(1.05)}}
+.grid-overlay{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(99,102,241,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,.04) 1px,transparent 1px);background-size:60px 60px;}
+.wrapper{position:relative;z-index:10;width:100%;max-width:480px;padding:2rem;}
+.brand{text-align:center;margin-bottom:2rem;}
+.brand-logo{font-size:2.2rem;display:inline-block;animation:bounce .6s ease;}
+@keyframes bounce{0%{transform:scale(0.5);opacity:0}70%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
+.brand-name{font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--blue),var(--indigo),#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.brand-tagline{color:var(--muted);font-size:.85rem;margin-top:.3rem;}
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:2rem;backdrop-filter:blur(20px);box-shadow:0 32px 64px rgba(0,0,0,.5);animation:slideUp .5s ease .1s both;}
+@keyframes slideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.card-header{margin-bottom:1.5rem;}
+.card-header h1{font-size:1.3rem;font-weight:700;margin-bottom:.25rem;}
+.card-header p{color:var(--muted);font-size:.85rem;}
+.alert{padding:.8rem 1rem;border-radius:10px;margin-bottom:1.2rem;font-size:.85rem;display:flex;align-items:center;gap:.5rem;animation:fadeIn .3s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.alert-info{background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);color:#93c5fd;}
+.alert-error{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);color:#fca5a5;}
+.alert-warning{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);color:#fcd34d;}
+.form-group{margin-bottom:1.2rem;}
+.form-label{display:block;font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.4rem;}
+.input-wrap{position:relative;}
+.input-icon{position:absolute;left:.9rem;top:50%;transform:translateY(-50%);font-size:.9rem;pointer-events:none;opacity:.45;}
+.input-btn{position:absolute;right:.7rem;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:.9rem;opacity:.45;color:var(--text);padding:.2rem;}
+.input-btn:hover{opacity:.85;}
+.form-input{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:11px;padding:.75rem .9rem .75rem 2.6rem;color:var(--text);font-size:.875rem;font-family:'Inter',sans-serif;transition:all .3s;outline:none;}
+.form-input:focus{border-color:rgba(99,102,241,.5);background:rgba(99,102,241,.05);box-shadow:0 0 0 3px rgba(99,102,241,.1);}
+.form-input::placeholder{color:var(--muted);opacity:.55;}
+.btn-submit{width:100%;padding:.95rem;border:none;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--indigo));color:white;font-size:.95rem;font-weight:700;font-family:'Inter',sans-serif;cursor:pointer;transition:all .3s;margin-top:.25rem;}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(99,102,241,.4);}
+.divider{display:flex;align-items:center;gap:.75rem;margin:1.2rem 0;}
+.divider hr{flex:1;border:none;border-top:1px solid var(--border);}
+.divider span{color:var(--muted);font-size:.78rem;}
+.link-row{text-align:center;font-size:.82rem;color:var(--muted);}
+.link-row a{color:var(--blue);text-decoration:none;font-weight:600;}
+.link-row a:hover{color:#93c5fd;}
+.oauth-group{display:flex;gap:.75rem;margin-top:.5rem;}
+.btn-oauth{flex:1;padding:.7rem;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.03);color:var(--text);font-size:.82rem;font-family:'Inter',sans-serif;font-weight:600;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:.5rem;text-decoration:none;}
+.btn-oauth:hover{border-color:var(--blue);background:rgba(79,142,247,.08);transform:translateY(-1px);}
+
+/* LOGO FOR FOOTER */
+.logo { font-size:1.3rem; font-weight:800; color:white; display:flex; align-items:center; gap:0.5rem; text-decoration:none; }
+.logo .dot { width: 8px; height: 8px; background: #3b82f6; border-radius: 50%; box-shadow: 0 0 8px #3b82f6; }
+
+/* FOOTER */
+.footer {
+  background: var(--footer-bg);
+  border-top: 1px solid var(--border);
+  padding: 5rem 5rem 2rem;
+  position: relative;
+  z-index: 1;
+  text-align: left;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.8fr;
+  gap: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.footer-col h4 {
+  color: var(--text);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.5rem;
+}
+.footer-desc {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.65;
+  margin-top: 1.2rem;
+  max-width: 320px;
+}
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-links li {
+  margin-bottom: 0.8rem;
+}
+.footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+.footer-links a:hover {
+  color: var(--text);
+}
+.footer-links .login-link {
+  color: #3b82f6;
+  font-weight: 600;
+}
+.footer-links .login-link:hover {
+  color: #2563eb;
+}
+
+.dev-card {
+  background: var(--dev-card-bg);
+  border: 1px solid var(--dev-card-border);
+  border-radius: 12px;
+  padding: 1.2rem 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  max-width: 380px;
+}
+.dev-emblem {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+.dev-info h5 {
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+.dev-info p {
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+.dev-contact {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+.dev-contact .mail-icon {
+  width: 12px;
+  height: 12px;
+  background: var(--muted);
+  display: inline-block;
+  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'><path d='M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z'/></svg>") no-repeat 50% 50%;
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'><path d='M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z'/></svg>") no-repeat 50% 50%;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+}
+.dev-contact a {
+  color: var(--muted);
+  font-size: 0.72rem;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.dev-contact a:hover {
+  color: #ffffff;
+}
+
+.footer-bottom {
+  margin-top: 4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 1.5rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+/* Responsive Footer */
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+@media (max-width: 640px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .footer {
+    padding: 3rem 2rem 1.5rem;
+  }
+}
+
+/* ─── UI/UX PREMIUM ADDITIONS ─── */
+.card, .dev-card {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(12px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(160%) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
+}
+.light-mode .card, .light-mode .dev-card {
+  background: rgba(15, 23, 42, 0.03) !important;
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+  backdrop-filter: blur(12px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(160%) !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05) !important;
+}
+
+.access-panel {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 99999;
+}
+.access-toggle-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--indigo);
+  color: white;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+.access-toggle-btn:hover {
+  transform: scale(1.1);
+}
+.access-options {
+  display: none;
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  background: var(--dark, #0a0e1a);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  width: 220px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+.access-panel.open .access-options {
+  display: block;
+  animation: fadeInUp 0.25s ease forwards;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.access-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.6rem;
+}
+.access-options button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.825rem;
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+.access-options button:hover {
+  background: var(--card);
+}
+.access-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0.5rem 0;
+}
+.font-adjuster {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.825rem;
+  color: var(--text);
+}
+.font-adjuster button {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--indigo) !important;
+  outline-offset: 2px !important;
+}
+
+.high-contrast-mode {
+  --dark: #000000 !important;
+  --text: #ffffff !important;
+  --muted: #ffff00 !important;
+  --border: #ffffff !important;
+  --card: #000000 !important;
+  --blue: #00ffff !important;
+  --indigo: #ffff00 !important;
+}
+.high-contrast-mode body {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+.high-contrast-mode .footer {
+  background: #000000 !important;
+  border-top: 2px solid #ffffff !important;
+}
+/* Page Transition Overlay Curtain */
+@keyframes slideOutCurtain {
+  0% { transform: translateY(0%); }
+  100% { transform: translateY(100%); }
+}
+#page-transition-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--dark, #05050a);
+  z-index: 999999;
+  pointer-events: none;
+  transform: translateY(100%);
+  animation: slideOutCurtain 0.6s cubic-bezier(0.85, 0, 0.15, 1) forwards;
+}
+
+.custom-cursor {
+  width: 10px;
+  height: 10px;
+  background: var(--blue, #3b82f6);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: width 0.15s ease, height 0.15s ease, background 0.15s ease;
+  mix-blend-mode: difference;
+}
+.custom-cursor.hovered {
+  width: 32px;
+  height: 32px;
+  background: rgba(99, 102, 241, 0.35);
+  border: 1.5px solid var(--indigo);
+}
+.custom-cursor.hovered::after {
+  content: attr(data-icon);
+  font-size: 14px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@media (pointer: coarse) {
+  .custom-cursor { display: none; }
+}
+
+/* --- LIGHT MODE OVERRIDES FOR READABILITY --- */
+.light-mode .hero-title {
+  color: var(--text) !important;
+}
+.light-mode .logo {
+  color: var(--text) !important;
+}
+.light-mode .footer-col h4 {
+  color: var(--text) !important;
+}
+.light-mode .footer-links a:hover {
+  color: var(--text) !important;
+}
+.light-mode .nav-links a:hover {
+  color: var(--text) !important;
+}
+.light-mode .dev-info h5 {
+  color: var(--text) !important;
+}
+.light-mode .dev-contact a:hover {
+  color: var(--text) !important;
+}
+.light-mode .hero-stat-float.white-val .sf-val {
+  color: var(--text) !important;
+}
+</style>
+</head>
+<body>
+
+<div id="custom-cursor" class="custom-cursor"></div>
+
+<div id="page-transition-overlay"></div>
+
+<!-- accessibility panel widget -->
+<div id="accessibility-panel" class="access-panel">
+  <button class="access-toggle-btn" aria-label="Pengaturan Aksesibilitas" tabindex="0">♿</button>
+  <div class="access-options">
+    <div class="access-title">Aksesibilitas</div>
+    <button onclick="setTheme('dark')" tabindex="0">🌙 Mode Gelap</button>
+    <button onclick="setTheme('light')" tabindex="0">☀️ Mode Terang</button>
+    <button onclick="toggleContrast()" tabindex="0">👁️ Kontras Tinggi</button>
+    <div class="access-divider"></div>
+    <div class="font-adjuster">
+      <span>Ukuran Teks:</span>
+      <button onclick="adjustFont(-1)" tabindex="0" aria-label="Perkecil Ukuran Teks">A-</button>
+      <button onclick="adjustFont(1)" tabindex="0" aria-label="Perbesar Ukuran Teks">A+</button>
+    </div>
+  </div>
+</div>
+
+<div class="bg-orbs"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+<div class="grid-overlay"></div>
+<button id="theme-toggle" class="btn-theme-toggle-floating" title="Toggle Theme" aria-label="Toggle Theme">🌙</button>
+<div style="flex:1; display:flex; align-items:center; justify-content:center; padding:5rem 1rem 3rem; position:relative; z-index:10;">
+  <div class="wrapper">
+    <div class="brand">
+      <div class="brand-logo">🎓</div>
+      <div class="brand-name">EduPath</div>
+      <div class="brand-tagline">Sistem Rekomendasi Jurusan Berbasis AI</div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <h1>Selamat Datang 👋</h1>
+        <p>Masuk untuk mulai tes rekomendasi jurusan</p>
+      </div>
+
+      <div class="alert alert-info">
+        <span>💡</span>
+        Gunakan akun yang sudah didaftarkan. Admin/guru BK akan diarahkan ke halaman admin.
+      </div>
+
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert {% if message.tags == 'warning' %}alert-warning{% else %}alert-error{% endif %}">
+            <span>⚠️</span> {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      <form method="POST" action="{% url 'login' %}" id="loginForm">
+        {% csrf_token %}
+        <div class="form-group">
+          <label class="form-label" for="username">Username</label>
+          <div class="input-wrap">
+            <span class="input-icon">👤</span>
+            <input
+              type="text" id="username" name="username"
+              class="form-input" placeholder="Masukkan username"
+              autocomplete="username" autofocus required
+            >
+            <button type="button" class="input-btn" id="favBtn" title="Akun favorit">⭐</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <div class="input-wrap">
+            <span class="input-icon">🔒</span>
+            <input
+              type="password" id="password" name="password"
+              class="form-input" placeholder="Masukkan password"
+              autocomplete="current-password" required
+            >
+            <button type="button" class="input-btn" id="togglePw" aria-label="Tampilkan/sembunyikan password">👁️</button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitBtn">
+          🚀 Masuk ke EduPath
+        </button>
+      </form>
+
+      <div class="link-row" style="margin-top:1.2rem;">
+        Belum punya akun? <a href="{% url 'register' %}">Daftar Sekarang</a>
+      </div>
+
+      <div class="divider"><hr><span>atau login dengan</span><hr></div>
+      <div class="oauth-group">
+        <a href="{% url 'auth_google' %}" class="btn-oauth">
+          <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          Google
+        </a>
+        <a href="{% url 'auth_github' %}" class="btn-oauth">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+
+      <div class="link-row" style="margin-top:1rem;">
+        <a href="{% url 'index' %}">← Kembali ke Beranda</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <!-- COLUMN 1: LOGO & ABOUT -->
+    <div class="footer-col about-col">
+      <a href="/" class="logo"><span class="dot"></span>EduPath</a>
+      <p class="footer-desc">
+        Sistem rekomendasi jurusan cerdas berbasis kecerdasan buatan (AI) untuk membantu menganalisis minat, bakat, dan potensi akademik guna menemukan arah karir masa depan terbaik Anda.
+      </p>
+    </div>
+
+    <!-- COLUMN 2: LAYANAN BANTUAN -->
+    <div class="footer-col">
+      <h4>LAYANAN BANTUAN</h4>
+      <ul class="footer-links">
+        <li><a href="mailto:hello@edupath.ai">✉️ Hubungi Kami</a></li>
+        <li><a href="/login/">❓ FAQ & Bantuan</a></li>
+        <li><a href="https://wa.me/6282199023473" target="_blank">💬 WhatsApp Support</a></li>
+        <li><a href="mailto:hello@edupath.ai">📧 Email Bantuan</a></li>
+      </ul>
+    </div>
+
+    <!-- COLUMN 3: TAUTAN -->
+    <div class="footer-col">
+      <h4>TAUTAN</h4>
+      <ul class="footer-links">
+        <li><a href="#fitur">Fitur Utama</a></li>
+        <li><a href="#tentang">Tentang Sistem</a></li>
+        <li><a href="{% if user.is_authenticated %}{% url 'dashboard_user' %}{% else %}{% url 'login' %}{% endif %}" class="login-link">Login Portal &rarr;</a></li>
+      </ul>
+    </div>
+
+    <!-- COLUMN 4: DEVELOPED BY CARD -->
+    <div class="footer-col dev-col">
+      <h4>DIKEMBANGKAN OLEH</h4>
+      <div class="dev-card">
+        <img class="dev-emblem" src="{% static 'images/logo_musamus.png' %}" alt="UNMUS Logo">
+        <div class="dev-info">
+          <h5>Tim Kelompok 2</h5>
+          <p>Proyek Akhir Rekomendasi Jurusan</p>
+          <p>Universitas Musamus Merauke</p>
+          <div class="dev-contact">
+            <span class="mail-icon"></span>
+            <a href="mailto:hello@edupath.ai">hello@edupath.ai</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2026 EduPath — Sistem Rekomendasi Jurusan Berbasis Decision Tree. Dibangun untuk Generasi Penerus.</p>
+  </div>
+</footer>
+
+<script>
+// Theme Toggle
+const toggleBtn = document.getElementById('theme-toggle');
+if (toggleBtn) {
+  toggleBtn.addEventListener('click', () => {
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'light') {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+  });
+}
+
+// Toggle password visibility
+document.getElementById('togglePw').addEventListener('click', function() {
+  const pw = document.getElementById('password');
+  const isHidden = pw.type === 'password';
+  pw.type = isHidden ? 'text' : 'password';
+  this.textContent = isHidden ? '🙈' : '👁️';
+});
+
+// Favorite username button
+document.getElementById('favBtn').addEventListener('click', function() {
+  const uname = document.getElementById('username').value.trim();
+  if (uname) {
+    localStorage.setItem('fav_username', uname);
+    this.style.opacity = '1';
+  } else {
+    const fav = localStorage.getItem('fav_username');
+    if (fav) document.getElementById('username').value = fav;
+  }
+});
+window.addEventListener('DOMContentLoaded', () => {
+  const fav = localStorage.getItem('fav_username');
+  if (fav && !document.getElementById('username').value) {
+    document.getElementById('username').value = fav;
+  }
+});
+
+// Submit loading state
+document.getElementById('loginForm').addEventListener('submit', function() {
+  const btn = document.getElementById('submitBtn');
+  btn.textContent = '⏳ Memverifikasi...';
+  btn.disabled = true;
+});
+
+// ── ACCESS PANEL & CONTRAST MODE ──
+const accessPanel = document.getElementById('accessibility-panel');
+const accessToggleBtn = accessPanel.querySelector('.access-toggle-btn');
+accessToggleBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  accessPanel.classList.toggle('open');
+});
+document.addEventListener('click', () => {
+  accessPanel.classList.remove('open');
+});
+accessPanel.querySelector('.access-options').addEventListener('click', (e) => {
+  e.stopPropagation();
+});
+
+function setTheme(mode) {
+  if (mode === 'light') {
+    document.documentElement.classList.add('light-mode');
+    document.documentElement.classList.remove('high-contrast-mode');
+    localStorage.setItem('theme', 'light');
+    if (toggleBtn) toggleBtn.textContent = '☀️';
+  } else {
+    document.documentElement.classList.remove('light-mode');
+    document.documentElement.classList.remove('high-contrast-mode');
+    localStorage.setItem('theme', 'dark');
+    if (toggleBtn) toggleBtn.textContent = '🌙';
+  }
+}
+
+function toggleContrast() {
+  const isContrast = document.documentElement.classList.toggle('high-contrast-mode');
+  if (isContrast) {
+    document.documentElement.classList.remove('light-mode');
+    localStorage.setItem('theme', 'contrast');
+  } else {
+    const prev = localStorage.getItem('theme') === 'light' ? 'light' : 'dark';
+    setTheme(prev);
+  }
+}
+
+let fsSize = parseInt(localStorage.getItem('font-size')) || 100;
+function adjustFont(dir) {
+  fsSize = Math.min(130, Math.max(85, fsSize + dir * 5));
+  document.documentElement.style.fontSize = fsSize + '%';
+  localStorage.setItem('font-size', fsSize);
+}
+
+// ── CUSTOM CURSOR ──
+const cursorEl = document.getElementById('custom-cursor');
+document.addEventListener('mousemove', (e) => {
+  cursorEl.style.left = e.clientX + 'px';
+  cursorEl.style.top = e.clientY + 'px';
+});
+
+function initCursorHover() {
+  document.querySelectorAll('a, button, [role="button"], .card, input, select, textarea').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursorEl.classList.add('hovered');
+      if (el.classList.contains('btn-submit') || el.id === 'theme-toggle') {
+        cursorEl.setAttribute('data-icon', String.fromCodePoint(0x1F680));
+      } else {
+        cursorEl.setAttribute('data-icon', String.fromCodePoint(0x2B50));
+      }
+    });
+    el.addEventListener('mouseleave', () => {
+      cursorEl.classList.remove('hovered');
+      cursorEl.removeAttribute('data-icon');
+    });
+  });
+}
+
+// ── MAGNETIC BUTTONS ──
+function initMagneticButtons() {
+  document.querySelectorAll('.btn-submit, .btn-theme-toggle-floating, .access-toggle-btn, .btn-oauth').forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = '';
+    });
+  });
+}
+
+// ── PAGE TRANSITION OVERLAY ──
+function initPageTransitions() {
+  const overlay = document.getElementById('page-transition-overlay');
+  document.querySelectorAll('a').forEach(link => {
+    if (link.hostname === window.location.hostname && !link.hash && link.getAttribute('href') !== '#' && !link.target) {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href && !href.startsWith('mailto:') && !href.startsWith('tel:')) {
+          e.preventDefault();
+          if (overlay) {
+            overlay.style.animation = 'none';
+            overlay.style.transition = 'transform 0.6s cubic-bezier(0.85, 0, 0.15, 1)';
+            overlay.style.transform = 'translateY(0%)';
+            setTimeout(() => { window.location.href = href; }, 600);
+          } else {
+            window.location.href = href;
+          }
+        }
+      });
+    }
+  });
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  document.body.classList.add('page-loaded');
+  const fs = localStorage.getItem('font-size');
+  if (fs) document.documentElement.style.fontSize = fs + '%';
+  const currentTheme = localStorage.getItem('theme') || 'dark';
+  if (toggleBtn) toggleBtn.textContent = currentTheme === 'light' ? '☀️' : '🌙';
+  initMagneticButtons();
+  initCursorHover();
+  initPageTransitions();
+});
+</script>
+</body>
+</html>
