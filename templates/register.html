@@ -467,22 +467,7 @@ body.light-mode .btn-theme-toggle-floating {
 
 <div id="page-transition-overlay"></div>
 
-<!-- accessibility panel widget -->
-<div id="accessibility-panel" class="access-panel">
-  <button class="access-toggle-btn" aria-label="Pengaturan Aksesibilitas" tabindex="0">♿</button>
-  <div class="access-options">
-    <div class="access-title">Aksesibilitas</div>
-    <button onclick="setTheme('dark')" tabindex="0">🌙 Mode Gelap</button>
-    <button onclick="setTheme('light')" tabindex="0">☀️ Mode Terang</button>
-    <button onclick="toggleContrast()" tabindex="0">👁️ Kontras Tinggi</button>
-    <div class="access-divider"></div>
-    <div class="font-adjuster">
-      <span>Ukuran Teks:</span>
-      <button onclick="adjustFont(-1)" tabindex="0" aria-label="Perkecil Ukuran Teks">A-</button>
-      <button onclick="adjustFont(1)" tabindex="0" aria-label="Perbesar Ukuran Teks">A+</button>
-    </div>
-  </div>
-</div>
+
 
 <div class="bg-orbs"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
 <div class="grid-overlay"></div>
@@ -654,19 +639,7 @@ if (toggleBtn) {
   });
 }
 
-// ── ACCESS PANEL & CONTRAST MODE ──
-const accessPanel = document.getElementById('accessibility-panel');
-const accessToggleBtn = accessPanel.querySelector('.access-toggle-btn');
-accessToggleBtn.addEventListener('click', (e) => {
-  e.stopPropagation();
-  accessPanel.classList.toggle('open');
-});
-document.addEventListener('click', () => {
-  accessPanel.classList.remove('open');
-});
-accessPanel.querySelector('.access-options').addEventListener('click', (e) => {
-  e.stopPropagation();
-});
+
 
 function setTheme(mode) {
   if (mode === 'light') {
