@@ -899,16 +899,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
   </div>
 </div>
 
-<!-- MODAL: Detail Artikel -->
-<div class="modal-overlay" id="modalArtikel">
-  <div class="modal">
-    <div class="modal-head">
-      <h3 id="aTitle">Artikel</h3>
-      <button class="modal-close" onclick="closeModal('modalArtikel')">✕</button>
-    </div>
-    <div id="aContent" style="color:var(--muted);font-size:.875rem;line-height:1.8;"></div>
-  </div>
-</div>
+
 
 <div class="app">
 <!-- ══ SIDEBAR ══════════════════════════════════════════════════════════════ -->
@@ -1316,12 +1307,11 @@ tr:hover td{background:rgba(255,255,255,.02);}
        PAGE 3: EKSPLORASI
        ══════════════════════════════════════════════════════════════════════ -->
   <div class="page" id="page-eksplorasi">
-    <div class="ph"><div class="ph-left"><h2>🔍 Eksplorasi</h2><p>Jurusan, kalkulator PTN, artikel, dan FAQ</p></div></div>
+    <div class="ph"><div class="ph-left"><h2>🔍 Eksplorasi</h2><p>Jurusan, kalkulator PTN, dan FAQ</p></div></div>
 
     <div class="sub-tabs">
       <button class="sub-tab active" onclick="showSubTab('exp-jurusan',this);loadJurusanList()">🎓 Jurusan</button>
       <button class="sub-tab" onclick="showSubTab('exp-kalkulator',this)">🧮 Kalkulator PTN</button>
-      <button class="sub-tab" onclick="showSubTab('exp-artikel',this);loadArtikel()">📰 Artikel</button>
       <button class="sub-tab" onclick="showSubTab('exp-faq',this);loadFaq()">❓ FAQ</button>
     </div>
 
@@ -1367,12 +1357,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
       </div>
     </div>
 
-    <!-- SUB: ARTIKEL -->
-    <div class="sub-page" id="sub-exp-artikel">
-      <div class="artikel-grid" id="artikelGrid">
-        <div style="color:var(--muted);font-size:.85rem;grid-column:1/-1;text-align:center;padding:2rem;">⏳ Memuat artikel...</div>
-      </div>
-    </div>
+
 
     <!-- SUB: FAQ -->
     <div class="sub-page" id="sub-exp-faq">
@@ -2592,37 +2577,7 @@ async function hitungPTN(){
   document.getElementById('kalkResult').style.display='block';
 }
 
-// ── Artikel ───────────────────────────────────────────────────────────────────
-let artikelData=[];
-async function loadArtikel(){
-  const grid = document.getElementById('artikelGrid');
-  grid.innerHTML = Array(3).fill(`
-    <div class="artikel-card" style="pointer-events:none;">
-      <div style="margin-bottom:.5rem;"><div class="skeleton-box" style="width:50px;height:16px;border-radius:10px;"></div></div>
-      <div style="margin-bottom:.75rem;"><div class="skeleton-box skeleton-title" style="width:85%;height:18px;"></div></div>
-      <div style="margin-bottom:.75rem;display:flex;flex-direction:column;gap:6px;"><div class="skeleton-box skeleton-text" style="width:100%;"></div><div class="skeleton-box skeleton-text" style="width:90%;"></div></div>
-      <div style="display:flex;justify-content:space-between;align-items:center;">
-        <div class="skeleton-box" style="width:70px;height:12px;"></div>
-      </div>
-    </div>`).join('');
 
-  const d=await api('/api/user/artikel/');
-  artikelData=d.artikel;
-  grid.innerHTML=d.artikel.map(a=>`
-    <div class="artikel-card" onclick="openArtikel(${a.id})">
-      <span class="a-kat">${a.kategori}</span>
-      <div class="a-judul">${a.judul}</div>
-      <div class="a-ring">${a.ringkasan}</div>
-      <div class="a-date">📅 ${a.created_at}</div>
-    </div>`).join('') || '<div style="color:var(--muted);text-align:center;padding:2rem;grid-column:1/-1;">Belum ada artikel</div>';
-}
-function openArtikel(id){
-  const a=artikelData.find(x=>x.id===id);
-  if(!a) return;
-  document.getElementById('aTitle').textContent=a.judul;
-  document.getElementById('aContent').innerHTML=`<span class="bdg bdg-blue" style="margin-bottom:.75rem;display:inline-block">${a.kategori}</span><br><br>${a.konten.replace(/\n/g,'<br>')}`;
-  openModal('modalArtikel');
-}
 
 // ── FAQ ───────────────────────────────────────────────────────────────────────
 async function loadFaq(){
