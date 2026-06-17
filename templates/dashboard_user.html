@@ -806,6 +806,57 @@ tr:hover td{background:rgba(255,255,255,.02);}
 .light-mode .hero-stat-float.white-val .sf-val {
   color: var(--text) !important;
 }
+
+/* --- TOGGLEABLE SIDEBAR (RESPONSIVE) --- */
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 290;
+  backdrop-filter: blur(4px);
+}
+.btn-toggle-sidebar {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.btn-toggle-sidebar:hover {
+  background: var(--card2);
+  border-color: var(--border2);
+}
+
+@media (max-width: 992px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .main {
+    margin-left: 0 !important;
+  }
+  #sidebar-toggle {
+    display: flex !important;
+  }
+  #sidebar-close {
+    display: block !important;
+  }
+  .sidebar-backdrop.open {
+    display: block;
+  }
+}
 </style>
 </head>
 <body>
@@ -903,10 +954,13 @@ tr:hover td{background:rgba(255,255,255,.02);}
 
 <div class="app">
 <!-- ══ SIDEBAR ══════════════════════════════════════════════════════════════ -->
-<aside class="sidebar">
-  <div class="sb-brand">
-    <div class="sb-logo">🎓 EduPath</div>
-    <div class="sb-role">✨ Siswa</div>
+<aside class="sidebar" id="appSidebar">
+  <div class="sb-brand" style="display:flex;align-items:center;justify-content:space-between;width:100%;">
+    <div>
+      <div class="sb-logo">🎓 EduPath</div>
+      <div class="sb-role">✨ Siswa</div>
+    </div>
+    <button id="sidebar-close" onclick="toggleSidebar(false)" style="display:none;background:none;border:none;color:var(--text);font-size:1.25rem;cursor:pointer;padding:0.2rem;line-height:1;margin-top:-0.5rem;">✕</button>
   </div>
   <nav class="sb-nav">
     <div class="sb-sec">Menu Utama</div>
@@ -939,13 +993,17 @@ tr:hover td{background:rgba(255,255,255,.02);}
     <a href="{% url 'logout' %}" class="btn-logout">🚪 Keluar</a>
   </div>
 </aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar(false)"></div>
 
 <!-- ══ MAIN ══════════════════════════════════════════════════════════════════ -->
 <main class="main">
   <div class="topbar">
-    <div class="tb-left">
-      <h1 id="pageTitle">Beranda</h1>
-      <p id="pageSub">Dashboard siswa EduPath</p>
+    <div class="tb-left" style="display:flex;align-items:center;gap:0.75rem;">
+      <button id="sidebar-toggle" onclick="toggleSidebar(true)" class="btn-toggle-sidebar" aria-label="Buka Menu">☰</button>
+      <div>
+        <h1 id="pageTitle">Beranda</h1>
+        <p id="pageSub">Dashboard siswa EduPath</p>
+      </div>
     </div>
     <div style="display:flex;align-items:center;gap:.75rem;">
       <button id="theme-toggle" class="btn-ghost" title="Toggle Theme" aria-label="Toggle Theme" style="width:34px;height:34px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:0.95rem;transition:all .3s;">🌙</button>
@@ -1701,7 +1759,7 @@ async function api(url, opts={}){
 const pageInfo={
   home:['Beranda','Dashboard siswa EduPath'],
   tes:['Tes & Riwayat','Lakukan tes dan lihat riwayatmu'],
-  eksplorasi:['Eksplorasi','Jurusan, kalkulator PTN, artikel, FAQ'],
+  eksplorasi:['Eksplorasi','Jurusan, kalkulator PTN, dan FAQ'],
   profil:['Profil & Badge','Kelola profil dan pencapaian'],
   forum:['Forum Diskusi','Berbagi informasi dan diskusi antar siswa'],
 };
@@ -1718,6 +1776,23 @@ function goto(page, btn){
   if(page==='eksplorasi') loadJurusanList();
   if(page==='profil') loadProfil();
   if(page==='forum') loadForum();
+  
+  // Close sidebar on mobile after navigation
+  toggleSidebar(false);
+}
+
+function toggleSidebar(isOpen) {
+  const sidebar = document.getElementById('appSidebar');
+  const backdrop = document.getElementById('sidebarBackdrop');
+  if (sidebar && backdrop) {
+    if (isOpen) {
+      sidebar.classList.add('open');
+      backdrop.classList.add('open');
+    } else {
+      sidebar.classList.remove('open');
+      backdrop.classList.remove('open');
+    }
+  }
 }
 function showSubTab(tab, btn){
   const parent = btn ? btn.closest('.sub-tabs') : null;
