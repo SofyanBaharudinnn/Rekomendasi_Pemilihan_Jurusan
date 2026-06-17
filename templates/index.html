@@ -718,42 +718,86 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 .premium-loader-wrapper.loaded {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
-.premium-loader-spinner {
-  width: 50px;
-  height: 50px;
-  border: 3px solid rgba(99, 102, 241, 0.08);
-  border-top: 3px solid #6366f1;
-  border-radius: 50%;
-  animation: spin 0.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-  box-shadow: 0 0 20px rgba(99, 102, 241, 0.25);
+.premium-loader-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 320px;
 }
-.premium-loader-text {
-  margin-top: 1.5rem;
-  font-size: 0.78rem;
+.premium-loader-icon-wrap {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(135deg, #4f8ef7, #6366f1);
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.8rem;
+  box-shadow: 0 0 35px rgba(99, 102, 241, 0.45);
+  animation: logoGlow 3s infinite ease-in-out;
+}
+.premium-loader-icon {
+  font-size: 3.2rem;
+  line-height: 1;
+}
+.premium-loader-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.35rem;
+  letter-spacing: -0.5px;
+}
+.premium-loader-subtitle {
+  font-size: 0.72rem;
   font-weight: 700;
-  color: var(--muted);
-  letter-spacing: 0.12em;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  animation: pulseGlow 1.8s infinite ease-in-out;
+  color: #64748b;
+  letter-spacing: 0.16em;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
 }
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.premium-loader-bar-track {
+  width: 180px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 99px;
+  overflow: hidden;
+  position: relative;
 }
-@keyframes pulseGlow {
-  0%, 100% { opacity: 0.5; filter: drop-shadow(0 0 1px rgba(99,102,241,0.2)); }
-  50% { opacity: 1; filter: drop-shadow(0 0 8px rgba(99,102,241,0.6)); color: var(--text); }
+.premium-loader-bar-inner {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #4f8ef7, #6366f1);
+  border-radius: 99px;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.7);
+  animation: fillBar 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
-@keyframes bounceFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+.light-mode .premium-loader-title {
+  color: #0f172a;
+}
+.light-mode .premium-loader-subtitle {
+  color: #64748b;
+}
+.light-mode .premium-loader-bar-track {
+  background: rgba(15, 23, 42, 0.08);
+}
+@keyframes fillBar {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+@keyframes logoGlow {
+  0%, 100% { box-shadow: 0 0 30px rgba(99, 102, 241, 0.4); }
+  50% { box-shadow: 0 0 45px rgba(99, 102, 241, 0.65); }
 }
 </style>
 </head>
@@ -761,11 +805,15 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
 
 <!-- PREMIUM INITIAL LOADER -->
 <div class="premium-loader-wrapper" id="premium-loader">
-  <div class="premium-loader-content" style="text-align: center; display: flex; flex-direction: column; align-items: center; z-index: 100000;">
-    <div style="font-size: 3.2rem; margin-bottom: 0.5rem; animation: bounceFloat 2s infinite ease-in-out;">🎓</div>
-    <div class="premium-loader-logo" style="font-size: 1.8rem; font-weight: 900; background: linear-gradient(135deg, #4f8ef7, #6366f1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1.5rem; letter-spacing: -0.5px; font-family: 'Plus Jakarta Sans', sans-serif;">EduPath</div>
-    <div class="premium-loader-spinner"></div>
-    <div class="premium-loader-text">MEMUAT EDUPATH...</div>
+  <div class="premium-loader-content" style="z-index: 100000;">
+    <div class="premium-loader-icon-wrap">
+      <div class="premium-loader-icon">🎓</div>
+    </div>
+    <div class="premium-loader-title">EduPath</div>
+    <div class="premium-loader-subtitle">RECOMMENDATION SYSTEM</div>
+    <div class="premium-loader-bar-track">
+      <div class="premium-loader-bar-inner"></div>
+    </div>
   </div>
 </div>
 
@@ -1418,10 +1466,12 @@ window.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('load', function() {
   const loader = document.getElementById('premium-loader');
   if (loader) {
-    loader.classList.add('loaded');
     setTimeout(() => {
-      loader.style.display = 'none';
-    }, 500);
+      loader.classList.add('loaded');
+      setTimeout(() => {
+        loader.style.display = 'none';
+      }, 400);
+    }, 1200);
   }
 });
 </script>
