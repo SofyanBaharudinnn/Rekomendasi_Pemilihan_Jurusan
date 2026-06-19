@@ -3,9 +3,13 @@ rekomendasi/middleware.py
 Custom middleware: Rate Limiting & Session Timeout
 """
 import time
+# pyrefly: ignore [missing-import]
 from django.http import JsonResponse
+# pyrefly: ignore [missing-import]
 from django.shortcuts import redirect
+# pyrefly: ignore [missing-import]
 from django.utils import timezone
+# pyrefly: ignore [missing-import]
 from django.urls import reverse
 from .security import check_rate_limit, log_activity, get_client_ip
 
@@ -113,6 +117,7 @@ class SessionTimeoutMiddleware:
                             user=request.user,
                         )
                         # Flush session
+                        # pyrefly: ignore [missing-import]
                         from django.contrib.auth import logout
                         logout(request)
                         # Redirect ke login dengan pesan

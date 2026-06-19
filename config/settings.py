@@ -149,18 +149,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DEFAULT_FROM_EMAIL = 'EduPath <noreply@edupath.ai>'
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-#  GOOGLE OAUTH (Siapkan credentials di: console.cloud.google.com)
-# ═══════════════════════════════════════════════════════════════════════════════
-
-GOOGLE_OAUTH_CLIENT_ID = ''      # Isi dari Google Cloud Console
-GOOGLE_OAUTH_CLIENT_SECRET = ''  # Isi dari Google Cloud Console
-GOOGLE_OAUTH_REDIRECT_URI = 'http://localhost:8000/auth/google/callback/'
-
-# GITHUB OAUTH (Siapkan di: github.com/settings/developers)
-GITHUB_OAUTH_CLIENT_ID = ''
-GITHUB_OAUTH_CLIENT_SECRET = ''
-GITHUB_OAUTH_REDIRECT_URI = 'http://localhost:8000/auth/github/callback/'
+# OAuth configurations have been removed. Refer to views.py/urls.py for login methods.
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

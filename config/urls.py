@@ -82,10 +82,4 @@ urlpatterns = [
     path('api/admin/activity-log/',        views.api_activity_log,       name='api_activity_log'),
     path('api/admin/activity-log/clear/',  views.api_activity_log_clear, name='api_activity_log_clear'),
 
-    # ── OAuth (infrastruktur siap, butuh API Key) ─────────────────────
-    path('auth/google/',          views.auth_google,          name='auth_google'),
-    path('auth/google/callback/', views.auth_google_callback, name='auth_google_callback'),
-    path('auth/github/',          views.auth_github,          name='auth_github'),
-    path('auth/github/callback/', views.auth_github_callback, name='auth_github_callback'),
-
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="light-mode">
 {% load static %}
 <head>
 <meta charset="UTF-8">
@@ -11,12 +11,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <script>
   (function() {
-    const theme = localStorage.getItem('theme') || 'dark';
-    if (theme === 'light') {
-      document.documentElement.classList.add('light-mode');
-    } else if (theme === 'contrast') {
-      document.documentElement.classList.add('high-contrast-mode');
-    }
     const fs = localStorage.getItem('font-size');
     if (fs) {
       document.documentElement.style.fontSize = fs + '%';
@@ -24,6 +18,7 @@
   })();
 </script>
 <style>
+html { scroll-behavior: smooth; }
 *{margin:0;padding:0;box-sizing:border-box;}
 :root {
   --blue:#4f8ef7; --indigo:#6366f1; --dark:#0a0e1a;
@@ -32,16 +27,26 @@
   --footer-bg: #020205;
   --dev-card-bg: rgba(255, 255, 255, 0.02);
   --dev-card-border: rgba(255, 255, 255, 0.06);
-}
+
+  --accent-blue:#3b82f6;
+  --nav-bg: rgba(5,5,10,0.85);}
 .light-mode {
-  --dark: #f8fafc;
-  --card: rgba(15, 23, 42, 0.03);
-  --border: rgba(15, 23, 42, 0.08);
-  --text: #0f172a;
+  --dark: #fbfaff;
+  --card: #ffffff;
+  --border: rgba(108, 92, 231, 0.08);
+  --text: #1e293b;
   --muted: #475569;
-  --footer-bg: #f1f5f9;
-  --dev-card-bg: rgba(15, 23, 42, 0.02);
-  --dev-card-border: rgba(15, 23, 42, 0.06);
+  --nav-bg: rgba(255, 255, 255, 0.85);
+  --stats-bg: #f3f0ff;
+  --footer-bg: #ffffff;
+
+  --dev-card-bg: rgba(108, 92, 231, 0.03);
+  --dev-card-border: rgba(108, 92, 231, 0.08);
+  --accent-blue: #6c5ce7;
+  --blue: #ff9f43;
+  --indigo: #6c5ce7;
+  --testimoni-bg: #f3f0ff;
+  --btn-primary-bg: var(--blue);
 }
 body {
   background:var(--dark); color:var(--text);
@@ -119,6 +124,125 @@ body.light-mode .btn-theme-toggle-floating {
 .oauth-group{display:flex;gap:.75rem;margin-top:.5rem;}
 .btn-oauth{flex:1;padding:.7rem;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.03);color:var(--text);font-size:.82rem;font-family:'Inter',sans-serif;font-weight:600;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:.5rem;text-decoration:none;}
 .btn-oauth:hover{border-color:var(--blue);background:rgba(79,142,247,.08);transform:translateY(-1px);}
+
+/* NAVBAR */
+nav {
+  position:fixed; top:0; width:100%; z-index:100;
+  background:var(--nav-bg); backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  padding:1.2rem 5rem; display:flex; align-items:center; justify-content:space-between;
+}
+.logo { font-size:1.3rem; font-weight:800; color:white; display:flex; align-items:center; gap:0.5rem; text-decoration:none; }
+.logo .dot { width: 8px; height: 8px; background: var(--accent-blue); border-radius: 50%; box-shadow: 0 0 8px var(--accent-blue); }
+.nav-links a { color:var(--muted); text-decoration:none; margin-left:2.5rem; font-size:.9rem; font-weight: 500; transition:color .3s; }
+.nav-links a:hover { color:white; }
+.btn-nav { background:var(--accent-blue); color:white; border:none; padding:.6rem 1.4rem; border-radius:8px; cursor:pointer; font-size:.9rem; font-weight:600; transition:all .3s; text-decoration:none; display:inline-block; }
+.btn-nav:hover { background:#2563eb; transform:translateY(-1px); box-shadow: 0 4px 12px rgba(59,130,246,0.3); }
+.btn-nav-outline { background:transparent; color:var(--text); border:1px solid var(--border); padding:.55rem 1.2rem; border-radius:8px; font-size:.9rem; transition:all .3s; text-decoration:none; display:inline-block; }
+.btn-nav-outline:hover { background:var(--card); border-color:rgba(59,130,246,.4); }
+
+.btn-theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 1.1rem;
+}
+.btn-theme-toggle:hover {
+  background: var(--card);
+  border-color: var(--accent-blue);
+  transform: scale(1.05);
+}
+
+.nav-mobile-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+.nav-mobile-toggle:hover {
+  background: var(--card);
+  border-color: var(--accent-blue);
+}
+
+@media (max-width: 768px) {
+  nav {
+    padding: 1rem 1.5rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+  }
+  .nav-mobile-toggle {
+    display: flex;
+  }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--nav-bg);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1.2rem;
+  }
+  .nav-links.active {
+    display: flex;
+  }
+  .nav-links a {
+    margin-left: 0;
+    font-size: 1rem;
+    text-align: left;
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    padding: 1rem;
+  }
+  .card {
+    padding: 1.5rem;
+    border-radius: 18px;
+  }
+  .brand-logo {
+    font-size: 1.8rem;
+  }
+  .brand-name {
+    font-size: 1.3rem;
+  }
+  .card-header h1 {
+    font-size: 1.15rem;
+  }
+  .btn-submit {
+    padding: 0.8rem;
+    font-size: 0.88rem;
+  }
+}
 
 /* LOGO FOR FOOTER */
 .logo { font-size:1.3rem; font-weight:800; color:white; display:flex; align-items:center; gap:0.5rem; text-decoration:none; }
@@ -251,11 +375,17 @@ body.light-mode .btn-theme-toggle-floating {
 }
 @media (max-width: 640px) {
   .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 1rem;
+  }
+  .footer-col.about-col {
+    grid-column: 1 / -1;
+  }
+  .footer-col.dev-col {
+    grid-column: 1 / -1;
   }
   .footer {
-    padding: 3rem 2rem 1.5rem;
+    padding: 3rem 1.5rem 1.5rem;
   }
 }
 
@@ -267,12 +397,17 @@ body.light-mode .btn-theme-toggle-floating {
   -webkit-backdrop-filter: blur(12px) saturate(160%) !important;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
 }
-.light-mode .card, .light-mode .dev-card {
-  background: rgba(15, 23, 42, 0.03) !important;
-  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+.light-mode .card {
+  background: #ffffff !important;
+  border: 1px solid rgba(108, 92, 231, 0.12) !important;
   backdrop-filter: blur(12px) saturate(160%) !important;
   -webkit-backdrop-filter: blur(12px) saturate(160%) !important;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05) !important;
+  box-shadow: 0 8px 32px 0 rgba(108, 92, 231, 0.04) !important;
+}
+.light-mode .dev-card {
+  background: var(--dev-card-bg) !important;
+  border: 1px solid var(--dev-card-border) !important;
+  box-shadow: none !important;
 }
 
 .access-panel {
@@ -461,6 +596,37 @@ body.light-mode .btn-theme-toggle-floating {
 .light-mode .hero-stat-float.white-val .sf-val {
   color: var(--text) !important;
 }
+.light-mode .form-input {
+  background: #ffffff !important;
+  border-color: rgba(108, 92, 231, 0.18) !important;
+}
+.light-mode .form-input:focus {
+  border-color: var(--indigo) !important;
+  background: #ffffff !important;
+}
+.light-mode .btn-secondary {
+  border: 1px solid rgba(108, 92, 231, 0.25) !important;
+  color: var(--text) !important;
+}
+.light-mode .btn-secondary:hover {
+  background: rgba(108, 92, 231, 0.05) !important;
+  border-color: var(--accent-blue) !important;
+}
+.light-mode .hero-badge {
+  background: rgba(108, 92, 231, 0.08) !important;
+  border: 1px solid rgba(108, 92, 231, 0.2) !important;
+  color: var(--accent-blue) !important;
+}
+.light-mode .about-bar .bar-track {
+  background: rgba(108, 92, 231, 0.08) !important;
+}
+.light-mode .btn-submit {
+  background: var(--blue, #ff9f43) !important;
+}
+.light-mode .btn-submit:hover {
+  background: #e08e06 !important;
+  box-shadow: 0 16px 32px rgba(245, 158, 11, 0.35) !important;
+}
 </style>
 </head>
 <body>
@@ -473,7 +639,25 @@ body.light-mode .btn-theme-toggle-floating {
 
 <div class="bg-orbs"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
 <div class="grid-overlay"></div>
-<button id="theme-toggle" class="btn-theme-toggle-floating" title="Toggle Theme" aria-label="Toggle Theme">🌙</button>
+<!-- NAVBAR -->
+<nav>
+  <a href="/" class="logo"><span class="dot"></span>EduPath</a>
+  <div class="nav-links" id="nav-links">
+    <a href="/">Beranda</a>
+    <a href="/#fitur">Fitur</a>
+    <a href="/#tentang">Tentang</a>
+  </div>
+  <div style="display:flex;gap:.8rem;align-items:center;">
+    {% if user.is_authenticated %}
+      <a href="{% if user.is_staff %}{% url 'dashboard_admin' %}{% else %}{% url 'dashboard_user' %}{% endif %}" class="btn-nav-outline">Dashboard</a>
+      <a href="{% url 'logout' %}" class="btn-nav">Keluar</a>
+    {% else %}
+      <a href="{% url 'login' %}" class="btn-nav-outline">Masuk</a>
+      <a href="{% url 'register' %}" class="btn-nav">Daftar Akun &rarr;</a>
+    {% endif %}
+    <button class="nav-mobile-toggle" id="nav-mobile-toggle" aria-label="Toggle Menu">☰</button>
+  </div>
+</nav>
 <div style="flex:1; display:flex; align-items:center; justify-content:center; padding:5rem 1rem 3rem; position:relative; z-index:10;">
   <div class="wrapper">
     <div class="brand">
@@ -483,13 +667,13 @@ body.light-mode .btn-theme-toggle-floating {
     </div>
     <div class="card">
       <div class="card-header">
-        <h1>Selamat Datang 👋</h1>
-        <p>Masuk untuk mulai tes rekomendasi jurusan</p>
+        <h1>Selamat Datang </h1>
+        <p>Masuk Untuk Mulai Tes Rekomendasi Jurusan</p>
       </div>
 
       <div class="alert alert-info">
-        <span>💡</span>
-        Gunakan akun yang sudah didaftarkan. Admin/guru BK akan diarahkan ke halaman admin.
+        <span></span>
+        Gunakan Akun Yang Sudah Didaftarkan. Admin/Guru BK Akan Diarahkan Ke Halaman Admin.
       </div>
 
       {% if messages %}
@@ -508,7 +692,7 @@ body.light-mode .btn-theme-toggle-floating {
             <span class="input-icon">👤</span>
             <input
               type="text" id="username" name="username"
-              class="form-input" placeholder="Masukkan username"
+              class="form-input" placeholder="Masukkan Username"
               autocomplete="username" autofocus required
             >
             <button type="button" class="input-btn" id="favBtn" title="Akun favorit">⭐</button>
@@ -521,7 +705,7 @@ body.light-mode .btn-theme-toggle-floating {
             <span class="input-icon">🔒</span>
             <input
               type="password" id="password" name="password"
-              class="form-input" placeholder="Masukkan password"
+              class="form-input" placeholder="Masukkan Password"
               autocomplete="current-password" required
             >
             <button type="button" class="input-btn" id="togglePw" aria-label="Tampilkan/sembunyikan password">👁️</button>
@@ -529,28 +713,17 @@ body.light-mode .btn-theme-toggle-floating {
         </div>
 
         <button type="submit" class="btn-submit" id="submitBtn">
-          🚀 Masuk ke EduPath
+          🚀 Masuk Ke EduPath
         </button>
       </form>
 
       <div class="link-row" style="margin-top:1.2rem;">
-        Belum punya akun? <a href="{% url 'register' %}">Daftar Sekarang</a>
+        Belum Punya Akun? <a href="{% url 'register' %}">Daftar Sekarang</a>
       </div>
 
-      <div class="divider"><hr><span>atau login dengan</span><hr></div>
-      <div class="oauth-group">
-        <a href="{% url 'auth_google' %}" class="btn-oauth">
-          <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-          Google
-        </a>
-        <a href="{% url 'auth_github' %}" class="btn-oauth">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          GitHub
-        </a>
-      </div>
 
       <div class="link-row" style="margin-top:1rem;">
-        <a href="{% url 'index' %}">← Kembali ke Beranda</a>
+        <a href="{% url 'index' %}">← Kembali Ke Beranda</a>
       </div>
     </div>
   </div>
@@ -562,7 +735,7 @@ body.light-mode .btn-theme-toggle-floating {
     <div class="footer-col about-col">
       <a href="/" class="logo"><span class="dot"></span>EduPath</a>
       <p class="footer-desc">
-        Sistem rekomendasi jurusan cerdas berbasis kecerdasan buatan (AI) untuk membantu menganalisis minat, bakat, dan potensi akademik guna menemukan arah karir masa depan terbaik Anda.
+        Sistem Rekomendasi Jurusan Cerdas Berbasis Kecerdasan Buatan (AI) Untuk Membantu Menganalisis Minat, Bakat, Dan Potensi Akademik Guna Menemukan Arah Karir Masa Depan Terbaik Anda.
       </p>
     </div>
 
@@ -571,7 +744,7 @@ body.light-mode .btn-theme-toggle-floating {
       <h4>LAYANAN BANTUAN</h4>
       <ul class="footer-links">
         <li><a href="mailto:hello@edupath.ai">✉️ Hubungi Kami</a></li>
-        <li><a href="/login/">❓ FAQ & Bantuan</a></li>
+        <li><a href="#" onclick="showGlobalFaq(); return false;">❓ FAQ & Bantuan</a></li>
         <li><a href="https://wa.me/6282199023473" target="_blank">💬 WhatsApp Support</a></li>
         <li><a href="mailto:hello@edupath.ai">📧 Email Bantuan</a></li>
       </ul>
@@ -581,8 +754,8 @@ body.light-mode .btn-theme-toggle-floating {
     <div class="footer-col">
       <h4>TAUTAN</h4>
       <ul class="footer-links">
-        <li><a href="#fitur">Fitur Utama</a></li>
-        <li><a href="#tentang">Tentang Sistem</a></li>
+        <li><a href="/#fitur">Fitur Utama</a></li>
+        <li><a href="/#tentang">Tentang Sistem</a></li>
         <li><a href="{% if user.is_authenticated %}{% url 'dashboard_user' %}{% else %}{% url 'login' %}{% endif %}" class="login-link">Login Portal &rarr;</a></li>
       </ul>
     </div>
@@ -593,7 +766,7 @@ body.light-mode .btn-theme-toggle-floating {
       <div class="dev-card">
         <img class="dev-emblem" src="{% static 'images/logo_musamus.png' %}" alt="UNMUS Logo">
         <div class="dev-info">
-          <h5>Tim Kelompok 2</h5>
+          <h5>Tim Kelompok 8</h5>
           <p>Proyek Akhir Rekomendasi Jurusan</p>
           <p>Universitas Musamus Merauke</p>
           <div class="dev-contact">
@@ -606,23 +779,12 @@ body.light-mode .btn-theme-toggle-floating {
   </div>
 
   <div class="footer-bottom">
-    <p>&copy; 2026 EduPath — Sistem Rekomendasi Jurusan Berbasis Decision Tree. Dibangun untuk Generasi Penerus.</p>
+    <p>&copy; 2026 EduPath — Sistem Rekomendasi Jurusan Berbasis Decision Tree.</p>
   </div>
 </footer>
 
 <script>
-// Theme Toggle
-const toggleBtn = document.getElementById('theme-toggle');
-if (toggleBtn) {
-  toggleBtn.addEventListener('click', () => {
-    const currentTheme = localStorage.getItem('theme');
-    if (currentTheme === 'light') {
-      setTheme('dark');
-    } else {
-      setTheme('light');
-    }
-  });
-}
+
 
 // Toggle password visibility
 document.getElementById('togglePw').addEventListener('click', function() {
@@ -644,6 +806,28 @@ document.getElementById('favBtn').addEventListener('click', function() {
   }
 });
 window.addEventListener('DOMContentLoaded', () => {
+  // Mobile navbar toggle
+  const navMobileToggle = document.getElementById('nav-mobile-toggle');
+  const navLinks = document.getElementById('nav-links');
+  if (navMobileToggle && navLinks) {
+    navMobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navLinks.classList.toggle('active');
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+    });
+    
+    // Close menu when clicking link
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+  }
+
   const fav = localStorage.getItem('fav_username');
   if (fav && !document.getElementById('username').value) {
     document.getElementById('username').value = fav;
@@ -659,19 +843,7 @@ document.getElementById('loginForm').addEventListener('submit', function() {
 
 
 
-function setTheme(mode) {
-  if (mode === 'light') {
-    document.documentElement.classList.add('light-mode');
-    document.documentElement.classList.remove('high-contrast-mode');
-    localStorage.setItem('theme', 'light');
-    if (toggleBtn) toggleBtn.textContent = '☀️';
-  } else {
-    document.documentElement.classList.remove('light-mode');
-    document.documentElement.classList.remove('high-contrast-mode');
-    localStorage.setItem('theme', 'dark');
-    if (toggleBtn) toggleBtn.textContent = '🌙';
-  }
-}
+
 
 function toggleContrast() {
   const isContrast = document.documentElement.classList.toggle('high-contrast-mode');
@@ -702,7 +874,7 @@ function initCursorHover() {
   document.querySelectorAll('a, button, [role="button"], .card, input, select, textarea').forEach(el => {
     el.addEventListener('mouseenter', () => {
       cursorEl.classList.add('hovered');
-      if (el.classList.contains('btn-submit') || el.id === 'theme-toggle') {
+      if (el.classList.contains('btn-submit')) {
         cursorEl.setAttribute('data-icon', String.fromCodePoint(0x1F680));
       } else {
         cursorEl.setAttribute('data-icon', String.fromCodePoint(0x2B50));
@@ -717,7 +889,7 @@ function initCursorHover() {
 
 // ── MAGNETIC BUTTONS ──
 function initMagneticButtons() {
-  document.querySelectorAll('.btn-submit, .btn-theme-toggle-floating, .access-toggle-btn, .btn-oauth').forEach(btn => {
+  document.querySelectorAll('.btn-submit, .access-toggle-btn, .btn-oauth').forEach(btn => {
     btn.addEventListener('mousemove', (e) => {
       const rect = btn.getBoundingClientRect();
       const x = e.clientX - rect.left - rect.width / 2;
@@ -757,12 +929,148 @@ window.addEventListener('DOMContentLoaded', () => {
   document.body.classList.add('page-loaded');
   const fs = localStorage.getItem('font-size');
   if (fs) document.documentElement.style.fontSize = fs + '%';
+  const toggleBtn = document.getElementById('theme-toggle') || document.querySelector('.btn-theme-toggle');
   const currentTheme = localStorage.getItem('theme') || 'dark';
   if (toggleBtn) toggleBtn.textContent = currentTheme === 'light' ? '☀️' : '🌙';
   initMagneticButtons();
   initCursorHover();
   initPageTransitions();
 });
+
+// ══ GLOBAL FAQ MODAL ══════════════════════════════════════════════════════════
+function showGlobalFaq() {
+  let modal = document.getElementById('globalFaqModal');
+  if (!modal) {
+    const styles = `
+      .gfaq-overlay {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(5,5,10,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+        display: flex; align-items: center; justify-content: center; z-index: 99999;
+        opacity: 0; transition: opacity 0.3s ease; pointer-events: none;
+      }
+      .gfaq-overlay.open { opacity: 1; pointer-events: all; }
+      .gfaq-card {
+        background: #0f172a; border: 1px solid rgba(255,255,255,0.08);
+        width: 90%; max-width: 680px; max-height: 85vh; border-radius: 24px;
+        padding: 2.2rem; display: flex; flex-direction: column; position: relative;
+        box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+        transform: translateY(20px); transition: transform 0.3s ease;
+      }
+      .gfaq-overlay.open .gfaq-card { transform: translateY(0); }
+      .gfaq-close {
+        position: absolute; top: 1.5rem; right: 1.5rem;
+        background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+        width: 36px; height: 36px; border-radius: 50%; color: #fff;
+        display: flex; align-items: center; justify-content: center; cursor: pointer;
+        font-size: 1rem; transition: all 0.2s;
+      }
+      .gfaq-close:hover { background: rgba(255,255,255,0.15); transform: scale(1.05); }
+      .gfaq-header { margin-bottom: 1.5rem; }
+      .gfaq-title { font-size: 1.5rem; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 0.5rem; }
+      .gfaq-subtitle { font-size: 0.85rem; color: #94a3b8; margin-top: 0.3rem; }
+      .gfaq-list { overflow-y: auto; flex-grow: 1; padding-right: 0.5rem; margin-top: 0.5rem; }
+      .gfaq-item {
+        background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+        border-radius: 14px; margin-bottom: 0.8rem; overflow: hidden; transition: all 0.2s;
+      }
+      .gfaq-item.open { border-color: rgba(79, 142, 247, 0.4); background: rgba(79, 142, 247, 0.02); }
+      .gfaq-q {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 1.1rem 1.4rem; cursor: pointer; font-size: 0.92rem; font-weight: 600;
+        color: #f1f5f9; gap: 1rem; transition: background 0.2s;
+      }
+      .gfaq-q:hover { background: rgba(255,255,255,0.04); }
+      .gfaq-arrow { font-size: 0.75rem; color: #94a3b8; transition: transform 0.2s; }
+      .gfaq-item.open .gfaq-arrow { transform: rotate(180deg); color: #4f8ef7; }
+      .gfaq-a {
+        display: none; padding: 0.2rem 1.4rem 1.2rem; font-size: 0.88rem;
+        color: #94a3b8; line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.04);
+      }
+      .gfaq-item.open .gfaq-a { display: block; }
+      .gfaq-loading { text-align: center; color: #94a3b8; padding: 3rem; font-size: 0.9rem; }
+      
+      .gfaq-list::-webkit-scrollbar { width: 6px; }
+      .gfaq-list::-webkit-scrollbar-track { background: transparent; }
+      .gfaq-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+      .gfaq-list::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+      
+      .light-mode .gfaq-card { background: #ffffff; border-color: rgba(0,0,0,0.08); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); }
+      .light-mode .gfaq-title { color: #0f172a; }
+      .light-mode .gfaq-close { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.06); color: #0f172a; }
+      .light-mode .gfaq-close:hover { background: rgba(0,0,0,0.08); }
+      .light-mode .gfaq-item { background: rgba(0,0,0,0.01); border-color: rgba(0,0,0,0.05); }
+      .light-mode .gfaq-item.open { border-color: rgba(79, 142, 247, 0.5); background: rgba(79, 142, 247, 0.03); }
+      .light-mode .gfaq-q { color: #1e293b; }
+      .light-mode .gfaq-q:hover { background: rgba(0,0,0,0.02); }
+      .light-mode .gfaq-a { color: #475569; border-top-color: rgba(0,0,0,0.03); }
+    `;
+    const styleEl = document.createElement('style');
+    styleEl.innerHTML = styles;
+    document.head.appendChild(styleEl);
+
+    modal = document.createElement('div');
+    modal.id = 'globalFaqModal';
+    modal.className = 'gfaq-overlay';
+    modal.innerHTML = `
+      <div class="gfaq-card">
+        <button class="gfaq-close" onclick="closeGlobalFaq()">✕</button>
+        <div class="gfaq-header">
+          <div class="gfaq-title">❓ FAQ & Bantuan</div>
+          <div class="gfaq-subtitle">Pertanyaan populer mengenai sistem rekomendasi jurusan EduPath</div>
+        </div>
+        <div class="gfaq-list" id="globalFaqList">
+          <div class="gfaq-loading">⏳ Memuat FAQ...</div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) closeGlobalFaq();
+    });
+  }
+
+  setTimeout(() => modal.classList.add('open'), 10);
+
+  fetch('/api/user/faq/')
+    .then(r => r.json())
+    .then(d => {
+      const listEl = document.getElementById('globalFaqList');
+      const faqs = d.faq || [];
+      if (!faqs.length) {
+        listEl.innerHTML = '<div class="gfaq-loading">Belum ada FAQ tersedia.</div>';
+        return;
+      }
+      faqs.sort((a,b) => a.urutan - b.urutan);
+      listEl.innerHTML = faqs.map(f => `
+        <div class="gfaq-item" id="gfaq-${f.id}">
+          <div class="gfaq-q" onclick="toggleGlobalFaqItem(${f.id})">
+            <span>${f.pertanyaan}</span>
+            <span class="gfaq-arrow">▼</span>
+          </div>
+          <div class="gfaq-a">${f.jawaban}</div>
+        </div>
+      `).join('');
+    })
+    .catch(err => {
+      console.error(err);
+      document.getElementById('globalFaqList').innerHTML = '<div class="gfaq-loading" style="color: #ef4444;">❌ Gagal memuat FAQ. Silakan coba lagi.</div>';
+    });
+}
+
+function closeGlobalFaq() {
+  const modal = document.getElementById('globalFaqModal');
+  if (modal) modal.classList.remove('open');
+}
+
+function toggleGlobalFaqItem(id) {
+  const item = document.getElementById(`gfaq-${id}`);
+  if (item) {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.gfaq-item').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+}
 </script>
 </body>
 </html>

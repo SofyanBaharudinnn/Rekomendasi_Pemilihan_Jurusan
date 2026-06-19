@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Hasil Rekomendasi — {{ user.get_full_name|default:user.username }}</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%234f8ef7%22><path d=%22M12 3L1 9l11 6 9-4.91V17h2V9L12 3z%22/><path d=%22M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z%22/></svg>">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -55,6 +55,31 @@ body{font-family:'Inter',sans-serif;background:#f8fafc;color:#1e293b;padding:2.5
   .top3-card, .nilai-item{background:#f8fafc!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
   .tag{background:white!important;box-shadow:none!important;border:1px solid #e2e8f0!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
 }
+
+@media screen and (max-width: 600px) {
+  body {
+    padding: 1rem 0.5rem;
+  }
+  #printArea {
+    padding: 1.25rem;
+  }
+  .jurusan-name {
+    font-size: 1.6rem;
+  }
+  .top3 {
+    grid-template-columns: 1fr;
+  }
+  .nilai-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .no-print-banner {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+    text-align: center;
+    border-radius: 8px;
+  }
+}
 </style>
 <!-- Pustaka html2pdf untuk ekspor PDF langsung dari sisi klien -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -63,17 +88,17 @@ body{font-family:'Inter',sans-serif;background:#f8fafc;color:#1e293b;padding:2.5
 
 <div class="no-print-banner">
   <div class="banner-title">
-    <span>📄 Hasil rekomendasi Anda siap diekspor</span>
+    <span>Hasil Rekomendasi Anda Siap Diekspor</span>
   </div>
   <div class="banner-buttons">
-    <button onclick="downloadDirectPDF()" class="btn-action btn-download">📥 Unduh PDF Langsung</button>
-    <button onclick="window.print()" class="btn-action btn-print">🖨️ Cetak / Save PDF</button>
+    <button onclick="downloadDirectPDF()" class="btn-action btn-download"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:0.35rem; vertical-align:middle;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>Unduh PDF Langsung</button>
+    <button onclick="window.print()" class="btn-action btn-print"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:0.35rem; vertical-align:middle;"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>Cetak / Save PDF</button>
   </div>
 </div>
 
 <div id="printArea">
   <div class="header">
-    <div class="logo">🎓 EduPath</div>
+    <div class="logo">EduPath</div>
     <div class="sub">Sistem Rekomendasi Jurusan Berbasis Machine Learning</div>
     <div class="meta-info">
       Tanggal Tes: {{ hasil.created_at|date:"d F Y, H:i" }} &nbsp;·&nbsp; Nama Siswa: {{ user.get_full_name|default:user.username }}
@@ -90,7 +115,7 @@ body{font-family:'Inter',sans-serif;background:#f8fafc;color:#1e293b;padding:2.5
   </div>
 
   <div class="section">
-    <h2>🏆 Top 3 Rekomendasi Jurusan</h2>
+    <h2>Top 3 Rekomendasi Jurusan</h2>
     <div class="top3">
       {% for item in hasil.top3_data %}
       <div class="top3-card">
@@ -102,7 +127,7 @@ body{font-family:'Inter',sans-serif;background:#f8fafc;color:#1e293b;padding:2.5
   </div>
 
   <div class="section">
-    <h2>📊 Data Nilai & Minat yang Dianalisis</h2>
+    <h2>Data Nilai & Minat Yang Dianalisis</h2>
     <div class="nilai-grid">
       <div class="nilai-item"><div class="val">{{ hasil.nilai_mat }}</div><div class="lbl">Matematika</div></div>
       <div class="nilai-item"><div class="val">{{ hasil.nilai_bhs }}</div><div class="lbl">Bahasa</div></div>
@@ -116,17 +141,60 @@ body{font-family:'Inter',sans-serif;background:#f8fafc;color:#1e293b;padding:2.5
   </div>
 
   <div class="footer">
-    Dokumen ini dihasilkan secara otomatis oleh EduPath — Sistem Rekomendasi Jurusan pintar.<br>
+    Dokumen Ini Dihasilkan Secara Otomatis Oleh EduPath — Sistem Rekomendasi Jurusan pintar.<br>
     Akurasi model klasifikasi saat ini: 91% · Didukung oleh Algoritma Decision Tree ML.
   </div>
 </div>
 
 <script>
+  // Dynamic cleaner and vector SVG renderer for backend icons
+  document.addEventListener('DOMContentLoaded', () => {
+    const emojiRegex = /[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF]/g;
+
+    function getMajorSVG(majorName) {
+      const normalized = (majorName || '').toLowerCase();
+      if (normalized.includes('informatika') || normalized.includes('komputer') || normalized.includes('teknologi')) {
+        return `<svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #4f46e5; margin: 0 auto 0.5rem;"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>`;
+      }
+      if (normalized.includes('dokter') || normalized.includes('kesehatan') || normalized.includes('medis') || normalized.includes('biologi')) {
+        return `<svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #ef4444; margin: 0 auto 0.5rem;"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>`;
+      }
+      if (normalized.includes('manajemen') || normalized.includes('bisnis') || normalized.includes('ekonomi') || normalized.includes('akuntansi')) {
+        return `<svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #10b981; margin: 0 auto 0.5rem;"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>`;
+      }
+      if (normalized.includes('sastra') || normalized.includes('bahasa') || normalized.includes('pendidikan')) {
+        return `<svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #a855f7; margin: 0 auto 0.5rem;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>`;
+      }
+      return `<svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #4f46e5; margin: 0 auto 0.5rem;"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>`;
+    }
+
+    const iconEl = document.querySelector('.icon');
+    if (iconEl) {
+      const majorName = "{{ hasil.jurusan }}";
+      iconEl.innerHTML = getMajorSVG(majorName);
+    }
+
+    document.querySelectorAll('.top3-card').forEach(card => {
+      const nameEl = card.querySelector('.name');
+      if (nameEl) {
+        const rawText = nameEl.textContent.replace(emojiRegex, '').trim();
+        const miniSvg = getMajorSVG(rawText)
+          .replace('width="48" height="48"', 'width="14" height="14"')
+          .replace('style="color: #4f46e5; margin: 0 auto 0.5rem;"', 'style="vertical-align: middle; margin-right: 0.25rem;"')
+          .replace('style="color: #ef4444; margin: 0 auto 0.5rem;"', 'style="vertical-align: middle; margin-right: 0.25rem;"')
+          .replace('style="color: #10b981; margin: 0 auto 0.5rem;"', 'style="vertical-align: middle; margin-right: 0.25rem;"')
+          .replace('style="color: #a855f7; margin: 0 auto 0.5rem;"', 'style="vertical-align: middle; margin-right: 0.25rem;"')
+          .replace('style="color: #4f46e5; margin: 0 auto 0.5rem;"', 'style="vertical-align: middle; margin-right: 0.25rem;"');
+        nameEl.innerHTML = `<span style="display:inline-flex;align-items:center;">${miniSvg}<span>${rawText}</span></span>`;
+      }
+    });
+  });
+
   // Pemicu dialog cetak otomatis saat halaman termuat
   window.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       window.print();
-    }, 600);
+    }, 800);
   });
 
   // Fungsi mengunduh PDF secara langsung menggunakan html2pdf.js

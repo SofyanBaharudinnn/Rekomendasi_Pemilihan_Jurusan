@@ -5,7 +5,9 @@ Helper functions: Math CAPTCHA, Rate Limiting, Activity Logging
 import random
 import hashlib
 import time
+# pyrefly: ignore [missing-import]
 from django.core.cache import cache
+# pyrefly: ignore [missing-import]
 from django.utils import timezone
 
 

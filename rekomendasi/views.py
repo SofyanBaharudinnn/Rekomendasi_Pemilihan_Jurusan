@@ -166,10 +166,6 @@ def register_view(request):
     if rate_limit_msg:
         messages.error(request, rate_limit_msg)
 
-    # Generate CAPTCHA baru
-    captcha = generate_captcha()
-    set_captcha_session(request.session, captcha['answer'])
-
     if request.method == 'POST':
         username      = request.POST.get('username', '').strip()
         email         = request.POST.get('email', '').strip()
@@ -211,7 +207,11 @@ def register_view(request):
         # Regenerate CAPTCHA setelah error lain
         captcha = generate_captcha()
         set_captcha_session(request.session, captcha['answer'])
+        return render(request, 'register.html', {'captcha': captcha})
 
+    # Generate CAPTCHA baru untuk GET request
+    captcha = generate_captcha()
+    set_captcha_session(request.session, captcha['answer'])
     return render(request, 'register.html', {'captcha': captcha})
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -673,7 +673,6 @@ def api_user_artikel(request):
         d['ringkasan']  = d['konten'][:120] + '...' if len(d['konten']) > 120 else d['konten']
     return JsonResponse({'artikel': data})
 
-@user_api_required
 def api_user_faq(request):
     data = list(FAQ.objects.filter(is_active=True).values('id','pertanyaan','jawaban','urutan'))
     return JsonResponse({'faq': data})
@@ -787,7 +786,7 @@ def api_jurusan_detail(request, jurusan_id):
 @admin_required
 def api_artikel_list(request):
     if request.method=='GET':
-        data=list(Artikel.objects.values('id','judul','kategori','is_published','created_at'))
+        data=list(Artikel.objects.values('id','judul','kategori','konten','is_published','created_at'))
         for d in data: d['created_at']=d['created_at'].strftime('%d/%m/%Y')
         return JsonResponse({'artikel':data})
     if request.method=='POST':
@@ -1317,6 +1316,7 @@ def api_activity_log(request):
         })
 
     # Statistik ringkas
+    # pyrefly: ignore [missing-import]
     from django.utils import timezone as tz
     today = tz.now().date()
     stats = {
@@ -1333,73 +1333,9 @@ def api_activity_log_clear(request):
     """Hapus log lama (lebih dari 30 hari) untuk menjaga performa DB."""
     if request.method != 'POST':
         return JsonResponse({'error': 'Method not allowed'}, status=405)
+    # pyrefly: ignore [missing-import]
     from django.utils import timezone as tz
     cutoff = tz.now() - timedelta(days=30)
     deleted, _ = AktivitasLog.objects.filter(created_at__lt=cutoff).delete()
     return JsonResponse({'success': True, 'deleted': deleted})
 
-
-# ═══════════════════════════════════════════════════════════════════════════════
-#  OAUTH PLACEHOLDER (Infrastruktur siap, butuh API Key)
-# ═══════════════════════════════════════════════════════════════════════════════
-def auth_google(request):
-    """
-    Redirect ke Google OAuth.
-    SETUP: Isi GOOGLE_OAUTH_CLIENT_ID di settings.py
-    Docs: https://console.cloud.google.com/apis/credentials
-    """
-    from django.conf import settings as s
-    if not s.GOOGLE_OAUTH_CLIENT_ID:
-        messages.error(request, 'Google OAuth belum dikonfigurasi. Hubungi administrator.')
-        return redirect('login')
-
-    params = urllib.parse.urlencode({
-        'client_id': s.GOOGLE_OAUTH_CLIENT_ID,
-        'redirect_uri': s.GOOGLE_OAUTH_REDIRECT_URI,
-        'response_type': 'code',
-        'scope': 'openid email profile',
-        'access_type': 'offline',
-    })
-    return redirect(f'https://accounts.google.com/o/oauth2/v2/auth?{params}')
-
-
-def auth_google_callback(request):
-    """Handle callback dari Google OAuth."""
-    from django.conf import settings as s
-    code = request.GET.get('code')
-    if not code:
-        messages.error(request, 'Google login gagal. Coba lagi.')
-        return redirect('login')
-    # TODO: Exchange code → access_token → get user info → login/create user
-    messages.info(request, 'Google OAuth callback diterima. Konfigurasi lebih lanjut diperlukan.')
-    return redirect('login')
-
-
-def auth_github(request):
-    """
-    Redirect ke GitHub OAuth.
-    SETUP: Isi GITHUB_OAUTH_CLIENT_ID di settings.py
-    Docs: https://github.com/settings/developers
-    """
-    from django.conf import settings as s
-    if not s.GITHUB_OAUTH_CLIENT_ID:
-        messages.error(request, 'GitHub OAuth belum dikonfigurasi. Hubungi administrator.')
-        return redirect('login')
-
-    params = urllib.parse.urlencode({
-        'client_id': s.GITHUB_OAUTH_CLIENT_ID,
-        'redirect_uri': s.GITHUB_OAUTH_REDIRECT_URI,
-        'scope': 'read:user user:email',
-    })
-    return redirect(f'https://github.com/login/oauth/authorize?{params}')
-
-
-def auth_github_callback(request):
-    """Handle callback dari GitHub OAuth."""
-    code = request.GET.get('code')
-    if not code:
-        messages.error(request, 'GitHub login gagal. Coba lagi.')
-        return redirect('login')
-    # TODO: Exchange code → access_token → get user info → login/create user
-    messages.info(request, 'GitHub OAuth callback diterima. Konfigurasi lebih lanjut diperlukan.')
-    return redirect('login')

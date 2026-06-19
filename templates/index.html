@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="light-mode">
 {% load static %}
 <head>
 <meta charset="UTF-8">
@@ -12,12 +12,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
   (function() {
-    const theme = localStorage.getItem('theme') || 'dark';
-    if (theme === 'light') {
-      document.documentElement.classList.add('light-mode');
-    } else if (theme === 'contrast') {
-      document.documentElement.classList.add('high-contrast-mode');
-    }
     const fs = localStorage.getItem('font-size');
     if (fs) {
       document.documentElement.style.fontSize = fs + '%';
@@ -25,6 +19,7 @@
   })();
 </script>
 <style>
+html { scroll-behavior: smooth; }
 * { margin:0; padding:0; box-sizing:border-box; }
 :root {
   --blue:#4f8ef7; --indigo:#6366f1; --dark:#05050a;
@@ -36,18 +31,27 @@
   --footer-bg: #020205;
   --dev-card-bg: rgba(255, 255, 255, 0.02);
   --dev-card-border: rgba(255, 255, 255, 0.06);
+  --testimoni-bg: rgba(10,14,26,0.3);
+  --btn-primary-bg: var(--accent-blue);
 }
+
+
 .light-mode {
-  --dark: #f8fafc;
-  --card: rgba(15, 23, 42, 0.03);
-  --border: rgba(15, 23, 42, 0.08);
-  --text: #0f172a;
+  --dark: #fbfaff;
+  --card: #ffffff;
+  --border: rgba(108, 92, 231, 0.08);
+  --text: #1e293b;
   --muted: #475569;
-  --nav-bg: rgba(248, 250, 252, 0.85);
-  --stats-bg: rgba(241, 245, 249, 0.8);
-  --footer-bg: #f1f5f9;
-  --dev-card-bg: rgba(15, 23, 42, 0.02);
-  --dev-card-border: rgba(15, 23, 42, 0.06);
+  --nav-bg: rgba(255, 255, 255, 0.85);
+  --stats-bg: #f3f0ff;
+  --footer-bg: #ffffff;
+  --dev-card-bg: rgba(108, 92, 231, 0.03);
+  --dev-card-border: rgba(108, 92, 231, 0.08);
+  --accent-blue: #6c5ce7;
+  --blue: #ff9f43;
+  --indigo: #6c5ce7;
+  --testimoni-bg: #f3f0ff;
+  --btn-primary-bg: var(--blue);
 }
 body {
   background:var(--dark); color:var(--text); font-family:'Plus Jakarta Sans','Segoe UI',sans-serif; overflow-x:hidden;
@@ -56,19 +60,32 @@ body {
 
 /* NAVBAR */
 nav {
-  position:fixed; top:0; width:100%; z-index:100;
-  background:var(--nav-bg); backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--border);
-  padding:1.2rem 5rem; display:flex; align-items:center; justify-content:space-between;
+  position:fixed;
+  top:1.5rem;
+  left:5%;
+  right:5%;
+  width:90%;
+  border-radius:100px;
+  background:var(--nav-bg);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border:1px solid var(--border);
+  box-shadow:0 10px 30px rgba(108,92,231,0.05);
+  padding:0.8rem 2.5rem;
+  z-index:100;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  transition:all 0.3s ease;
 }
 .logo { font-size:1.3rem; font-weight:800; color:white; display:flex; align-items:center; gap:0.5rem; text-decoration:none; }
 .logo .dot { width: 8px; height: 8px; background: var(--accent-blue); border-radius: 50%; box-shadow: 0 0 8px var(--accent-blue); }
 .nav-links a { color:var(--muted); text-decoration:none; margin-left:2.5rem; font-size:.9rem; font-weight: 500; transition:color .3s; }
 .nav-links a:hover { color:white; }
-.btn-nav { background:var(--accent-blue); color:white; border:none; padding:.6rem 1.4rem; border-radius:8px; cursor:pointer; font-size:.9rem; font-weight:600; transition:all .3s; text-decoration:none; display:inline-block; }
-.btn-nav:hover { background:#2563eb; transform:translateY(-1px); box-shadow: 0 4px 12px rgba(59,130,246,0.3); }
+.btn-nav { background:var(--btn-primary-bg); color:white; border:none; padding:.6rem 1.4rem; border-radius:8px; cursor:pointer; font-size:.9rem; font-weight:600; transition:all .3s; text-decoration:none; display:inline-block; }
+.btn-nav:hover { filter:brightness(0.92); transform:translateY(-1px); box-shadow: 0 4px 12px rgba(108,92,231,0.25); }
 .btn-nav-outline { background:transparent; color:var(--text); border:1px solid var(--border); padding:.55rem 1.2rem; border-radius:8px; font-size:.9rem; transition:all .3s; text-decoration:none; display:inline-block; }
-.btn-nav-outline:hover { background:var(--card); border-color:rgba(59,130,246,.4); }
+.btn-nav-outline:hover { background:var(--card); border-color:var(--accent-blue); }
 
 .btn-theme-toggle {
   background: transparent;
@@ -149,16 +166,16 @@ nav {
 
 /* BUTTONS */
 .btn-primary {
-  background:var(--accent-blue);
+  background:var(--btn-primary-bg);
   color:white; border:none; padding:1rem 2.2rem;
   border-radius:8px; font-size:.95rem; font-weight:600;
   cursor:pointer; transition:all .3s; text-decoration:none;
   display:inline-flex; align-items:center; gap:0.5rem;
 }
 .btn-primary:hover {
-  background:#2563eb;
+  filter:brightness(0.92);
   transform:translateY(-2px);
-  box-shadow:0 12px 28px rgba(59,130,246,.35);
+  box-shadow:0 12px 28px rgba(108,92,231,0.25);
 }
 .btn-secondary {
   background:transparent; color:var(--text);
@@ -170,12 +187,13 @@ nav {
 
 /* 3D MAP CANVAS & DETAIL CARDS */
 #hero-canvas {
-  width:500px;
-  height:500px;
-  background:radial-gradient(ellipse at center,rgba(59,130,246,0.06) 0%,transparent 70%);
+  width:560px;
+  height:560px;
+  background:transparent;
   overflow:visible;
   position:relative;
   z-index: 1;
+  filter: drop-shadow(0 0 40px rgba(99,102,241,0.15));
 }
 .hero-stat-float {
   position:absolute;
@@ -475,11 +493,17 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
 }
 @media (max-width: 640px) {
   .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 1rem;
+  }
+  .footer-col.about-col {
+    grid-column: 1 / -1;
+  }
+  .footer-col.dev-col {
+    grid-column: 1 / -1;
   }
   .footer {
-    padding: 3rem 2rem 1.5rem;
+    padding: 3rem 1.5rem 1.5rem;
   }
 }
 
@@ -491,12 +515,17 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
   -webkit-backdrop-filter: blur(12px) saturate(160%) !important;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
 }
-.light-mode .feature-card, .light-mode .quiz-container, .light-mode .top3-card, .light-mode .dev-card, .light-mode .hero-stat-float {
-  background: rgba(15, 23, 42, 0.03) !important;
-  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+.light-mode .feature-card, .light-mode .quiz-container, .light-mode .top3-card, .light-mode .hero-stat-float {
+  background: #ffffff !important;
+  border: 1px solid rgba(108, 92, 231, 0.12) !important;
   backdrop-filter: blur(12px) saturate(160%) !important;
   -webkit-backdrop-filter: blur(12px) saturate(160%) !important;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05) !important;
+  box-shadow: 0 8px 32px 0 rgba(108, 92, 231, 0.05) !important;
+}
+.light-mode .dev-card {
+  background: var(--dev-card-bg) !important;
+  border: 1px solid var(--dev-card-border) !important;
+  box-shadow: none !important;
 }
 
 
@@ -572,6 +601,95 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
 .light-mode .hero-stat-float.white-val .sf-val {
   color: var(--text) !important;
 }
+.light-mode .hero-badge {
+  background: rgba(108, 92, 231, 0.08) !important;
+  border: 1px solid rgba(108, 92, 231, 0.2) !important;
+  color: var(--accent-blue) !important;
+}
+.light-mode .btn-secondary {
+  border: 1px solid rgba(108, 92, 231, 0.25) !important;
+  color: var(--text) !important;
+}
+.light-mode .btn-secondary:hover {
+  background: rgba(108, 92, 231, 0.05) !important;
+  border-color: var(--accent-blue) !important;
+}
+.light-mode .about-bar .bar-track {
+  background: rgba(108, 92, 231, 0.08) !important;
+}
+.light-mode .feature-icon {
+  background: rgba(108, 92, 231, 0.1) !important;
+  color: var(--accent-blue) !important;
+}
+.light-mode .section-title span, .light-mode .hero-title .line-accent {
+  background: transparent !important;
+  color: var(--accent-blue) !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-weight: 800;
+  display: inline !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+  box-shadow: none !important;
+}
+.light-mode #hero-canvas {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.light-mode .feature-card:nth-child(1), .light-mode .feature-card:nth-child(4) {
+  background: linear-gradient(135deg, #6c5ce7, #8b5cf6) !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: 0 10px 30px rgba(108, 92, 231, 0.25) !important;
+}
+.light-mode .feature-card:nth-child(1) h3, .light-mode .feature-card:nth-child(4) h3 {
+  color: #ffffff !important;
+}
+.light-mode .feature-card:nth-child(1) p, .light-mode .feature-card:nth-child(4) p {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+.light-mode .feature-card:nth-child(1) .feature-icon, .light-mode .feature-card:nth-child(4) .feature-icon {
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+}
+/* Purple Testimoni Section Overrides */
+.light-mode #testimoni {
+  background: linear-gradient(135deg, #6c5ce7, #8b5cf6) !important;
+  color: #ffffff !important;
+}
+.light-mode #testimoni .section-title {
+  color: #ffffff !important;
+}
+.light-mode #testimoni .section-title span {
+  background: transparent !important;
+  color: #ff9f43 !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+.light-mode #testimoni .section-sub {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+.light-mode #testimoni .section-label {
+  color: #ff9f43 !important;
+}
+.light-mode #testimoni .feature-card {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1) !important;
+}
+.light-mode #testimoni .feature-card p {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+.light-mode #testimoni .feature-card h4 {
+  color: #ffffff !important;
+}
+.light-mode #testimoni .feature-card span {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
 
 /* ─── RESPONSIVE DESIGN FOR MOBILE & TABLET ─── */
 .nav-mobile-toggle {
@@ -627,6 +745,14 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
 @media (max-width: 768px) {
   nav {
     padding: 1rem 1.5rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-top: none;
   }
   .nav-mobile-toggle {
     display: flex;
@@ -825,12 +951,11 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
 <nav>
   <a href="/" class="logo"><span class="dot"></span>EduPath</a>
   <div class="nav-links" id="nav-links">
+    <a href="/">Beranda</a>
     <a href="#fitur">Fitur</a>
-    <a href="{% if user.is_authenticated %}{% url 'dashboard_user' %}{% else %}{% url 'login' %}{% endif %}">Tes Jurusan</a>
     <a href="#tentang">Tentang</a>
   </div>
   <div style="display:flex;gap:.8rem;align-items:center;">
-    <button id="theme-toggle" class="btn-theme-toggle" title="Toggle Theme" aria-label="Toggle Theme">🌙</button>
     {% if user.is_authenticated %}
       <a href="{% if user.is_staff %}{% url 'dashboard_admin' %}{% else %}{% url 'dashboard_user' %}{% endif %}" class="btn-nav-outline">Dashboard</a>
       <a href="{% url 'logout' %}" class="btn-nav">Keluar</a>
@@ -848,7 +973,7 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
 
   <!-- LEFT: TEXT -->
   <div class="hero-left">
-    <div class="hero-badge">✨ Machine Learning &nbsp;&middot;&nbsp; Decision Tree AI</div>
+    <div class="hero-badge">✨ Machine Learning &nbsp;&middot;&nbsp; Decision Tree </div>
 
     <h1 class="hero-title">
       <span>Analisis</span>
@@ -858,9 +983,9 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
     </h1>
 
     <p class="hero-desc">
-      Platform analisis data terpadu untuk rekomendasi jurusan &mdash;
-      menganalisis nilai akademik &amp; minat siswa untuk merancang masa depan
-      terbaik secara instan dan akurat.
+      Platform Analisis Data Terpadu Untuk Rekomendasi Jurusan &mdash;
+      Menganalisis Nilai Akademik &amp; Minat Siswa Untuk Merancang Masa Depan
+      Terbaik Secara Instan & Akurat.
     </p>
 
     <div class="hero-btns">
@@ -907,23 +1032,23 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
 <!-- FITUR -->
 <section id="fitur">
   <div class="section-label">FITUR UNGGULAN</div>
-  <h2 class="section-title">Semua yang Kamu <span>Butuhkan</span></h2>
-  <p class="section-sub">Dirancang dengan teknologi AI terkini untuk membantu siswa SMA/SMK menemukan arah kuliah yang tepat.</p>
+  <h2 class="section-title">SEMUA YANG KAMU <span>BUTUHKAN</span></h2>
+  <p class="section-sub">Dirancang Dengan Teknologi AI Terkini Untuk Membantu Siswa SMA/SMK Menemukan Arah Kuliah Yang Tepat.</p>
   <div class="features-grid">
-    <div class="feature-card"><h3>Decision Tree AI</h3><p>Algoritma Decision Tree yang dilatih dari data akademik nyata, menghasilkan rekomendasi akurat dan transparan.</p></div>
-    <div class="feature-card"><h3>Analisis Multi-Dimensi</h3><p>Mempertimbangkan nilai Matematika, IPA, IPS, Bahasa, dan 4 dimensi minat secara bersamaan.</p></div>
-    <div class="feature-card"><h3>Top 3 Rekomendasi</h3><p>Menampilkan 3 jurusan terbaik beserta persentase kesesuaian agar kamu bisa memilih dengan bijak.</p></div>
-    <div class="feature-card"><h3>Hasil Instan</h3><p>Rekomendasi muncul dalam hitungan detik tanpa perlu antri atau membuat janji dengan guru BK.</p></div>
-    <div class="feature-card"><h3>Prospek Karir</h3><p>Setiap jurusan dilengkapi informasi prospek karir yang relevan agar kamu bisa melihat peluang masa depan.</p></div>
-    <div class="feature-card"><h3>Privasi Terjaga</h3><p>Data nilaimu tidak disimpan secara permanen. Proses analisis sepenuhnya aman dan terjaga privasi.</p></div>
+    <div class="feature-card"><h3>Decision Tree AI</h3><p>Algoritma Decision Tree Yang Dilatih Dari Data Akademik Nyata, Menghasilkan Rekomendasi Akurat Dan Transparan.</p></div>
+    <div class="feature-card"><h3>Analisis Multi-Dimensi</h3><p>Mempertimbangkan Nilai Matematika, IPA, IPS, Bahasa, & 4 Dimensi Minat Secara Bersamaan.</p></div>
+    <div class="feature-card"><h3>Top 3 Rekomendasi</h3><p>Menampilkan 3 Jurusan Terbaik Beserta Persentase Kesesuaian Agar Kamu Bisa Memilih Dengan Bijak.</p></div>
+    <div class="feature-card"><h3>Hasil Instan</h3><p>Rekomendasi Muncul Dalam Hitungan Detik Tanpa Perlu Antri Atau Membuat Janji Dengan Guru BK.</p></div>
+    <div class="feature-card"><h3>Prospek Karir</h3><p>Setiap Jurusan Dilengkapi Informasi Prospek Karir Yang Relevan Agar Kamu Bisa Melihat Peluang Masa Depan.</p></div>
+    <div class="feature-card"><h3>Privasi Terjaga</h3><p>Data Nilaimu Tidak Disimpan Secara Permanen. Proses Analisis Sepenuhnya Aman & Terjaga Privasi.</p></div>
   </div>
 </section>
 
 <!-- TESTIMONI -->
-<section id="testimoni" style="background:rgba(10,14,26,.3); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+<section id="testimoni" style="background: var(--testimoni-bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
   <div class="section-label">TESTIMONI PENGGUNA</div>
-  <h2 class="section-title">Apa Kata <span>Mereka</span>?</h2>
-  <p class="section-sub">Dengarkan pengalaman langsung siswa yang telah menggunakan EduPath untuk menemukan jalan mereka.</p>
+  <h2 class="section-title">APA KATA <span>MEREKA</span>?</h2>
+  <p class="section-sub">Dengarkan Pengalaman Langsung Siswa Yang Telah Menggunakan EduPath Untuk Menemukan Jalan Mereka.</p>
   
   <div id="testimoni-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem; max-width:1100px; margin:0 auto;">
     <!-- Skeletons / Testimonials will go here -->
@@ -934,16 +1059,16 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
 <!-- TENTANG -->
 <section id="tentang">
   <div class="section-label">TENTANG SISTEM</div>
-  <h2 class="section-title">Dibangun untuk <span>Generasi Penerus</span></h2>
+  <h2 class="section-title">DI BANGUN UNTUK <span>GENERASI PENERUS</span></h2>
   <div class="about-grid">
     <div>
-      <p style="color:var(--muted);line-height:1.8;margin-bottom:1rem">Banyak siswa SMA/SMK mengalami kebingungan dan kecemasan dalam memilih jurusan kuliah. Fenomena "salah jurusan" berdampak pada motivasi belajar dan tingginya angka putus kuliah.</p>
-      <p style="color:var(--muted);line-height:1.8">EduPath hadir sebagai solusi cerdas berbasis Decision Tree yang dapat diakses kapan saja, melengkapi peran guru BK yang terbatas waktu dan kapasitas.</p>
+      <p style="color:var(--muted);line-height:1.8;margin-bottom:1rem">Banyak Siswa SMA/SMK Mengalami Kebingungan & Kecemasan Dalam Memilih Jurusan Kuliah. Fenomena "Salah Jurusan" Berdampak Pada Motivasi Belajar & Tingginya Angka Putus kuliah.</p>
+      <p style="color:var(--muted);line-height:1.8">EduPath Hadir Sebagai Solusi Cerdas Berbasis Decision Tree Yang Dapat Diakses Kapan Saja, Melengkapi Peran Guru BK Yang Terbatas Waktu & Kapasitas.</p>
       <div class="check-list">
         <div>✅ Algoritma Decision Tree Machine Learning</div>
-        <div>✅ Dibangun dengan Python & Django</div>
-        <div>✅ Akurasi model 91% tervalidasi</div>
-        <div>✅ Gratis dan mudah diakses siswa</div>
+        <div>✅ Dibangun Dengan Python & Django</div>
+        <div>✅ Akurasi Model 91% Tervalidasi</div>
+        <div>✅ Gratis Dan Mudah Diakses Siswa</div>
       </div>
     </div>
     <div style="background:var(--card);border:1px solid var(--border);border-radius:24px;padding:2rem;">
@@ -953,14 +1078,14 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
         <div class="bar-val" style="color:var(--blue)">91%</div>
       </div>
       <div class="about-bar">
-        <div class="bar-label">Jurusan yang Dicover</div>
+        <div class="bar-label">Jurusan Yang Dicover</div>
         <div class="bar-track"><div class="bar-fill" style="width:70%;background:linear-gradient(90deg,#10b981,#14b8a6)"></div></div>
         <div class="bar-val" style="color:#10b981">7 Jurusan</div>
       </div>
       <div class="about-bar">
         <div class="bar-label">Kecepatan Analisis</div>
         <div class="bar-track"><div class="bar-fill" style="width:98%;background:linear-gradient(90deg,#f59e0b,#ef4444)"></div></div>
-        <div class="bar-val" style="color:#f59e0b">< 1 Detik</div>
+        <div class="bar-val" style="color:#f59e0b">< 10 Detik</div>
       </div>
     </div>
   </div>
@@ -972,7 +1097,7 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
     <div class="footer-col about-col">
       <a href="/" class="logo"><span class="dot"></span>EduPath</a>
       <p class="footer-desc">
-        Sistem rekomendasi jurusan cerdas berbasis kecerdasan buatan (AI) untuk membantu menganalisis minat, bakat, dan potensi akademik guna menemukan arah karir masa depan terbaik Anda.
+        Sistem Rekomendasi Jurusan Cerdas Berbasis Kecerdasan Buatan (AI) Untuk Membantu Menganalisis Minat, Bakat, & Potensi Akademik Guna Menemukan Arah Karir Masa Depan Terbaik Anda.
       </p>
     </div>
 
@@ -981,7 +1106,7 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
       <h4>LAYANAN BANTUAN</h4>
       <ul class="footer-links">
         <li><a href="mailto:hello@edupath.ai">✉️ Hubungi Kami</a></li>
-        <li><a href="/login/">❓ FAQ & Bantuan</a></li>
+        <li><a href="#" onclick="showGlobalFaq(); return false;">❓ FAQ & Bantuan</a></li>
         <li><a href="https://wa.me/6282199023473" target="_blank">💬 WhatsApp Support</a></li>
         <li><a href="mailto:hello@edupath.ai">📧 Email Bantuan</a></li>
       </ul>
@@ -1016,7 +1141,7 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
   </div>
   
   <div class="footer-bottom">
-    <p>&copy; 2026 EduPath — Sistem Rekomendasi Jurusan Berbasis Decision Tree. Dibangun untuk Generasi Penerus.</p>
+    <p>&copy; 2026 EduPath — Sistem Rekomendasi Jurusan Berbasis Decision Tree.</p>
   </div>
 </footer>
 
@@ -1097,120 +1222,231 @@ try {
   console.warn("WebGL background particles failed to initialize:", e);
 }
 
-// ═══════════════════════════════════════
-// THREE.JS — HERO 3D NETWORK GRAPH
-// ═══════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════
+// THREE.JS — HERO 3D EDUCATION GALAXY (AI Core + Orbiting Majors)
+// ═══════════════════════════════════════════════════════════════
 try {
   const heroCanvas = document.getElementById('hero-canvas');
   if (heroCanvas && typeof THREE !== 'undefined') {
+    const SIZE = 560;
     const heroRenderer = new THREE.WebGLRenderer({canvas: heroCanvas, alpha: true, antialias: true});
     heroRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    heroRenderer.setSize(500, 500);
-    
+    heroRenderer.setSize(SIZE, SIZE);
+    heroRenderer.setClearColor(0x000000, 0);
+
     const heroScene = new THREE.Scene();
-    const heroCamera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
-    heroCamera.position.z = 10;
-    
-    const nodeGeometry = new THREE.SphereGeometry(0.12, 8, 8);
-    const nodeColors = [0x3b82f6, 0xffdd44, 0xffffff];
-    const coords = [
-      {x: -2.2, y: 1.5, z: 0},
-      {x: -1.2, y: 0.8, z: 0.5},
-      {x: 0, y: 0.4, z: -0.2},
-      {x: 1.2, y: -0.2, z: 0.3},
-      {x: 2.2, y: -1.1, z: 0},
-      {x: -2.5, y: -1.0, z: -0.5},
-      {x: -0.5, y: -1.5, z: 0.2},
-      {x: 0.8, y: -1.8, z: -0.4},
-      {x: 2.5, y: 1.2, z: -0.3},
-      {x: 1.5, y: 1.8, z: 0.1},
-      {x: 0.4, y: 2.2, z: -0.5},
-      {x: -1.8, y: -0.3, z: 0.6},
-      {x: 1.8, y: 0.5, z: -0.6},
-      {x: -0.8, y: 2.0, z: 0.2},
-      {x: 0, y: -0.6, z: 0.8}
-    ];
-    
-    const nodesList = [];
-    coords.forEach((coord, i) => {
-      const color = nodeColors[i % nodeColors.length];
-      const material = new THREE.MeshBasicMaterial({
-        color: color,
-        transparent: true,
-        opacity: 0.95
-      });
-      const mesh = new THREE.Mesh(nodeGeometry, material);
-      mesh.position.set(coord.x, coord.y, coord.z);
-      heroScene.add(mesh);
-      nodesList.push(mesh);
-    });
-    
-    const lineMaterial = new THREE.LineBasicMaterial({
+    const heroCamera = new THREE.PerspectiveCamera(45, 1, 0.1, 200);
+    heroCamera.position.set(0, 2, 14);
+    heroCamera.lookAt(0, 0, 0);
+
+    // ── LIGHTING ──
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.25);
+    heroScene.add(ambientLight);
+    const pointLight1 = new THREE.PointLight(0x6366f1, 6, 18);
+    pointLight1.position.set(0, 0, 0);
+    heroScene.add(pointLight1);
+    const pointLight2 = new THREE.PointLight(0x3b82f6, 3, 20);
+    pointLight2.position.set(4, 4, 4);
+    heroScene.add(pointLight2);
+    const pointLight3 = new THREE.PointLight(0xa855f7, 2, 16);
+    pointLight3.position.set(-4, -2, 2);
+    heroScene.add(pointLight3);
+
+    // ── AI CORE SPHERE (center) ──
+    const coreGeo = new THREE.SphereGeometry(1.1, 64, 64);
+    const coreMat = new THREE.MeshPhongMaterial({
       color: 0x3b82f6,
+      emissive: 0x1d4ed8,
+      emissiveIntensity: 0.6,
+      shininess: 120,
       transparent: true,
-      opacity: 0.45,
-      linewidth: 1
+      opacity: 0.92,
     });
-    
-    // Pre-allocated single geometry and line segments mesh for ultimate performance
-    const maxLines = 150;
-    const linePositions = new Float32Array(maxLines * 2 * 3); // 2 points per line, 3 coords per point
-    const lineGeometry = new THREE.BufferGeometry();
-    lineGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
-    const lineSegments = new THREE.LineSegments(lineGeometry, lineMaterial);
-    heroScene.add(lineSegments);
-    
-    function updateLines() {
-      let vertexIdx = 0;
-      const posAttr = lineGeometry.getAttribute('position');
-      const array = posAttr.array;
-      
-      for (let i = 0; i < nodesList.length; i++) {
-        for (let j = i + 1; j < nodesList.length; j++) {
-          const nodeA = nodesList[i];
-          const nodeB = nodesList[j];
-          const dist = nodeA.position.distanceTo(nodeB.position);
-          if (dist < 2.5 && vertexIdx < maxLines) {
-            // Point A
-            array[vertexIdx * 6] = nodeA.position.x;
-            array[vertexIdx * 6 + 1] = nodeA.position.y;
-            array[vertexIdx * 6 + 2] = nodeA.position.z;
-            
-            // Point B
-            array[vertexIdx * 6 + 3] = nodeB.position.x;
-            array[vertexIdx * 6 + 4] = nodeB.position.y;
-            array[vertexIdx * 6 + 5] = nodeB.position.z;
-            
-            vertexIdx++;
-          }
-        }
+    const coreMesh = new THREE.Mesh(coreGeo, coreMat);
+    heroScene.add(coreMesh);
+
+    // Inner glowing core
+    const innerGeo = new THREE.SphereGeometry(0.65, 32, 32);
+    const innerMat = new THREE.MeshBasicMaterial({ color: 0x93c5fd, transparent: true, opacity: 0.5 });
+    heroScene.add(new THREE.Mesh(innerGeo, innerMat));
+
+    // Wireframe overlay on core
+    const wireGeo = new THREE.IcosahedronGeometry(1.15, 1);
+    const wireMat = new THREE.MeshBasicMaterial({ color: 0x60a5fa, wireframe: true, transparent: true, opacity: 0.18 });
+    const wireMesh = new THREE.Mesh(wireGeo, wireMat);
+    heroScene.add(wireMesh);
+
+    // ── ORBIT RINGS (decorative ellipses) ──
+    function makeOrbitRing(radius, inclination, color, opacity = 0.22) {
+      const pts = [];
+      for (let i = 0; i <= 128; i++) {
+        const angle = (i / 128) * Math.PI * 2;
+        pts.push(new THREE.Vector3(Math.cos(angle) * radius, 0, Math.sin(angle) * radius));
       }
-      
-      // Update draw range to only render populated segments
-      lineGeometry.setDrawRange(0, vertexIdx * 2);
-      posAttr.needsUpdate = true;
+      const geo = new THREE.BufferGeometry().setFromPoints(pts);
+      const mat = new THREE.LineBasicMaterial({ color, transparent: true, opacity });
+      const ring = new THREE.LineLoop(geo, mat);
+      ring.rotation.x = inclination;
+      return ring;
     }
-    updateLines();
-    
+
+    const orbitConfigs = [
+      { radius: 3.0, inclination: Math.PI * 0.08,  color: 0x6366f1 },
+      { radius: 3.8, inclination: Math.PI * 0.22,  color: 0x3b82f6 },
+      { radius: 4.6, inclination: -Math.PI * 0.15, color: 0xa855f7 },
+      { radius: 5.3, inclination: Math.PI * 0.35,  color: 0x10b981 },
+    ];
+    const orbitRings = orbitConfigs.map(cfg => {
+      const ring = makeOrbitRing(cfg.radius, cfg.inclination, cfg.color);
+      heroScene.add(ring);
+      return ring;
+    });
+
+    // ── MAJOR NODES (orbiting planets) ──
+    const majors = [
+      { label: 'Informatika', color: 0x6366f1, orbitR: 3.0, incl: Math.PI * 0.08,  speed: 0.55, phase: 0,            size: 0.28 },
+      { label: 'Kedokteran',  color: 0xef4444, orbitR: 3.8, incl: Math.PI * 0.22,  speed: 0.38, phase: Math.PI*0.5,  size: 0.26 },
+      { label: 'Manajemen',   color: 0x10b981, orbitR: 3.8, incl: Math.PI * 0.22,  speed: 0.38, phase: Math.PI*1.4,  size: 0.26 },
+      { label: 'Sastra',      color: 0xa855f7, orbitR: 4.6, incl: -Math.PI * 0.15, speed: 0.28, phase: Math.PI*0.3,  size: 0.24 },
+      { label: 'Akuntansi',   color: 0xf59e0b, orbitR: 4.6, incl: -Math.PI * 0.15, speed: 0.28, phase: Math.PI*1.1,  size: 0.24 },
+      { label: 'Biologi',     color: 0x14b8a6, orbitR: 5.3, incl: Math.PI * 0.35,  speed: 0.20, phase: Math.PI*0.7,  size: 0.22 },
+      { label: 'Pendidikan',  color: 0xfbbf24, orbitR: 5.3, incl: Math.PI * 0.35,  speed: 0.20, phase: Math.PI*1.8,  size: 0.22 },
+    ];
+
+    const majorMeshes = majors.map(m => {
+      const geo = new THREE.SphereGeometry(m.size, 24, 24);
+      const mat = new THREE.MeshPhongMaterial({
+        color: m.color, emissive: m.color, emissiveIntensity: 0.55, shininess: 80,
+      });
+      const mesh = new THREE.Mesh(geo, mat);
+      // small glow ring around node
+      const glowGeo = new THREE.RingGeometry(m.size * 1.4, m.size * 1.9, 24);
+      const glowMat = new THREE.MeshBasicMaterial({ color: m.color, transparent: true, opacity: 0.22, side: THREE.DoubleSide });
+      const glowRing = new THREE.Mesh(glowGeo, glowMat);
+      mesh.add(glowRing);
+      heroScene.add(mesh);
+      return { mesh, ...m };
+    });
+
+    // ── DATA STREAM PARTICLES (travel along orbit paths) ──
+    const streamParticles = [];
+    majors.forEach((m, i) => {
+      for (let p = 0; p < 5; p++) {
+        const partGeo = new THREE.SphereGeometry(0.035, 6, 6);
+        const partMat = new THREE.MeshBasicMaterial({ color: m.color, transparent: true, opacity: 0.75 });
+        const part = new THREE.Mesh(partGeo, partMat);
+        heroScene.add(part);
+        streamParticles.push({ mesh: part, orbitR: m.orbitR, incl: m.incl, phase: m.phase + (p / 5) * Math.PI * 2, speed: m.speed * 1.8 });
+      }
+    });
+
+    // ── BACKGROUND STAR FIELD ──
+    const starCount = 320;
+    const starPositions = new Float32Array(starCount * 3);
+    for (let i = 0; i < starCount; i++) {
+      const r = 18 + Math.random() * 30;
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos(2 * Math.random() - 1);
+      starPositions[i*3]   = r * Math.sin(phi) * Math.cos(theta);
+      starPositions[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
+      starPositions[i*3+2] = r * Math.cos(phi);
+    }
+    const starGeo = new THREE.BufferGeometry();
+    starGeo.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
+    const starMat = new THREE.PointsMaterial({ color: 0xc7d2fe, size: 0.07, transparent: true, opacity: 0.6 });
+    heroScene.add(new THREE.Points(starGeo, starMat));
+
+    // ── CONNECTION LINES (core → nearest majors) ──
+    const connLinesMat = new THREE.LineBasicMaterial({ color: 0x6366f1, transparent: true, opacity: 0.18 });
+    const connLinesGroup = new THREE.Group();
+    heroScene.add(connLinesGroup);
+
+    function updateConnLines(majorMeshes) {
+      connLinesGroup.clear();
+      majorMeshes.forEach(m => {
+        const pts = [new THREE.Vector3(0,0,0), m.mesh.position.clone()];
+        const geo = new THREE.BufferGeometry().setFromPoints(pts);
+        connLinesGroup.add(new THREE.Line(geo, connLinesMat));
+      });
+    }
+
+    // ── MOUSE PARALLAX ──
+    let heroMX = 0, heroMY = 0;
+    heroCanvas.addEventListener('mousemove', e => {
+      const rect = heroCanvas.getBoundingClientRect();
+      heroMX = ((e.clientX - rect.left) / SIZE - 0.5) * 2;
+      heroMY = -((e.clientY - rect.top) / SIZE - 0.5) * 2;
+    });
+
+    // ── ANIMATION LOOP ──
     const heroClock = new THREE.Clock();
+    let camTargetX = 0, camTargetY = 2;
+
     (function animateHero() {
       requestAnimationFrame(animateHero);
-      const elapsed = heroClock.getElapsedTime();
-      
-      heroScene.rotation.y = elapsed * 0.08;
-      heroScene.rotation.x = Math.sin(elapsed * 0.04) * 0.1;
-      
-      nodesList.forEach((node, index) => {
-        node.position.y += Math.sin(elapsed * 0.4 + index) * 0.0015;
-        node.position.x += Math.cos(elapsed * 0.3 + index) * 0.0008;
+      const t = heroClock.getElapsedTime();
+
+      // Core pulse
+      const pulse = 1 + 0.04 * Math.sin(t * 2.2);
+      coreMesh.scale.setScalar(pulse);
+      innerMat.opacity = 0.35 + 0.18 * Math.sin(t * 1.8);
+      wireMesh.rotation.y = t * 0.15;
+      wireMesh.rotation.z = t * 0.08;
+
+      // Point light pulse
+      pointLight1.intensity = 5 + 2 * Math.sin(t * 1.5);
+
+      // Orbit ring slow drift
+      orbitRings.forEach((ring, i) => {
+        ring.rotation.z = t * 0.02 * (i % 2 === 0 ? 1 : -1);
       });
-      
-      updateLines();
+
+      // Major node orbit positions
+      majorMeshes.forEach(m => {
+        const angle = t * m.speed + m.phase;
+        const x = Math.cos(angle) * m.orbitR;
+        const zRaw = Math.sin(angle) * m.orbitR;
+        // apply inclination
+        const y = zRaw * Math.sin(m.incl);
+        const z = zRaw * Math.cos(m.incl);
+        m.mesh.position.set(x, y, z);
+        // spin the node itself
+        m.mesh.rotation.y = t * 1.2;
+        // glow ring face camera (billboard)
+        const glow = m.mesh.children[0];
+        if (glow) glow.rotation.x = t * 0.5;
+      });
+
+      // Stream particles
+      streamParticles.forEach(p => {
+        const angle = t * p.speed + p.phase;
+        const x = Math.cos(angle) * p.orbitR;
+        const zRaw = Math.sin(angle) * p.orbitR;
+        const y = zRaw * Math.sin(p.incl);
+        const z = zRaw * Math.cos(p.incl);
+        p.mesh.position.set(x, y, z);
+        // fade in/out based on position
+        p.mesh.material.opacity = 0.3 + 0.5 * Math.abs(Math.sin(angle * 0.5));
+      });
+
+      // Update connection lines every few frames for performance
+      if (Math.round(t * 60) % 3 === 0) updateConnLines(majorMeshes);
+
+      // Camera mouse parallax
+      camTargetX += (heroMX * 1.5 - camTargetX) * 0.04;
+      camTargetY += (2 + heroMY * 1.0 - camTargetY) * 0.04;
+      heroCamera.position.x = camTargetX;
+      heroCamera.position.y = camTargetY;
+      heroCamera.lookAt(0, 0, 0);
+
+      // Slow global scene tilt
+      heroScene.rotation.y = t * 0.06;
+
       heroRenderer.render(heroScene, heroCamera);
     })();
   }
 } catch (e) {
-  console.warn("WebGL hero network graph failed to initialize:", e);
+  console.warn("WebGL hero education galaxy failed to initialize:", e);
 }
 
 // ═══════════════════════════════════════
@@ -1234,19 +1470,7 @@ new IntersectionObserver((entries, observer)=>{
 }, {threshold:.3}).observe(document.querySelector('.stats'));
 
 
-// Theme Toggle Logic
-const toggleBtn = document.getElementById('theme-toggle');
-if (toggleBtn) {
-  toggleBtn.addEventListener('click', () => {
-    const isLight = document.documentElement.classList.toggle('light-mode');
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-    toggleBtn.textContent = isLight ? '☀️' : '🌙';
-  });
-  
-  // Set initial button icon
-  const currentTheme = localStorage.getItem('theme') || 'dark';
-  toggleBtn.textContent = currentTheme === 'light' ? '☀️' : '🌙';
-}
+
 
 // ── MAGNETIC BUTTONS ──
 
@@ -1260,7 +1484,7 @@ function initCursorHover() {
   document.querySelectorAll('a, button, [role="button"], .card, input, select, textarea').forEach(el => {
     el.addEventListener('mouseenter', () => {
       cursorEl.classList.add('hovered');
-      if (el.classList.contains('btn-primary') || el.classList.contains('btn-nav') || el.classList.contains('btn-submit') || el.id === 'theme-toggle') {
+      if (el.classList.contains('btn-primary') || el.classList.contains('btn-nav') || el.classList.contains('btn-submit')) {
         cursorEl.setAttribute('data-icon', String.fromCodePoint(0x1F680));
       } else {
         cursorEl.setAttribute('data-icon', String.fromCodePoint(0x2B50));
@@ -1474,6 +1698,141 @@ window.addEventListener('load', function() {
     }, 1200);
   }
 });
+
+// ══ GLOBAL FAQ MODAL ══════════════════════════════════════════════════════════
+function showGlobalFaq() {
+  let modal = document.getElementById('globalFaqModal');
+  if (!modal) {
+    const styles = `
+      .gfaq-overlay {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(5,5,10,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+        display: flex; align-items: center; justify-content: center; z-index: 99999;
+        opacity: 0; transition: opacity 0.3s ease; pointer-events: none;
+      }
+      .gfaq-overlay.open { opacity: 1; pointer-events: all; }
+      .gfaq-card {
+        background: #0f172a; border: 1px solid rgba(255,255,255,0.08);
+        width: 90%; max-width: 680px; max-height: 85vh; border-radius: 24px;
+        padding: 2.2rem; display: flex; flex-direction: column; position: relative;
+        box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+        transform: translateY(20px); transition: transform 0.3s ease;
+      }
+      .gfaq-overlay.open .gfaq-card { transform: translateY(0); }
+      .gfaq-close {
+        position: absolute; top: 1.5rem; right: 1.5rem;
+        background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+        width: 36px; height: 36px; border-radius: 50%; color: #fff;
+        display: flex; align-items: center; justify-content: center; cursor: pointer;
+        font-size: 1rem; transition: all 0.2s;
+      }
+      .gfaq-close:hover { background: rgba(255,255,255,0.15); transform: scale(1.05); }
+      .gfaq-header { margin-bottom: 1.5rem; }
+      .gfaq-title { font-size: 1.5rem; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 0.5rem; }
+      .gfaq-subtitle { font-size: 0.85rem; color: #94a3b8; margin-top: 0.3rem; }
+      .gfaq-list { overflow-y: auto; flex-grow: 1; padding-right: 0.5rem; margin-top: 0.5rem; }
+      .gfaq-item {
+        background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+        border-radius: 14px; margin-bottom: 0.8rem; overflow: hidden; transition: all 0.2s;
+      }
+      .gfaq-item.open { border-color: rgba(79, 142, 247, 0.4); background: rgba(79, 142, 247, 0.02); }
+      .gfaq-q {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 1.1rem 1.4rem; cursor: pointer; font-size: 0.92rem; font-weight: 600;
+        color: #f1f5f9; gap: 1rem; transition: background 0.2s;
+      }
+      .gfaq-q:hover { background: rgba(255,255,255,0.04); }
+      .gfaq-arrow { font-size: 0.75rem; color: #94a3b8; transition: transform 0.2s; }
+      .gfaq-item.open .gfaq-arrow { transform: rotate(180deg); color: #4f8ef7; }
+      .gfaq-a {
+        display: none; padding: 0.2rem 1.4rem 1.2rem; font-size: 0.88rem;
+        color: #94a3b8; line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.04);
+      }
+      .gfaq-item.open .gfaq-a { display: block; }
+      .gfaq-loading { text-align: center; color: #94a3b8; padding: 3rem; font-size: 0.9rem; }
+      
+      .gfaq-list::-webkit-scrollbar { width: 6px; }
+      .gfaq-list::-webkit-scrollbar-track { background: transparent; }
+      .gfaq-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+      .gfaq-list::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+      
+      .light-mode .gfaq-card { background: #ffffff; border-color: rgba(0,0,0,0.08); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); }
+      .light-mode .gfaq-title { color: #0f172a; }
+      .light-mode .gfaq-close { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.06); color: #0f172a; }
+      .light-mode .gfaq-close:hover { background: rgba(0,0,0,0.08); }
+      .light-mode .gfaq-item { background: rgba(0,0,0,0.01); border-color: rgba(0,0,0,0.05); }
+      .light-mode .gfaq-item.open { border-color: rgba(79, 142, 247, 0.5); background: rgba(79, 142, 247, 0.03); }
+      .light-mode .gfaq-q { color: #1e293b; }
+      .light-mode .gfaq-q:hover { background: rgba(0,0,0,0.02); }
+      .light-mode .gfaq-a { color: #475569; border-top-color: rgba(0,0,0,0.03); }
+    `;
+    const styleEl = document.createElement('style');
+    styleEl.innerHTML = styles;
+    document.head.appendChild(styleEl);
+
+    modal = document.createElement('div');
+    modal.id = 'globalFaqModal';
+    modal.className = 'gfaq-overlay';
+    modal.innerHTML = `
+      <div class="gfaq-card">
+        <button class="gfaq-close" onclick="closeGlobalFaq()">✕</button>
+        <div class="gfaq-header">
+          <div class="gfaq-title">❓ FAQ & Bantuan</div>
+          <div class="gfaq-subtitle">Pertanyaan populer mengenai sistem rekomendasi jurusan EduPath</div>
+        </div>
+        <div class="gfaq-list" id="globalFaqList">
+          <div class="gfaq-loading">⏳ Memuat FAQ...</div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) closeGlobalFaq();
+    });
+  }
+
+  setTimeout(() => modal.classList.add('open'), 10);
+
+  fetch('/api/user/faq/')
+    .then(r => r.json())
+    .then(d => {
+      const listEl = document.getElementById('globalFaqList');
+      const faqs = d.faq || [];
+      if (!faqs.length) {
+        listEl.innerHTML = '<div class="gfaq-loading">Belum ada FAQ tersedia.</div>';
+        return;
+      }
+      faqs.sort((a,b) => a.urutan - b.urutan);
+      listEl.innerHTML = faqs.map(f => `
+        <div class="gfaq-item" id="gfaq-${f.id}">
+          <div class="gfaq-q" onclick="toggleGlobalFaqItem(${f.id})">
+            <span>${f.pertanyaan}</span>
+            <span class="gfaq-arrow">▼</span>
+          </div>
+          <div class="gfaq-a">${f.jawaban}</div>
+        </div>
+      `).join('');
+    })
+    .catch(err => {
+      console.error(err);
+      document.getElementById('globalFaqList').innerHTML = '<div class="gfaq-loading" style="color: #ef4444;">❌ Gagal memuat FAQ. Silakan coba lagi.</div>';
+    });
+}
+
+function closeGlobalFaq() {
+  const modal = document.getElementById('globalFaqModal');
+  if (modal) modal.classList.remove('open');
+}
+
+function toggleGlobalFaqItem(id) {
+  const item = document.getElementById(`gfaq-${id}`);
+  if (item) {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.gfaq-item').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+}
 </script>
 </body>
 </html>
