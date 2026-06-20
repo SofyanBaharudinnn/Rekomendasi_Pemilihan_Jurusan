@@ -2657,6 +2657,7 @@ function toggleSidebar(open) {
 let lastHasilJurusan = '';
 let cachedJurusan = [];
 let cachedArticles = [];
+let jurusanDetailsCache = {};
 
 // ── MAJOR & BADGE SVG HELPERS ──
 function getMajorSVG(majorName) {
@@ -3774,20 +3775,84 @@ async function openArticleModal(id) {
   openModal('modalArtikel');
 }
 async function loadJurusanDetail(nama){
-  const d=await api(`/api/user/jurusan/${encodeURIComponent(nama)}/`);
-  document.getElementById('jDetailTitle').innerHTML=`
+  // 1. Jika data detail sudah di-cache, tampilkan langsung instan!
+  if (jurusanDetailsCache[nama]) {
+    renderJurusanDetailContent(jurusanDetailsCache[nama]);
+    openModal('modalJurusan');
+    return;
+  }
+
+  // 2. Jika belum ada di cache, tampilkan skeleton loader secara instan
+  document.getElementById('jDetailTitle').innerHTML = `
+    <div style="display:inline-flex; align-items:center; gap:0.5rem; vertical-align:middle; width: 100%;">
+      ${getMajorSVG(nama).replace('width="32" height="32"', 'width="24" height="24"')}
+      <span class="skeleton-box skeleton-title" style="width: 140px; display: inline-block; margin-bottom: 0;"></span>
+    </div>`;
+    
+  document.getElementById('jDetailContent').innerHTML = `
+    <div style="margin-bottom: 1.2rem;">
+      <span class="skeleton-box skeleton-text" style="width: 100%; display: block; height: 16px;"></span>
+      <span class="skeleton-box skeleton-text" style="width: 95%; display: block; height: 16px;"></span>
+      <span class="skeleton-box skeleton-text" style="width: 75%; display: block; height: 16px;"></span>
+    </div>
+    
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.85rem;margin-bottom:1.2rem; height: 60px;">
+      <div style="background:rgba(255,255,255,.03);border-radius:10px;padding:.85rem;">
+        <span class="skeleton-box skeleton-text" style="width: 70%; display: block; margin: 0 auto 5px; height: 12px;"></span>
+        <span class="skeleton-box skeleton-text" style="width: 40%; display: block; margin: 0 auto; height: 16px;"></span>
+      </div>
+      <div style="background:rgba(255,255,255,.03);border-radius:10px;padding:.85rem;">
+        <span class="skeleton-box skeleton-text" style="width: 60%; display: block; margin: 0 auto 5px; height: 12px;"></span>
+        <span class="skeleton-box skeleton-text" style="width: 50%; display: block; margin: 0 auto; height: 16px;"></span>
+      </div>
+      <div style="background:rgba(255,255,255,.03);border-radius:10px;padding:.85rem;">
+        <span class="skeleton-box skeleton-text" style="width: 80%; display: block; margin: 0 auto 5px; height: 12px;"></span>
+        <span class="skeleton-box skeleton-text" style="width: 30%; display: block; margin: 0 auto; height: 16px;"></span>
+      </div>
+    </div>
+    
+    <div style="height: 100px; margin-bottom: 1.2rem;">
+      <span class="skeleton-box" style="width: 100%; height: 100%; border-radius: 10px; display: block;"></span>
+    </div>`;
+
+  // Buka modal instan dengan loading state
+  openModal('modalJurusan');
+
+  try {
+    // 3. Ambil data dari server
+    const d = await api(`/api/user/jurusan/${encodeURIComponent(nama)}/`);
+    
+    // Simpan ke cache agar klik berikutnya instan
+    jurusanDetailsCache[nama] = d;
+    
+    // Render konten sebenarnya
+    renderJurusanDetailContent(d);
+  } catch (error) {
+    console.error("Gagal memuat detail jurusan:", error);
+    document.getElementById('jDetailContent').innerHTML = `
+      <div style="color:var(--red); text-align:center; padding:2rem; font-size:0.875rem;">
+        Gagal memuat detail jurusan. Silakan coba lagi.
+      </div>`;
+  }
+}
+
+// Helper untuk merender konten modal detail jurusan
+function renderJurusanDetailContent(d) {
+  document.getElementById('jDetailTitle').innerHTML = `
     <div style="display:inline-flex; align-items:center; gap:0.5rem; vertical-align:middle;">
       ${getMajorSVG(d.nama).replace('width="32" height="32"', 'width="24" height="24"')}
       <span>${d.nama}</span>
     </div>`;
-  const fmt=n=>n?'Rp '+n.toLocaleString('id-ID'):'—';
-  document.getElementById('jDetailContent').innerHTML=`
-    <p style="color:var(--muted);font-size:.875rem;line-height:1.7;margin-bottom:1.2rem;">${d.deskripsi_panjang||d.deskripsi}</p>
 
-    ${d.mata_kuliah.length?`<div class="detail-section">
-      <h4>Mata Kuliah Inti</h4>
-      <div class="matkul-tags">${d.mata_kuliah.map(m=>`<span class="matkul-tag">${m}</span>`).join('')}</div>
-    </div>`:''}
+  const fmt = n => n ? 'Rp ' + n.toLocaleString('id-ID') : '—';
+  
+  document.getElementById('jDetailContent').innerHTML = `
+    <p style="color:var(--muted);font-size:.875rem;line-height:1.7;margin-bottom:1.2rem;">${d.deskripsi_panjang || d.deskripsi}</p>
+
+    ${d.mata_kuliah.length ? `<div class="detail-section">
+      <h4 style="font-size:0.88rem; font-weight:700; margin-bottom:0.6rem; color:var(--text);">Mata Kuliah Inti</h4>
+      <div class="matkul-tags">${d.mata_kuliah.map(m => `<span class="matkul-tag">${m}</span>`).join('')}</div>
+    </div>` : ''}
 
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.85rem;margin-bottom:1.2rem;">
       <div style="background:rgba(255,255,255,.03);border-radius:10px;padding:.85rem;text-align:center;">
@@ -3796,36 +3861,36 @@ async function loadJurusanDetail(nama){
       </div>
       <div style="background:rgba(255,255,255,.03);border-radius:10px;padding:.85rem;text-align:center;">
         <div style="font-size:.68rem;color:var(--muted);margin-bottom:.3rem;">Gelar</div>
-        <div style="font-weight:700;color:var(--green)">${d.gelar||'—'}</div>
+        <div style="font-weight:700;color:var(--green)">${d.gelar || '—'}</div>
       </div>
       <div style="background:rgba(255,255,255,.03);border-radius:10px;padding:.85rem;text-align:center;">
         <div style="font-size:.68rem;color:var(--muted);margin-bottom:.3rem;">Passing Grade UTBK</div>
-        <div style="font-weight:700;color:var(--orange)">${d.passing_grade||'—'}</div>
+        <div style="font-weight:700;color:var(--orange)">${d.passing_grade || '—'}</div>
       </div>
     </div>
 
-    ${d.biaya_min?`<div class="detail-section">
-      <h4>Estimasi Biaya Kuliah / Semester</h4>
+    ${d.biaya_min ? `<div class="detail-section">
+      <h4 style="font-size:0.88rem; font-weight:700; margin-bottom:0.6rem; color:var(--text);">Estimasi Biaya Kuliah / Semester</h4>
       <div class="biaya-row">
         <div class="biaya-item"><div class="lbl">Minimum</div><div class="val">${fmt(d.biaya_min)}</div></div>
         <div class="biaya-item"><div class="lbl">Maksimum</div><div class="val">${fmt(d.biaya_max)}</div></div>
       </div>
-    </div>`:''}
+    </div>` : ''}
 
-    ${d.universitas.length?`<div class="detail-section">
-      <h4>Universitas Terbaik</h4>
+    ${d.universitas.length ? `<div class="detail-section">
+      <h4 style="font-size:0.88rem; font-weight:700; margin-bottom:0.6rem; color:var(--text);">Universitas Terbaik</h4>
       <div class="univ-list">
-        ${d.universitas.map(u=>`<div class="univ-item">
-          <span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:0.35rem; color:var(--muted); vertical-align:middle;"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg><b>${u.nama||u}</b> ${u.kota?`· ${u.kota}`:''}</span>
-          ${u.akreditasi?`<span class="bdg bdg-green">Akreditasi ${u.akreditasi}</span>`:''}
+        ${d.universitas.map(u => `<div class="univ-item">
+          <span><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:0.35rem; color:var(--muted); vertical-align:middle;"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg><b>${u.nama || u}</b> ${u.kota ? `· ${u.kota}` : ''}</span>
+          ${u.akreditasi ? `<span class="bdg bdg-green">Akreditasi ${u.akreditasi}</span>` : ''}
         </div>`).join('')}
       </div>
-    </div>`:''}
+    </div>` : ''}
 
-    <div class="detail-section">
-      <h4>Prospek Karir</h4>
+    <div class="detail-section" style="margin-top:1.2rem;">
+      <h4 style="font-size:0.88rem; font-weight:700; margin-bottom:0.6rem; color:var(--text);">Prospek Karir</h4>
       <div style="display:flex;gap:.4rem;flex-wrap:wrap;">
-        ${d.prospek.map(p=>`<span class="bdg bdg-blue">${p}</span>`).join('')}
+        ${d.prospek.map(p => `<span class="bdg bdg-blue">${p}</span>`).join('')}
       </div>
     </div>`;
   openModal('modalJurusan');
