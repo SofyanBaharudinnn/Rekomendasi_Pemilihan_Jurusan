@@ -1622,6 +1622,21 @@ tr:hover td{background:rgba(255,255,255,.02);}
     align-items: start;
   }
 }
+
+@media (max-width: 576px) {
+  .share-bar {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.5rem !important;
+    width: 100%;
+  }
+  .share-bar .btn {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0.55rem 0.3rem !important;
+    font-size: 0.75rem !important;
+  }
+}
 </style>
 </head>
 <body>

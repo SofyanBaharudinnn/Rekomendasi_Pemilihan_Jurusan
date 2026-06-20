@@ -53,6 +53,14 @@ class AdminUserDetailAPITests(TestCase):
             minat_bis=70,
             minat_kes=45
         )
+        
+        # Update created_at deterministically (SQLite in test runs might have identical timestamps otherwise)
+        from django.utils import timezone
+        from datetime import timedelta
+        now = timezone.now()
+        HasilRekomendasi.objects.filter(id=self.hasil1.id).update(created_at=now - timedelta(hours=1))
+        HasilRekomendasi.objects.filter(id=self.hasil2.id).update(created_at=now)
+
 
     def test_anonymous_user_denied(self):
         url = reverse('api_admin_user_detail', kwargs={'user_id': self.siswa.id})

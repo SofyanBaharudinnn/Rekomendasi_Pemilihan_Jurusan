@@ -1846,6 +1846,23 @@ tr:hover td{background:rgba(255,255,255,.02);}
 .top3-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;margin-top:1rem;}
 .t3card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:.9rem;text-align:center;transition:all .3s;}
 .t3card:hover{border-color:rgba(99,102,241,.3);}
+
+.share-bar{display:flex;gap:.6rem;justify-content:center;margin-top:1.1rem;flex-wrap:wrap;}
+
+@media (max-width: 576px) {
+  .share-bar {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.5rem !important;
+    width: 100%;
+  }
+  .share-bar .btn {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0.55rem 0.3rem !important;
+    font-size: 0.75rem !important;
+  }
+}
 </style>
 </head>
 <body>
