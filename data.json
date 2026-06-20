@@ -2,7 +2,7 @@
 {
     "model": "auth.user",
     "fields": {
-        "password": "pbkdf2_sha256$1200000$uP4ismGJx2r269tJEH7e6w$iytnxvejli+wv9xRZ+Kbx3qTCosVM09IuSxQr643RGE=",
+        "password": "pbkdf2_sha256$1200000$ZcuaYrPOf7pZQAH7KdFPvk$abebYv4aVJ8qFiN6xAWSuMT/DWvUvw2ElFRIMupYovM=",
         "last_login": "2026-06-20T11:12:29.299Z",
         "is_superuser": true,
         "username": "admin",
@@ -19,7 +19,7 @@
 {
     "model": "auth.user",
     "fields": {
-        "password": "pbkdf2_sha256$1200000$COu9BrDVMpUS7rAdFfG1Zw$n6m3f4Pygu5uDaIn+zqGMkl9Bc0ou9Kimwe5euZQ+/Y=",
+        "password": "pbkdf2_sha256$1200000$8r8puWeUarISIgz4OzY0D0$b7OZ7bkJwqcYrsJnfSZrlYg6hQX8hcFeeygZS6Qwpmg=",
         "last_login": "2026-06-20T11:16:14.376Z",
         "is_superuser": false,
         "username": "siswa",
