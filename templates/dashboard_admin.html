@@ -3163,13 +3163,13 @@ async function viewUserProfile(id) {
   openModal('modalUserProfile');
   
   try {
-    const u = await api(\`/api/admin/users/\${id}/\`);
+    const u = await api(`/api/admin/users/${id}/`);
     
     let avatarHtml = '';
     if (u.avatar_url) {
-      avatarHtml = \`<img src="\${u.avatar_url}" alt="\${u.username}" style="width:80px; height:80px; border-radius:50%; object-fit:cover; border:3px solid var(--indigo); box-shadow:0 4px 12px rgba(99,102,241,0.25);">\`;
+      avatarHtml = `<img src="${u.avatar_url}" alt="${u.username}" style="width:80px; height:80px; border-radius:50%; object-fit:cover; border:3px solid var(--indigo); box-shadow:0 4px 12px rgba(99,102,241,0.25);">`;
     } else {
-      avatarHtml = \`<div style="width:80px; height:80px; border-radius:50%; background:linear-gradient(135deg, var(--indigo), var(--purple)); color:white; display:flex; align-items:center; justify-content:center; font-size:2rem; font-weight:800; border:3px solid var(--indigo); text-shadow:0 2px 4px rgba(0,0,0,0.2); box-shadow:0 4px 12px rgba(99,102,241,0.25);">\${u.username.charAt(0).toUpperCase()}</div>\`;
+      avatarHtml = `<div style="width:80px; height:80px; border-radius:50%; background:linear-gradient(135deg, var(--indigo), var(--purple)); color:white; display:flex; align-items:center; justify-content:center; font-size:2rem; font-weight:800; border:3px solid var(--indigo); text-shadow:0 2px 4px rgba(0,0,0,0.2); box-shadow:0 4px 12px rgba(99,102,241,0.25);">${u.username.charAt(0).toUpperCase()}</div>`;
     }
     
     const roleBadge = u.is_superuser 
@@ -3182,19 +3182,19 @@ async function viewUserProfile(id) {
 
     let riwayatHtml = '';
     if (!u.riwayat || u.riwayat.length === 0) {
-      riwayatHtml = \`<div style="text-align:center; padding:2rem; color:var(--muted); border:1px dashed var(--border); border-radius:12px; font-size:0.9rem; background:var(--card);">Siswa ini belum pernah melakukan tes rekomendasi.</div>\`;
+      riwayatHtml = `<div style="text-align:center; padding:2rem; color:var(--muted); border:1px dashed var(--border); border-radius:12px; font-size:0.9rem; background:var(--card);">Siswa ini belum pernah melakukan tes rekomendasi.</div>`;
     } else {
-      riwayatHtml = \`
+      riwayatHtml = `
         <div style="display:flex; flex-direction:column; gap:0.75rem;">
-          \${u.riwayat.map((r, idx) => \`
+          ${u.riwayat.map((r, idx) => `
             <div class="riwayat-card-detail" 
                  onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px var(--border)';" 
                  onmouseout="this.style.transform='none'; this.style.boxShadow='none';"
                  style="background:var(--card2); border:1px solid var(--border); padding:1rem; border-radius:12px; transition:all 0.2s ease;">
               <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:0.5rem; border-bottom:1px solid var(--border); padding-bottom:0.6rem; margin-bottom:0.6rem;">
                 <div>
-                  <span style="font-size:0.72rem; color:var(--muted); display:block;">Tes #\${u.riwayat.length - idx} — \${r.tanggal}</span>
-                  <strong style="font-size:1.05rem; color:var(--indigo); display:flex; align-items:center; gap:0.25rem;">🎓 \${r.jurusan}</strong>
+                  <span style="font-size:0.72rem; color:var(--muted); display:block;">Tes #${u.riwayat.length - idx} — ${r.tanggal}</span>
+                  <strong style="font-size:1.05rem; color:var(--indigo); display:flex; align-items:center; gap:0.25rem;">🎓 ${r.jurusan}</strong>
                 </div>
               </div>
               
@@ -3202,37 +3202,37 @@ async function viewUserProfile(id) {
                 <div>
                   <span style="font-size:0.68rem; color:var(--muted); display:block; text-transform:uppercase; margin-bottom:0.25rem; font-weight:600; letter-spacing:0.02em;">Nilai Mata Pelajaran</span>
                   <div style="display:flex; flex-wrap:wrap; gap:0.35rem;">
-                    <span style="background:rgba(99,102,241,0.08); border:1px solid rgba(99,102,241,0.18); color:var(--indigo); padding:0.15rem 0.45rem; border-radius:4px; font-weight:500;">Mat: <b>\${r.nilai_mat}</b></span>
-                    <span style="background:rgba(79,142,247,0.08); border:1px solid rgba(79,142,247,0.18); color:var(--blue); padding:0.15rem 0.45rem; border-radius:4px; font-weight:500;">Bhs: <b>\${r.nilai_bhs}</b></span>
-                    <span style="background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.18); color:var(--green); padding:0.15rem 0.45rem; border-radius:4px; font-weight:500;">IPA: <b>\${r.nilai_ipa}</b></span>
-                    <span style="background:rgba(245,158,11,0.08); border:1px solid rgba(245,158,11,0.18); color:var(--orange); padding:0.15rem 0.45rem; border-radius:4px; font-weight:500;">IPS: <b>\${r.nilai_ips}</b></span>
+                    <span style="background:rgba(99,102,241,0.08); border:1px solid rgba(99,102,241,0.18); color:var(--indigo); padding:0.15rem 0.45rem; border-radius:4px; font-weight:500;">Mat: <b>${r.nilai_mat}</b></span>
+                    <span style="background:rgba(79,142,247,0.08); border:1px solid rgba(79,142,247,0.18); color:var(--blue); padding:0.15rem 0.45rem; border-radius:4px; font-weight:500;">Bhs: <b>${r.nilai_bhs}</b></span>
+                    <span style="background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.18); color:var(--green); padding:0.15rem 0.45rem; border-radius:4px; font-weight:500;">IPA: <b>${r.nilai_ipa}</b></span>
+                    <span style="background:rgba(245,158,11,0.08); border:1px solid rgba(245,158,11,0.18); color:var(--orange); padding:0.15rem 0.45rem; border-radius:4px; font-weight:500;">IPS: <b>${r.nilai_ips}</b></span>
                   </div>
                 </div>
                 <div>
                   <span style="font-size:0.68rem; color:var(--muted); display:block; text-transform:uppercase; margin-bottom:0.25rem; font-weight:600; letter-spacing:0.02em;">Minat Bidang</span>
                   <div style="display:flex; flex-wrap:wrap; gap:0.35rem;">
-                    <span style="background:rgba(168,85,247,0.08); border:1px solid rgba(168,85,247,0.18); color:var(--purple); padding:0.15rem 0.45rem; border-radius:4px; font-weight:500;">Tek: <b>\${r.minat_tek}</b></span>
-                    <span style="background:rgba(20,184,166,0.08); border:1px solid rgba(20,184,166,0.18); color:var(--teal); padding:0.15rem 0.45rem; border-radius:4px; font-weight:500;">Sen: <b>\${r.minat_sen}</b></span>
-                    <span style="background:rgba(239,68,68,0.08); border:1px solid rgba(239,68,68,0.18); color:var(--red); padding:0.15rem 0.45rem; border-radius:4px; font-weight:500;">Bis: <b>\${r.minat_bis}</b></span>
-                    <span style="background:rgba(99,102,241,0.08); border:1px solid rgba(99,102,241,0.18); color:var(--indigo); padding:0.15rem 0.45rem; border-radius:4px; font-weight:500;">Kes: <b>\${r.minat_kes}</b></span>
+                    <span style="background:rgba(168,85,247,0.08); border:1px solid rgba(168,85,247,0.18); color:var(--purple); padding:0.15rem 0.45rem; border-radius:4px; font-weight:500;">Tek: <b>${r.minat_tek}</b></span>
+                    <span style="background:rgba(20,184,166,0.08); border:1px solid rgba(20,184,166,0.18); color:var(--teal); padding:0.15rem 0.45rem; border-radius:4px; font-weight:500;">Sen: <b>${r.minat_sen}</b></span>
+                    <span style="background:rgba(239,68,68,0.08); border:1px solid rgba(239,68,68,0.18); color:var(--red); padding:0.15rem 0.45rem; border-radius:4px; font-weight:500;">Bis: <b>${r.minat_bis}</b></span>
+                    <span style="background:rgba(99,102,241,0.08); border:1px solid rgba(99,102,241,0.18); color:var(--indigo); padding:0.15rem 0.45rem; border-radius:4px; font-weight:500;">Kes: <b>${r.minat_kes}</b></span>
                   </div>
                 </div>
               </div>
             </div>
-          \`).join('')}
+          `).join('')}
         </div>
       `;
     }
     
-    content.innerHTML = \`
+    content.innerHTML = `
       <div style="display:flex; gap:1.25rem; align-items:center; margin-bottom:1.5rem; border-bottom:1px solid var(--border); padding-bottom:1.25rem;">
-        \${avatarHtml}
+        ${avatarHtml}
         <div>
-          <h4 style="margin:0; font-size:1.35rem; font-weight:700; color:var(--text);">\${u.full_name}</h4>
-          <div style="font-size:0.9rem; color:var(--muted); margin-bottom:0.5rem; font-weight:500;">@\${u.username}</div>
+          <h4 style="margin:0; font-size:1.35rem; font-weight:700; color:var(--text);">${u.full_name}</h4>
+          <div style="font-size:0.9rem; color:var(--muted); margin-bottom:0.5rem; font-weight:500;">@${u.username}</div>
           <div style="display:flex; align-items:center;">
-            \${roleBadge}
-            \${statusBadge}
+            ${roleBadge}
+            ${statusBadge}
           </div>
         </div>
       </div>
@@ -3240,51 +3240,51 @@ async function viewUserProfile(id) {
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:1rem; margin-bottom:1.25rem; background:var(--card); border:1px solid var(--border); padding:1.25rem; border-radius:12px;">
         <div>
           <span style="font-size:0.72rem; color:var(--muted); display:block; text-transform:uppercase; margin-bottom:0.15rem; font-weight:600; letter-spacing:0.02em;">Email</span>
-          <strong style="font-size:0.92rem; color:var(--text); word-break:break-all;">\${u.email || '-'}</strong>
+          <strong style="font-size:0.92rem; color:var(--text); word-break:break-all;">${u.email || '-'}</strong>
         </div>
         <div>
           <span style="font-size:0.72rem; color:var(--muted); display:block; text-transform:uppercase; margin-bottom:0.15rem; font-weight:600; letter-spacing:0.02em;">Sekolah</span>
-          <strong style="font-size:0.92rem; color:var(--text);">\${u.sekolah}</strong>
+          <strong style="font-size:0.92rem; color:var(--text);">${u.sekolah}</strong>
         </div>
         <div>
           <span style="font-size:0.72rem; color:var(--muted); display:block; text-transform:uppercase; margin-bottom:0.15rem; font-weight:600; letter-spacing:0.02em;">Kelas</span>
-          <strong style="font-size:0.92rem; color:var(--text);">\${u.kelas}</strong>
+          <strong style="font-size:0.92rem; color:var(--text);">${u.kelas}</strong>
         </div>
         <div>
           <span style="font-size:0.72rem; color:var(--muted); display:block; text-transform:uppercase; margin-bottom:0.15rem; font-weight:600; letter-spacing:0.02em;">Kota / Kabupaten</span>
-          <strong style="font-size:0.92rem; color:var(--text);">\${u.kota}</strong>
+          <strong style="font-size:0.92rem; color:var(--text);">${u.kota}</strong>
         </div>
         <div>
           <span style="font-size:0.72rem; color:var(--muted); display:block; text-transform:uppercase; margin-bottom:0.15rem; font-weight:600; letter-spacing:0.02em;">Tanggal Bergabung</span>
-          <strong style="font-size:0.92rem; color:var(--text);">\${u.date_joined}</strong>
+          <strong style="font-size:0.92rem; color:var(--text);">${u.date_joined}</strong>
         </div>
         <div>
           <span style="font-size:0.72rem; color:var(--muted); display:block; text-transform:uppercase; margin-bottom:0.15rem; font-weight:600; letter-spacing:0.02em;">Tes Dilakukan</span>
-          <strong style="font-size:0.92rem; color:var(--text);">\${u.tes_count} Kali Tes</strong>
+          <strong style="font-size:0.92rem; color:var(--text);">${u.tes_count} Kali Tes</strong>
         </div>
       </div>
       
       <div style="margin-bottom:1.75rem;">
         <span style="font-size:0.72rem; color:var(--muted); display:block; text-transform:uppercase; margin-bottom:0.25rem; font-weight:600; letter-spacing:0.02em;">Bio / Catatan Pribadi</span>
         <p style="background:var(--card2); border:1px solid var(--border); padding:0.8rem 1.1rem; border-radius:8px; font-size:0.88rem; color:var(--text); line-height:1.55; margin:0; font-style:italic;">
-          "\${u.bio}"
+          "${u.bio}"
         </p>
       </div>
       
       <div>
         <h4 style="font-size:1.05rem; font-weight:700; margin-bottom:0.8rem; color:var(--text); display:flex; align-items:center; gap:0.4rem;">
-          <span style="font-size:1.15rem;">📊</span> Riwayat Hasil Rekomendasi (\${u.tes_count})
+          <span style="font-size:1.15rem;">📊</span> Riwayat Hasil Rekomendasi (${u.tes_count})
         </h4>
-        \${riwayatHtml}
+        ${riwayatHtml}
       </div>
-    \`;
+    `;
     
     // Add micro-interaction to row details
     setTimeout(initCursorHover, 100);
   } catch (err) {
     console.error(err);
     toast('Gagal memuat detail profil siswa.', 'error');
-    content.innerHTML = \`<div style="text-align:center; padding:2rem; color:var(--red);">Gagal memuat data: \${err.message}</div>\`;
+    content.innerHTML = `<div style="text-align:center; padding:2rem; color:var(--red);">Gagal memuat data: ${err.message}</div>`;
   }
 }
 
