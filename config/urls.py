@@ -50,6 +50,7 @@ urlpatterns = [
     path('api/admin/users/',                        views.api_users_list,   name='api_users_list'),
     path('api/admin/users/export/',                 views.api_export_users, name='api_export_users'),
     path('api/admin/users/<int:user_id>/toggle/',   views.api_user_toggle,  name='api_user_toggle'),
+    path('api/admin/users/<int:user_id>/',          views.api_admin_user_detail, name='api_admin_user_detail'),
 
     # ── Admin API: Konten ─────────────────────────────────────────
     path('api/admin/jurusan/',                   views.api_jurusan_list,   name='api_jurusan_list'),

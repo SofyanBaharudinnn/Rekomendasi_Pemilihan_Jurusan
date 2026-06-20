@@ -743,6 +743,46 @@ def api_user_toggle(request, user_id):
     return JsonResponse({'success':True,'is_active':target.is_active,'status':'diaktifkan' if target.is_active else 'dinonaktifkan'})
 
 @admin_required
+def api_admin_user_detail(request, user_id):
+    """Detail lengkap user (ProfilSiswa + HasilRekomendasi)."""
+    target = get_object_or_404(User, pk=user_id)
+    profil, _ = ProfilSiswa.objects.get_or_create(user=target)
+    
+    # Riwayat tes
+    riwayat_qs = HasilRekomendasi.objects.filter(user=target).order_by('-created_at')
+    riwayat = []
+    for h in riwayat_qs:
+        riwayat.append({
+            'id': h.id,
+            'jurusan': h.jurusan,
+            'nilai_mat': h.nilai_mat,
+            'nilai_bhs': h.nilai_bhs,
+            'nilai_ipa': h.nilai_ipa,
+            'nilai_ips': h.nilai_ips,
+            'minat_tek': h.minat_tek,
+            'minat_sen': h.minat_sen,
+            'minat_bis': h.minat_bis,
+            'minat_kes': h.minat_kes,
+            'tanggal': h.created_at.strftime('%d/%m/%Y %H:%M'),
+        })
+        
+    return JsonResponse({
+        'id': target.id,
+        'username': target.username,
+        'email': target.email,
+        'full_name': target.get_full_name() or '-',
+        'is_active': target.is_active,
+        'date_joined': target.date_joined.strftime('%d/%m/%Y %H:%M'),
+        'sekolah': profil.sekolah or '-',
+        'kelas': profil.kelas or '-',
+        'kota': profil.kota or '-',
+        'bio': profil.bio or '-',
+        'avatar_url': profil.avatar.url if profil.avatar else None,
+        'riwayat': riwayat,
+        'tes_count': len(riwayat),
+    })
+
+@admin_required
 def api_export_users(request):
     response=HttpResponse(content_type='text/csv; charset=utf-8')
     response['Content-Disposition']='attachment; filename="users_jurusanku.csv"'
