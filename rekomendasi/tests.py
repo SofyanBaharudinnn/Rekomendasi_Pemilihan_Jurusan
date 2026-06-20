@@ -1,5 +1,8 @@
+# pyrefly: ignore [missing-import]
 from django.test import TestCase
+# pyrefly: ignore [missing-import]
 from django.contrib.auth.models import User
+# pyrefly: ignore [missing-import]
 from django.urls import reverse
 from rekomendasi.models import ProfilSiswa, HasilRekomendasi
 import json
@@ -55,6 +58,7 @@ class AdminUserDetailAPITests(TestCase):
         )
         
         # Update created_at deterministically (SQLite in test runs might have identical timestamps otherwise)
+        # pyrefly: ignore [missing-import]
         from django.utils import timezone
         from datetime import timedelta
         now = timezone.now()
@@ -101,4 +105,5 @@ class AdminUserDetailAPITests(TestCase):
         self.assertEqual(data['riwayat'][0]['nilai_mat'], 85)
         self.assertEqual(data['riwayat'][1]['jurusan'], 'Teknik Informatika')
         self.assertEqual(data['riwayat'][1]['nilai_mat'], 90)
+
 

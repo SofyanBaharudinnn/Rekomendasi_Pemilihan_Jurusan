@@ -597,6 +597,7 @@ def api_jurusan_list_user(request):
         })
     return JsonResponse({'jurusan': result})
 
+
 @user_api_required
 def api_jurusan_detail_user(request, nama):
     """Detail lengkap satu jurusan."""

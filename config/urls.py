@@ -38,6 +38,7 @@ urlpatterns = [
 
     # ── User API: Informatif ──────────────────────────────────────
     path('api/user/jurusan/',              views.api_jurusan_list_user,   name='api_jurusan_list_user'),
+
     path('api/user/jurusan/<str:nama>/',   views.api_jurusan_detail_user, name='api_jurusan_detail_user'),
     path('api/user/kalkulator/',           views.api_kalkulator_ptn,      name='api_kalkulator_ptn'),
     path('api/user/artikel/',              views.api_user_artikel,        name='api_user_artikel'),
