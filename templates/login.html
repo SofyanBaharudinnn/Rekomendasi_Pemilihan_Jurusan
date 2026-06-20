@@ -627,6 +627,9 @@ nav {
   background: #e08e06 !important;
   box-shadow: 0 16px 32px rgba(245, 158, 11, 0.35) !important;
 }
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
 </style>
 </head>
 <body>
@@ -672,14 +675,19 @@ nav {
       </div>
 
       <div class="alert alert-info">
-        <span></span>
-        Gunakan Akun Yang Sudah Didaftarkan. Admin/Guru BK Akan Diarahkan Ke Halaman Admin.
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        <span>Gunakan Akun Yang Sudah Didaftarkan. Admin/Guru BK Akan Diarahkan Ke Halaman Admin.</span>
       </div>
 
       {% if messages %}
         {% for message in messages %}
           <div class="alert {% if message.tags == 'warning' %}alert-warning{% else %}alert-error{% endif %}">
-            <span>⚠️</span> {{ message }}
+            {% if message.tags == 'warning' %}
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            {% else %}
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+            {% endif %}
+            <span>{{ message }}</span>
           </div>
         {% endfor %}
       {% endif %}
@@ -689,31 +697,40 @@ nav {
         <div class="form-group">
           <label class="form-label" for="username">Username</label>
           <div class="input-wrap">
-            <span class="input-icon">👤</span>
+            <span class="input-icon">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </span>
             <input
               type="text" id="username" name="username"
               class="form-input" placeholder="Masukkan Username"
               autocomplete="username" autofocus required
             >
-            <button type="button" class="input-btn" id="favBtn" title="Akun favorit">⭐</button>
+            <button type="button" class="input-btn" id="favBtn" title="Akun favorit" style="display: flex; align-items: center; justify-content: center;">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </button>
           </div>
         </div>
 
         <div class="form-group">
           <label class="form-label" for="password">Password</label>
           <div class="input-wrap">
-            <span class="input-icon">🔒</span>
+            <span class="input-icon">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            </span>
             <input
               type="password" id="password" name="password"
               class="form-input" placeholder="Masukkan Password"
               autocomplete="current-password" required
             >
-            <button type="button" class="input-btn" id="togglePw" aria-label="Tampilkan/sembunyikan password">👁️</button>
+            <button type="button" class="input-btn" id="togglePw" aria-label="Tampilkan/sembunyikan password" style="display: flex; align-items: center; justify-content: center;">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            </button>
           </div>
         </div>
 
-        <button type="submit" class="btn-submit" id="submitBtn">
-          🚀 Masuk Ke EduPath
+        <button type="submit" class="btn-submit" id="submitBtn" style="display: flex; align-items: center; justify-content: center; gap: 0.4rem;">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+          Masuk Ke EduPath
         </button>
       </form>
 
@@ -791,7 +808,9 @@ document.getElementById('togglePw').addEventListener('click', function() {
   const pw = document.getElementById('password');
   const isHidden = pw.type === 'password';
   pw.type = isHidden ? 'text' : 'password';
-  this.textContent = isHidden ? '🙈' : '👁️';
+  this.innerHTML = isHidden 
+    ? `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>`
+    : `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>`;
 });
 
 // Favorite username button
@@ -837,7 +856,7 @@ window.addEventListener('DOMContentLoaded', () => {
 // Submit loading state
 document.getElementById('loginForm').addEventListener('submit', function() {
   const btn = document.getElementById('submitBtn');
-  btn.textContent = '⏳ Memverifikasi...';
+  btn.innerHTML = `<svg class="spinner" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" style="animation: spin 1s linear infinite; vertical-align: middle; margin-right: 0.35rem;"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a10 10 0 0 1 10 10"></path></svg> Memverifikasi...`;
   btn.disabled = true;
 });
 
@@ -874,11 +893,7 @@ function initCursorHover() {
   document.querySelectorAll('a, button, [role="button"], .card, input, select, textarea').forEach(el => {
     el.addEventListener('mouseenter', () => {
       cursorEl.classList.add('hovered');
-      if (el.classList.contains('btn-submit')) {
-        cursorEl.setAttribute('data-icon', String.fromCodePoint(0x1F680));
-      } else {
-        cursorEl.setAttribute('data-icon', String.fromCodePoint(0x2B50));
-      }
+      cursorEl.setAttribute('data-icon', '');
     });
     el.addEventListener('mouseleave', () => {
       cursorEl.classList.remove('hovered');

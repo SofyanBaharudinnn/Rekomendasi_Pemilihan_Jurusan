@@ -1484,11 +1484,7 @@ function initCursorHover() {
   document.querySelectorAll('a, button, [role="button"], .card, input, select, textarea').forEach(el => {
     el.addEventListener('mouseenter', () => {
       cursorEl.classList.add('hovered');
-      if (el.classList.contains('btn-primary') || el.classList.contains('btn-nav') || el.classList.contains('btn-submit')) {
-        cursorEl.setAttribute('data-icon', String.fromCodePoint(0x1F680));
-      } else {
-        cursorEl.setAttribute('data-icon', String.fromCodePoint(0x2B50));
-      }
+      cursorEl.setAttribute('data-icon', '');
     });
     el.addEventListener('mouseleave', () => {
       cursorEl.classList.remove('hovered');

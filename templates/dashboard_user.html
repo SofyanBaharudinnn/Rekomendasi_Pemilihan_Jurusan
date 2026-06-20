@@ -941,6 +941,21 @@ tr:hover td{background:rgba(255,255,255,.02);}
 .light-mode .prog-track, .light-mode .qprog-bar {
   background: rgba(108, 92, 231, 0.08) !important;
 }
+.light-mode .sub-tabs {
+  background: #f1f5f9 !important;
+  border: 1px solid rgba(15, 23, 42, 0.06) !important;
+}
+.light-mode .sub-tab {
+  color: #64748b !important;
+}
+.light-mode .sub-tab:hover {
+  color: #0f172a !important;
+}
+.light-mode .sub-tab.active {
+  background: #ffffff !important;
+  color: var(--indigo, #6c5ce7) !important;
+  box-shadow: 0 4px 12px rgba(108, 92, 231, 0.08) !important;
+}
 .light-mode .form-input, .light-mode .form-textarea {
   background: #ffffff !important;
   border-color: rgba(108, 92, 231, 0.18) !important;
@@ -3520,8 +3535,8 @@ async function showRiwayatDetail(id) {
       all_scores: h.all_scores
     };
 
-    // Navigate to 'Tes Baru' where results are rendered
-    goto('tes-baru', document.getElementById('sb-tes-baru'));
+    // Navigate to 'Tes Baru' where results are rendered, but keep 'Riwayat Tes' highlighted in sidebar
+    goto('tes-baru', document.getElementById('sb-riwayat'));
 
     // Render results without repeating confetti
     showResult(d, true);

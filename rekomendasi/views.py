@@ -740,7 +740,7 @@ def api_user_toggle(request, user_id):
     if target==request.user:
         return JsonResponse({'error':'Tidak bisa menonaktifkan akun sendiri'},status=400)
     target.is_active=not target.is_active; target.save()
-    return JsonResponse({'success':True,'is_active':target.is_active,'status':'aktif' if target.is_active else 'suspended'})
+    return JsonResponse({'success':True,'is_active':target.is_active,'status':'diaktifkan' if target.is_active else 'dinonaktifkan'})
 
 @admin_required
 def api_export_users(request):
@@ -752,7 +752,7 @@ def api_export_users(request):
     for i,u in enumerate(User.objects.all().order_by('-date_joined'),1):
         tes_count=HasilRekomendasi.objects.filter(user=u).count()
         writer.writerow([i,u.username,u.email,u.get_full_name() or '-',
-            'Aktif' if u.is_active else 'Suspended',
+            'Aktif' if u.is_active else 'Nonaktif',
             'Superuser' if u.is_superuser else ('Admin' if u.is_staff else 'Siswa'),
             u.date_joined.strftime('%d/%m/%Y'),tes_count])
     return response
