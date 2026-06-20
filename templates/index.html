@@ -414,8 +414,8 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
 }
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1.8fr 1.2fr;
-  gap: 2.5rem;
+  grid-template-columns: 1.5fr 1fr 1fr 1.8fr;
+  gap: 3rem;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -513,17 +513,13 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
   color: var(--text);
 }
 
-.copyright-col {
-  border-left: 1px solid var(--border);
-  padding-left: 2rem;
-  display: flex;
-  align-items: center;
-}
-.copyright-col p {
+.footer-bottom {
+  margin-top: 4rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+  text-align: center;
   color: var(--muted);
-  font-size: 0.78rem;
-  line-height: 1.6;
-  margin: 0;
+  font-size: 0.75rem;
 }
 
 /* Responsive Footer */
@@ -531,13 +527,6 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
   .footer-grid {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
-  }
-  .copyright-col {
-    grid-column: 1 / -1;
-    border-left: none;
-    padding-left: 0;
-    border-top: 1px solid var(--border);
-    padding-top: 1.5rem;
   }
 }
 @media (max-width: 640px) {
@@ -550,13 +539,6 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
   }
   .footer-col.dev-col {
     grid-column: 1 / -1;
-  }
-  .copyright-col {
-    grid-column: 1 / -1;
-    border-left: none;
-    padding-left: 0;
-    border-top: 1px solid var(--border);
-    padding-top: 1.5rem;
   }
   .footer {
     padding: 3rem 1.5rem 1.5rem;
@@ -1526,10 +1508,10 @@ textarea.form-input {
     <div class="footer-col">
       <h4>LAYANAN BANTUAN</h4>
       <ul class="footer-links">
-        <li><a href="#kontak">📩 Hubungi Kami</a></li>
-        <li><a href="#" onclick="showGlobalFaq(); return false;">❓ FAQ & Bantuan</a></li>
-        <li><a href="https://wa.me/6282199023473" target="_blank">💬 WhatsApp Support</a></li>
-        <li><a href="mailto:hello@jurusanku.id">📧 Email Bantuan</a></li>
+        <li><a href="#kontak">Hubungi Kami</a></li>
+        <li><a href="#" onclick="showGlobalFaq(); return false;">FAQ & Bantuan</a></li>
+        <li><a href="https://wa.me/6282199023473" target="_blank">WhatsApp Support</a></li>
+        <li><a href="mailto:hello@jurusanku.id">Email Bantuan</a></li>
       </ul>
     </div>
 
@@ -1559,11 +1541,10 @@ textarea.form-input {
         </div>
       </div>
     </div>
-
-    <!-- COLUMN 5: COPYRIGHT -->
-    <div class="footer-col copyright-col">
-      <p>&copy; 2026 JurusanKuID<br>— Sistem<br>Rekomendasi<br>Jurusan Berbasis<br>Decision Tree.</p>
-    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>&copy; 2026 JurusanKu ID — Sistem Rekomendasi Jurusan Berbasis Decision Tree.</p>
   </div>
 </footer>
 
