@@ -1,5 +1,5 @@
 """
-Django settings for EduPath project.
+Django settings for JurusanKu ID project.
 """
 
 from pathlib import Path
@@ -93,7 +93,7 @@ DATABASES = {
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-        'LOCATION': 'edupath-cache',
+        'LOCATION': 'jurusanku-cache',
         'TIMEOUT': 300,          # Default 5 menit
         'OPTIONS': {
             'MAX_ENTRIES': 2000,
@@ -144,9 +144,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # EMAIL_USE_TLS    = True
 # EMAIL_HOST_USER  = 'your-email@gmail.com'
 # EMAIL_HOST_PASSWORD = 'your-app-password'
-# DEFAULT_FROM_EMAIL = 'EduPath <your-email@gmail.com>'
+# DEFAULT_FROM_EMAIL = 'JurusanKu ID <your-email@gmail.com>'
 
-DEFAULT_FROM_EMAIL = 'EduPath <noreply@edupath.ai>'
+DEFAULT_FROM_EMAIL = 'JurusanKu ID <noreply@jurusanku.id>'
 
 
 # OAuth configurations have been removed. Refer to views.py/urls.py for login methods.

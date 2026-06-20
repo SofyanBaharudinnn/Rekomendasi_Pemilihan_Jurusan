@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EduPath — Rekomendasi Jurusan</title>
+<title>JurusanKu ID — Rekomendasi Jurusan</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -301,8 +301,46 @@ nav {
   gap:4rem; padding:3rem 2rem; flex-wrap:wrap;
   background:var(--stats-bg); border-top:1px solid var(--border); border-bottom:1px solid var(--border);
 }
-.stat h3 { font-size:2rem; font-weight:700; color:var(--blue); }
+.stat h3 { font-size:2rem; font-weight:700; color:#8b5cf6; }
 .stat p { font-size:.85rem; color:var(--muted); margin-top:.2rem; }
+
+/* ─── SCROLL REVEAL ANIMATION ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(48px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-48px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(48px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.88);
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
 
 /* SECTION */
 section { position:relative; z-index:1; padding:5rem 4rem; }
@@ -599,7 +637,7 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
   color: var(--text) !important;
 }
 .light-mode .hero-stat-float.white-val .sf-val {
-  color: var(--text) !important;
+  color: var(--indigo) !important;
 }
 .light-mode .hero-badge {
   background: rgba(108, 92, 231, 0.08) !important;
@@ -935,7 +973,7 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
     <div class="premium-loader-icon-wrap">
       <div class="premium-loader-icon">🎓</div>
     </div>
-    <div class="premium-loader-title">EduPath</div>
+    <div class="premium-loader-title">JurusanKu ID</div>
     <div class="premium-loader-subtitle">RECOMMENDATION SYSTEM</div>
     <div class="premium-loader-bar-track">
       <div class="premium-loader-bar-inner"></div>
@@ -949,7 +987,7 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
 
 <!-- NAVBAR -->
 <nav>
-  <a href="/" class="logo"><span class="dot"></span>EduPath</a>
+  <a href="/" class="logo"><span class="dot"></span>JurusanKu ID</a>
   <div class="nav-links" id="nav-links">
     <a href="/">Beranda</a>
     <a href="#fitur">Fitur</a>
@@ -1013,7 +1051,7 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
     </div>
     <div class="hero-stat-float sf-3 white-val blue-dot">
       <div class="sf-connector sf-conn-3"></div>
-      <div class="sf-val">&lt; 1 Detik</div>
+      <div class="sf-val">&lt; 10 Detik</div>
       <div class="sf-lbl">Kecepatan Analisis</div>
     </div>
   </div>
@@ -1022,33 +1060,33 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
 </div>
 
 <!-- STATS -->
-<div class="stats">
+<div class="stats reveal">
   <div class="stat"><h3 id="c1">0</h3><p>Jurusan Tersedia</p></div>
   <div class="stat"><h3 id="c2">0%</h3><p>Akurasi Model AI</p></div>
   <div class="stat"><h3 id="c3">0+</h3><p>Siswa Terbantu</p></div>
-  <div class="stat"><h3 id="c4">0 Detik</h3><p>Kecepatan Analisis</p></div>
+  <div class="stat"><h3 id="c4">&lt; 10 Detik</h3><p>Kecepatan Analisis</p></div>
 </div>
 
 <!-- FITUR -->
 <section id="fitur">
-  <div class="section-label">FITUR UNGGULAN</div>
-  <h2 class="section-title">SEMUA YANG KAMU <span>BUTUHKAN</span></h2>
-  <p class="section-sub">Dirancang Dengan Teknologi AI Terkini Untuk Membantu Siswa SMA/SMK Menemukan Arah Kuliah Yang Tepat.</p>
+  <div class="section-label reveal">FITUR UNGGULAN</div>
+  <h2 class="section-title reveal" style="transition-delay: 0.1s;">SEMUA YANG KAMU <span>BUTUHKAN</span></h2>
+  <p class="section-sub reveal" style="transition-delay: 0.2s;">Dirancang Dengan Teknologi AI Terkini Untuk Membantu Siswa SMA/SMK Menemukan Arah Kuliah Yang Tepat.</p>
   <div class="features-grid">
-    <div class="feature-card"><h3>Decision Tree AI</h3><p>Algoritma Decision Tree Yang Dilatih Dari Data Akademik Nyata, Menghasilkan Rekomendasi Akurat Dan Transparan.</p></div>
-    <div class="feature-card"><h3>Analisis Multi-Dimensi</h3><p>Mempertimbangkan Nilai Matematika, IPA, IPS, Bahasa, & 4 Dimensi Minat Secara Bersamaan.</p></div>
-    <div class="feature-card"><h3>Top 3 Rekomendasi</h3><p>Menampilkan 3 Jurusan Terbaik Beserta Persentase Kesesuaian Agar Kamu Bisa Memilih Dengan Bijak.</p></div>
-    <div class="feature-card"><h3>Hasil Instan</h3><p>Rekomendasi Muncul Dalam Hitungan Detik Tanpa Perlu Antri Atau Membuat Janji Dengan Guru BK.</p></div>
-    <div class="feature-card"><h3>Prospek Karir</h3><p>Setiap Jurusan Dilengkapi Informasi Prospek Karir Yang Relevan Agar Kamu Bisa Melihat Peluang Masa Depan.</p></div>
-    <div class="feature-card"><h3>Privasi Terjaga</h3><p>Data Nilaimu Tidak Disimpan Secara Permanen. Proses Analisis Sepenuhnya Aman & Terjaga Privasi.</p></div>
+    <div class="feature-card reveal" style="transition-delay: 0.05s;"><h3>Decision Tree AI</h3><p>Algoritma Decision Tree Yang Dilatih Dari Data Akademik Nyata, Menghasilkan Rekomendasi Akurat Dan Transparan.</p></div>
+    <div class="feature-card reveal" style="transition-delay: 0.15s;"><h3>Analisis Multi-Dimensi</h3><p>Mempertimbangkan Nilai Matematika, IPA, IPS, Bahasa, & 4 Dimensi Minat Secara Bersamaan.</p></div>
+    <div class="feature-card reveal" style="transition-delay: 0.25s;"><h3>Top 3 Rekomendasi</h3><p>Menampilkan 3 Jurusan Terbaik Beserta Persentase Kesesuaian Agar Kamu Bisa Memilih Dengan Bijak.</p></div>
+    <div class="feature-card reveal" style="transition-delay: 0.35s;"><h3>Hasil Instan</h3><p>Rekomendasi Muncul Dalam Hitungan Detik Tanpa Perlu Antri Atau Membuat Janji Dengan Guru BK.</p></div>
+    <div class="feature-card reveal" style="transition-delay: 0.45s;"><h3>Prospek Karir</h3><p>Setiap Jurusan Dilengkapi Informasi Prospek Karir Yang Relevan Agar Kamu Bisa Melihat Peluang Masa Depan.</p></div>
+    <div class="feature-card reveal" style="transition-delay: 0.55s;"><h3>Privasi Terjaga</h3><p>Data Nilaimu Tidak Disimpan Secara Permanen. Proses Analisis Sepenuhnya Aman & Terjaga Privasi.</p></div>
   </div>
 </section>
 
 <!-- TESTIMONI -->
 <section id="testimoni" style="background: var(--testimoni-bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-  <div class="section-label">TESTIMONI PENGGUNA</div>
-  <h2 class="section-title">APA KATA <span>MEREKA</span>?</h2>
-  <p class="section-sub">Dengarkan Pengalaman Langsung Siswa Yang Telah Menggunakan EduPath Untuk Menemukan Jalan Mereka.</p>
+  <div class="section-label reveal">TESTIMONI PENGGUNA</div>
+  <h2 class="section-title reveal" style="transition-delay: 0.1s;">APA KATA <span>MEREKA</span>?</h2>
+  <p class="section-sub reveal" style="transition-delay: 0.2s;">Dengarkan Pengalaman Langsung Siswa Yang Telah Menggunakan JurusanKu ID Untuk Menemukan Jalan Mereka.</p>
   
   <div id="testimoni-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem; max-width:1100px; margin:0 auto;">
     <!-- Skeletons / Testimonials will go here -->
@@ -1058,12 +1096,12 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
 
 <!-- TENTANG -->
 <section id="tentang">
-  <div class="section-label">TENTANG SISTEM</div>
-  <h2 class="section-title">DI BANGUN UNTUK <span>GENERASI PENERUS</span></h2>
+  <div class="section-label reveal">TENTANG SISTEM</div>
+  <h2 class="section-title reveal" style="transition-delay: 0.1s;">DI BANGUN UNTUK <span>GENERASI PENERUS</span></h2>
   <div class="about-grid">
-    <div>
+    <div class="reveal-left">
       <p style="color:var(--muted);line-height:1.8;margin-bottom:1rem">Banyak Siswa SMA/SMK Mengalami Kebingungan & Kecemasan Dalam Memilih Jurusan Kuliah. Fenomena "Salah Jurusan" Berdampak Pada Motivasi Belajar & Tingginya Angka Putus kuliah.</p>
-      <p style="color:var(--muted);line-height:1.8">EduPath Hadir Sebagai Solusi Cerdas Berbasis Decision Tree Yang Dapat Diakses Kapan Saja, Melengkapi Peran Guru BK Yang Terbatas Waktu & Kapasitas.</p>
+      <p style="color:var(--muted);line-height:1.8">JurusanKu ID Hadir Sebagai Solusi Cerdas Berbasis Decision Tree Yang Dapat Diakses Kapan Saja, Melengkapi Peran Guru BK Yang Terbatas Waktu & Kapasitas.</p>
       <div class="check-list">
         <div>✅ Algoritma Decision Tree Machine Learning</div>
         <div>✅ Dibangun Dengan Python & Django</div>
@@ -1071,7 +1109,7 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
         <div>✅ Gratis Dan Mudah Diakses Siswa</div>
       </div>
     </div>
-    <div style="background:var(--card);border:1px solid var(--border);border-radius:24px;padding:2rem;">
+    <div class="reveal-right" style="background:var(--card);border:1px solid var(--border);border-radius:24px;padding:2rem;">
       <div class="about-bar">
         <div class="bar-label">Akurasi Model Decision Tree</div>
         <div class="bar-track"><div class="bar-fill" style="width:91%;background:linear-gradient(90deg,#4f8ef7,#6366f1)"></div></div>
@@ -1095,7 +1133,7 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
   <div class="footer-grid">
     <!-- COLUMN 1: LOGO & ABOUT -->
     <div class="footer-col about-col">
-      <a href="/" class="logo"><span class="dot"></span>EduPath</a>
+      <a href="/" class="logo"><span class="dot"></span>JurusanKu ID</a>
       <p class="footer-desc">
         Sistem Rekomendasi Jurusan Cerdas Berbasis Kecerdasan Buatan (AI) Untuk Membantu Menganalisis Minat, Bakat, & Potensi Akademik Guna Menemukan Arah Karir Masa Depan Terbaik Anda.
       </p>
@@ -1105,10 +1143,10 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
     <div class="footer-col">
       <h4>LAYANAN BANTUAN</h4>
       <ul class="footer-links">
-        <li><a href="mailto:hello@edupath.ai">✉️ Hubungi Kami</a></li>
+        <li><a href="mailto:hello@jurusanku.id">✉️ Hubungi Kami</a></li>
         <li><a href="#" onclick="showGlobalFaq(); return false;">❓ FAQ & Bantuan</a></li>
         <li><a href="https://wa.me/6282199023473" target="_blank">💬 WhatsApp Support</a></li>
-        <li><a href="mailto:hello@edupath.ai">📧 Email Bantuan</a></li>
+        <li><a href="mailto:hello@jurusanku.id">📧 Email Bantuan</a></li>
       </ul>
     </div>
 
@@ -1133,7 +1171,7 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
           <p>Universitas Musamus Merauke</p>
           <div class="dev-contact">
             <span class="mail-icon"></span>
-            <a href="mailto:hello@edupath.ai">hello@edupath.ai</a>
+            <a href="mailto:hello@jurusanku.id">hello@jurusanku.id</a>
           </div>
         </div>
       </div>
@@ -1141,7 +1179,7 @@ section { position:relative; z-index:1; padding:5rem 4rem; }
   </div>
   
   <div class="footer-bottom">
-    <p>&copy; 2026 EduPath — Sistem Rekomendasi Jurusan Berbasis Decision Tree.</p>
+    <p>&copy; 2026 JurusanKu ID — Sistem Rekomendasi Jurusan Berbasis Decision Tree.</p>
   </div>
 </footer>
 
@@ -1465,9 +1503,28 @@ new IntersectionObserver((entries, observer)=>{
   counter(document.getElementById('c1'), 7, ' Jurusan');
   counter(document.getElementById('c2'), 91, '%');
   counter(document.getElementById('c3'), 500, '+');
-  counter(document.getElementById('c4'), 1, ' Detik');
-  observer.disconnect(); // Stop observing after trigger
+  // c4 is static label — no counter needed
+  observer.disconnect();
 }, {threshold:.3}).observe(document.querySelector('.stats'));
+
+// ═══════════════════════════════════════
+// SCROLL REVEAL ANIMATION
+// ═══════════════════════════════════════
+(function initScrollReveal() {
+  const revealSelectors = '.reveal, .reveal-left, .reveal-right, .reveal-scale';
+  const elements = document.querySelectorAll(revealSelectors);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  elements.forEach(el => observer.observe(el));
+})();
 
 
 
@@ -1613,7 +1670,7 @@ async function loadTestimonials() {
       grid.innerHTML = `
       <div class="feature-card" style="padding: 2rem;">
         <div style="color:var(--orange); font-size:1.1rem; margin-bottom:0.8rem;">⭐⭐⭐⭐⭐</div>
-        <p style="color:var(--text); font-style:italic; font-size:0.9rem; line-height:1.6; margin-bottom:1.2rem;">"EduPath benar-benar membantu saya yang awalnya bingung antara memilih Teknik Informatika atau Manajemen Bisnis. Rekomendasi 91% akurat!"</p>
+        <p style="color:var(--text); font-style:italic; font-size:0.9rem; line-height:1.6; margin-bottom:1.2rem;">"JurusanKu ID benar-benar membantu saya yang awalnya bingung antara memilih Teknik Informatika atau Manajemen Bisnis. Rekomendasi 91% akurat!"</p>
         <div style="display:flex; align-items:center; gap:0.8rem;">
           <div class="u-avatar" style="width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,var(--blue),var(--indigo)); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:0.85rem; color:#fff;">R</div>
           <div>
@@ -1774,7 +1831,7 @@ function showGlobalFaq() {
         <button class="gfaq-close" onclick="closeGlobalFaq()">✕</button>
         <div class="gfaq-header">
           <div class="gfaq-title">❓ FAQ & Bantuan</div>
-          <div class="gfaq-subtitle">Pertanyaan populer mengenai sistem rekomendasi jurusan EduPath</div>
+          <div class="gfaq-subtitle">Pertanyaan populer mengenai sistem rekomendasi jurusan JurusanKu ID</div>
         </div>
         <div class="gfaq-list" id="globalFaqList">
           <div class="gfaq-loading">⏳ Memuat FAQ...</div>

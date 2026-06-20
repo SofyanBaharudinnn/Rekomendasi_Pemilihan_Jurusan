@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard — EduPath</title>
+<title>Dashboard — JurusanKu ID</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%234f8ef7%22><path d=%22M12 3L1 9l11 6 9-4.91V17h2V9L12 3z%22/><path d=%22M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z%22/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -426,8 +426,8 @@ tr:hover td{background:rgba(255,255,255,.02);}
 .avatar-big:hover .avatar-overlay{opacity:1;}
 
 /* ─── PROFIL BADGES GRID ──────────────────────────────────────────────────── */
-.badges-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:.85rem;}
-.big-badge{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.1rem;text-align:center;transition:all .3s;}
+.badges-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:.85rem;}
+.big-badge{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.1rem;text-align:center;transition:all .3s;flex:1 0 130px;max-width:160px;}
 .big-badge.earned{border-color:rgba(245,158,11,.3);background:rgba(245,158,11,.06);}
 .big-badge.locked{opacity:.35;filter:grayscale(.8);}
 .big-badge-icon{font-size:2rem;margin-bottom:.5rem;}
@@ -1632,7 +1632,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
     <div class="premium-loader-icon-wrap">
       <div class="premium-loader-icon" style="display:flex; align-items:center; justify-content:center;"><svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg></div>
     </div>
-    <div class="premium-loader-title">EduPath</div>
+    <div class="premium-loader-title">JurusanKu ID</div>
     <div class="premium-loader-subtitle">RECOMMENDATION SYSTEM</div>
     <div class="premium-loader-bar-track">
       <div class="premium-loader-bar-inner"></div>
@@ -1652,7 +1652,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
 <div class="modal-overlay" id="decisionTreeOverlay" style="align-items: center; justify-content: center; z-index: 1000; background: rgba(10, 14, 26, 0.95); display: none;">
   <div style="text-align: center; width: 100%; max-width: 600px; padding: 2rem;">
     <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 0.5rem; background: linear-gradient(135deg, var(--blue), var(--indigo)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-      EduPath Sedang Berpikir...
+      JurusanKu ID Sedang Berpikir...
     </h3>
     <p style="color: var(--muted); font-size: 0.8rem; margin-bottom: 2rem;" class="loading-dots">
       Menelusuri Cabang Pohon Keputusan Untuk Profil Anda
@@ -1760,7 +1760,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
     <div>
       <div style="display:flex;align-items:center;gap:0.4rem;margin-bottom:0.15rem;">
         <span style="font-size:1.25rem;line-height:1;">🎓</span>
-        <span class="sb-logo">EduPath</span>
+        <span class="sb-logo">JurusanKu ID</span>
       </div>
       <div class="sb-role">Siswa</div>
     </div>
@@ -1827,7 +1827,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
       <button id="sidebar-toggle" onclick="toggleSidebar(true)" class="btn-toggle-sidebar" aria-label="Buka Menu">☰</button>
       <div>
         <h1 id="pageTitle">Beranda</h1>
-        <p id="pageSub">Dashboard siswa EduPath</p>
+        <p id="pageSub">Dashboard siswa JurusanKu ID</p>
       </div>
     </div>
     <div style="display:flex;align-items:center;gap:.75rem;">
@@ -2164,7 +2164,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
           <div id="feedbackThankYou" style="display: none;">
             <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="var(--green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto 0.5rem; display: block;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
             <h4 style="font-size: 0.92rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--green);">Umpan Balik Diterima!</h4>
-            <p style="font-size: 0.75rem; color: var(--muted);" id="feedbackThankYouText">Terima kasih atas bantuan Anda melatih AI EduPath.</p>
+            <p style="font-size: 0.75rem; color: var(--muted);" id="feedbackThankYouText">Terima kasih atas bantuan Anda melatih AI JurusanKu ID.</p>
           </div>
         </div>
 
@@ -2208,7 +2208,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
         <div class="news-ticker-label">TRENDING FEED</div>
         <div class="news-ticker-wrap">
           <div class="news-ticker-list" id="expTickerList">
-            <div class="news-ticker-item"><span class="news-ticker-dot"></span>Memuat Aktivitas & Informasi Terbaru EduPath...</div>
+            <div class="news-ticker-item"><span class="news-ticker-dot"></span>Memuat Aktivitas & Informasi Terbaru JurusanKu ID...</div>
           </div>
         </div>
       </div>
@@ -2438,7 +2438,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
           <div>
             <div class="form-group">
               <label class="form-label">Ulasan Kamu</label>
-              <textarea class="form-textarea" id="testiUlasan" style="min-height: 80px;" placeholder="Tulis testimoni or review kamu tentang penggunaan EduPath..."></textarea>
+              <textarea class="form-textarea" id="testiUlasan" style="min-height: 80px;" placeholder="Tulis testimoni or review kamu tentang penggunaan JurusanKu ID..."></textarea>
             </div>
             <button class="btn btn-primary" onclick="simpanTestimoni()">Kirim Ulasan</button>
           </div>
@@ -2583,7 +2583,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
     <div class="footer-grid">
       <!-- COLUMN 1: LOGO & ABOUT -->
       <div class="footer-col about-col">
-        <a href="/" class="logo"><span class="dot"></span>EduPath</a>
+        <a href="/" class="logo"><span class="dot"></span>JurusanKu ID</a>
         <p class="footer-desc">
           Sistem Rekomendasi Jurusan Cerdas Berbasis Kecerdasan Buatan (AI) Untuk Membantu Menganalisis Minat, Makat, Dan Potensi Akademik Guna Menemukan Arah Karir Masa Depan Terbaik Anda.
         </p>
@@ -2593,10 +2593,10 @@ tr:hover td{background:rgba(255,255,255,.02);}
       <div class="footer-col">
         <h4>LAYANAN BANTUAN</h4>
         <ul class="footer-links">
-          <li><a href="mailto:hello@edupath.ai">Hubungi Kami</a></li>
+          <li><a href="mailto:hello@jurusanku.id">Hubungi Kami</a></li>
           <li><a href="#" onclick="goto('eksplorasi', null); const btn = document.querySelector('button[onclick*=\'exp-faq\']'); showSubTab('exp-faq', btn); loadFaq(); return false;">FAQ & Bantuan</a></li>
           <li><a href="https://wa.me/6282199023473" target="_blank">WhatsApp Support</a></li>
-          <li><a href="mailto:hello@edupath.ai">Email Bantuan</a></li>
+          <li><a href="mailto:hello@jurusanku.id">Email Bantuan</a></li>
         </ul>
       </div>
 
@@ -2621,7 +2621,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
             <p>Universitas Musamus Merauke</p>
             <div class="dev-contact">
               <span class="mail-icon"></span>
-              <a href="mailto:hello@edupath.ai">hello@edupath.ai</a>
+              <a href="mailto:hello@jurusanku.id">hello@jurusanku.id</a>
             </div>
           </div>
         </div>
@@ -2629,7 +2629,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
     </div>
     
     <div class="footer-bottom">
-      <p>&copy; 2026 EduPath — Sistem Rekomendasi Jurusan Berbasis Decision Tree.</p>
+      <p>&copy; 2026 JurusanKu ID — Sistem Rekomendasi Jurusan Berbasis Decision Tree.</p>
     </div>
   </footer>
 </main>
@@ -2732,7 +2732,7 @@ async function api(url, opts={}){
 
 // ══ NAVIGATION ════════════════════════════════════════════════════════════
 const pageInfo={
-  home:['Beranda','Dashboard siswa EduPath'],
+  home:['Beranda','Dashboard siswa JurusanKu ID'],
   'tes-baru':['Tes Baru','Lakukan tes rekomendasi prodi Anda'],
   riwayat:['Riwayat Tes','Lihat hasil dan unduh PDF riwayat tes Anda'],
   eksplorasi:['Eksplorasi','Jurusan, kalkulator PTN, dan FAQ'],
@@ -3437,10 +3437,19 @@ function downloadPDF(){
   if(!lastHasilId){toast('Selesaikan tes dulu','error');return;}
   window.open(`/user/export/${lastHasilId}/`,'_blank');
 }
-function shareWA(){
-  if(!lastHasilJurusan){toast('Selesaikan tes dulu','error');return;}
-  const txt=encodeURIComponent(`Hasil Rekomendasi Jurusan EduPath\n\nJurusan yang cocok untukku: *${lastHasilJurusan}*\n\nCoba juga di: ${window.location.origin}`);
-  window.open(`https://wa.me/?text=${txt}`,'_blank');
+async function shareWA(){
+  if(!lastHasilId){toast('Selesaikan tes dulu','error');return;}
+  toast('Menyiapkan link WhatsApp...','info');
+  try {
+    const d=await api(`/api/user/share/whatsapp/${lastHasilId}/`);
+    if(d.success){
+      window.open(d.wa_url,'_blank');
+    } else {
+      toast(d.error || 'Gagal menyiapkan link WhatsApp','error');
+    }
+  } catch(e) {
+    toast('Gagal menyiapkan link WhatsApp','error');
+  }
 }
 function copyLink(){
   navigator.clipboard.writeText(window.location.origin).then(()=>toast('Link berhasil disalin!','success'));

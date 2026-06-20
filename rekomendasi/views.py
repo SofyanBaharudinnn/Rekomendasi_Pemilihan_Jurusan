@@ -745,7 +745,7 @@ def api_user_toggle(request, user_id):
 @admin_required
 def api_export_users(request):
     response=HttpResponse(content_type='text/csv; charset=utf-8')
-    response['Content-Disposition']='attachment; filename="users_edupath.csv"'
+    response['Content-Disposition']='attachment; filename="users_jurusanku.csv"'
     response.write('\ufeff')
     writer=csv.writer(response)
     writer.writerow(['No','Username','Email','Nama Lengkap','Status','Role','Tgl Daftar','Jumlah Tes'])
@@ -1272,13 +1272,19 @@ def api_share_whatsapp(request, hasil_id):
             for i, item in enumerate(hr.top3_data[:3], 1):
                 top3_text += f"\n  {i}. {item['jurusan']} ({item['persen']}%)"
 
+        months = {
+            1: 'Januari', 2: 'Februari', 3: 'Maret', 4: 'April', 5: 'Mei', 6: 'Juni',
+            7: 'Juli', 8: 'Agustus', 9: 'September', 10: 'Oktober', 11: 'November', 12: 'Desember'
+        }
+        tgl_indo = f"{hr.created_at.day} {months.get(hr.created_at.month)} {hr.created_at.year}"
+
         text = (
-            f"🎓 *Hasil Rekomendasi Jurusan — EduPath*\n\n"
-            f"Halo! Saya baru saja mendapatkan rekomendasi jurusan dari EduPath:\n\n"
-            f"✨ *Jurusan Utama:* {icon} {hr.jurusan}\n"
-            f"📊 *Top 3 Rekomendasi:*{top3_text}\n\n"
-            f"📅 Tanggal: {hr.created_at.strftime('%d %B %Y')}\n\n"
-            f"Coba juga di: http://localhost:8000"
+            f"🎓 *Hasil Analisis Rekomendasi Jurusan — JurusanKu ID*\n\n"
+            f"Halo! Saya baru saja menyelesaikan asesmen minat dan bakat di platform JurusanKu ID. Berikut adalah rekomendasi program studi yang paling sesuai untuk saya:\n\n"
+            f"✨ *Rekomendasi Utama:* {icon} *{hr.jurusan}*\n"
+            f"📊 *Alternatif Pilihan Program Studi:*{top3_text}\n\n"
+            f"📅 Asesmen diselesaikan pada: {tgl_indo}\n\n"
+            f"Temukan rekomendasi jurusan kuliah terbaik Anda dengan teknologi AI di: http://{request.get_host()}"
         )
 
         wa_url = f"https://wa.me/?text={urllib.parse.quote(text)}"

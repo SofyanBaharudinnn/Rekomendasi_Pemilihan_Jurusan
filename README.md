@@ -1,6 +1,6 @@
-# 🎓 EduPath — Platform Rekomendasi Jurusan Berbasis Machine Learning
+# 🎓 JurusanKu ID — Platform Rekomendasi Jurusan Berbasis Machine Learning
 
-EduPath adalah platform web interaktif dan premium yang dirancang untuk membantu siswa SMA/SMK/Sederajat menentukan jurusan kuliah yang paling sesuai dengan potensi akademik dan minat mereka. Menggunakan algoritma Machine Learning **Decision Tree Classifier**, EduPath menganalisis nilai mata pelajaran serta kecenderungan minat siswa untuk memberikan rekomendasi top 3 jurusan kuliah secara akurat.
+JurusanKu ID adalah platform web interaktif dan premium yang dirancang untuk membantu siswa SMA/SMK/Sederajat menentukan jurusan kuliah yang paling sesuai dengan potensi akademik dan minat mereka. Menggunakan algoritma Machine Learning **Decision Tree Classifier**, JurusanKu ID menganalisis nilai mata pelajaran serta kecenderungan minat siswa untuk memberikan rekomendasi top 3 jurusan kuliah secara akurat.
 
 ---
 
@@ -58,7 +58,7 @@ EduPath adalah platform web interaktif dan premium yang dirancang untuk membantu
 
 ## 🚀 Panduan Instalasi & Menjalankan Lokal
 
-Ikuti langkah-langkah di bawah ini untuk menjalankan proyek EduPath di komputer lokal Anda:
+Ikuti langkah-langkah di bawah ini untuk menjalankan proyek JurusanKu ID di komputer lokal Anda:
 
 ### Prasyarat
 

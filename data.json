@@ -1,0 +1,4849 @@
+[
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$uP4ismGJx2r269tJEH7e6w$iytnxvejli+wv9xRZ+Kbx3qTCosVM09IuSxQr643RGE=",
+        "last_login": "2026-06-20T11:12:29.299Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "admin@edupath.id",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-06-15T00:45:08.497Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$COu9BrDVMpUS7rAdFfG1Zw$n6m3f4Pygu5uDaIn+zqGMkl9Bc0ou9Kimwe5euZQ+/Y=",
+        "last_login": "2026-06-20T11:16:14.376Z",
+        "is_superuser": false,
+        "username": "siswa",
+        "first_name": "Sofyan",
+        "last_name": "Baharudin",
+        "email": "siswa@test.id",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-15T00:45:16.546Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$YUBa4FoB4S19kRUJRQYYFf$y0QGgmPlUdS0lIoyQYgQEK4Pl4hqWctsp/BACROVBHE=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "rian",
+        "first_name": "Rian",
+        "last_name": "Pratama",
+        "email": "rian@gmail.com",
+        "is_staff": false,
+        "is_active": false,
+        "date_joined": "2026-06-15T01:54:21.882Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$m5n5Q3xpXgWZ3LOPOjXHmV$z91M2hve2Y03AeEtJBDlRdt9YgoNuYSKliUky2AcTaM=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "dewi",
+        "first_name": "Dewi",
+        "last_name": "Lestari",
+        "email": "dewi@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-15T01:54:22.395Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$jQ8zKhpLIzVBdStQTaKvSG$Nf8cpA9mCa0EbHs9uBsY7mYgzoyk4od3C47xNPb0f9k=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "andi",
+        "first_name": "Andi",
+        "last_name": "Wijaya",
+        "email": "andi@gmail.com",
+        "is_staff": false,
+        "is_active": false,
+        "date_joined": "2026-06-15T01:54:22.901Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$RhnfyvA53kF7QxPh2YBNws$oGWGyX4EiCDcHLtcJbJplxWgphLyjwkDOEo3Jr7+lCs=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "budi",
+        "first_name": "Budi",
+        "last_name": "Santoso",
+        "email": "budi@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-15T01:54:23.400Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$BzTmyDoZvCdqCfiIDKDC23$j6lCPy7GEWqLJFnV6hxmlNQ7AROVgrvaP1MGCAePC9k=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "citra",
+        "first_name": "Citra",
+        "last_name": "Kirana",
+        "email": "citra@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-15T01:54:23.902Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$3PX00eaZWuqWBo2n8RugOk$afLvjofUhqhM8NE3uCc0kkRUFK3GrlN8WaSDO85ExTk=",
+        "last_login": "2026-06-19T06:37:33.629Z",
+        "is_superuser": false,
+        "username": "Prince",
+        "first_name": "Sofyan",
+        "last_name": "Baharudin",
+        "email": "sofyannn353@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-19T05:19:44.254Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "3t0q8be491bh79jq8fuu8aid43p1djl4",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSFAh0dcuvcbyAwDUjWQlHZl_Hdt0oVu7znnvkTEba1xG3mJM4uz0OL0uxGmR2474Du2W5ept3WZSe6KPOiQ1875eTncv4OKo35r8AjFkUNlpoCg0GHRmovniVPm4A1mrRRZ74i0BQdBAyWDtgQ_YRHvD-upOBk:1waBs2:cvVocx7t6JM5pLIqp0xATmMEZMMXlfR2oqwYxJmQcyk",
+        "expire_date": "2026-06-18T12:59:22.417Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "5yxdcgxmpcn2qjj3998gumy1glpxn5eb",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSFAh0dcuvcbyAwDUjWQlHZl_Hdt0oVu7znnvkTEba1xG3mJM4uz0OL0uxGmR2474Du2W5ept3WZSe6KPOiQ1875eTncv4OKo35r8AjFkUNlpoCg0GHRmovniVPm4A1mrRRZ74i0BQdBAyWDtgQ_YRHvD-upOBk:1waSEQ:mbZ5rLhFConWL9oy9vuLvkSPQ3--bgrci7IQ8_2flLo",
+        "expire_date": "2026-06-19T06:27:34.481Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "au6909pahif34a22tu46kohl8xvs5wje",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSFAh0dcuvcbyAwDUjWQlHZl_Hdt0oVu7znnvkTEba1xG3mJM4uz0OL0uxGmR2474Du2W5ept3WZSe6KPOiQ1875eTncv4OKo35r8AjFkUNlpoCg0GHRmovniVPm4A1mrRRZ74i0BQdBAyWDtgQ_YRHvD-upOBk:1waTUJ:rLbzogZTLafmUr0_hd21SuKPEkuOqXFx81DjHrbCMvo",
+        "expire_date": "2026-06-19T07:48:03.656Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "g71plbcpzxdjd4eye3asfn34ecetf9ab",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAUBf-FtSGAtoBL9_2G5nIfUjWQlHZl_HdD0oVuz8yct5ph3_K8N17nhdRVWXX63RLgk0sH9IByrxpr2dYl6a7ogzY9VeLX7XD_DjK03GtDaMBaiYNEj8HDOWFw5Lw34GPwJo1hdEkiigCxGB4oIofkQAJf1OcL-m05CQ:1waZI7:Y1GzUzoe5EAp4hTpyr3Q2Zp9pn6bWTI0vnms8k1ys9E",
+        "expire_date": "2026-06-19T13:59:51.489Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "hpu5y3zhkh6pztxkuiut3fzasttojybf",
+    "fields": {
+        "session_data": ".eJxVjDsOwjAQBe_iGllxvP5R0ucM1u7awQHkSHFSIe5OIqWA9s3Me4uI21ri1vISpySuQonL70bIz1wPkB5Y77Pkua7LRPJQ5EmbHOaUX7fT_Tso2Mpe5wBkgbUC73Oy0HWKkTx5dv3oyGjFxmJyPXBwQQOMSRtExS7vjgfx-QLbmzfa:1wYwhr:1WD6gRXD_DImLoQambxdoU8XD-etpF24q6uu-oA3r6A",
+        "expire_date": "2026-06-29T02:05:43.478Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "ja1fgvcw2i2f7zixqyhikqm8317z65wj",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAUBf-FtSGAtoBL9_2G5nIfUjWQlHZl_HdD0oVuz8yct5ph3_K8N17nhdRVWXX63RLgk0sH9IByrxpr2dYl6a7ogzY9VeLX7XD_DjK03GtDaMBaiYNEj8HDOWFw5Lw34GPwJo1hdEkiigCxGB4oIofkQAJf1OcL-m05CQ:1waXLY:3byQdG0P5oHyNdVo3_HtlP7vnm35qqMfcXGH4Q-5zSg",
+        "expire_date": "2026-06-19T11:55:16.545Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "kuvngxc2xkyshwevla1p5knmu9h48vza",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSGExwgu3fsNZGAYqRpISrsy_rtt0oVuzzn3vkXEdalxHWWOE4mL0OL0yxLmZ2m7oAe2e5e5t2WektwTedghb53K63q0fwcVR93WPgdCYjTeAWvlOKnC5NEqQxy8OhfrtGYGj9nBhiEV1gGCs2AAvfh8AQIVOBw:1wZ68B:at0goBInWYyhX8j5lvVMLQbMx36SKqNHQ3bzn9stxAA",
+        "expire_date": "2026-06-15T12:39:31.373Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "l8o1xu0as187j59mm1f8hol91feh0uxr",
+    "fields": {
+        "session_data": ".eJxVjEsOAiEQBe_C2hBgYJp26d4zEJoGGTWQzGdlvLtOMgvdvqp6LxHittawLXkOE4uzMOL0u1FMj9x2wPfYbl2m3tZ5Irkr8qCLvHbOz8vh_h3UuNRv7bwiMGMBqxRCQWcMW0YkNTBkRl-cI-8HUujHwWvSFggAEZPKVhfx_gC1azaz:1wYwhP:VL2pN_ICzC2SQgNUy6_X7V5O6qSAlxubqjpLs0dxAFU",
+        "expire_date": "2026-06-29T02:05:15.272Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "lf1fkwk9fggh4u3yyn6yas3bmn7umtzy",
+    "fields": {
+        "session_data": ".eJxVjDsOwjAUBO_iGlm2o-cPJT1nsN76gwMokeKkQtwdIqWAdmdmXyLytra49bLEMYuz0OL0u4HTo0w7yHeebrNM87QuI-SuyIN2eZ1zeV4O9--gcW_f2rhkA_mAigIMhMEMWhHVoBLYVQS4Uj1lwBaTDFtdCYqr1ZY8afH-APjOOGI:1wat5N:U5HfYZKfnieyMro9qSjRf6JGkV8Lep98DpxdmTnDqfc",
+        "expire_date": "2026-06-20T11:08:01.543Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "nx2sv9vv3war9fqtnnd1yvjs251hck1k",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSFAh0dcuvcbyAwDUjWQlHZl_Hdt0oVu7znnvkTEba1xG3mJM4uz0OL0uxGmR2474Du2W5ept3WZSe6KPOiQ1875eTncv4OKo35r8AjFkUNlpoCg0GHRmovniVPm4A1mrRRZ74i0BQdBAyWDtgQ_YRHvD-upOBk:1wa0R4:pGmpsHNPDV8f-1qIFZqpYjm9H_5pCuHjY-f7AmZqNtg",
+        "expire_date": "2026-06-18T00:46:46.026Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "plbylo5nudtt2sffof97b22hxa5czavn",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSFAh5dL934DGRiQqoGktCvjv2uTLnR7zzn3xQJuaw3byEuYiZ2ZYqffLWJ65LYDumO7dZ56W5c58l3hBx382ik_L4f7d1Bx1G9dgAx5JGWyddECaK-886mQlRgFJih6MjQReCfQpGSN1GpyIDOQFoq9P-q3N4U:1wYwhY:3jFLiYog3IohpG9XS9BFQZc-o6TWRqvnrn7uulvN2ME",
+        "expire_date": "2026-06-29T02:05:24.121Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "q4p3s83weyhn79qa0fa35swrbndfmqh0",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSFAh0dcuvcbyAwDUjWQlHZl_Hdt0oVu7znnvkTEba1xG3mJM4uz0OL0uxGmR2474Du2W5ept3WZSe6KPOiQ1875eTncv4OKo35r8AjFkUNlpoCg0GHRmovniVPm4A1mrRRZ74i0BQdBAyWDtgQ_YRHvD-upOBk:1wa6DC:j24aMFQXQBilT29YYd5EGwqc8e4cbj8B-wxDYz4ehhc",
+        "expire_date": "2026-06-18T06:56:50.664Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "qdwd1cykyvoqts9eixltp7jwng2d3obu",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSFAh0dcuvcbyAwDUjWQlHZl_Hdt0oVu7znnvkTEba1xG3mJM4uz0OL0uxGmR2474Du2W5ept3WZSe6KPOiQ1875eTncv4OKo35r8AjFkUNlpoCg0GHRmovniVPm4A1mrRRZ74i0BQdBAyWDtgQ_YRHvD-upOBk:1waA9T:L97MKGQUsfLP1HbQklUoUeVflA-1BcEflKp0TQuMrEQ",
+        "expire_date": "2026-06-18T11:09:15.866Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "u41xir69a57cwqkakvc4w7ui6tw138ts",
+    "fields": {
+        "session_data": ".eJxVjDsOwjAQRO_iGln-r0NJnzNY67WNA8iR4qRC3J1ESgHlzHszbxZwW2vYel7ClNiVSXb57SLSM7cDpAe2-8xpbusyRX4o_KSdj3PKr9vp_h1U7HVfR4oOCYRISoItGcAa582grQeDxpGKRQnnaYgZkhTeod5zKZakVhrY5wvTgDcV:1wYwmr:UAa_ea71_VsSrFjqwCb8o9SbMrfJ--ITbPItEPJLxOM",
+        "expire_date": "2026-06-29T02:10:53.621Z"
+    }
+},
+{
+    "model": "rekomendasi.profilsiswa",
+    "pk": 1,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "sekolah": "",
+        "kelas": "",
+        "kota": "",
+        "bio": "",
+        "avatar": "",
+        "poin": 60,
+        "created_at": "2026-06-15T01:12:13.843Z",
+        "updated_at": "2026-06-15T01:12:13.843Z"
+    }
+},
+{
+    "model": "rekomendasi.profilsiswa",
+    "pk": 2,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "sekolah": "SMA N 1 KURIK MERAUKE",
+        "kelas": "XII IPA 3",
+        "kota": "MERAUKE",
+        "bio": "I'M WEB DEVELOPER FULL STACK ENGINEERING",
+        "avatar": "avatars/WhatsApp_Image_2026-05-29_at_17.05.09.jpeg",
+        "poin": 135,
+        "created_at": "2026-06-15T01:12:13.849Z",
+        "updated_at": "2026-06-15T02:33:48.895Z"
+    }
+},
+{
+    "model": "rekomendasi.profilsiswa",
+    "pk": 3,
+    "fields": {
+        "user": [
+            "rian"
+        ],
+        "sekolah": "SMA 3 Merauke",
+        "kelas": "XII-IPA",
+        "kota": "",
+        "bio": "",
+        "avatar": "",
+        "poin": 0,
+        "created_at": "2026-06-15T01:54:21.890Z",
+        "updated_at": "2026-06-15T01:54:32.382Z"
+    }
+},
+{
+    "model": "rekomendasi.profilsiswa",
+    "pk": 4,
+    "fields": {
+        "user": [
+            "dewi"
+        ],
+        "sekolah": "SMK 1 Merauke",
+        "kelas": "XII-TKJ",
+        "kota": "",
+        "bio": "",
+        "avatar": "",
+        "poin": 0,
+        "created_at": "2026-06-15T01:54:22.398Z",
+        "updated_at": "2026-06-15T01:54:32.392Z"
+    }
+},
+{
+    "model": "rekomendasi.profilsiswa",
+    "pk": 5,
+    "fields": {
+        "user": [
+            "andi"
+        ],
+        "sekolah": "SMA Musamus",
+        "kelas": "XII-IPS",
+        "kota": "",
+        "bio": "",
+        "avatar": "",
+        "poin": 0,
+        "created_at": "2026-06-15T01:54:22.903Z",
+        "updated_at": "2026-06-15T01:54:32.399Z"
+    }
+},
+{
+    "model": "rekomendasi.profilsiswa",
+    "pk": 6,
+    "fields": {
+        "user": [
+            "budi"
+        ],
+        "sekolah": "SMA 1 Merauke",
+        "kelas": "XII-IPA",
+        "kota": "",
+        "bio": "",
+        "avatar": "",
+        "poin": 0,
+        "created_at": "2026-06-15T01:54:23.402Z",
+        "updated_at": "2026-06-15T01:54:32.408Z"
+    }
+},
+{
+    "model": "rekomendasi.profilsiswa",
+    "pk": 7,
+    "fields": {
+        "user": [
+            "citra"
+        ],
+        "sekolah": "SMK 2 Merauke",
+        "kelas": "XII-RPL",
+        "kota": "",
+        "bio": "",
+        "avatar": "",
+        "poin": 0,
+        "created_at": "2026-06-15T01:54:23.903Z",
+        "updated_at": "2026-06-15T01:54:32.416Z"
+    }
+},
+{
+    "model": "rekomendasi.profilsiswa",
+    "pk": 8,
+    "fields": {
+        "user": [
+            "Prince"
+        ],
+        "sekolah": "",
+        "kelas": "",
+        "kota": "",
+        "bio": "",
+        "avatar": "",
+        "poin": 0,
+        "created_at": "2026-06-19T05:19:45.023Z",
+        "updated_at": "2026-06-19T05:19:45.023Z"
+    }
+},
+{
+    "model": "rekomendasi.userbadge",
+    "pk": 1,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "badge": "explorer",
+        "diraih_at": "2026-06-15T01:14:40.407Z"
+    }
+},
+{
+    "model": "rekomendasi.userbadge",
+    "pk": 2,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "badge": "pembaca",
+        "diraih_at": "2026-06-15T01:14:53.417Z"
+    }
+},
+{
+    "model": "rekomendasi.userbadge",
+    "pk": 3,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "badge": "pemula",
+        "diraih_at": "2026-06-15T02:05:25.482Z"
+    }
+},
+{
+    "model": "rekomendasi.userbadge",
+    "pk": 4,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "badge": "rajin",
+        "diraih_at": "2026-06-15T02:10:47.855Z"
+    }
+},
+{
+    "model": "rekomendasi.userbadge",
+    "pk": 5,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "badge": "profil_lengkap",
+        "diraih_at": "2026-06-15T02:33:48.906Z"
+    }
+},
+{
+    "model": "rekomendasi.userbadge",
+    "pk": 6,
+    "fields": {
+        "user": [
+            "Prince"
+        ],
+        "badge": "pembaca",
+        "diraih_at": "2026-06-19T05:19:45.333Z"
+    }
+},
+{
+    "model": "rekomendasi.userbadge",
+    "pk": 7,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "badge": "poin_100",
+        "diraih_at": "2026-06-19T05:45:32.879Z"
+    }
+},
+{
+    "model": "rekomendasi.userbadge",
+    "pk": 8,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "badge": "expert",
+        "diraih_at": "2026-06-19T05:46:38.025Z"
+    }
+},
+{
+    "model": "rekomendasi.userbadge",
+    "pk": 9,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "badge": "pemula",
+        "diraih_at": "2026-06-19T07:15:45.948Z"
+    }
+},
+{
+    "model": "rekomendasi.userbadge",
+    "pk": 10,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "badge": "explorer",
+        "diraih_at": "2026-06-19T07:17:51.375Z"
+    }
+},
+{
+    "model": "rekomendasi.userbadge",
+    "pk": 11,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "badge": "rajin",
+        "diraih_at": "2026-06-20T06:46:14.302Z"
+    }
+},
+{
+    "model": "rekomendasi.riwayatpoin",
+    "pk": 1,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "jumlah": 10,
+        "alasan": "Menyelesaikan tes rekomendasi",
+        "created_at": "2026-06-15T02:05:25.476Z"
+    }
+},
+{
+    "model": "rekomendasi.riwayatpoin",
+    "pk": 2,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "jumlah": 5,
+        "alasan": "Memberikan umpan balik model AI",
+        "created_at": "2026-06-15T02:05:25.496Z"
+    }
+},
+{
+    "model": "rekomendasi.riwayatpoin",
+    "pk": 3,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "jumlah": 10,
+        "alasan": "Menyelesaikan tes rekomendasi",
+        "created_at": "2026-06-15T02:05:37.916Z"
+    }
+},
+{
+    "model": "rekomendasi.riwayatpoin",
+    "pk": 4,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "jumlah": 5,
+        "alasan": "Memberikan umpan balik model AI",
+        "created_at": "2026-06-15T02:05:37.930Z"
+    }
+},
+{
+    "model": "rekomendasi.riwayatpoin",
+    "pk": 5,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "jumlah": 10,
+        "alasan": "Menyelesaikan tes rekomendasi",
+        "created_at": "2026-06-15T02:10:47.847Z"
+    }
+},
+{
+    "model": "rekomendasi.riwayatpoin",
+    "pk": 6,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "jumlah": 5,
+        "alasan": "Memberikan umpan balik model AI",
+        "created_at": "2026-06-15T02:10:47.874Z"
+    }
+},
+{
+    "model": "rekomendasi.riwayatpoin",
+    "pk": 7,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "jumlah": 10,
+        "alasan": "Menyelesaikan tes rekomendasi",
+        "created_at": "2026-06-15T02:25:13.655Z"
+    }
+},
+{
+    "model": "rekomendasi.riwayatpoin",
+    "pk": 8,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "jumlah": 5,
+        "alasan": "Memberikan umpan balik model AI",
+        "created_at": "2026-06-15T02:27:14.511Z"
+    }
+},
+{
+    "model": "rekomendasi.riwayatpoin",
+    "pk": 9,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "jumlah": 10,
+        "alasan": "Menyelesaikan tes rekomendasi",
+        "created_at": "2026-06-15T02:28:19.620Z"
+    }
+},
+{
+    "model": "rekomendasi.riwayatpoin",
+    "pk": 10,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "jumlah": 10,
+        "alasan": "Menyelesaikan tes rekomendasi",
+        "created_at": "2026-06-15T13:02:04.371Z"
+    }
+},
+{
+    "model": "rekomendasi.riwayatpoin",
+    "pk": 11,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "jumlah": 10,
+        "alasan": "Menyelesaikan tes rekomendasi",
+        "created_at": "2026-06-15T13:04:58.466Z"
+    }
+},
+{
+    "model": "rekomendasi.riwayatpoin",
+    "pk": 12,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "jumlah": 5,
+        "alasan": "Memberikan umpan balik model AI",
+        "created_at": "2026-06-15T13:05:29.565Z"
+    }
+},
+{
+    "model": "rekomendasi.riwayatpoin",
+    "pk": 13,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "jumlah": 10,
+        "alasan": "Menyelesaikan tes rekomendasi",
+        "created_at": "2026-06-19T05:45:32.868Z"
+    }
+},
+{
+    "model": "rekomendasi.riwayatpoin",
+    "pk": 14,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "jumlah": 5,
+        "alasan": "Memberikan umpan balik model AI",
+        "created_at": "2026-06-19T05:45:42.719Z"
+    }
+},
+{
+    "model": "rekomendasi.riwayatpoin",
+    "pk": 15,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "jumlah": 10,
+        "alasan": "Menyelesaikan tes rekomendasi",
+        "created_at": "2026-06-19T05:46:06.871Z"
+    }
+},
+{
+    "model": "rekomendasi.riwayatpoin",
+    "pk": 16,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "jumlah": 10,
+        "alasan": "Menyelesaikan tes rekomendasi",
+        "created_at": "2026-06-19T05:46:38.011Z"
+    }
+},
+{
+    "model": "rekomendasi.riwayatpoin",
+    "pk": 17,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "jumlah": 10,
+        "alasan": "Menyelesaikan tes rekomendasi",
+        "created_at": "2026-06-19T07:15:45.938Z"
+    }
+},
+{
+    "model": "rekomendasi.riwayatpoin",
+    "pk": 18,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "jumlah": 5,
+        "alasan": "Memberikan umpan balik model AI",
+        "created_at": "2026-06-19T07:16:29.639Z"
+    }
+},
+{
+    "model": "rekomendasi.riwayatpoin",
+    "pk": 19,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "jumlah": 10,
+        "alasan": "Menyelesaikan tes rekomendasi",
+        "created_at": "2026-06-19T07:17:27.852Z"
+    }
+},
+{
+    "model": "rekomendasi.riwayatpoin",
+    "pk": 20,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "jumlah": 5,
+        "alasan": "Memberikan umpan balik model AI",
+        "created_at": "2026-06-20T06:39:57.934Z"
+    }
+},
+{
+    "model": "rekomendasi.riwayatpoin",
+    "pk": 21,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "jumlah": 10,
+        "alasan": "Menyelesaikan tes rekomendasi",
+        "created_at": "2026-06-20T06:46:14.294Z"
+    }
+},
+{
+    "model": "rekomendasi.riwayatpoin",
+    "pk": 22,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "jumlah": 5,
+        "alasan": "Memberikan umpan balik model AI",
+        "created_at": "2026-06-20T06:46:29.839Z"
+    }
+},
+{
+    "model": "rekomendasi.riwayatpoin",
+    "pk": 23,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "jumlah": 5,
+        "alasan": "Memberikan umpan balik model AI",
+        "created_at": "2026-06-20T06:47:14.210Z"
+    }
+},
+{
+    "model": "rekomendasi.riwayatpoin",
+    "pk": 24,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "jumlah": 10,
+        "alasan": "Menyelesaikan tes rekomendasi",
+        "created_at": "2026-06-20T07:08:21.260Z"
+    }
+},
+{
+    "model": "rekomendasi.riwayatpoin",
+    "pk": 25,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "jumlah": 5,
+        "alasan": "Memberikan umpan balik model AI",
+        "created_at": "2026-06-20T07:08:33.792Z"
+    }
+},
+{
+    "model": "rekomendasi.jurusandetail",
+    "pk": 1,
+    "fields": {
+        "nama": "Teknik Informatika",
+        "mata_kuliah": [
+            "Algoritma & Struktur Data",
+            "Pemrograman OOP",
+            "Basis Data",
+            "Jaringan Komputer",
+            "Kecerdasan Buatan",
+            "Software Engineering",
+            "Keamanan Siber",
+            "Machine Learning"
+        ],
+        "universitas": [
+            {
+                "nama": "Universitas Indonesia",
+                "kota": "Depok",
+                "akreditasi": "A"
+            },
+            {
+                "nama": "ITB",
+                "kota": "Bandung",
+                "akreditasi": "A"
+            },
+            {
+                "nama": "UGM",
+                "kota": "Yogyakarta",
+                "akreditasi": "A"
+            },
+            {
+                "nama": "ITS",
+                "kota": "Surabaya",
+                "akreditasi": "A"
+            },
+            {
+                "nama": "BINUS",
+                "kota": "Jakarta",
+                "akreditasi": "A"
+            }
+        ],
+        "biaya_min": 3000000,
+        "biaya_max": 15000000,
+        "passing_grade": 720.0,
+        "lama_studi": "4 Tahun",
+        "gelar": "S.Kom",
+        "deskripsi_panjang": "Teknik Informatika adalah program studi yang mempelajari teori komputasi, algoritma, pemrograman, dan aplikasinya. Lulusan sangat dibutuhkan di era digital.",
+        "updated_at": "2026-06-15T01:12:13.799Z"
+    }
+},
+{
+    "model": "rekomendasi.jurusandetail",
+    "pk": 2,
+    "fields": {
+        "nama": "Kedokteran",
+        "mata_kuliah": [
+            "Anatomi",
+            "Fisiologi",
+            "Biokimia",
+            "Patologi",
+            "Farmakologi",
+            "Ilmu Penyakit Dalam",
+            "Bedah",
+            "Pediatri"
+        ],
+        "universitas": [
+            {
+                "nama": "Universitas Indonesia",
+                "kota": "Jakarta",
+                "akreditasi": "A"
+            },
+            {
+                "nama": "UGM",
+                "kota": "Yogyakarta",
+                "akreditasi": "A"
+            },
+            {
+                "nama": "UNAIR",
+                "kota": "Surabaya",
+                "akreditasi": "A"
+            },
+            {
+                "nama": "UNDIP",
+                "kota": "Semarang",
+                "akreditasi": "A"
+            }
+        ],
+        "biaya_min": 5000000,
+        "biaya_max": 40000000,
+        "passing_grade": 800.0,
+        "lama_studi": "6 Tahun (+ Koas)",
+        "gelar": "dr.",
+        "deskripsi_panjang": "Kedokteran adalah studi ilmu kesehatan manusia. Proses pendidikan panjang namun menjadi salah satu profesi paling mulia dan dibutuhkan masyarakat.",
+        "updated_at": "2026-06-15T01:12:13.810Z"
+    }
+},
+{
+    "model": "rekomendasi.jurusandetail",
+    "pk": 3,
+    "fields": {
+        "nama": "Manajemen",
+        "mata_kuliah": [
+            "Pengantar Manajemen",
+            "Akuntansi Dasar",
+            "Manajemen Pemasaran",
+            "Manajemen SDM",
+            "Keuangan Perusahaan",
+            "Kewirausahaan",
+            "Strategi Bisnis"
+        ],
+        "universitas": [
+            {
+                "nama": "Universitas Indonesia",
+                "kota": "Depok",
+                "akreditasi": "A"
+            },
+            {
+                "nama": "UGM",
+                "kota": "Yogyakarta",
+                "akreditasi": "A"
+            },
+            {
+                "nama": "UNPAD",
+                "kota": "Bandung",
+                "akreditasi": "A"
+            },
+            {
+                "nama": "Prasetiya Mulya",
+                "kota": "Tangerang",
+                "akreditasi": "A"
+            }
+        ],
+        "biaya_min": 3500000,
+        "biaya_max": 20000000,
+        "passing_grade": 690.0,
+        "lama_studi": "4 Tahun",
+        "gelar": "S.M.",
+        "deskripsi_panjang": "Manajemen merupakan bidang studi yang berfokus pada pengelolaan organisasi, strategi bisnis, dan kepemimpinan. Lulusan dapat bekerja di berbagai industri.",
+        "updated_at": "2026-06-15T01:12:13.816Z"
+    }
+},
+{
+    "model": "rekomendasi.jurusandetail",
+    "pk": 4,
+    "fields": {
+        "nama": "Sastra",
+        "mata_kuliah": [
+            "Linguistik",
+            "Sastra Indonesia",
+            "Teori Sastra",
+            "Penerjemahan",
+            "Jurnalistik",
+            "Penulisan Kreatif",
+            "Bahasa Asing"
+        ],
+        "universitas": [
+            {
+                "nama": "Universitas Indonesia",
+                "kota": "Depok",
+                "akreditasi": "A"
+            },
+            {
+                "nama": "UGM",
+                "kota": "Yogyakarta",
+                "akreditasi": "A"
+            },
+            {
+                "nama": "UNPAD",
+                "kota": "Bandung",
+                "akreditasi": "B"
+            }
+        ],
+        "biaya_min": 2500000,
+        "biaya_max": 10000000,
+        "passing_grade": 620.0,
+        "lama_studi": "4 Tahun",
+        "gelar": "S.Hum.",
+        "deskripsi_panjang": "Studi Sastra mencakup bahasa, budaya, dan karya sastra. Mengasah kemampuan komunikasi, analisis kritis, dan kreativitas yang sangat berharga.",
+        "updated_at": "2026-06-15T01:12:13.822Z"
+    }
+},
+{
+    "model": "rekomendasi.jurusandetail",
+    "pk": 5,
+    "fields": {
+        "nama": "Akuntansi",
+        "mata_kuliah": [
+            "Akuntansi Keuangan",
+            "Akuntansi Biaya",
+            "Audit",
+            "Perpajakan",
+            "Sistem Informasi Akuntansi",
+            "Akuntansi Manajemen"
+        ],
+        "universitas": [
+            {
+                "nama": "Universitas Indonesia",
+                "kota": "Depok",
+                "akreditasi": "A"
+            },
+            {
+                "nama": "UGM",
+                "kota": "Yogyakarta",
+                "akreditasi": "A"
+            },
+            {
+                "nama": "UNDIP",
+                "kota": "Semarang",
+                "akreditasi": "A"
+            }
+        ],
+        "biaya_min": 3000000,
+        "biaya_max": 15000000,
+        "passing_grade": 700.0,
+        "lama_studi": "4 Tahun",
+        "gelar": "S.Ak.",
+        "deskripsi_panjang": "Akuntansi adalah ilmu pencatatan, pengklasifikasian, dan pelaporan transaksi keuangan. Lulusan sangat dibutuhkan di perusahaan, kantor akuntan, dan pemerintahan.",
+        "updated_at": "2026-06-15T01:12:13.827Z"
+    }
+},
+{
+    "model": "rekomendasi.jurusandetail",
+    "pk": 6,
+    "fields": {
+        "nama": "Biologi",
+        "mata_kuliah": [
+            "Biologi Sel",
+            "Genetika",
+            "Ekologi",
+            "Mikrobiologi",
+            "Botani",
+            "Zoologi",
+            "Bioteknologi",
+            "Fisiologi Hewan"
+        ],
+        "universitas": [
+            {
+                "nama": "ITB",
+                "kota": "Bandung",
+                "akreditasi": "A"
+            },
+            {
+                "nama": "IPB",
+                "kota": "Bogor",
+                "akreditasi": "A"
+            },
+            {
+                "nama": "UGM",
+                "kota": "Yogyakarta",
+                "akreditasi": "A"
+            }
+        ],
+        "biaya_min": 2500000,
+        "biaya_max": 12000000,
+        "passing_grade": 630.0,
+        "lama_studi": "4 Tahun",
+        "gelar": "S.Si.",
+        "deskripsi_panjang": "Biologi mempelajari kehidupan dari tingkat molekuler hingga ekosistem. Relevan di era bioteknologi dan isu lingkungan global yang semakin penting.",
+        "updated_at": "2026-06-15T01:12:13.832Z"
+    }
+},
+{
+    "model": "rekomendasi.jurusandetail",
+    "pk": 7,
+    "fields": {
+        "nama": "Pendidikan",
+        "mata_kuliah": [
+            "Psikologi Pendidikan",
+            "Kurikulum & Pembelajaran",
+            "Evaluasi Pendidikan",
+            "Teknologi Pendidikan",
+            "Pedagogik",
+            "Bimbingan Konseling"
+        ],
+        "universitas": [
+            {
+                "nama": "Universitas Negeri Jakarta",
+                "kota": "Jakarta",
+                "akreditasi": "A"
+            },
+            {
+                "nama": "UNY",
+                "kota": "Yogyakarta",
+                "akreditasi": "A"
+            },
+            {
+                "nama": "UPI",
+                "kota": "Bandung",
+                "akreditasi": "A"
+            }
+        ],
+        "biaya_min": 2000000,
+        "biaya_max": 8000000,
+        "passing_grade": 580.0,
+        "lama_studi": "4 Tahun",
+        "gelar": "S.Pd.",
+        "deskripsi_panjang": "Pendidikan adalah bidang studi yang mempersiapkan calon guru dan pendidik profesional. Lulusan berkontribusi langsung dalam mencerdaskan generasi penerus bangsa.",
+        "updated_at": "2026-06-15T01:12:13.838Z"
+    }
+},
+{
+    "model": "rekomendasi.hasilrekomendasi",
+    "pk": 1,
+    "fields": {
+        "user": [
+            "rian"
+        ],
+        "jurusan": "Teknik Informatika",
+        "top3_data": [],
+        "nilai_mat": 85,
+        "nilai_bhs": 80,
+        "nilai_ipa": 85,
+        "nilai_ips": 60,
+        "minat_tek": 5,
+        "minat_sen": 2,
+        "minat_bis": 1,
+        "minat_kes": 1,
+        "created_at": "2026-06-15T01:54:32.434Z"
+    }
+},
+{
+    "model": "rekomendasi.hasilrekomendasi",
+    "pk": 2,
+    "fields": {
+        "user": [
+            "dewi"
+        ],
+        "jurusan": "Teknik Informatika",
+        "top3_data": [],
+        "nilai_mat": 80,
+        "nilai_bhs": 85,
+        "nilai_ipa": 78,
+        "nilai_ips": 70,
+        "minat_tek": 4,
+        "minat_sen": 3,
+        "minat_bis": 2,
+        "minat_kes": 2,
+        "created_at": "2026-06-15T01:54:32.439Z"
+    }
+},
+{
+    "model": "rekomendasi.hasilrekomendasi",
+    "pk": 3,
+    "fields": {
+        "user": [
+            "andi"
+        ],
+        "jurusan": "Manajemen",
+        "top3_data": [],
+        "nilai_mat": 75,
+        "nilai_bhs": 78,
+        "nilai_ipa": 60,
+        "nilai_ips": 85,
+        "minat_tek": 2,
+        "minat_sen": 3,
+        "minat_bis": 5,
+        "minat_kes": 1,
+        "created_at": "2026-06-15T01:54:32.445Z"
+    }
+},
+{
+    "model": "rekomendasi.hasilrekomendasi",
+    "pk": 4,
+    "fields": {
+        "user": [
+            "budi"
+        ],
+        "jurusan": "Kedokteran",
+        "top3_data": [],
+        "nilai_mat": 78,
+        "nilai_bhs": 75,
+        "nilai_ipa": 90,
+        "nilai_ips": 70,
+        "minat_tek": 1,
+        "minat_sen": 2,
+        "minat_bis": 2,
+        "minat_kes": 5,
+        "created_at": "2026-06-15T01:54:32.451Z"
+    }
+},
+{
+    "model": "rekomendasi.hasilrekomendasi",
+    "pk": 5,
+    "fields": {
+        "user": [
+            "citra"
+        ],
+        "jurusan": "Sastra",
+        "top3_data": [],
+        "nilai_mat": 65,
+        "nilai_bhs": 88,
+        "nilai_ipa": 60,
+        "nilai_ips": 80,
+        "minat_tek": 1,
+        "minat_sen": 5,
+        "minat_bis": 2,
+        "minat_kes": 1,
+        "created_at": "2026-06-15T01:54:32.456Z"
+    }
+},
+{
+    "model": "rekomendasi.hasilrekomendasi",
+    "pk": 6,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "jurusan": "Teknik Informatika",
+        "top3_data": [
+            {
+                "jurusan": "Teknik Informatika",
+                "persen": 24.2,
+                "info": {
+                    "icon": "💻",
+                    "deskripsi": "Cocok untuk yang suka logika, coding, dan teknologi.",
+                    "prospek": [
+                        "Software Engineer",
+                        "Data Scientist",
+                        "Cybersecurity"
+                    ]
+                }
+            },
+            {
+                "jurusan": "Manajemen",
+                "persen": 15.9,
+                "info": {
+                    "icon": "📊",
+                    "deskripsi": "Tepat untuk yang suka strategi bisnis dan kepemimpinan.",
+                    "prospek": [
+                        "Manajer",
+                        "Konsultan",
+                        "Entrepreneur"
+                    ]
+                }
+            },
+            {
+                "jurusan": "Akuntansi",
+                "persen": 15.6,
+                "info": {
+                    "icon": "🧾",
+                    "deskripsi": "Cocok untuk yang teliti, suka angka dan keuangan.",
+                    "prospek": [
+                        "Akuntan",
+                        "Auditor",
+                        "Analis Keuangan"
+                    ]
+                }
+            }
+        ],
+        "nilai_mat": 85,
+        "nilai_bhs": 70,
+        "nilai_ipa": 80,
+        "nilai_ips": 65,
+        "minat_tek": 5,
+        "minat_sen": 2,
+        "minat_bis": 3,
+        "minat_kes": 1,
+        "created_at": "2026-06-15T02:05:25.453Z"
+    }
+},
+{
+    "model": "rekomendasi.hasilrekomendasi",
+    "pk": 7,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "jurusan": "Teknik Informatika",
+        "top3_data": [
+            {
+                "jurusan": "Teknik Informatika",
+                "persen": 24.2,
+                "info": {
+                    "icon": "💻",
+                    "deskripsi": "Cocok untuk yang suka logika, coding, dan teknologi.",
+                    "prospek": [
+                        "Software Engineer",
+                        "Data Scientist",
+                        "Cybersecurity"
+                    ]
+                }
+            },
+            {
+                "jurusan": "Manajemen",
+                "persen": 15.9,
+                "info": {
+                    "icon": "📊",
+                    "deskripsi": "Tepat untuk yang suka strategi bisnis dan kepemimpinan.",
+                    "prospek": [
+                        "Manajer",
+                        "Konsultan",
+                        "Entrepreneur"
+                    ]
+                }
+            },
+            {
+                "jurusan": "Akuntansi",
+                "persen": 15.6,
+                "info": {
+                    "icon": "🧾",
+                    "deskripsi": "Cocok untuk yang teliti, suka angka dan keuangan.",
+                    "prospek": [
+                        "Akuntan",
+                        "Auditor",
+                        "Analis Keuangan"
+                    ]
+                }
+            }
+        ],
+        "nilai_mat": 85,
+        "nilai_bhs": 70,
+        "nilai_ipa": 80,
+        "nilai_ips": 65,
+        "minat_tek": 5,
+        "minat_sen": 2,
+        "minat_bis": 3,
+        "minat_kes": 1,
+        "created_at": "2026-06-15T02:05:37.898Z"
+    }
+},
+{
+    "model": "rekomendasi.hasilrekomendasi",
+    "pk": 8,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "jurusan": "Teknik Informatika",
+        "top3_data": [
+            {
+                "jurusan": "Teknik Informatika",
+                "persen": 24.2,
+                "info": {
+                    "icon": "💻",
+                    "deskripsi": "Cocok untuk yang suka logika, coding, dan teknologi.",
+                    "prospek": [
+                        "Software Engineer",
+                        "Data Scientist",
+                        "Cybersecurity"
+                    ]
+                }
+            },
+            {
+                "jurusan": "Manajemen",
+                "persen": 15.9,
+                "info": {
+                    "icon": "📊",
+                    "deskripsi": "Tepat untuk yang suka strategi bisnis dan kepemimpinan.",
+                    "prospek": [
+                        "Manajer",
+                        "Konsultan",
+                        "Entrepreneur"
+                    ]
+                }
+            },
+            {
+                "jurusan": "Akuntansi",
+                "persen": 15.6,
+                "info": {
+                    "icon": "🧾",
+                    "deskripsi": "Cocok untuk yang teliti, suka angka dan keuangan.",
+                    "prospek": [
+                        "Akuntan",
+                        "Auditor",
+                        "Analis Keuangan"
+                    ]
+                }
+            }
+        ],
+        "nilai_mat": 85,
+        "nilai_bhs": 70,
+        "nilai_ipa": 80,
+        "nilai_ips": 65,
+        "minat_tek": 5,
+        "minat_sen": 2,
+        "minat_bis": 3,
+        "minat_kes": 1,
+        "created_at": "2026-06-15T02:10:47.823Z"
+    }
+},
+{
+    "model": "rekomendasi.hasilrekomendasi",
+    "pk": 9,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "jurusan": "Teknik Informatika",
+        "top3_data": [
+            {
+                "jurusan": "Teknik Informatika",
+                "persen": 18.9,
+                "info": {
+                    "icon": "💻",
+                    "deskripsi": "Cocok untuk yang suka logika, coding, dan teknologi.",
+                    "prospek": [
+                        "Software Engineer",
+                        "Data Scientist",
+                        "Cybersecurity"
+                    ]
+                }
+            },
+            {
+                "jurusan": "Manajemen",
+                "persen": 17.4,
+                "info": {
+                    "icon": "📊",
+                    "deskripsi": "Tepat untuk yang suka strategi bisnis dan kepemimpinan.",
+                    "prospek": [
+                        "Manajer",
+                        "Konsultan",
+                        "Entrepreneur"
+                    ]
+                }
+            },
+            {
+                "jurusan": "Akuntansi",
+                "persen": 16.2,
+                "info": {
+                    "icon": "🧾",
+                    "deskripsi": "Cocok untuk yang teliti, suka angka dan keuangan.",
+                    "prospek": [
+                        "Akuntan",
+                        "Auditor",
+                        "Analis Keuangan"
+                    ]
+                }
+            }
+        ],
+        "nilai_mat": 100,
+        "nilai_bhs": 67,
+        "nilai_ipa": 96,
+        "nilai_ips": 57,
+        "minat_tek": 5,
+        "minat_sen": 2,
+        "minat_bis": 5,
+        "minat_kes": 4,
+        "created_at": "2026-06-15T02:25:13.641Z"
+    }
+},
+{
+    "model": "rekomendasi.hasilrekomendasi",
+    "pk": 10,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "jurusan": "Teknik Informatika",
+        "top3_data": [
+            {
+                "jurusan": "Teknik Informatika",
+                "persen": 18.9,
+                "info": {
+                    "icon": "💻",
+                    "deskripsi": "Cocok untuk yang suka logika, coding, dan teknologi.",
+                    "prospek": [
+                        "Software Engineer",
+                        "Data Scientist",
+                        "Cybersecurity"
+                    ]
+                }
+            },
+            {
+                "jurusan": "Manajemen",
+                "persen": 17.4,
+                "info": {
+                    "icon": "📊",
+                    "deskripsi": "Tepat untuk yang suka strategi bisnis dan kepemimpinan.",
+                    "prospek": [
+                        "Manajer",
+                        "Konsultan",
+                        "Entrepreneur"
+                    ]
+                }
+            },
+            {
+                "jurusan": "Akuntansi",
+                "persen": 16.3,
+                "info": {
+                    "icon": "🧾",
+                    "deskripsi": "Cocok untuk yang teliti, suka angka dan keuangan.",
+                    "prospek": [
+                        "Akuntan",
+                        "Auditor",
+                        "Analis Keuangan"
+                    ]
+                }
+            }
+        ],
+        "nilai_mat": 100,
+        "nilai_bhs": 67,
+        "nilai_ipa": 95,
+        "nilai_ips": 59,
+        "minat_tek": 5,
+        "minat_sen": 2,
+        "minat_bis": 5,
+        "minat_kes": 4,
+        "created_at": "2026-06-15T02:28:19.602Z"
+    }
+},
+{
+    "model": "rekomendasi.hasilrekomendasi",
+    "pk": 11,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "jurusan": "Teknik Informatika",
+        "top3_data": [
+            {
+                "jurusan": "Teknik Informatika",
+                "persen": 20.5,
+                "info": {
+                    "icon": "💻",
+                    "deskripsi": "Cocok untuk yang suka logika, coding, dan teknologi.",
+                    "prospek": [
+                        "Software Engineer",
+                        "Data Scientist",
+                        "Cybersecurity"
+                    ]
+                }
+            },
+            {
+                "jurusan": "Kedokteran",
+                "persen": 20.0,
+                "info": {
+                    "icon": "🩺",
+                    "deskripsi": "Ideal untuk jiwa yang peduli kesehatan dan suka ilmu alam.",
+                    "prospek": [
+                        "Dokter Umum",
+                        "Spesialis",
+                        "Peneliti Medis"
+                    ]
+                }
+            },
+            {
+                "jurusan": "Biologi",
+                "persen": 16.5,
+                "info": {
+                    "icon": "🔬",
+                    "deskripsi": "Untuk pecinta alam, lingkungan, dan ilmu kehidupan.",
+                    "prospek": [
+                        "Peneliti",
+                        "Farmasis",
+                        "Ahli Lingkungan"
+                    ]
+                }
+            }
+        ],
+        "nilai_mat": 100,
+        "nilai_bhs": 70,
+        "nilai_ipa": 92,
+        "nilai_ips": 65,
+        "minat_tek": 5,
+        "minat_sen": 1,
+        "minat_bis": 3,
+        "minat_kes": 5,
+        "created_at": "2026-06-15T13:02:04.354Z"
+    }
+},
+{
+    "model": "rekomendasi.hasilrekomendasi",
+    "pk": 12,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "jurusan": "Teknik Informatika",
+        "top3_data": [
+            {
+                "jurusan": "Teknik Informatika",
+                "persen": 17.4,
+                "info": {
+                    "icon": "💻",
+                    "deskripsi": "Cocok untuk yang suka logika, coding, dan teknologi.",
+                    "prospek": [
+                        "Software Engineer",
+                        "Data Scientist",
+                        "Cybersecurity"
+                    ]
+                }
+            },
+            {
+                "jurusan": "Kedokteran",
+                "persen": 17.3,
+                "info": {
+                    "icon": "🩺",
+                    "deskripsi": "Ideal untuk jiwa yang peduli kesehatan dan suka ilmu alam.",
+                    "prospek": [
+                        "Dokter Umum",
+                        "Spesialis",
+                        "Peneliti Medis"
+                    ]
+                }
+            },
+            {
+                "jurusan": "Manajemen",
+                "persen": 16.4,
+                "info": {
+                    "icon": "📊",
+                    "deskripsi": "Tepat untuk yang suka strategi bisnis dan kepemimpinan.",
+                    "prospek": [
+                        "Manajer",
+                        "Konsultan",
+                        "Entrepreneur"
+                    ]
+                }
+            }
+        ],
+        "nilai_mat": 100,
+        "nilai_bhs": 50,
+        "nilai_ipa": 98,
+        "nilai_ips": 67,
+        "minat_tek": 5,
+        "minat_sen": 3,
+        "minat_bis": 5,
+        "minat_kes": 5,
+        "created_at": "2026-06-15T13:04:58.450Z"
+    }
+},
+{
+    "model": "rekomendasi.hasilrekomendasi",
+    "pk": 13,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "jurusan": "Kedokteran",
+        "top3_data": [
+            {
+                "jurusan": "Kedokteran",
+                "persen": 21.2,
+                "info": {
+                    "icon": "🩺",
+                    "deskripsi": "Ideal untuk jiwa yang peduli kesehatan dan suka ilmu alam.",
+                    "prospek": [
+                        "Dokter Umum",
+                        "Spesialis",
+                        "Peneliti Medis"
+                    ]
+                }
+            },
+            {
+                "jurusan": "Biologi",
+                "persen": 17.7,
+                "info": {
+                    "icon": "🔬",
+                    "deskripsi": "Untuk pecinta alam, lingkungan, dan ilmu kehidupan.",
+                    "prospek": [
+                        "Peneliti",
+                        "Farmasis",
+                        "Ahli Lingkungan"
+                    ]
+                }
+            },
+            {
+                "jurusan": "Manajemen",
+                "persen": 16.4,
+                "info": {
+                    "icon": "📊",
+                    "deskripsi": "Tepat untuk yang suka strategi bisnis dan kepemimpinan.",
+                    "prospek": [
+                        "Manajer",
+                        "Konsultan",
+                        "Entrepreneur"
+                    ]
+                }
+            }
+        ],
+        "nilai_mat": 100,
+        "nilai_bhs": 39,
+        "nilai_ipa": 100,
+        "nilai_ips": 57,
+        "minat_tek": 2,
+        "minat_sen": 2,
+        "minat_bis": 4,
+        "minat_kes": 5,
+        "created_at": "2026-06-19T05:45:32.848Z"
+    }
+},
+{
+    "model": "rekomendasi.hasilrekomendasi",
+    "pk": 14,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "jurusan": "Kedokteran",
+        "top3_data": [
+            {
+                "jurusan": "Kedokteran",
+                "persen": 21.2,
+                "info": {
+                    "icon": "🩺",
+                    "deskripsi": "Ideal untuk jiwa yang peduli kesehatan dan suka ilmu alam.",
+                    "prospek": [
+                        "Dokter Umum",
+                        "Spesialis",
+                        "Peneliti Medis"
+                    ]
+                }
+            },
+            {
+                "jurusan": "Biologi",
+                "persen": 17.7,
+                "info": {
+                    "icon": "🔬",
+                    "deskripsi": "Untuk pecinta alam, lingkungan, dan ilmu kehidupan.",
+                    "prospek": [
+                        "Peneliti",
+                        "Farmasis",
+                        "Ahli Lingkungan"
+                    ]
+                }
+            },
+            {
+                "jurusan": "Manajemen",
+                "persen": 16.4,
+                "info": {
+                    "icon": "📊",
+                    "deskripsi": "Tepat untuk yang suka strategi bisnis dan kepemimpinan.",
+                    "prospek": [
+                        "Manajer",
+                        "Konsultan",
+                        "Entrepreneur"
+                    ]
+                }
+            }
+        ],
+        "nilai_mat": 100,
+        "nilai_bhs": 39,
+        "nilai_ipa": 100,
+        "nilai_ips": 57,
+        "minat_tek": 2,
+        "minat_sen": 2,
+        "minat_bis": 4,
+        "minat_kes": 5,
+        "created_at": "2026-06-19T05:46:06.853Z"
+    }
+},
+{
+    "model": "rekomendasi.hasilrekomendasi",
+    "pk": 15,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "jurusan": "Manajemen",
+        "top3_data": [
+            {
+                "jurusan": "Manajemen",
+                "persen": 21.6,
+                "info": {
+                    "icon": "📊",
+                    "deskripsi": "Tepat untuk yang suka strategi bisnis dan kepemimpinan.",
+                    "prospek": [
+                        "Manajer",
+                        "Konsultan",
+                        "Entrepreneur"
+                    ]
+                }
+            },
+            {
+                "jurusan": "Akuntansi",
+                "persen": 18.3,
+                "info": {
+                    "icon": "🧾",
+                    "deskripsi": "Cocok untuk yang teliti, suka angka dan keuangan.",
+                    "prospek": [
+                        "Akuntan",
+                        "Auditor",
+                        "Analis Keuangan"
+                    ]
+                }
+            },
+            {
+                "jurusan": "Teknik Informatika",
+                "persen": 15.4,
+                "info": {
+                    "icon": "💻",
+                    "deskripsi": "Cocok untuk yang suka logika, coding, dan teknologi.",
+                    "prospek": [
+                        "Software Engineer",
+                        "Data Scientist",
+                        "Cybersecurity"
+                    ]
+                }
+            }
+        ],
+        "nilai_mat": 29,
+        "nilai_bhs": 12,
+        "nilai_ipa": 7,
+        "nilai_ips": 7,
+        "minat_tek": 2,
+        "minat_sen": 2,
+        "minat_bis": 4,
+        "minat_kes": 2,
+        "created_at": "2026-06-19T05:46:37.944Z"
+    }
+},
+{
+    "model": "rekomendasi.hasilrekomendasi",
+    "pk": 16,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "jurusan": "Teknik Informatika",
+        "top3_data": [
+            {
+                "jurusan": "Teknik Informatika",
+                "persen": 17.8,
+                "info": {
+                    "icon": "💻",
+                    "deskripsi": "Cocok untuk yang suka logika, coding, dan teknologi.",
+                    "prospek": [
+                        "Software Engineer",
+                        "Data Scientist",
+                        "Cybersecurity"
+                    ]
+                }
+            },
+            {
+                "jurusan": "Manajemen",
+                "persen": 16.5,
+                "info": {
+                    "icon": "📊",
+                    "deskripsi": "Tepat untuk yang suka strategi bisnis dan kepemimpinan.",
+                    "prospek": [
+                        "Manajer",
+                        "Konsultan",
+                        "Entrepreneur"
+                    ]
+                }
+            },
+            {
+                "jurusan": "Sastra",
+                "persen": 15.3,
+                "info": {
+                    "icon": "📚",
+                    "deskripsi": "Untuk jiwa kreatif yang mencintai bahasa dan budaya.",
+                    "prospek": [
+                        "Penulis",
+                        "Penerjemah",
+                        "Jurnalis"
+                    ]
+                }
+            }
+        ],
+        "nilai_mat": 88,
+        "nilai_bhs": 82,
+        "nilai_ipa": 52,
+        "nilai_ips": 56,
+        "minat_tek": 5,
+        "minat_sen": 4,
+        "minat_bis": 5,
+        "minat_kes": 4,
+        "created_at": "2026-06-19T07:15:45.880Z"
+    }
+},
+{
+    "model": "rekomendasi.hasilrekomendasi",
+    "pk": 17,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "jurusan": "Pendidikan",
+        "top3_data": [
+            {
+                "jurusan": "Pendidikan",
+                "persen": 16.5,
+                "info": {
+                    "icon": "🎓",
+                    "deskripsi": "Panggilan jiwa untuk mencerdaskan generasi bangsa.",
+                    "prospek": [
+                        "Guru",
+                        "Dosen",
+                        "Konselor Pendidikan"
+                    ]
+                }
+            },
+            {
+                "jurusan": "Teknik Informatika",
+                "persen": 15.5,
+                "info": {
+                    "icon": "💻",
+                    "deskripsi": "Cocok untuk yang suka logika, coding, dan teknologi.",
+                    "prospek": [
+                        "Software Engineer",
+                        "Data Scientist",
+                        "Cybersecurity"
+                    ]
+                }
+            },
+            {
+                "jurusan": "Sastra",
+                "persen": 15.1,
+                "info": {
+                    "icon": "📚",
+                    "deskripsi": "Untuk jiwa kreatif yang mencintai bahasa dan budaya.",
+                    "prospek": [
+                        "Penulis",
+                        "Penerjemah",
+                        "Jurnalis"
+                    ]
+                }
+            }
+        ],
+        "nilai_mat": 78,
+        "nilai_bhs": 71,
+        "nilai_ipa": 55,
+        "nilai_ips": 53,
+        "minat_tek": 3,
+        "minat_sen": 3,
+        "minat_bis": 3,
+        "minat_kes": 3,
+        "created_at": "2026-06-19T07:17:27.794Z"
+    }
+},
+{
+    "model": "rekomendasi.hasilrekomendasi",
+    "pk": 18,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "jurusan": "Teknik Informatika",
+        "top3_data": [
+            {
+                "jurusan": "Teknik Informatika",
+                "persen": 19.6,
+                "info": {
+                    "icon": "💻",
+                    "deskripsi": "Cocok untuk yang suka logika, coding, dan teknologi.",
+                    "prospek": [
+                        "Software Engineer",
+                        "Data Scientist",
+                        "Cybersecurity"
+                    ]
+                }
+            },
+            {
+                "jurusan": "Manajemen",
+                "persen": 18.1,
+                "info": {
+                    "icon": "📊",
+                    "deskripsi": "Tepat untuk yang suka strategi bisnis dan kepemimpinan.",
+                    "prospek": [
+                        "Manajer",
+                        "Konsultan",
+                        "Entrepreneur"
+                    ]
+                }
+            },
+            {
+                "jurusan": "Akuntansi",
+                "persen": 17.0,
+                "info": {
+                    "icon": "🧾",
+                    "deskripsi": "Cocok untuk yang teliti, suka angka dan keuangan.",
+                    "prospek": [
+                        "Akuntan",
+                        "Auditor",
+                        "Analis Keuangan"
+                    ]
+                }
+            }
+        ],
+        "nilai_mat": 100,
+        "nilai_bhs": 65,
+        "nilai_ipa": 100,
+        "nilai_ips": 65,
+        "minat_tek": 5,
+        "minat_sen": 2,
+        "minat_bis": 5,
+        "minat_kes": 3,
+        "created_at": "2026-06-20T06:46:14.280Z"
+    }
+},
+{
+    "model": "rekomendasi.hasilrekomendasi",
+    "pk": 19,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "jurusan": "Teknik Informatika",
+        "top3_data": [
+            {
+                "jurusan": "Teknik Informatika",
+                "persen": 19.9,
+                "info": {
+                    "icon": "💻",
+                    "deskripsi": "Cocok untuk yang suka logika, coding, dan teknologi.",
+                    "prospek": [
+                        "Software Engineer",
+                        "Data Scientist",
+                        "Cybersecurity"
+                    ]
+                }
+            },
+            {
+                "jurusan": "Manajemen",
+                "persen": 17.9,
+                "info": {
+                    "icon": "📊",
+                    "deskripsi": "Tepat untuk yang suka strategi bisnis dan kepemimpinan.",
+                    "prospek": [
+                        "Manajer",
+                        "Konsultan",
+                        "Entrepreneur"
+                    ]
+                }
+            },
+            {
+                "jurusan": "Akuntansi",
+                "persen": 16.6,
+                "info": {
+                    "icon": "🧾",
+                    "deskripsi": "Cocok untuk yang teliti, suka angka dan keuangan.",
+                    "prospek": [
+                        "Akuntan",
+                        "Auditor",
+                        "Analis Keuangan"
+                    ]
+                }
+            }
+        ],
+        "nilai_mat": 100,
+        "nilai_bhs": 65,
+        "nilai_ipa": 100,
+        "nilai_ips": 50,
+        "minat_tek": 5,
+        "minat_sen": 2,
+        "minat_bis": 5,
+        "minat_kes": 3,
+        "created_at": "2026-06-20T07:08:21.236Z"
+    }
+},
+{
+    "model": "rekomendasi.jurusaninfo",
+    "pk": 1,
+    "fields": {
+        "nama": "Teknik Informatika",
+        "icon": "💻",
+        "deskripsi": "Cocok untuk yang suka logika, coding, dan teknologi.",
+        "prospek": [
+            "Software Engineer",
+            "Data Scientist",
+            "Cybersecurity"
+        ],
+        "is_active": true,
+        "created_at": "2026-06-15T00:52:50.433Z",
+        "updated_at": "2026-06-15T00:52:50.433Z"
+    }
+},
+{
+    "model": "rekomendasi.jurusaninfo",
+    "pk": 2,
+    "fields": {
+        "nama": "Kedokteran",
+        "icon": "🩺",
+        "deskripsi": "Ideal untuk jiwa yang peduli kesehatan dan suka ilmu alam.",
+        "prospek": [
+            "Dokter Umum",
+            "Spesialis",
+            "Peneliti Medis"
+        ],
+        "is_active": true,
+        "created_at": "2026-06-15T00:52:50.444Z",
+        "updated_at": "2026-06-15T00:52:50.444Z"
+    }
+},
+{
+    "model": "rekomendasi.jurusaninfo",
+    "pk": 3,
+    "fields": {
+        "nama": "Manajemen",
+        "icon": "📊",
+        "deskripsi": "Tepat untuk yang suka strategi bisnis dan kepemimpinan.",
+        "prospek": [
+            "Manajer",
+            "Konsultan",
+            "Entrepreneur"
+        ],
+        "is_active": true,
+        "created_at": "2026-06-15T00:52:50.449Z",
+        "updated_at": "2026-06-15T00:52:50.449Z"
+    }
+},
+{
+    "model": "rekomendasi.jurusaninfo",
+    "pk": 4,
+    "fields": {
+        "nama": "Sastra",
+        "icon": "📚",
+        "deskripsi": "Untuk jiwa kreatif yang mencintai bahasa dan budaya.",
+        "prospek": [
+            "Penulis",
+            "Penerjemah",
+            "Jurnalis"
+        ],
+        "is_active": true,
+        "created_at": "2026-06-15T00:52:50.455Z",
+        "updated_at": "2026-06-15T00:52:50.455Z"
+    }
+},
+{
+    "model": "rekomendasi.jurusaninfo",
+    "pk": 5,
+    "fields": {
+        "nama": "Akuntansi",
+        "icon": "🧾",
+        "deskripsi": "Cocok untuk yang teliti, suka angka dan keuangan.",
+        "prospek": [
+            "Akuntan",
+            "Auditor",
+            "Analis Keuangan"
+        ],
+        "is_active": true,
+        "created_at": "2026-06-15T00:52:50.460Z",
+        "updated_at": "2026-06-15T00:52:50.460Z"
+    }
+},
+{
+    "model": "rekomendasi.jurusaninfo",
+    "pk": 6,
+    "fields": {
+        "nama": "Biologi",
+        "icon": "🔬",
+        "deskripsi": "Untuk pecinta alam, lingkungan, dan ilmu kehidupan.",
+        "prospek": [
+            "Peneliti",
+            "Farmasis",
+            "Ahli Lingkungan"
+        ],
+        "is_active": true,
+        "created_at": "2026-06-15T00:52:50.464Z",
+        "updated_at": "2026-06-15T00:52:50.464Z"
+    }
+},
+{
+    "model": "rekomendasi.jurusaninfo",
+    "pk": 7,
+    "fields": {
+        "nama": "Pendidikan",
+        "icon": "🎓",
+        "deskripsi": "Panggilan jiwa untuk mencerdaskan generasi bangsa.",
+        "prospek": [
+            "Guru",
+            "Dosen",
+            "Konselor Pendidikan"
+        ],
+        "is_active": true,
+        "created_at": "2026-06-15T00:52:50.469Z",
+        "updated_at": "2026-06-15T00:52:50.469Z"
+    }
+},
+{
+    "model": "rekomendasi.artikel",
+    "pk": 1,
+    "fields": {
+        "judul": "Tips Memilih Jurusan Kuliah Yang Tepat",
+        "konten": "Memilih jurusan kuliah adalah keputusan penting...",
+        "kategori": "Tips",
+        "is_published": true,
+        "created_at": "2026-06-15T00:52:50.482Z",
+        "updated_at": "2026-06-19T06:44:36.341Z"
+    }
+},
+{
+    "model": "rekomendasi.artikel",
+    "pk": 2,
+    "fields": {
+        "judul": "Perbedaan IPA & IPS di Perguruan Tinggi",
+        "konten": "Banyak siswa bingung antara jalur IPA dan IPS...",
+        "kategori": "Panduan",
+        "is_published": true,
+        "created_at": "2026-06-15T00:52:50.486Z",
+        "updated_at": "2026-06-19T06:44:23.814Z"
+    }
+},
+{
+    "model": "rekomendasi.faq",
+    "pk": 1,
+    "fields": {
+        "pertanyaan": "Apakah rekomendasi ini akurat?",
+        "jawaban": "Model kami memiliki akurasi 91% berdasarkan dataset akademik nyata.",
+        "urutan": 1,
+        "is_active": true,
+        "created_at": "2026-06-15T00:52:50.491Z"
+    }
+},
+{
+    "model": "rekomendasi.faq",
+    "pk": 2,
+    "fields": {
+        "pertanyaan": "Bisakah saya tes berkali-kali?",
+        "jawaban": "Ya, tidak ada batasan jumlah tes yang bisa dilakukan.",
+        "urutan": 2,
+        "is_active": true,
+        "created_at": "2026-06-15T00:52:50.496Z"
+    }
+},
+{
+    "model": "rekomendasi.faq",
+    "pk": 3,
+    "fields": {
+        "pertanyaan": "Apakah data saya disimpan?",
+        "jawaban": "Data tes disimpan secara anonim untuk keperluan peningkatan model.",
+        "urutan": 3,
+        "is_active": true,
+        "created_at": "2026-06-15T00:52:50.500Z"
+    }
+},
+{
+    "model": "rekomendasi.modelversion",
+    "pk": 1,
+    "fields": {
+        "versi": "1.0",
+        "akurasi": 0.91,
+        "algoritma": "Decision Tree",
+        "dataset_size": 1000,
+        "status": "archived",
+        "catatan": "Model awal JurusanKu ID AI",
+        "created_at": "2026-06-15T00:52:50.477Z",
+        "created_by": [
+            "admin"
+        ]
+    }
+},
+{
+    "model": "rekomendasi.modelversion",
+    "pk": 2,
+    "fields": {
+        "versi": "1.1",
+        "akurasi": 0.9254000000000001,
+        "algoritma": "Ensemble (Voting)",
+        "dataset_size": 1001,
+        "status": "archived",
+        "catatan": "Retrain otomatis via feedback user",
+        "created_at": "2026-06-15T02:05:27.099Z",
+        "created_by": [
+            "siswa"
+        ]
+    }
+},
+{
+    "model": "rekomendasi.modelversion",
+    "pk": 3,
+    "fields": {
+        "versi": "1.2",
+        "akurasi": 0.9453,
+        "algoritma": "Ensemble (Voting)",
+        "dataset_size": 1002,
+        "status": "archived",
+        "catatan": "Retrain otomatis via feedback user",
+        "created_at": "2026-06-15T02:05:39.633Z",
+        "created_by": [
+            "siswa"
+        ]
+    }
+},
+{
+    "model": "rekomendasi.modelversion",
+    "pk": 4,
+    "fields": {
+        "versi": "1.3",
+        "akurasi": 0.9204000000000001,
+        "algoritma": "Ensemble (Voting)",
+        "dataset_size": 1003,
+        "status": "archived",
+        "catatan": "Retrain otomatis via feedback user",
+        "created_at": "2026-06-15T02:10:49.493Z",
+        "created_by": [
+            "siswa"
+        ]
+    }
+},
+{
+    "model": "rekomendasi.modelversion",
+    "pk": 5,
+    "fields": {
+        "versi": "1.4",
+        "akurasi": 0.9303,
+        "algoritma": "Ensemble (Voting)",
+        "dataset_size": 1004,
+        "status": "archived",
+        "catatan": "Retrain otomatis via feedback user",
+        "created_at": "2026-06-15T02:27:16.189Z",
+        "created_by": [
+            "siswa"
+        ]
+    }
+},
+{
+    "model": "rekomendasi.modelversion",
+    "pk": 6,
+    "fields": {
+        "versi": "1.5",
+        "akurasi": 0.8656999999999999,
+        "algoritma": "Ensemble (Voting)",
+        "dataset_size": 1005,
+        "status": "archived",
+        "catatan": "Retrain otomatis via feedback user",
+        "created_at": "2026-06-15T13:05:31.469Z",
+        "created_by": [
+            "siswa"
+        ]
+    }
+},
+{
+    "model": "rekomendasi.modelversion",
+    "pk": 7,
+    "fields": {
+        "versi": "1.6",
+        "akurasi": 0.9158,
+        "algoritma": "Ensemble (Voting)",
+        "dataset_size": 1006,
+        "status": "archived",
+        "catatan": "Retrain otomatis via feedback user",
+        "created_at": "2026-06-19T05:45:45.169Z",
+        "created_by": [
+            "siswa"
+        ]
+    }
+},
+{
+    "model": "rekomendasi.modelversion",
+    "pk": 8,
+    "fields": {
+        "versi": "1.7",
+        "akurasi": 0.9158,
+        "algoritma": "Ensemble (Voting)",
+        "dataset_size": 1007,
+        "status": "archived",
+        "catatan": "Retrain otomatis via feedback user",
+        "created_at": "2026-06-19T07:16:32.744Z",
+        "created_by": [
+            "admin"
+        ]
+    }
+},
+{
+    "model": "rekomendasi.modelversion",
+    "pk": 9,
+    "fields": {
+        "versi": "1.8",
+        "akurasi": 0.925,
+        "algoritma": "Ensemble (Voting)",
+        "dataset_size": 1008,
+        "status": "archived",
+        "catatan": "Retrain otomatis via feedback user",
+        "created_at": "2026-06-20T06:39:59.614Z",
+        "created_by": [
+            "admin"
+        ]
+    }
+},
+{
+    "model": "rekomendasi.modelversion",
+    "pk": 10,
+    "fields": {
+        "versi": "1.9",
+        "akurasi": 0.925,
+        "algoritma": "Ensemble (Voting)",
+        "dataset_size": 1009,
+        "status": "archived",
+        "catatan": "Retrain otomatis via feedback user",
+        "created_at": "2026-06-20T06:46:31.600Z",
+        "created_by": [
+            "admin"
+        ]
+    }
+},
+{
+    "model": "rekomendasi.modelversion",
+    "pk": 11,
+    "fields": {
+        "versi": "2.0",
+        "akurasi": 0.925,
+        "algoritma": "Ensemble (Voting)",
+        "dataset_size": 1010,
+        "status": "archived",
+        "catatan": "Retrain otomatis via feedback user",
+        "created_at": "2026-06-20T06:47:15.999Z",
+        "created_by": [
+            "siswa"
+        ]
+    }
+},
+{
+    "model": "rekomendasi.modelversion",
+    "pk": 12,
+    "fields": {
+        "versi": "2.1",
+        "akurasi": 0.925,
+        "algoritma": "Ensemble (Voting)",
+        "dataset_size": 1011,
+        "status": "active",
+        "catatan": "Retrain otomatis via feedback user",
+        "created_at": "2026-06-20T07:08:35.433Z",
+        "created_by": [
+            "admin"
+        ]
+    }
+},
+{
+    "model": "rekomendasi.testimoni",
+    "pk": 1,
+    "fields": {
+        "user": [
+            "rian"
+        ],
+        "bintang": 5,
+        "ulasan": "JurusanKu ID AI benar-benar membantu saya yang awalnya bingung antara memilih Teknik Informatika atau Manajemen Bisnis. Rekomendasi 91% akurat!",
+        "is_active": true,
+        "created_at": "2026-06-15T01:54:24.397Z"
+    }
+},
+{
+    "model": "rekomendasi.testimoni",
+    "pk": 2,
+    "fields": {
+        "user": [
+            "dewi"
+        ],
+        "bintang": 5,
+        "ulasan": "Sangat intuitif dan mudah dipahami. Hasil rekomendasinya didukung penjelasan prospek karir yang detail. Highly recommended!",
+        "is_active": true,
+        "created_at": "2026-06-15T01:54:24.404Z"
+    }
+},
+{
+    "model": "rekomendasi.testimoni",
+    "pk": 3,
+    "fields": {
+        "user": [
+            "andi"
+        ],
+        "bintang": 4,
+        "ulasan": "Fitur kalkulator PTN dan riwayat poin gamifikasinya seru banget. Bikin kita termotivasi buat terus belajar dan mengeksplorasi jurusan!",
+        "is_active": true,
+        "created_at": "2026-06-15T01:54:24.409Z"
+    }
+},
+{
+    "model": "rekomendasi.testimoni",
+    "pk": 4,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "bintang": 5,
+        "ulasan": "Mantap",
+        "is_active": true,
+        "created_at": "2026-06-15T13:09:34.921Z"
+    }
+},
+{
+    "model": "rekomendasi.forumpost",
+    "pk": 1,
+    "fields": {
+        "user": [
+            "rian"
+        ],
+        "judul": "Tips belajar persiapan UTBK Informatika",
+        "konten": "Halo semuanya, bagi yang dapet rekomendasi Teknik Informatika, apa persiapan kalian buat UTBK nanti? Share tips belajarnya dong!",
+        "kategori": "UTBK",
+        "created_at": "2026-06-15T01:54:24.415Z",
+        "updated_at": "2026-06-15T01:54:24.415Z"
+    }
+},
+{
+    "model": "rekomendasi.forumpost",
+    "pk": 2,
+    "fields": {
+        "user": [
+            "dewi"
+        ],
+        "judul": "Apakah prospek kerja Sistem Informasi masih bagus?",
+        "konten": "Saya tertarik masuk Sistem Informasi atau IT, tapi denger-denger persaingan kerja ketat banget ya? Gimana tanggapan kalian?",
+        "kategori": "Jurusan",
+        "created_at": "2026-06-15T01:54:24.429Z",
+        "updated_at": "2026-06-15T01:54:24.429Z"
+    }
+},
+{
+    "model": "rekomendasi.forumpost",
+    "pk": 3,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "judul": "Rekomendasi laptop untuk anak kuliahan IT",
+        "konten": "Ada saran ga laptop budget 7-10 jutaan yang awet dan kuat buat coding selama kuliah nanti? Terima kasih.",
+        "kategori": "Umum",
+        "created_at": "2026-06-15T01:54:32.427Z",
+        "updated_at": "2026-06-15T01:54:32.427Z"
+    }
+},
+{
+    "model": "rekomendasi.forumcomment",
+    "pk": 1,
+    "fields": {
+        "post": 1,
+        "user": [
+            "admin"
+        ],
+        "konten": "Persiapannya fokus di penalaran matematika dan TPA ya! Jangan lupa latihan coding dasar juga.",
+        "created_at": "2026-06-15T01:54:24.420Z"
+    }
+},
+{
+    "model": "rekomendasi.forumcomment",
+    "pk": 2,
+    "fields": {
+        "post": 1,
+        "user": [
+            "siswa"
+        ],
+        "konten": "Mantap kak Rian! Aku juga lagi tryout UTBK terus nih.",
+        "created_at": "2026-06-15T01:54:24.425Z"
+    }
+},
+{
+    "model": "rekomendasi.forumcomment",
+    "pk": 3,
+    "fields": {
+        "post": 2,
+        "user": [
+            "admin"
+        ],
+        "konten": "Prospek kerja IT sangat luas, dari developer, data analyst, sampai UI/UX. Yang terpenting asah skill portofolio kalian.",
+        "created_at": "2026-06-15T01:54:24.434Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 1,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-15T11:07:55.089Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 2,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-15T11:31:18.723Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 3,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-15T11:41:20.079Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 4,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-15T11:43:40.607Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 5,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-15T11:43:56.676Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 6,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-15T11:46:03.815Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 7,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-15T11:46:22.977Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 8,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-15T11:54:52.563Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 9,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-15T11:55:02.179Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 10,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-15T11:55:19.649Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 11,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-15T11:55:24.655Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 12,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-15T12:09:08.569Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 13,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-15T12:09:14.266Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 14,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-15T12:52:46.201Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 15,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-15T13:23:54.876Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 16,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-15T13:24:02.556Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 17,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-15T13:37:51.124Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 18,
+    "fields": {
+        "user": null,
+        "username": "admin",
+        "jenis": "login_gagal",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Password salah untuk username: admin",
+        "created_at": "2026-06-17T00:10:00.858Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 19,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-17T00:10:17.905Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 20,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-17T00:33:37.120Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 21,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-17T00:33:46.458Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 22,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-17T00:43:27.313Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 23,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1",
+        "keterangan": "User logout",
+        "created_at": "2026-06-17T00:55:02.909Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 24,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-17T01:00:00.722Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 25,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-17T01:06:50.242Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 26,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-17T01:16:08.568Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 27,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-17T01:49:21.520Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 28,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-17T01:49:30.693Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 29,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-17T01:57:41.580Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 30,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-17T01:57:49.966Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 31,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-17T02:11:27.121Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 32,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-17T02:11:40.953Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 33,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-17T02:23:11.377Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 34,
+    "fields": {
+        "user": null,
+        "username": "admin",
+        "jenis": "login_gagal",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Password salah untuk username: admin",
+        "created_at": "2026-06-17T02:25:32.073Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 35,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-17T02:25:37.662Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 36,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-17T02:34:52.424Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 37,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-17T02:35:00.314Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 38,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-17T02:35:21.026Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 39,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-17T22:58:09.347Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 40,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-17T23:00:01.594Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 41,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-17T23:00:08.659Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 42,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-17T23:00:25.050Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 43,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-17T23:00:35.992Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 44,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-17T23:02:35.412Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 45,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-17T23:02:45.632Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 46,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-17T23:08:38.570Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 47,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-18T00:01:00.854Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 48,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-18T00:01:12.769Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 49,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-18T00:01:36.203Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 50,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-18T00:02:04.456Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 51,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-18T00:03:47.870Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 52,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-18T00:04:31.285Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 53,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-18T00:07:08.512Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 54,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-18T00:07:28.256Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 55,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-18T00:12:15.144Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 56,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-18T00:13:19.863Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 57,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-18T00:13:28.639Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 58,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-18T05:48:15.516Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 59,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-18T05:56:06.761Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 60,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-18T05:56:14.945Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 61,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-18T06:04:15.772Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 62,
+    "fields": {
+        "user": null,
+        "username": "Prince",
+        "jenis": "captcha_gagal",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Register CAPTCHA gagal: Jawaban CAPTCHA salah. Coba lagi.",
+        "created_at": "2026-06-18T06:05:06.602Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 63,
+    "fields": {
+        "user": null,
+        "username": "Prince",
+        "jenis": "captcha_gagal",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Register CAPTCHA gagal: Jawaban CAPTCHA salah. Coba lagi.",
+        "created_at": "2026-06-18T06:05:49.797Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 64,
+    "fields": {
+        "user": null,
+        "username": "Prince",
+        "jenis": "captcha_gagal",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Register CAPTCHA gagal: Jawaban CAPTCHA salah. Coba lagi.",
+        "created_at": "2026-06-18T06:06:47.479Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 65,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-18T06:12:07.651Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 66,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-18T06:16:46.200Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 67,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-18T06:16:53.515Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 68,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-18T06:17:21.772Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 69,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-18T06:17:38.643Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 70,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-18T06:23:22.466Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 71,
+    "fields": {
+        "user": null,
+        "username": "user",
+        "jenis": "login_gagal",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Password salah untuk username: user",
+        "created_at": "2026-06-18T06:23:36.144Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 72,
+    "fields": {
+        "user": null,
+        "username": "user",
+        "jenis": "login_gagal",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Password salah untuk username: user",
+        "created_at": "2026-06-18T06:23:43.846Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 73,
+    "fields": {
+        "user": null,
+        "username": "admin",
+        "jenis": "login_gagal",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Password salah untuk username: admin",
+        "created_at": "2026-06-18T06:23:50.450Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 74,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-18T06:24:06.484Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 75,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-18T06:24:13.520Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 76,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-18T06:24:28.545Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 77,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-18T10:39:15.658Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 78,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-18T12:28:54.717Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 79,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-18T13:07:01.895Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 80,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-18T13:11:58.098Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 81,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-18T13:12:08.127Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 82,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-18T13:12:42.219Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 83,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-19T05:10:14.817Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 84,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-19T05:19:08.320Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 85,
+    "fields": {
+        "user": [
+            "Prince"
+        ],
+        "username": "Prince",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Register dan login berhasil",
+        "created_at": "2026-06-19T05:19:45.040Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 86,
+    "fields": {
+        "user": [
+            "Prince"
+        ],
+        "username": "Prince",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-19T05:20:34.659Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 87,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-19T05:20:57.685Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 88,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-19T05:28:49.898Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 89,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-19T05:40:25.382Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 90,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-19T05:42:00.697Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 91,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-19T05:44:46.067Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 92,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-19T05:47:21.956Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 93,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-19T05:47:34.525Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 94,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-19T05:53:46.451Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 95,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-19T05:53:53.863Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 96,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-19T05:54:21.154Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 97,
+    "fields": {
+        "user": null,
+        "username": "admin",
+        "jenis": "login_gagal",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Password salah untuk username: admin",
+        "created_at": "2026-06-19T05:54:31.685Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 98,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-19T05:54:38.859Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 99,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-19T05:54:49.386Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 100,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-19T05:55:02.055Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 101,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-19T05:56:38.141Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 102,
+    "fields": {
+        "user": null,
+        "username": "admin",
+        "jenis": "login_gagal",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Password salah untuk username: admin",
+        "created_at": "2026-06-19T05:56:47.535Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 103,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-19T05:56:54.288Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 104,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-19T06:31:05.961Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 105,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-19T06:36:44.427Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 106,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-19T06:36:53.941Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 107,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-19T06:37:17.522Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 108,
+    "fields": {
+        "user": [
+            "Prince"
+        ],
+        "username": "Prince",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-19T06:37:33.579Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 109,
+    "fields": {
+        "user": [
+            "Prince"
+        ],
+        "username": "Prince",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-19T06:37:48.083Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 110,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-19T06:37:55.790Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 111,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-19T06:48:36.192Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 112,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-19T06:48:43.404Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 113,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-19T06:49:52.310Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 114,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-19T06:50:03.196Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 115,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-19T09:22:22.170Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 116,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-19T09:28:40.033Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 117,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-19T09:28:47.321Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 118,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-19T09:32:46.963Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 119,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-19T10:12:35.870Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 120,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-19T10:15:51.430Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 121,
+    "fields": {
+        "user": null,
+        "username": "admin",
+        "jenis": "login_gagal",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Password salah untuk username: admin",
+        "created_at": "2026-06-19T10:16:34.007Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 122,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-19T10:16:39.346Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 123,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-19T10:52:50.239Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 124,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-19T10:53:05.342Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 125,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-19T11:13:10.558Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 126,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-19T11:24:48.367Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 127,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-19T11:25:08.142Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 128,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-19T11:25:16.438Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 129,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-19T12:11:53.375Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 130,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-19T12:12:13.114Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 131,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-19T13:27:28.132Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 132,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-19T13:27:50.202Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 133,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-19T13:27:56.019Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 134,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-19T13:28:12.596Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 135,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-19T13:28:21.764Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 136,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-20T06:38:51.631Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 137,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-20T06:39:08.044Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 138,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-20T06:39:16.538Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 139,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-20T06:43:20.729Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 140,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-20T06:44:57.087Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 141,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-20T06:46:41.177Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 142,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-20T06:46:54.642Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 143,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-20T06:51:45.596Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 144,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-20T06:51:54.102Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 145,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-20T07:02:38.076Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 146,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-20T07:06:26.583Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 147,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-20T07:07:09.219Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 148,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-20T07:08:51.906Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 149,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-20T07:08:57.502Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 150,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "User logout",
+        "created_at": "2026-06-20T07:30:44.436Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 151,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-20T10:37:47.084Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 152,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-20T11:12:29.285Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 153,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "username": "admin",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1",
+        "keterangan": "User logout",
+        "created_at": "2026-06-20T11:16:05.236Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 154,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "login_sukses",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1",
+        "keterangan": "Login berhasil",
+        "created_at": "2026-06-20T11:16:14.354Z"
+    }
+},
+{
+    "model": "rekomendasi.aktivitaslog",
+    "pk": 155,
+    "fields": {
+        "user": [
+            "siswa"
+        ],
+        "username": "siswa",
+        "jenis": "logout",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1",
+        "keterangan": "User logout",
+        "created_at": "2026-06-20T11:17:11.295Z"
+    }
+}
+]

@@ -98,7 +98,7 @@ body{font-family:'Inter',sans-serif;background:#f8fafc;color:#1e293b;padding:2.5
 
 <div id="printArea">
   <div class="header">
-    <div class="logo">EduPath</div>
+    <div class="logo">JurusanKu ID</div>
     <div class="sub">Sistem Rekomendasi Jurusan Berbasis Machine Learning</div>
     <div class="meta-info">
       Tanggal Tes: {{ hasil.created_at|date:"d F Y, H:i" }} &nbsp;·&nbsp; Nama Siswa: {{ user.get_full_name|default:user.username }}
@@ -141,7 +141,7 @@ body{font-family:'Inter',sans-serif;background:#f8fafc;color:#1e293b;padding:2.5
   </div>
 
   <div class="footer">
-    Dokumen Ini Dihasilkan Secara Otomatis Oleh EduPath — Sistem Rekomendasi Jurusan pintar.<br>
+    Dokumen Ini Dihasilkan Secara Otomatis Oleh JurusanKu ID — Sistem Rekomendasi Jurusan pintar.<br>
     Akurasi model klasifikasi saat ini: 91% · Didukung oleh Algoritma Decision Tree ML.
   </div>
 </div>
@@ -204,7 +204,7 @@ body{font-family:'Inter',sans-serif;background:#f8fafc;color:#1e293b;padding:2.5
     
     const opt = {
       margin:       [10, 10, 10, 10],
-      filename:     `Hasil_Rekomendasi_EduPath_${namaSiswa}.pdf`,
+      filename:     `Hasil_Rekomendasi_JurusanKu_ID_${namaSiswa}.pdf`,
       image:        { type: 'jpeg', quality: 0.98 },
       html2canvas:  { scale: 2, useCORS: true, logging: false },
       jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
