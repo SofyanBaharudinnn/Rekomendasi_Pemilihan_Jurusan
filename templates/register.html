@@ -867,16 +867,19 @@ function adjustFont(dir) {
 }
 
 
-// ── MAGNETIC BUTTONS ──
-
 // ── CUSTOM CURSOR ──
 const cursorEl = document.getElementById('custom-cursor');
-document.addEventListener('mousemove', (e) => {
-  cursorEl.style.left = e.clientX + 'px';
-  cursorEl.style.top = e.clientY + 'px';
-});
+const isMobileDevice = window.matchMedia("(max-width: 768px)").matches || ('ontouchstart' in window);
+
+if (!isMobileDevice) {
+  document.addEventListener('mousemove', (e) => {
+    cursorEl.style.left = e.clientX + 'px';
+    cursorEl.style.top = e.clientY + 'px';
+  });
+}
 
 function initCursorHover() {
+  if (isMobileDevice) return;
   document.querySelectorAll('a, button, [role="button"], .card, input, select, textarea').forEach(el => {
     el.addEventListener('mouseenter', () => {
       cursorEl.classList.add('hovered');
@@ -890,6 +893,7 @@ function initCursorHover() {
 }
 
 function initMagneticButtons() {
+  if (isMobileDevice) return;
   document.querySelectorAll('.btn-submit, .access-toggle-btn').forEach(btn => {
     btn.addEventListener('mousemove', (e) => {
       const rect = btn.getBoundingClientRect();

@@ -304,3 +304,23 @@ class AktivitasLog(models.Model):
         u = self.username or (self.user.username if self.user else 'anonim')
         return f"[{self.get_jenis_display()}] {u} — {self.created_at.strftime('%d/%m %H:%M')}"
 
+
+# ─── PESAN KONTAK (HUBUNGI KAMI) ──────────────────────────────────────────────
+class PesanKontak(models.Model):
+    nama       = models.CharField(max_length=150)
+    sekolah    = models.CharField(max_length=200)
+    telepon    = models.CharField(max_length=20)
+    email      = models.EmailField()
+    subjek     = models.CharField(max_length=200)
+    pesan      = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = 'Pesan Kontak'
+        verbose_name_plural = 'Pesan Kontak'
+
+    def __str__(self):
+        return f"{self.nama} — {self.subjek}"
+
+

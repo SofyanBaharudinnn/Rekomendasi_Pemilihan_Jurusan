@@ -3,7 +3,7 @@ from django.contrib import admin
 from .models import (
     ProfilSiswa, UserBadge, RiwayatPoin, JurusanDetail,
     HasilRekomendasi, JurusanInfo, Artikel, FAQ, ModelVersion,
-    Testimoni, ForumPost, ForumComment, AktivitasLog
+    Testimoni, ForumPost, ForumComment, AktivitasLog, PesanKontak
 )
 
 admin.site.register(ProfilSiswa)
@@ -18,6 +18,7 @@ admin.site.register(ModelVersion)
 admin.site.register(Testimoni)
 admin.site.register(ForumPost)
 admin.site.register(ForumComment)
+admin.site.register(PesanKontak)
 
 
 @admin.register(AktivitasLog)

@@ -15,14 +15,14 @@ from django.views.decorators.http import require_http_methods, require_POST
 # pyrefly: ignore [missing-import]
 from django.utils import timezone
 # pyrefly: ignore [missing-import]
-from django.db.models import Count, Avg
+from django.db.models import Count, Avg, Q
 # pyrefly: ignore [missing-import]
 from django.conf import settings as django_settings
 from functools import wraps
 from .models import (HasilRekomendasi, JurusanInfo, JurusanDetail,
                      Artikel, FAQ, ModelVersion,
                      ProfilSiswa, UserBadge, RiwayatPoin,
-                     Testimoni, ForumPost, ForumComment, AktivitasLog)
+                     Testimoni, ForumPost, ForumComment, AktivitasLog, PesanKontak)
 from .security import (
     generate_captcha, validate_captcha, set_captcha_session,
     log_activity,
@@ -1385,4 +1385,71 @@ def api_activity_log_clear(request):
     cutoff = tz.now() - timedelta(days=30)
     deleted, _ = AktivitasLog.objects.filter(created_at__lt=cutoff).delete()
     return JsonResponse({'success': True, 'deleted': deleted})
+
+
+@require_POST
+def api_kontak_submit(request):
+    """Menerima input dari form Hubungi Kami (kontak) dan menyimpannya di DB."""
+    try:
+        data = json.loads(request.body)
+        nama = data.get('nama', '').strip()
+        sekolah = data.get('sekolah', '').strip()
+        telepon = data.get('telepon', '').strip()
+        email = data.get('email', '').strip()
+        subjek = data.get('subjek', '').strip()
+        pesan = data.get('pesan', '').strip()
+
+        if not (nama and sekolah and telepon and email and subjek and pesan):
+            return JsonResponse({'error': 'Semua field wajib diisi.'}, status=400)
+
+        # Simpan ke DB
+        PesanKontak.objects.create(
+            nama=nama, sekolah=sekolah, telepon=telepon,
+            email=email, subjek=subjek, pesan=pesan
+        )
+        return JsonResponse({'success': True, 'message': 'Pesan Anda berhasil dikirim!'})
+    except Exception as e:
+        return JsonResponse({'error': f'Terjadi kesalahan: {str(e)}'}, status=500)
+
+
+@admin_required
+def api_admin_pesan_list(request):
+    """Mengembalikan daftar pesan kontak untuk admin."""
+    pesan_qs = PesanKontak.objects.all()
+    
+    # Filter pencarian
+    q = request.GET.get('q', '').strip()
+    if q:
+        pesan_qs = pesan_qs.filter(
+            Q(nama__icontains=q) |
+            Q(sekolah__icontains=q) |
+            Q(email__icontains=q) |
+            Q(subjek__icontains=q) |
+            Q(pesan__icontains=q)
+        )
+
+    data = []
+    for p in pesan_qs:
+        data.append({
+            'id': p.id,
+            'nama': p.nama,
+            'sekolah': p.sekolah,
+            'telepon': p.telepon,
+            'email': p.email,
+            'subjek': p.subjek,
+            'pesan': p.pesan,
+            'created_at': p.created_at.strftime('%d/%m/%Y %H:%M'),
+        })
+    return JsonResponse({'pesan': data, 'total': len(data)})
+
+
+@admin_required
+def api_admin_pesan_delete(request, pesan_id):
+    """Menghapus pesan kontak tertentu."""
+    if request.method != 'POST':
+        return JsonResponse({'error': 'Method not allowed'}, status=405)
+    pesan = get_object_or_404(PesanKontak, id=pesan_id)
+    pesan.delete()
+    return JsonResponse({'success': True})
+
 

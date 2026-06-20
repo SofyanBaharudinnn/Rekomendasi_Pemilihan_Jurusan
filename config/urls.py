@@ -84,4 +84,9 @@ urlpatterns = [
     path('api/admin/activity-log/',        views.api_activity_log,       name='api_activity_log'),
     path('api/admin/activity-log/clear/',  views.api_activity_log_clear, name='api_activity_log_clear'),
 
+    # ── Kontak (Hubungi Kami) API ──────────────────────────────────────
+    path('api/kontak/submit/', views.api_kontak_submit, name='api_kontak_submit'),
+    path('api/admin/pesan/', views.api_admin_pesan_list, name='api_admin_pesan_list'),
+    path('api/admin/pesan/<int:pesan_id>/delete/', views.api_admin_pesan_delete, name='api_admin_pesan_delete'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

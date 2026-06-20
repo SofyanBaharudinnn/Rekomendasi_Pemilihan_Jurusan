@@ -736,6 +736,12 @@ textarea.form-input {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(163, 230, 53, 0.35);
 }
+.spinner {
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
 
 /* Success Toast */
 .contact-toast {
@@ -1533,22 +1539,20 @@ textarea.form-input {
             <a href="mailto:hello@jurusanku.id">hello@jurusanku.id</a>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-  
   <div class="footer-bottom">
     <p>&copy; 2026 JurusanKu ID — Sistem Rekomendasi Jurusan Berbasis Decision Tree.</p>
   </div>
 </footer>
 
 <script>
+const isMobileDevice = window.matchMedia("(max-width: 768px)").matches || ('ontouchstart' in window);
+
 // ═══════════════════════════════════════
 // THREE.JS — PARTIKEL 3D & SHAPES
 // ═══════════════════════════════════════
 try {
   const canvas = document.getElementById('canvas-bg');
-  if (canvas && typeof THREE !== 'undefined') {
+  if (canvas && typeof THREE !== 'undefined' && !isMobileDevice) {
     const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
     renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -1626,8 +1630,8 @@ try {
   const heroCanvas = document.getElementById('hero-canvas');
   if (heroCanvas && typeof THREE !== 'undefined') {
     const SIZE = 560;
-    const heroRenderer = new THREE.WebGLRenderer({canvas: heroCanvas, alpha: true, antialias: true});
-    heroRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    const heroRenderer = new THREE.WebGLRenderer({canvas: heroCanvas, alpha: true, antialias: !isMobileDevice});
+    heroRenderer.setPixelRatio(isMobileDevice ? 1 : Math.min(window.devicePixelRatio, 2));
     heroRenderer.setSize(SIZE, SIZE);
     heroRenderer.setClearColor(0x000000, 0);
 
@@ -1650,7 +1654,7 @@ try {
     heroScene.add(pointLight3);
 
     // ── AI CORE SPHERE (center) ──
-    const coreGeo = new THREE.SphereGeometry(1.1, 64, 64);
+    const coreGeo = new THREE.SphereGeometry(1.1, isMobileDevice ? 16 : 64, isMobileDevice ? 16 : 64);
     const coreMat = new THREE.MeshPhongMaterial({
       color: 0x3b82f6,
       emissive: 0x1d4ed8,
@@ -1663,7 +1667,7 @@ try {
     heroScene.add(coreMesh);
 
     // Inner glowing core
-    const innerGeo = new THREE.SphereGeometry(0.65, 32, 32);
+    const innerGeo = new THREE.SphereGeometry(0.65, isMobileDevice ? 16 : 32, isMobileDevice ? 16 : 32);
     const innerMat = new THREE.MeshBasicMaterial({ color: 0x93c5fd, transparent: true, opacity: 0.5 });
     heroScene.add(new THREE.Mesh(innerGeo, innerMat));
 
@@ -1711,13 +1715,13 @@ try {
     ];
 
     const majorMeshes = majors.map(m => {
-      const geo = new THREE.SphereGeometry(m.size, 24, 24);
+      const geo = new THREE.SphereGeometry(m.size, isMobileDevice ? 8 : 24, isMobileDevice ? 8 : 24);
       const mat = new THREE.MeshPhongMaterial({
         color: m.color, emissive: m.color, emissiveIntensity: 0.55, shininess: 80,
       });
       const mesh = new THREE.Mesh(geo, mat);
       // small glow ring around node
-      const glowGeo = new THREE.RingGeometry(m.size * 1.4, m.size * 1.9, 24);
+      const glowGeo = new THREE.RingGeometry(m.size * 1.4, m.size * 1.9, isMobileDevice ? 8 : 24);
       const glowMat = new THREE.MeshBasicMaterial({ color: m.color, transparent: true, opacity: 0.22, side: THREE.DoubleSide });
       const glowRing = new THREE.Mesh(glowGeo, glowMat);
       mesh.add(glowRing);
@@ -1728,17 +1732,18 @@ try {
     // ── DATA STREAM PARTICLES (travel along orbit paths) ──
     const streamParticles = [];
     majors.forEach((m, i) => {
-      for (let p = 0; p < 5; p++) {
-        const partGeo = new THREE.SphereGeometry(0.035, 6, 6);
+      const numParticles = isMobileDevice ? 1 : 5;
+      for (let p = 0; p < numParticles; p++) {
+        const partGeo = new THREE.SphereGeometry(0.035, 4, 4);
         const partMat = new THREE.MeshBasicMaterial({ color: m.color, transparent: true, opacity: 0.75 });
         const part = new THREE.Mesh(partGeo, partMat);
         heroScene.add(part);
-        streamParticles.push({ mesh: part, orbitR: m.orbitR, incl: m.incl, phase: m.phase + (p / 5) * Math.PI * 2, speed: m.speed * 1.8 });
+        streamParticles.push({ mesh: part, orbitR: m.orbitR, incl: m.incl, phase: m.phase + (p / numParticles) * Math.PI * 2, speed: m.speed * 1.8 });
       }
     });
 
     // ── BACKGROUND STAR FIELD ──
-    const starCount = 320;
+    const starCount = isMobileDevice ? 60 : 320;
     const starPositions = new Float32Array(starCount * 3);
     for (let i = 0; i < starCount; i++) {
       const r = 18 + Math.random() * 30;
@@ -1769,78 +1774,72 @@ try {
 
     // ── MOUSE PARALLAX ──
     let heroMX = 0, heroMY = 0;
-    heroCanvas.addEventListener('mousemove', e => {
-      const rect = heroCanvas.getBoundingClientRect();
-      heroMX = ((e.clientX - rect.left) / SIZE - 0.5) * 2;
-      heroMY = -((e.clientY - rect.top) / SIZE - 0.5) * 2;
-    });
+    if (!isMobileDevice) {
+      heroCanvas.addEventListener('mousemove', e => {
+        const rect = heroCanvas.getBoundingClientRect();
+        heroMX = ((e.clientX - rect.left) / SIZE - 0.5) * 2;
+        heroMY = -((e.clientY - rect.top) / SIZE - 0.5) * 2;
+      });
+    }
 
     // ── ANIMATION LOOP ──
     const heroClock = new THREE.Clock();
     let camTargetX = 0, camTargetY = 2;
 
-    (function animateHero() {
-      requestAnimationFrame(animateHero);
-      const t = heroClock.getElapsedTime();
-
-      // Core pulse
-      const pulse = 1 + 0.04 * Math.sin(t * 2.2);
-      coreMesh.scale.setScalar(pulse);
-      innerMat.opacity = 0.35 + 0.18 * Math.sin(t * 1.8);
-      wireMesh.rotation.y = t * 0.15;
-      wireMesh.rotation.z = t * 0.08;
-
-      // Point light pulse
-      pointLight1.intensity = 5 + 2 * Math.sin(t * 1.5);
-
-      // Orbit ring slow drift
-      orbitRings.forEach((ring, i) => {
-        ring.rotation.z = t * 0.02 * (i % 2 === 0 ? 1 : -1);
-      });
-
-      // Major node orbit positions
+    if (isMobileDevice) {
+      const t = 1.5;
       majorMeshes.forEach(m => {
         const angle = t * m.speed + m.phase;
-        const x = Math.cos(angle) * m.orbitR;
-        const zRaw = Math.sin(angle) * m.orbitR;
-        // apply inclination
-        const y = zRaw * Math.sin(m.incl);
-        const z = zRaw * Math.cos(m.incl);
-        m.mesh.position.set(x, y, z);
-        // spin the node itself
+        m.mesh.position.set(Math.cos(angle) * m.orbitR, Math.sin(angle) * m.orbitR * Math.sin(m.incl), Math.sin(angle) * m.orbitR * Math.cos(m.incl));
         m.mesh.rotation.y = t * 1.2;
-        // glow ring face camera (billboard)
-        const glow = m.mesh.children[0];
-        if (glow) glow.rotation.x = t * 0.5;
       });
-
-      // Stream particles
       streamParticles.forEach(p => {
         const angle = t * p.speed + p.phase;
-        const x = Math.cos(angle) * p.orbitR;
-        const zRaw = Math.sin(angle) * p.orbitR;
-        const y = zRaw * Math.sin(p.incl);
-        const z = zRaw * Math.cos(p.incl);
-        p.mesh.position.set(x, y, z);
-        // fade in/out based on position
-        p.mesh.material.opacity = 0.3 + 0.5 * Math.abs(Math.sin(angle * 0.5));
+        p.mesh.position.set(Math.cos(angle) * p.orbitR, Math.sin(angle) * p.orbitR * Math.sin(p.incl), Math.sin(angle) * p.orbitR * Math.cos(p.incl));
       });
-
-      // Update connection lines every few frames for performance
-      if (Math.round(t * 60) % 3 === 0) updateConnLines(majorMeshes);
-
-      // Camera mouse parallax
-      camTargetX += (heroMX * 1.5 - camTargetX) * 0.04;
-      camTargetY += (2 + heroMY * 1.0 - camTargetY) * 0.04;
-      heroCamera.position.x = camTargetX;
-      heroCamera.position.y = camTargetY;
-      heroCamera.lookAt(0, 0, 0);
-
-      // Slow global scene tilt
-      heroScene.rotation.y = t * 0.06;
-
+      updateConnLines(majorMeshes);
       heroRenderer.render(heroScene, heroCamera);
-    })();
+    } else {
+      (function animateHero() {
+        requestAnimationFrame(animateHero);
+        const t = heroClock.getElapsedTime();
+        const pulse = 1 + 0.04 * Math.sin(t * 2.2);
+        coreMesh.scale.setScalar(pulse);
+        innerMat.opacity = 0.35 + 0.18 * Math.sin(t * 1.8);
+        wireMesh.rotation.y = t * 0.15;
+        wireMesh.rotation.z = t * 0.08;
+        pointLight1.intensity = 5 + 2 * Math.sin(t * 1.5);
+        orbitRings.forEach((ring, i) => { ring.rotation.z = t * 0.02 * (i % 2 === 0 ? 1 : -1); });
+        majorMeshes.forEach(m => {
+          const angle = t * m.speed + m.phase;
+          const x = Math.cos(angle) * m.orbitR;
+          const zRaw = Math.sin(angle) * m.orbitR;
+          const y = zRaw * Math.sin(m.incl);
+          const z = zRaw * Math.cos(m.incl);
+          m.mesh.position.set(x, y, z);
+          m.mesh.rotation.y = t * 1.2;
+          const glow = m.mesh.children[0];
+          if (glow) glow.rotation.x = t * 0.5;
+        });
+        streamParticles.forEach(p => {
+          const angle = t * p.speed + p.phase;
+          const x = Math.cos(angle) * p.orbitR;
+          const zRaw = Math.sin(angle) * p.orbitR;
+          const y = zRaw * Math.sin(p.incl);
+          const z = zRaw * Math.cos(p.incl);
+          p.mesh.position.set(x, y, z);
+          p.mesh.material.opacity = 0.3 + 0.5 * Math.abs(Math.sin(angle * 0.5));
+        });
+        if (Math.round(t * 60) % 3 === 0) updateConnLines(majorMeshes);
+        camTargetX += (heroMX * 1.5 - camTargetX) * 0.04;
+        camTargetY += (2 + heroMY * 1.0 - camTargetY) * 0.04;
+        heroCamera.position.x = camTargetX;
+        heroCamera.position.y = camTargetY;
+        heroCamera.lookAt(0, 0, 0);
+        heroScene.rotation.y = t * 0.06;
+        heroRenderer.render(heroScene, heroCamera);
+      })();
+    }
   }
 } catch (e) {
   console.warn("WebGL hero education galaxy failed to initialize:", e);
@@ -1892,11 +1891,14 @@ new IntersectionObserver((entries, observer)=>{
 
 // ── CUSTOM CURSOR ──
 const cursorEl = document.getElementById('custom-cursor');
-document.addEventListener('mousemove', (e) => {
-  cursorEl.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
-});
+if (!isMobileDevice) {
+  document.addEventListener('mousemove', (e) => {
+    cursorEl.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
+  });
+}
 
 function initCursorHover() {
+  if (isMobileDevice) return;
   document.querySelectorAll('a, button, [role="button"], .card, input, select, textarea').forEach(el => {
     el.addEventListener('mouseenter', () => {
       cursorEl.classList.add('hovered');
@@ -1910,6 +1912,7 @@ function initCursorHover() {
 }
 
 function initMagneticButtons() {
+  if (isMobileDevice) return;
   document.querySelectorAll('.btn-primary, .btn-secondary, .btn-nav, .btn-nav-outline, .access-toggle-btn').forEach(btn => {
     btn.addEventListener('mousemove', (e) => {
       const rect = btn.getBoundingClientRect();
@@ -2067,22 +2070,57 @@ async function loadTestimonials() {
 }
 
 // Handle Contact Form Submit
-function handleContactSubmit(event) {
+async function handleContactSubmit(event) {
   event.preventDefault();
   
-  // Show premium success toast
-  const toast = document.getElementById('contact-success-toast');
-  if (toast) {
-    toast.classList.add('show');
-    setTimeout(() => {
-      toast.classList.remove('show');
-    }, 4000);
-  }
+  const submitBtn = event.target.querySelector('button[type="submit"]');
+  const origBtnHTML = submitBtn.innerHTML;
   
-  // Reset form
-  const form = document.getElementById('contact-form');
-  if (form) {
-    form.reset();
+  // Show loading state
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = `<svg class="spinner" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" style="animation: spin 1s linear infinite; vertical-align: middle; margin-right: 0.35rem;"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a10 10 0 0 1 10 10"></path></svg> MENGIRIM...`;
+
+  const payload = {
+    nama: document.getElementById('c-nama').value,
+    sekolah: document.getElementById('c-sekolah').value,
+    telepon: document.getElementById('c-telp').value,
+    email: document.getElementById('c-email').value,
+    subjek: document.getElementById('c-subjek').value,
+    pesan: document.getElementById('c-pesan').value
+  };
+
+  try {
+    const res = await fetch('/api/kontak/submit/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': '{{ csrf_token }}'
+      },
+      body: JSON.stringify(payload)
+    });
+    
+    const data = await res.json();
+    if (res.ok && data.success) {
+      // Show premium success toast
+      const toast = document.getElementById('contact-success-toast');
+      if (toast) {
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 4000);
+      }
+      
+      // Reset form
+      event.target.reset();
+    } else {
+      alert(data.error || 'Gagal mengirim pesan.');
+    }
+  } catch (err) {
+    console.error(err);
+    alert('Terjadi kesalahan koneksi.');
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = origBtnHTML;
   }
 }
 

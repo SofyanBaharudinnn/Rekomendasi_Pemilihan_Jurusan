@@ -4,7 +4,7 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 # pyrefly: ignore [missing-import]
 from django.urls import reverse
-from rekomendasi.models import ProfilSiswa, HasilRekomendasi
+from rekomendasi.models import ProfilSiswa, HasilRekomendasi, PesanKontak
 import json
 
 class AdminUserDetailAPITests(TestCase):
@@ -105,5 +105,103 @@ class AdminUserDetailAPITests(TestCase):
         self.assertEqual(data['riwayat'][0]['nilai_mat'], 85)
         self.assertEqual(data['riwayat'][1]['jurusan'], 'Teknik Informatika')
         self.assertEqual(data['riwayat'][1]['nilai_mat'], 90)
+
+
+class PesanKontakAPITests(TestCase):
+    def setUp(self):
+        self.admin = User.objects.create_superuser(
+            username='admin',
+            email='admin@test.id',
+            password='adminpassword'
+        )
+        self.siswa = User.objects.create_user(
+            username='siswa',
+            email='siswa@test.id',
+            password='siswapassword'
+        )
+        
+    def test_submit_contact_message(self):
+        url = reverse('api_kontak_submit')
+        payload = {
+            'nama': 'Pengirim Test',
+            'sekolah': 'SMA Test',
+            'telepon': '08123456789',
+            'email': 'pengirim@test.id',
+            'subjek': 'Tanya Rekomendasi',
+            'pesan': 'Halo, ini adalah pesan test dari unit test.'
+        }
+        response = self.client.post(url, data=json.dumps(payload), content_type='application/json')
+        self.assertEqual(response.status_code, 200)
+        data = json.loads(response.content)
+        self.assertTrue(data['success'])
+        
+        # Verify saved in database
+        self.assertEqual(PesanKontak.objects.count(), 1)
+        pesan = PesanKontak.objects.first()
+        self.assertEqual(pesan.nama, 'Pengirim Test')
+        self.assertEqual(pesan.subjek, 'Tanya Rekomendasi')
+        
+    def test_submit_contact_message_missing_fields(self):
+        url = reverse('api_kontak_submit')
+        payload = {
+            'nama': 'Pengirim Test',
+            'email': 'pengirim@test.id'
+        }
+        response = self.client.post(url, data=json.dumps(payload), content_type='application/json')
+        self.assertEqual(response.status_code, 400)
+        data = json.loads(response.content)
+        self.assertIn('error', data)
+        
+    def test_admin_list_messages_anonymous_denied(self):
+        url = reverse('api_admin_pesan_list')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 401)
+        
+    def test_admin_list_messages_non_admin_denied(self):
+        self.client.login(username='siswa', password='siswapassword')
+        url = reverse('api_admin_pesan_list')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 403)
+        
+    def test_admin_list_and_delete_messages_success(self):
+        # Create a test message
+        p = PesanKontak.objects.create(
+            nama='Budi',
+            sekolah='SMA 1',
+            telepon='0811111111',
+            email='budi@test.id',
+            subjek='Tanya Jurusan',
+            pesan='Apa jurusan yang cocok?'
+        )
+        
+        # Login as admin
+        self.client.login(username='admin', password='adminpassword')
+        
+        # Get list
+        url_list = reverse('api_admin_pesan_list')
+        response = self.client.get(url_list)
+        self.assertEqual(response.status_code, 200)
+        data = json.loads(response.content)
+        self.assertEqual(data['total'], 1)
+        self.assertEqual(data['pesan'][0]['nama'], 'Budi')
+        
+        # Search filter test
+        response_search = self.client.get(f"{url_list}?q=Budi")
+        self.assertEqual(response_search.status_code, 200)
+        data_search = json.loads(response_search.content)
+        self.assertEqual(data_search['total'], 1)
+
+        response_search_empty = self.client.get(f"{url_list}?q=NotPresent")
+        self.assertEqual(response_search_empty.status_code, 200)
+        data_search_empty = json.loads(response_search_empty.content)
+        self.assertEqual(data_search_empty['total'], 0)
+        
+        # Delete message
+        url_delete = reverse('api_admin_pesan_delete', kwargs={'pesan_id': p.id})
+        response_delete = self.client.post(url_delete)
+        self.assertEqual(response_delete.status_code, 200)
+        
+        # Verify deleted
+        self.assertEqual(PesanKontak.objects.count(), 0)
 
 

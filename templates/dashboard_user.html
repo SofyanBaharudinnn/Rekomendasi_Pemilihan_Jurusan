@@ -4342,10 +4342,11 @@ async function simpanTestimoni() {
 
 // ── CUSTOM CURSOR ──
 let cursorEl = null;
+const isMobileDevice = window.matchMedia("(max-width: 768px)").matches || ('ontouchstart' in window);
 
 function initCursor() {
   cursorEl = document.getElementById('custom-cursor');
-  if (!cursorEl) return;
+  if (!cursorEl || isMobileDevice) return;
   document.addEventListener('mousemove', (e) => {
     cursorEl.style.left = e.clientX + 'px';
     cursorEl.style.top = e.clientY + 'px';
@@ -4353,6 +4354,7 @@ function initCursor() {
 }
 
 function initCursorHover() {
+  if (isMobileDevice) return;
   document.querySelectorAll('a, button, [role="button"], .card, input, select, textarea').forEach(el => {
     el.addEventListener('mouseenter', () => {
       cursorEl.classList.add('hovered');
@@ -4366,6 +4368,7 @@ function initCursorHover() {
 }
 
 function initMagneticButtons() {
+  if (isMobileDevice) return;
   document.querySelectorAll('.btn, .sb-item, .access-toggle-btn').forEach(btn => {
     btn.addEventListener('mousemove', (e) => {
       const rect = btn.getBoundingClientRect();
