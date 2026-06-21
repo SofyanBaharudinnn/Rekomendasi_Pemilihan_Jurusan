@@ -830,37 +830,7 @@ textarea.form-input {
   animation: slideOutCurtain 0.6s cubic-bezier(0.85, 0, 0.15, 1) forwards;
 }
 
-.custom-cursor {
-  width: 10px;
-  height: 10px;
-  background: var(--blue, #3b82f6);
-  border-radius: 50%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 99999;
-  transform: translate3d(-50%, -50%, 0);
-  transition: width 0.15s ease, height 0.15s ease, background 0.15s ease;
-  mix-blend-mode: difference;
-}
-.custom-cursor.hovered {
-  width: 32px;
-  height: 32px;
-  background: rgba(99, 102, 241, 0.35);
-  border: 1.5px solid var(--indigo);
-}
-.custom-cursor.hovered::after {
-  content: attr(data-icon);
-  font-size: 14px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-@media (pointer: coarse) {
-  .custom-cursor { display: none; }
-}
+/* Custom cursor removed */
 
 /* --- LIGHT MODE OVERRIDES FOR READABILITY --- */
 .light-mode .hero-title {
@@ -1229,7 +1199,7 @@ textarea.form-input {
   </div>
 </div>
 
-<div id="custom-cursor" class="custom-cursor"></div>
+<!-- Custom cursor element removed -->
 
 <div id="page-transition-overlay"></div>
 
@@ -1896,26 +1866,7 @@ new IntersectionObserver((entries, observer)=>{
 // ── MAGNETIC BUTTONS ──
 
 // ── CUSTOM CURSOR ──
-const cursorEl = document.getElementById('custom-cursor');
-if (!isMobileDevice) {
-  document.addEventListener('mousemove', (e) => {
-    cursorEl.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
-  });
-}
-
-function initCursorHover() {
-  if (isMobileDevice) return;
-  document.querySelectorAll('a, button, [role="button"], .card, input, select, textarea').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursorEl.classList.add('hovered');
-      cursorEl.setAttribute('data-icon', '');
-    });
-    el.addEventListener('mouseleave', () => {
-      cursorEl.classList.remove('hovered');
-      cursorEl.removeAttribute('data-icon');
-    });
-  });
-}
+function initCursorHover() {}
 
 function initMagneticButtons() {
   if (isMobileDevice) return;
