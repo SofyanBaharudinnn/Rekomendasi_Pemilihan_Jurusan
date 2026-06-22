@@ -1572,6 +1572,12 @@ textarea.form-input {
     display: none;
   }
 }
+
+/* Preserve 3D context for Tentang section to prevent clipping/flattening */
+.about-grid,
+.about-grid .reveal-right {
+  transform-style: preserve-3d;
+}
 </style>
 </head>
 <body>
