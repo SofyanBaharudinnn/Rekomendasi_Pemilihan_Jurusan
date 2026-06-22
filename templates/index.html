@@ -1556,26 +1556,26 @@ textarea.form-input {
   color: var(--text);
 }
 
-/* Responsive: Flatten Mockup for Mobile devices */
+/* Responsive: Scale Mockup for Mobile devices (Keep 3D Isometric View) */
 @media (max-width: 1024px) {
   .hero-dashboard-3d {
-    max-width: 100%;
-    height: auto;
-    perspective: none;
-    transform-style: flat;
-    margin-top: 2rem;
+    transform: scale(0.85);
+    transform-origin: center center;
+    margin: 1rem auto;
   }
-  .db-glow { display: none; }
-  .db-panel {
-    width: 100%;
-    max-width: 490px;
-    height: 340px;
-    transform: none !important;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
-    margin: 0 auto;
+}
+@media (max-width: 768px) {
+  .hero-dashboard-3d {
+    transform: scale(0.70);
+    transform-origin: center center;
+    margin: -2rem auto;
   }
-  .db-float-card {
-    display: none;
+}
+@media (max-width: 480px) {
+  .hero-dashboard-3d {
+    transform: scale(0.52);
+    transform-origin: center center;
+    margin: -4.5rem auto;
   }
 }
 
