@@ -1556,26 +1556,32 @@ textarea.form-input {
   color: var(--text);
 }
 
-/* Responsive: Scale Mockup for Mobile devices (Keep 3D Isometric View) */
+/* Responsive: Scale Mockup for Mobile devices (Keep 3D Isometric View & Perfectly Centered) */
 @media (max-width: 1024px) {
   .hero-dashboard-3d {
-    transform: scale(0.85);
+    width: 580px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.85);
     transform-origin: center center;
-    margin: 1rem auto;
+    margin: 1rem 0;
   }
 }
 @media (max-width: 768px) {
   .hero-dashboard-3d {
-    transform: scale(0.70);
+    width: 580px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.70);
     transform-origin: center center;
-    margin: -2rem auto;
+    margin: -2rem 0;
   }
 }
 @media (max-width: 480px) {
   .hero-dashboard-3d {
-    transform: scale(0.52);
+    width: 580px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.52);
     transform-origin: center center;
-    margin: -4.5rem auto;
+    margin: -4.5rem 0;
   }
 }
 
