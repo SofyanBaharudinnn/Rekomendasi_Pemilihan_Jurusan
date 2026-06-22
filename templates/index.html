@@ -1223,6 +1223,23 @@ textarea.form-input {
   display: flex;
   align-items: center;
   justify-content: center;
+  /* CSS Variables for 3D rotation, translation, and depth */
+  --ry: -22deg;
+  --rx: 16deg;
+  --rz: 3deg;
+  --ty: 0px;
+  --tz1: 80px;
+  --tz2: 110px;
+  --tz3: 125px;
+}
+.hero-dashboard-3d:hover {
+  --ry: -16deg;
+  --rx: 11deg;
+  --rz: 1deg;
+  --ty: -8px;
+  --tz1: 110px;
+  --tz2: 140px;
+  --tz3: 155px;
 }
 
 /* Base glowing sphere behind dashboard */
@@ -1246,7 +1263,7 @@ textarea.form-input {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow: -15px 25px 50px rgba(0, 0, 0, 0.55);
-  transform: rotateY(-22deg) rotateX(16deg) rotateZ(3deg);
+  transform: rotateY(var(--ry)) rotateX(var(--rx)) rotateZ(var(--rz)) translateY(var(--ty));
   transform-style: preserve-3d;
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s ease;
   display: flex;
@@ -1254,7 +1271,6 @@ textarea.form-input {
 }
 
 .hero-dashboard-3d:hover .db-panel {
-  transform: rotateY(-16deg) rotateX(11deg) rotateZ(1deg) translateY(-8px);
   box-shadow: -25px 35px 70px rgba(108, 92, 231, 0.18);
 }
 
@@ -1457,44 +1473,34 @@ textarea.form-input {
 /* Floating Card Positions (Translated Z) */
 .fc-1 {
   top: 18%;
-  left: -25px;
-  transform: rotateY(-22deg) rotateX(16deg) rotateZ(3deg) translateZ(80px);
+  left: -50px;
+  transform: rotateY(var(--ry)) rotateX(var(--rx)) rotateZ(var(--rz)) translateY(var(--ty)) translateZ(var(--tz1));
   animation: floatZ1 6s ease-in-out infinite;
 }
 .fc-2 {
   bottom: 15%;
-  right: -15px;
-  transform: rotateY(-22deg) rotateX(16deg) rotateZ(3deg) translateZ(110px);
+  right: -50px;
+  transform: rotateY(var(--ry)) rotateX(var(--rx)) rotateZ(var(--rz)) translateY(var(--ty)) translateZ(var(--tz2));
   animation: floatZ2 5.5s ease-in-out infinite;
 }
 .fc-3 {
   top: 42%;
-  right: -40px;
-  transform: rotateY(-22deg) rotateX(16deg) rotateZ(3deg) translateZ(125px);
+  right: -80px;
+  transform: rotateY(var(--ry)) rotateX(var(--rx)) rotateZ(var(--rz)) translateY(var(--ty)) translateZ(var(--tz3));
   animation: floatZ3 6.5s ease-in-out infinite;
 }
 
-.hero-dashboard-3d:hover .fc-1 {
-  transform: rotateY(-16deg) rotateX(11deg) rotateZ(1deg) translateY(-8px) translateZ(110px);
-}
-.hero-dashboard-3d:hover .fc-2 {
-  transform: rotateY(-16deg) rotateX(11deg) rotateZ(1deg) translateY(-8px) translateZ(140px);
-}
-.hero-dashboard-3d:hover .fc-3 {
-  transform: rotateY(-16deg) rotateX(11deg) rotateZ(1deg) translateY(-8px) translateZ(155px);
-}
-
 @keyframes floatZ1 {
-  0%, 100% { transform: rotateY(-22deg) rotateX(16deg) rotateZ(3deg) translateZ(80px) translateY(0); }
-  50%      { transform: rotateY(-22deg) rotateX(16deg) rotateZ(3deg) translateZ(80px) translateY(-10px); }
+  0%, 100% { transform: rotateY(var(--ry)) rotateX(var(--rx)) rotateZ(var(--rz)) translateY(calc(var(--ty) + 0px)) translateZ(var(--tz1)); }
+  50%      { transform: rotateY(var(--ry)) rotateX(var(--rx)) rotateZ(var(--rz)) translateY(calc(var(--ty) - 10px)) translateZ(var(--tz1)); }
 }
 @keyframes floatZ2 {
-  0%, 100% { transform: rotateY(-22deg) rotateX(16deg) rotateZ(3deg) translateZ(110px) translateY(0); }
-  50%      { transform: rotateY(-22deg) rotateX(16deg) rotateZ(3deg) translateZ(110px) translateY(10px); }
+  0%, 100% { transform: rotateY(var(--ry)) rotateX(var(--rx)) rotateZ(var(--rz)) translateY(calc(var(--ty) + 0px)) translateZ(var(--tz2)); }
+  50%      { transform: rotateY(var(--ry)) rotateX(var(--rx)) rotateZ(var(--rz)) translateY(calc(var(--ty) + 10px)) translateZ(var(--tz2)); }
 }
 @keyframes floatZ3 {
-  0%, 100% { transform: rotateY(-22deg) rotateX(16deg) rotateZ(3deg) translateZ(125px) translateY(0); }
-  50%      { transform: rotateY(-22deg) rotateX(16deg) rotateZ(3deg) translateZ(125px) translateY(-8px); }
+  0%, 100% { transform: rotateY(var(--ry)) rotateX(var(--rx)) rotateZ(var(--rz)) translateY(calc(var(--ty) + 0px)) translateZ(var(--tz3)); }
+  50%      { transform: rotateY(var(--ry)) rotateX(var(--rx)) rotateZ(var(--rz)) translateY(calc(var(--ty) - 8px)) translateZ(var(--tz3)); }
 }
 
 /* Light Mode Overrides for 3D Dashboard Mockup */
