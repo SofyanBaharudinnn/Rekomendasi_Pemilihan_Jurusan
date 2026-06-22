@@ -189,109 +189,289 @@ nav {
 }
 .btn-secondary:hover { background:rgba(255,255,255,.05); border-color:rgba(255,255,255,.3); }
 
-/* 3D MAP CANVAS & DETAIL CARDS */
-#hero-canvas {
-  width:560px;
-  height:560px;
-  background:transparent;
-  overflow:visible;
-  position:relative;
-  z-index: 1;
-  filter: drop-shadow(0 0 40px rgba(99,102,241,0.15));
+/* 3D HERO DASHBOARD MOCKUP */
+.hero-dashboard-3d {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  height: 450px;
+  perspective: 2000px;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.hero-stat-float {
-  position:absolute;
-  background:rgba(10,10,15,0.85);
-  border:1px solid rgba(255,255,255,0.08);
-  backdrop-filter:blur(12px);
-  border-radius:14px;
-  padding:.8rem 1.3rem;
-  z-index:10;
-  min-width:175px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.5);
-  animation:floatCard 5s ease-in-out infinite;
-}
-.hero-stat-float .sf-val {
-  font-size:1.7rem; font-weight:800; line-height:1.2;
-}
-.hero-stat-float.accent-blue-val .sf-val {
-  color:var(--accent-blue);
-}
-.hero-stat-float.white-val .sf-val {
-  color:#ffffff;
-}
-.hero-stat-float .sf-lbl {
-  font-size:.72rem; color:var(--muted); margin-top:.35rem;
-  display:flex; align-items:center; gap:.4rem; font-weight:500;
-}
-.hero-stat-float .sf-lbl::before {
-  content:'';
-  display:inline-block;
-  width:6px;
-  height:6px;
-  border-radius:50%;
-}
-.hero-stat-float.green-dot .sf-lbl::before {
-  background:#10b981;
-  box-shadow:0 0 6px #10b981;
-}
-.hero-stat-float.blue-dot .sf-lbl::before {
-  background:var(--accent-blue);
-  box-shadow:0 0 6px var(--accent-blue);
-}
-.sf-1 { top:12%; right:-25px; animation-delay:0s; }
-.sf-2 { bottom:18%; left:-35px; animation-delay:2.5s; }
-.sf-3 { bottom:38%; right:-40px; animation-delay:1.2s; }
 
-/* Connectors */
-.sf-connector {
-  position:absolute;
-  height:1px;
-  pointer-events:none;
+/* Base glowing sphere behind dashboard */
+.db-glow {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(108, 92, 231, 0.28) 0%, rgba(99, 102, 241, 0) 70%);
+  filter: blur(30px);
+  transform: translateZ(-100px);
+  pointer-events: none;
 }
-.sf-connector::before {
-  content:'';
-  position:absolute;
-  width:5px;
-  height:5px;
-  border-radius:50%;
-  top:-2px;
+
+/* Main Dashboard Panel */
+.db-panel {
+  width: 490px;
+  height: 340px;
+  background: rgba(10, 10, 18, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: -15px 25px 50px rgba(0, 0, 0, 0.55);
+  transform: rotateY(-22deg) rotateX(16deg) rotateZ(3deg);
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s ease;
+  display: flex;
+  overflow: hidden;
 }
-.sf-conn-1 {
-  top:50%; right:100%;
-  width:75px;
-  transform:rotate(-15deg);
-  transform-origin:right center;
-  background:linear-gradient(to left, rgba(59, 130, 246, 0.6), rgba(59, 130, 246, 0.05));
+
+.hero-dashboard-3d:hover .db-panel {
+  transform: rotateY(-16deg) rotateX(11deg) rotateZ(1deg) translateY(-8px);
+  box-shadow: -25px 35px 70px rgba(108, 92, 231, 0.18);
 }
-.sf-conn-1::before {
-  left:0;
-  background:#ffdd44;
-  box-shadow:0 0 8px #ffdd44;
+
+/* Sidebar Mockup */
+.db-sidebar {
+  width: 60px;
+  background: rgba(255, 255, 255, 0.015);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.2rem 0;
+  gap: 1.2rem;
 }
-.sf-conn-2 {
-  top:50%; left:100%;
-  width:65px;
-  transform:rotate(20deg);
-  transform-origin:left center;
-  background:linear-gradient(to right, rgba(59, 130, 246, 0.6), rgba(59, 130, 246, 0.05));
+.db-sidebar-logo {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--accent-blue);
+  box-shadow: 0 0 8px var(--accent-blue);
+  margin-bottom: 0.3rem;
 }
-.sf-conn-2::before {
-  right:0;
-  background:#ffffff;
-  box-shadow:0 0 8px #ffffff;
+.db-sidebar-item {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: var(--muted);
 }
-.sf-conn-3 {
-  top:50%; right:100%;
-  width:85px;
-  transform:rotate(-10deg);
-  transform-origin:right center;
-  background:linear-gradient(to left, rgba(59, 130, 246, 0.6), rgba(59, 130, 246, 0.05));
+.db-sidebar-item.active {
+  background: rgba(108, 92, 231, 0.15);
+  color: var(--accent-blue);
+  border: 1px solid rgba(108, 92, 231, 0.25);
 }
-.sf-conn-3::before {
-  left:0;
-  background:#ffdd44;
-  box-shadow:0 0 8px #ffdd44;
+
+/* Content Area Mockup */
+.db-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.2rem 1.4rem;
+  gap: 0.9rem;
+}
+
+/* Header & Top Bar Mockup */
+.db-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  padding-bottom: 0.5rem;
+}
+.db-header h4 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+.db-badge-mock {
+  font-size: 0.62rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 20px;
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  font-weight: 600;
+  border: 1px solid rgba(16, 185, 129, 0.15);
+}
+
+/* Stats Row Mockup */
+.db-stats-row {
+  display: flex;
+  gap: 0.8rem;
+}
+.db-mini-card {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 0.5rem 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.db-mini-card .lbl {
+  font-size: 0.6rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+.db-mini-card .val {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+/* Chart Widget Mockup */
+.db-chart-widget {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  padding: 0.7rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.db-chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.db-chart-header h5 {
+  font-size: 0.7rem;
+  color: #fff;
+  font-weight: 600;
+}
+.db-chart-legend {
+  font-size: 0.6rem;
+  color: var(--muted);
+}
+.db-chart-bars {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 75px;
+  padding: 0 0.2rem;
+}
+.db-chart-bar-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  width: 14%;
+}
+.db-chart-bar {
+  width: 100%;
+  border-radius: 3px 3px 0 0;
+  background: linear-gradient(to top, rgba(108, 92, 231, 0.2), var(--accent-blue));
+}
+.db-chart-bar-wrap:nth-child(even) .db-chart-bar {
+  background: linear-gradient(to top, rgba(16, 185, 129, 0.2), #10b981);
+}
+.db-chart-label {
+  font-size: 0.5rem;
+  color: var(--muted);
+}
+
+/* Floating 3D Cards */
+.db-float-card {
+  position: absolute;
+  background: rgba(15, 15, 25, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 14px;
+  padding: 0.6rem 1rem;
+  box-shadow: -10px 15px 35px rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  pointer-events: none;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s ease;
+  z-index: 5;
+}
+
+.db-float-card h5 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+.db-float-card p {
+  font-size: 0.6rem;
+  color: var(--muted);
+  margin: 0.1rem 0 0 0;
+  font-weight: 500;
+}
+.db-float-card .icon-wrap {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  background: rgba(108, 92, 231, 0.15);
+  color: var(--accent-blue);
+  border: 1px solid rgba(108, 92, 231, 0.25);
+}
+.db-float-card.fc-success .icon-wrap {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border-color: rgba(16, 185, 129, 0.25);
+}
+
+/* Floating Card Positions (Translated Z) */
+.fc-1 {
+  top: 18%;
+  left: -25px;
+  transform: rotateY(-22deg) rotateX(16deg) rotateZ(3deg) translateZ(45px);
+  animation: floatZ1 6s ease-in-out infinite;
+}
+.fc-2 {
+  bottom: 15%;
+  right: -15px;
+  transform: rotateY(-22deg) rotateX(16deg) rotateZ(3deg) translateZ(60px);
+  animation: floatZ2 5.5s ease-in-out infinite;
+}
+.fc-3 {
+  top: 42%;
+  right: -40px;
+  transform: rotateY(-22deg) rotateX(16deg) rotateZ(3deg) translateZ(35px);
+  animation: floatZ3 6.5s ease-in-out infinite;
+}
+
+.hero-dashboard-3d:hover .fc-1 {
+  transform: rotateY(-16deg) rotateX(11deg) rotateZ(1deg) translateY(-8px) translateZ(70px);
+}
+.hero-dashboard-3d:hover .fc-2 {
+  transform: rotateY(-16deg) rotateX(11deg) rotateZ(1deg) translateY(-8px) translateZ(90px);
+}
+.hero-dashboard-3d:hover .fc-3 {
+  transform: rotateY(-16deg) rotateX(11deg) rotateZ(1deg) translateY(-8px) translateZ(55px);
+}
+
+@keyframes floatZ1 {
+  0%, 100% { transform: rotateY(-22deg) rotateX(16deg) rotateZ(3deg) translateZ(45px) translateY(0); }
+  50%      { transform: rotateY(-22deg) rotateX(16deg) rotateZ(3deg) translateZ(45px) translateY(-10px); }
+}
+@keyframes floatZ2 {
+  0%, 100% { transform: rotateY(-22deg) rotateX(16deg) rotateZ(3deg) translateZ(60px) translateY(0); }
+  50%      { transform: rotateY(-22deg) rotateX(16deg) rotateZ(3deg) translateZ(60px) translateY(10px); }
+}
+@keyframes floatZ3 {
+  0%, 100% { transform: rotateY(-22deg) rotateX(16deg) rotateZ(3deg) translateZ(35px) translateY(0); }
+  50%      { transform: rotateY(-22deg) rotateX(16deg) rotateZ(3deg) translateZ(35px) translateY(-8px); }
 }
 
 @keyframes floatCard {
@@ -918,10 +1098,57 @@ textarea.form-input {
   -webkit-text-fill-color: initial !important;
   box-shadow: none !important;
 }
-.light-mode #hero-canvas {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
+/* Light Mode Overrides for 3D Dashboard Mockup */
+.light-mode .db-panel {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(108, 92, 231, 0.1);
+  box-shadow: -15px 25px 50px rgba(108, 92, 231, 0.08);
+}
+.light-mode .hero-dashboard-3d:hover .db-panel {
+  box-shadow: -25px 35px 70px rgba(108, 92, 231, 0.15);
+}
+.light-mode .db-sidebar {
+  background: rgba(0, 0, 0, 0.015);
+  border-right-color: rgba(0, 0, 0, 0.05);
+}
+.light-mode .db-sidebar-item {
+  background: rgba(0, 0, 0, 0.02);
+  color: var(--muted);
+}
+.light-mode .db-sidebar-item.active {
+  background: rgba(108, 92, 231, 0.08);
+  color: var(--accent-blue);
+  border-color: rgba(108, 92, 231, 0.15);
+}
+.light-mode .db-header {
+  border-bottom-color: rgba(0, 0, 0, 0.04);
+}
+.light-mode .db-header h4 {
+  color: var(--text);
+}
+.light-mode .db-mini-card {
+  background: #ffffff;
+  border-color: rgba(108, 92, 231, 0.06);
+  box-shadow: 0 4px 12px rgba(108, 92, 231, 0.03);
+}
+.light-mode .db-mini-card .val {
+  color: var(--text);
+}
+.light-mode .db-chart-widget {
+  background: #ffffff;
+  border-color: rgba(108, 92, 231, 0.06);
+  box-shadow: 0 4px 12px rgba(108, 92, 231, 0.03);
+}
+.light-mode .db-chart-header h5 {
+  color: var(--text);
+}
+.light-mode .db-float-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(108, 92, 231, 0.1);
+  box-shadow: -10px 15px 35px rgba(108, 92, 231, 0.1);
+}
+.light-mode .db-float-card h5 {
+  color: var(--text);
 }
 .light-mode .feature-card:nth-child(1), .light-mode .feature-card:nth-child(4) {
   background: linear-gradient(135deg, #6c5ce7, #8b5cf6) !important;
@@ -1283,25 +1510,95 @@ textarea.form-input {
     </div>
   </div>
 
-  <!-- RIGHT: 3D CANVAS -->
+  <!-- RIGHT: 3D DASHBOARD MOCKUP -->
   <div class="hero-right">
-    <canvas id="hero-canvas"></canvas>
-
-    <!-- Floating stat cards -->
-    <div class="hero-stat-float sf-1 accent-blue-val green-dot">
-      <div class="sf-connector sf-conn-1"></div>
-      <div class="sf-val">91%</div>
-      <div class="sf-lbl">Akurasi Model AI</div>
-    </div>
-    <div class="hero-stat-float sf-2 white-val green-dot">
-      <div class="sf-connector sf-conn-2"></div>
-      <div class="sf-val">7+</div>
-      <div class="sf-lbl">Jurusan Tersedia</div>
-    </div>
-    <div class="hero-stat-float sf-3 white-val blue-dot">
-      <div class="sf-connector sf-conn-3"></div>
-      <div class="sf-val">&lt; 10 Detik</div>
-      <div class="sf-lbl">Kecepatan Analisis</div>
+    <div class="hero-dashboard-3d">
+      <!-- Glow behind -->
+      <div class="db-glow"></div>
+      
+      <!-- Main panel -->
+      <div class="db-panel">
+        <!-- Sidebar -->
+        <div class="db-sidebar">
+          <div class="db-sidebar-logo"></div>
+          <div class="db-sidebar-item active">📊</div>
+          <div class="db-sidebar-item">👥</div>
+          <div class="db-sidebar-item">⚙️</div>
+        </div>
+        
+        <!-- Content -->
+        <div class="db-content">
+          <div class="db-header">
+            <h4>Dashboard Admin</h4>
+            <div class="db-badge-mock">Decision Tree AI</div>
+          </div>
+          
+          <div class="db-stats-row">
+            <div class="db-mini-card">
+              <span class="lbl">Akurasi Model</span>
+              <span class="val">91.2%</span>
+            </div>
+            <div class="db-mini-card">
+              <span class="lbl">Total Siswa</span>
+              <span class="val">1,280+</span>
+            </div>
+          </div>
+          
+          <div class="db-chart-widget">
+            <div class="db-chart-header">
+              <h5>Statistik Minat Jurusan</h5>
+              <span class="db-chart-legend">Bulan ini</span>
+            </div>
+            <div class="db-chart-bars">
+              <div class="db-chart-bar-wrap">
+                <div class="db-chart-bar" style="height: 65px;"></div>
+                <span class="db-chart-label">IT</span>
+              </div>
+              <div class="db-chart-bar-wrap">
+                <div class="db-chart-bar" style="height: 40px;"></div>
+                <span class="db-chart-label">Medis</span>
+              </div>
+              <div class="db-chart-bar-wrap">
+                <div class="db-chart-bar" style="height: 55px;"></div>
+                <span class="db-chart-label">Bisnis</span>
+              </div>
+              <div class="db-chart-bar-wrap">
+                <div class="db-chart-bar" style="height: 30px;"></div>
+                <span class="db-chart-label">Seni</span>
+              </div>
+              <div class="db-chart-bar-wrap">
+                <div class="db-chart-bar" style="height: 60px;"></div>
+                <span class="db-chart-label">Teknik</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Floating 3D Cards -->
+      <div class="db-float-card fc-1">
+        <div class="icon-wrap">🤖</div>
+        <div>
+          <h5>AI Core Active</h5>
+          <p>Model Terlatih</p>
+        </div>
+      </div>
+      
+      <div class="db-float-card fc-2 fc-success">
+        <div class="icon-wrap">⚡</div>
+        <div>
+          <h5>Analisis Cepat</h5>
+          <p>&lt; 10 Detik</p>
+        </div>
+      </div>
+      
+      <div class="db-float-card fc-3">
+        <div class="icon-wrap">✨</div>
+        <div>
+          <h5>7+ Jurusan</h5>
+          <p>Rekomendasi Akurat</p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1664,227 +1961,7 @@ try {
   console.warn("WebGL background particles failed to initialize:", e);
 }
 
-// ═══════════════════════════════════════════════════════════════
-// THREE.JS — HERO 3D EDUCATION GALAXY (AI Core + Orbiting Majors)
-// ═══════════════════════════════════════════════════════════════
-try {
-  const heroCanvas = document.getElementById('hero-canvas');
-  if (heroCanvas && typeof THREE !== 'undefined') {
-    const SIZE = 560;
-    const heroRenderer = new THREE.WebGLRenderer({canvas: heroCanvas, alpha: true, antialias: !isMobileDevice});
-    heroRenderer.setPixelRatio(isMobileDevice ? 1 : Math.min(window.devicePixelRatio, 2));
-    heroRenderer.setSize(SIZE, SIZE);
-    heroRenderer.setClearColor(0x000000, 0);
-
-    const heroScene = new THREE.Scene();
-    const heroCamera = new THREE.PerspectiveCamera(45, 1, 0.1, 200);
-    heroCamera.position.set(0, 2, 14);
-    heroCamera.lookAt(0, 0, 0);
-
-    // ── LIGHTING ──
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.25);
-    heroScene.add(ambientLight);
-    const pointLight1 = new THREE.PointLight(0x6366f1, 6, 18);
-    pointLight1.position.set(0, 0, 0);
-    heroScene.add(pointLight1);
-    const pointLight2 = new THREE.PointLight(0x3b82f6, 3, 20);
-    pointLight2.position.set(4, 4, 4);
-    heroScene.add(pointLight2);
-    const pointLight3 = new THREE.PointLight(0xa855f7, 2, 16);
-    pointLight3.position.set(-4, -2, 2);
-    heroScene.add(pointLight3);
-
-    // ── AI CORE SPHERE (center) ──
-    const coreGeo = new THREE.SphereGeometry(1.1, isMobileDevice ? 16 : 64, isMobileDevice ? 16 : 64);
-    const coreMat = new THREE.MeshPhongMaterial({
-      color: 0x3b82f6,
-      emissive: 0x1d4ed8,
-      emissiveIntensity: 0.6,
-      shininess: 120,
-      transparent: true,
-      opacity: 0.92,
-    });
-    const coreMesh = new THREE.Mesh(coreGeo, coreMat);
-    heroScene.add(coreMesh);
-
-    // Inner glowing core
-    const innerGeo = new THREE.SphereGeometry(0.65, isMobileDevice ? 16 : 32, isMobileDevice ? 16 : 32);
-    const innerMat = new THREE.MeshBasicMaterial({ color: 0x93c5fd, transparent: true, opacity: 0.5 });
-    heroScene.add(new THREE.Mesh(innerGeo, innerMat));
-
-    // Wireframe overlay on core
-    const wireGeo = new THREE.IcosahedronGeometry(1.15, 1);
-    const wireMat = new THREE.MeshBasicMaterial({ color: 0x60a5fa, wireframe: true, transparent: true, opacity: 0.18 });
-    const wireMesh = new THREE.Mesh(wireGeo, wireMat);
-    heroScene.add(wireMesh);
-
-    // ── ORBIT RINGS (decorative ellipses) ──
-    function makeOrbitRing(radius, inclination, color, opacity = 0.22) {
-      const pts = [];
-      for (let i = 0; i <= 128; i++) {
-        const angle = (i / 128) * Math.PI * 2;
-        pts.push(new THREE.Vector3(Math.cos(angle) * radius, 0, Math.sin(angle) * radius));
-      }
-      const geo = new THREE.BufferGeometry().setFromPoints(pts);
-      const mat = new THREE.LineBasicMaterial({ color, transparent: true, opacity });
-      const ring = new THREE.LineLoop(geo, mat);
-      ring.rotation.x = inclination;
-      return ring;
-    }
-
-    const orbitConfigs = [
-      { radius: 3.0, inclination: Math.PI * 0.08,  color: 0x6366f1 },
-      { radius: 3.8, inclination: Math.PI * 0.22,  color: 0x3b82f6 },
-      { radius: 4.6, inclination: -Math.PI * 0.15, color: 0xa855f7 },
-      { radius: 5.3, inclination: Math.PI * 0.35,  color: 0x10b981 },
-    ];
-    const orbitRings = orbitConfigs.map(cfg => {
-      const ring = makeOrbitRing(cfg.radius, cfg.inclination, cfg.color);
-      heroScene.add(ring);
-      return ring;
-    });
-
-    // ── MAJOR NODES (orbiting planets) ──
-    const majors = [
-      { label: 'Informatika', color: 0x6366f1, orbitR: 3.0, incl: Math.PI * 0.08,  speed: 0.55, phase: 0,            size: 0.28 },
-      { label: 'Kedokteran',  color: 0xef4444, orbitR: 3.8, incl: Math.PI * 0.22,  speed: 0.38, phase: Math.PI*0.5,  size: 0.26 },
-      { label: 'Manajemen',   color: 0x10b981, orbitR: 3.8, incl: Math.PI * 0.22,  speed: 0.38, phase: Math.PI*1.4,  size: 0.26 },
-      { label: 'Sastra',      color: 0xa855f7, orbitR: 4.6, incl: -Math.PI * 0.15, speed: 0.28, phase: Math.PI*0.3,  size: 0.24 },
-      { label: 'Akuntansi',   color: 0xf59e0b, orbitR: 4.6, incl: -Math.PI * 0.15, speed: 0.28, phase: Math.PI*1.1,  size: 0.24 },
-      { label: 'Biologi',     color: 0x14b8a6, orbitR: 5.3, incl: Math.PI * 0.35,  speed: 0.20, phase: Math.PI*0.7,  size: 0.22 },
-      { label: 'Pendidikan',  color: 0xfbbf24, orbitR: 5.3, incl: Math.PI * 0.35,  speed: 0.20, phase: Math.PI*1.8,  size: 0.22 },
-    ];
-
-    const majorMeshes = majors.map(m => {
-      const geo = new THREE.SphereGeometry(m.size, isMobileDevice ? 8 : 24, isMobileDevice ? 8 : 24);
-      const mat = new THREE.MeshPhongMaterial({
-        color: m.color, emissive: m.color, emissiveIntensity: 0.55, shininess: 80,
-      });
-      const mesh = new THREE.Mesh(geo, mat);
-      // small glow ring around node
-      const glowGeo = new THREE.RingGeometry(m.size * 1.4, m.size * 1.9, isMobileDevice ? 8 : 24);
-      const glowMat = new THREE.MeshBasicMaterial({ color: m.color, transparent: true, opacity: 0.22, side: THREE.DoubleSide });
-      const glowRing = new THREE.Mesh(glowGeo, glowMat);
-      mesh.add(glowRing);
-      heroScene.add(mesh);
-      return { mesh, ...m };
-    });
-
-    // ── DATA STREAM PARTICLES (travel along orbit paths) ──
-    const streamParticles = [];
-    majors.forEach((m, i) => {
-      const numParticles = isMobileDevice ? 1 : 5;
-      for (let p = 0; p < numParticles; p++) {
-        const partGeo = new THREE.SphereGeometry(0.035, 4, 4);
-        const partMat = new THREE.MeshBasicMaterial({ color: m.color, transparent: true, opacity: 0.75 });
-        const part = new THREE.Mesh(partGeo, partMat);
-        heroScene.add(part);
-        streamParticles.push({ mesh: part, orbitR: m.orbitR, incl: m.incl, phase: m.phase + (p / numParticles) * Math.PI * 2, speed: m.speed * 1.8 });
-      }
-    });
-
-    // ── BACKGROUND STAR FIELD ──
-    const starCount = isMobileDevice ? 60 : 320;
-    const starPositions = new Float32Array(starCount * 3);
-    for (let i = 0; i < starCount; i++) {
-      const r = 18 + Math.random() * 30;
-      const theta = Math.random() * Math.PI * 2;
-      const phi = Math.acos(2 * Math.random() - 1);
-      starPositions[i*3]   = r * Math.sin(phi) * Math.cos(theta);
-      starPositions[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
-      starPositions[i*3+2] = r * Math.cos(phi);
-    }
-    const starGeo = new THREE.BufferGeometry();
-    starGeo.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
-    const starMat = new THREE.PointsMaterial({ color: 0xc7d2fe, size: 0.07, transparent: true, opacity: 0.6 });
-    heroScene.add(new THREE.Points(starGeo, starMat));
-
-    // ── CONNECTION LINES (core → nearest majors) ──
-    const connLinesMat = new THREE.LineBasicMaterial({ color: 0x6366f1, transparent: true, opacity: 0.18 });
-    const connLinesGroup = new THREE.Group();
-    heroScene.add(connLinesGroup);
-
-    function updateConnLines(majorMeshes) {
-      connLinesGroup.clear();
-      majorMeshes.forEach(m => {
-        const pts = [new THREE.Vector3(0,0,0), m.mesh.position.clone()];
-        const geo = new THREE.BufferGeometry().setFromPoints(pts);
-        connLinesGroup.add(new THREE.Line(geo, connLinesMat));
-      });
-    }
-
-    // ── MOUSE PARALLAX ──
-    let heroMX = 0, heroMY = 0;
-    if (!isMobileDevice) {
-      heroCanvas.addEventListener('mousemove', e => {
-        const rect = heroCanvas.getBoundingClientRect();
-        heroMX = ((e.clientX - rect.left) / SIZE - 0.5) * 2;
-        heroMY = -((e.clientY - rect.top) / SIZE - 0.5) * 2;
-      });
-    }
-
-    // ── ANIMATION LOOP ──
-    const heroClock = new THREE.Clock();
-    let camTargetX = 0, camTargetY = 2;
-
-    if (isMobileDevice) {
-      const t = 1.5;
-      majorMeshes.forEach(m => {
-        const angle = t * m.speed + m.phase;
-        m.mesh.position.set(Math.cos(angle) * m.orbitR, Math.sin(angle) * m.orbitR * Math.sin(m.incl), Math.sin(angle) * m.orbitR * Math.cos(m.incl));
-        m.mesh.rotation.y = t * 1.2;
-      });
-      streamParticles.forEach(p => {
-        const angle = t * p.speed + p.phase;
-        p.mesh.position.set(Math.cos(angle) * p.orbitR, Math.sin(angle) * p.orbitR * Math.sin(p.incl), Math.sin(angle) * p.orbitR * Math.cos(p.incl));
-      });
-      updateConnLines(majorMeshes);
-      heroRenderer.render(heroScene, heroCamera);
-    } else {
-      (function animateHero() {
-        requestAnimationFrame(animateHero);
-        const t = heroClock.getElapsedTime();
-        const pulse = 1 + 0.04 * Math.sin(t * 2.2);
-        coreMesh.scale.setScalar(pulse);
-        innerMat.opacity = 0.35 + 0.18 * Math.sin(t * 1.8);
-        wireMesh.rotation.y = t * 0.15;
-        wireMesh.rotation.z = t * 0.08;
-        pointLight1.intensity = 5 + 2 * Math.sin(t * 1.5);
-        orbitRings.forEach((ring, i) => { ring.rotation.z = t * 0.02 * (i % 2 === 0 ? 1 : -1); });
-        majorMeshes.forEach(m => {
-          const angle = t * m.speed + m.phase;
-          const x = Math.cos(angle) * m.orbitR;
-          const zRaw = Math.sin(angle) * m.orbitR;
-          const y = zRaw * Math.sin(m.incl);
-          const z = zRaw * Math.cos(m.incl);
-          m.mesh.position.set(x, y, z);
-          m.mesh.rotation.y = t * 1.2;
-          const glow = m.mesh.children[0];
-          if (glow) glow.rotation.x = t * 0.5;
-        });
-        streamParticles.forEach(p => {
-          const angle = t * p.speed + p.phase;
-          const x = Math.cos(angle) * p.orbitR;
-          const zRaw = Math.sin(angle) * p.orbitR;
-          const y = zRaw * Math.sin(p.incl);
-          const z = zRaw * Math.cos(p.incl);
-          p.mesh.position.set(x, y, z);
-          p.mesh.material.opacity = 0.3 + 0.5 * Math.abs(Math.sin(angle * 0.5));
-        });
-        if (Math.round(t * 60) % 3 === 0) updateConnLines(majorMeshes);
-        camTargetX += (heroMX * 1.5 - camTargetX) * 0.04;
-        camTargetY += (2 + heroMY * 1.0 - camTargetY) * 0.04;
-        heroCamera.position.x = camTargetX;
-        heroCamera.position.y = camTargetY;
-        heroCamera.lookAt(0, 0, 0);
-        heroScene.rotation.y = t * 0.06;
-        heroRenderer.render(heroScene, heroCamera);
-      })();
-    }
-  }
-} catch (e) {
-  console.warn("WebGL hero education galaxy failed to initialize:", e);
-}
+// Three.js Hero Galaxy removed - replaced with CSS 3D Dashboard Mockup
 
 // ═══════════════════════════════════════
 // COUNTER ANIMATION
