@@ -314,30 +314,21 @@ nav {
 .wave-divider.wave-top svg { bottom: 0; top: auto; }
 .wave-divider.wave-bottom svg { top: 0; bottom: auto; }
 
-/* STATS — purple zone */
+/* STATS */
 .stats {
   position: relative; z-index: 1; display: flex; justify-content: center;
-  gap: 4rem; padding: 4rem 2rem; flex-wrap: wrap;
-  background: linear-gradient(135deg, #6c5ce7 0%, #5b4fcf 100%);
+  gap: 4rem; padding: 3rem 2rem; flex-wrap: wrap;
+  background: var(--stats-bg);
   border: none;
 }
-.stat h3 { font-size: 2rem; font-weight: 700; color: #ffffff; }
-.stat p { font-size: .85rem; color: rgba(255,255,255,0.78); margin-top: .2rem; }
+.stat h3 { font-size: 2rem; font-weight: 700; color: #8b5cf6; }
+.stat p { font-size: .85rem; color: var(--muted); margin-top: .2rem; }
 
-/* TESTIMONI & KONTAK — indigo zone */
+/* TESTIMONI & KONTAK */
 #testimoni, #kontak {
-  background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%) !important;
+  background: var(--testimoni-bg);
   border: none !important;
 }
-#testimoni .section-label, #kontak .section-label { color: #c4b5fd; }
-#testimoni .section-title, #kontak .section-title { color: #ffffff; }
-#testimoni .section-title span, #kontak .section-title span {
-  background: linear-gradient(135deg, #ddd6fe, #a78bfa);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-#testimoni .section-sub, #kontak .section-sub { color: rgba(255,255,255,0.75); }
 
 /* ─── SCROLL REVEAL ANIMATION ─── */
 .reveal {
@@ -1313,10 +1304,10 @@ textarea.form-input {
 </div>
 </div>
 
-<!-- Wave Divider: Hero → Stats (purple zone) -->
+<!-- Wave Divider: Hero → Stats -->
 <div class="wave-divider wave-top" aria-hidden="true">
   <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-    <path d="M0,80 C200,20 440,78 720,35 C1000,0 1240,65 1440,22 L1440,80 Z" fill="#6c5ce7"/>
+    <path d="M0,80 C200,20 440,78 720,35 C1000,0 1240,65 1440,22 L1440,80 Z" fill="var(--stats-bg)"/>
   </svg>
 </div>
 
@@ -1328,10 +1319,10 @@ textarea.form-input {
   <div class="stat"><h3 id="c4">&lt; 10 Detik</h3><p>Kecepatan Analisis</p></div>
 </div>
 
-<!-- Wave Divider: Stats → Fitur (back to page bg) -->
+<!-- Wave Divider: Stats → Fitur -->
 <div class="wave-divider wave-bottom" aria-hidden="true">
   <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-    <path d="M0,0 C200,60 440,2 720,45 C1000,80 1240,15 1440,58 L1440,0 Z" fill="#5b4fcf"/>
+    <path d="M0,0 C200,60 440,2 720,45 C1000,80 1240,15 1440,58 L1440,0 Z" fill="var(--stats-bg)"/>
   </svg>
 </div>
 
@@ -1350,15 +1341,15 @@ textarea.form-input {
   </div>
 </section>
 
-<!-- Wave Divider: Fitur → Testimoni (indigo zone) -->
+<!-- Wave Divider: Fitur → Testimoni -->
 <div class="wave-divider wave-top" aria-hidden="true">
   <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-    <path d="M0,80 C300,12 600,78 900,32 C1100,0 1300,58 1440,18 L1440,80 Z" fill="#4f46e5"/>
+    <path d="M0,80 C300,12 600,78 900,32 C1100,0 1300,58 1440,18 L1440,80 Z" fill="var(--testimoni-bg)"/>
   </svg>
 </div>
 
 <!-- TESTIMONI -->
-<section id="testimoni" style="background: linear-gradient(135deg,#4f46e5,#3730a3); border:none;">
+<section id="testimoni" style="background: var(--testimoni-bg); border:none;">
   <div class="section-label reveal">TESTIMONI PENGGUNA</div>
   <h2 class="section-title reveal" style="transition-delay: 0.1s;">APA KATA <span>MEREKA</span>?</h2>
   <p class="section-sub reveal" style="transition-delay: 0.2s;">Dengarkan Pengalaman Langsung Siswa Yang Telah Menggunakan JurusanKu ID Untuk Menemukan Jalan Mereka.</p>
@@ -1370,7 +1361,7 @@ textarea.form-input {
 </section>
 
 <!-- HUBUNGI KAMI -->
-<section id="kontak" style="background: linear-gradient(135deg,#4f46e5,#3730a3); border:none;">
+<section id="kontak" style="background: var(--testimoni-bg); border:none;">
   <div class="section-label reveal">HUBUNGI KAMI</div>
   <h2 class="section-title reveal" style="transition-delay: 0.1s;"><span>KAMI SENANG</span> MENDENGAR DARI ANDA</h2>
   <p class="section-sub reveal" style="transition-delay: 0.2s;">Punya Pertanyaan Mengenai Rekomendasi Jurusan Atau Butuh Bantuan Lebih Lanjut? Tim Kami Siap Terhubung Dengan Anda.</p>
@@ -1481,10 +1472,10 @@ textarea.form-input {
   </div>
 </section>
 
-<!-- Wave Divider: Kontak → Tentang (back to page bg) -->
+<!-- Wave Divider: Kontak → Tentang -->
 <div class="wave-divider wave-bottom" aria-hidden="true">
   <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-    <path d="M0,0 C300,68 600,2 900,48 C1100,78 1300,22 1440,62 L1440,0 Z" fill="#3730a3"/>
+    <path d="M0,0 C300,68 600,2 900,48 C1100,78 1300,22 1440,62 L1440,0 Z" fill="var(--testimoni-bg)"/>
   </svg>
 </div>
 
