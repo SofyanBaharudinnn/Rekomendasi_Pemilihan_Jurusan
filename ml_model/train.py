@@ -61,14 +61,17 @@ if not os.path.exists(dataset_path):
     df.to_csv(dataset_path, index=False)
     print(f"Dataset berhasil dibuat di {dataset_path}")
 else:
-    df = pd.read_csv(dataset_path)
+    df = pd.read_csv(dataset_path, sep=';')
+    # Hapus kolom kosong jika ada
+    df = df.dropna(axis=1, how='all')
+    df.columns = df.columns.str.strip()
     print(f"Membaca dataset dari {dataset_path}")
 
 X = df.drop('jurusan', axis=1)
 y = df['jurusan']
 
 # Train-test split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
 # Fit Decision Tree model
 dt = DecisionTreeClassifier(max_depth=7, random_state=42)
