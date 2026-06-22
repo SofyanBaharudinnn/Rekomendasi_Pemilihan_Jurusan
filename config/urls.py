@@ -34,6 +34,7 @@ urlpatterns = [
 
     # ── User API: Tes & Riwayat ───────────────────────────────────
     path('api/user/riwayat/', views.api_user_riwayat, name='api_user_riwayat'),
+    path('api/user/riwayat/<int:hasil_id>/delete/', views.api_user_riwayat_delete, name='api_user_riwayat_delete'),
     path('api/user/feedback/', views.api_user_feedback, name='api_user_feedback'),
 
     # ── User API: Informatif ──────────────────────────────────────

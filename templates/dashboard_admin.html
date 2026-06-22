@@ -3244,6 +3244,7 @@ async function viewUserProfile(id) {
                   <span style="font-size:0.72rem; color:var(--muted); display:block;">Tes #${u.riwayat.length - idx} — ${r.tanggal}</span>
                   <strong style="font-size:1.05rem; color:var(--indigo); display:flex; align-items:center; gap:0.25rem;">🎓 ${r.jurusan}</strong>
                 </div>
+                <button onclick="deleteRiwayat(${r.id}, ${u.id})" class="btn btn-red btn-xs" style="padding: 0.2rem 0.5rem; font-size: 0.65rem; border-radius: 4px;">Hapus</button>
               </div>
               
               <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:0.75rem; font-size:0.8rem;">
@@ -4527,10 +4528,31 @@ async function loadRiwayat(){
         <td style="color:var(--muted)">${h.tanggal}</td>
         <td>
           <button onclick="showRiwayatDetail(${h.id})" class="btn btn-primary btn-xs" style="margin-right: 0.35rem;">Detail</button>
-          <a href="/user/export/${h.id}/" target="_blank" class="btn btn-ghost btn-xs">PDF</a>
+          <a href="/user/export/${h.id}/" target="_blank" class="btn btn-ghost btn-xs" style="margin-right: 0.35rem;">PDF</a>
+          <button onclick="deleteRiwayat(${h.id})" class="btn btn-red btn-xs">Hapus</button>
         </td>
       </tr>`).join('')}
     </tbody></table>`;
+}
+
+async function deleteRiwayat(id, userId=null) {
+  if (!confirm('Apakah Anda yakin ingin menghapus riwayat tes ini?')) return;
+  toast('Menghapus riwayat...', 'info');
+  try {
+    const d = await api(`/api/user/riwayat/${id}/delete/`, { method: 'DELETE' });
+    if (d.success) {
+      toast('Riwayat berhasil dihapus!', 'success');
+      if (userId) {
+        await viewUserProfile(userId);
+      } else {
+        await loadRiwayat();
+      }
+    } else {
+      toast(d.error || 'Gagal menghapus riwayat', 'error');
+    }
+  } catch (e) {
+    toast('Gagal menghapus riwayat', 'error');
+  }
 }
 
 async function showRiwayatDetail(id) {

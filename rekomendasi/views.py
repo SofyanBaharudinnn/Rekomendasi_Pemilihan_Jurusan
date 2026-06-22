@@ -563,6 +563,16 @@ def api_user_riwayat(request):
     return JsonResponse({'riwayat': data, 'total': len(data)})
 
 @user_api_required
+def api_user_riwayat_delete(request, hasil_id):
+    h = get_object_or_404(HasilRekomendasi, pk=hasil_id)
+    if request.method == 'DELETE':
+        if not request.user.is_staff and h.user != request.user:
+            return JsonResponse({'success': False, 'error': 'Permission denied'}, status=403)
+        h.delete()
+        return JsonResponse({'success': True})
+    return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
+
+@user_api_required
 def api_user_export_pdf(request, hasil_id):
     """Render halaman cetak yang bisa di-print/save sebagai PDF."""
     h = get_object_or_404(HasilRekomendasi, pk=hasil_id, user=request.user)

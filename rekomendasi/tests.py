@@ -205,3 +205,60 @@ class PesanKontakAPITests(TestCase):
         self.assertEqual(PesanKontak.objects.count(), 0)
 
 
+class RiwayatDeleteAPITests(TestCase):
+    def setUp(self):
+        self.admin = User.objects.create_superuser(
+            username='admin',
+            email='admin@test.id',
+            password='adminpassword'
+        )
+        self.siswa = User.objects.create_user(
+            username='siswa',
+            email='siswa@test.id',
+            password='siswapassword'
+        )
+        self.siswa2 = User.objects.create_user(
+            username='siswa2',
+            email='siswa2@test.id',
+            password='siswa2password'
+        )
+        
+        self.hasil_siswa = HasilRekomendasi.objects.create(
+            user=self.siswa,
+            jurusan='Teknik Informatika',
+            nilai_mat=90, nilai_bhs=80, nilai_ipa=85, nilai_ips=70,
+            minat_tek=95, minat_sen=50, minat_bis=60, minat_kes=40
+        )
+        
+    def test_anonymous_user_delete_denied(self):
+        url = reverse('api_user_riwayat_delete', kwargs={'hasil_id': self.hasil_siswa.id})
+        response = self.client.delete(url)
+        self.assertEqual(response.status_code, 401)
+        
+    def test_user_delete_own_riwayat_success(self):
+        self.client.login(username='siswa', password='siswapassword')
+        url = reverse('api_user_riwayat_delete', kwargs={'hasil_id': self.hasil_siswa.id})
+        response = self.client.delete(url)
+        self.assertEqual(response.status_code, 200)
+        data = json.loads(response.content)
+        self.assertTrue(data['success'])
+        self.assertFalse(HasilRekomendasi.objects.filter(id=self.hasil_siswa.id).exists())
+        
+    def test_user_delete_other_riwayat_denied(self):
+        self.client.login(username='siswa2', password='siswa2password')
+        url = reverse('api_user_riwayat_delete', kwargs={'hasil_id': self.hasil_siswa.id})
+        response = self.client.delete(url)
+        self.assertEqual(response.status_code, 403)
+        self.assertTrue(HasilRekomendasi.objects.filter(id=self.hasil_siswa.id).exists())
+        
+    def test_admin_delete_any_riwayat_success(self):
+        self.client.login(username='admin', password='adminpassword')
+        url = reverse('api_user_riwayat_delete', kwargs={'hasil_id': self.hasil_siswa.id})
+        response = self.client.delete(url)
+        self.assertEqual(response.status_code, 200)
+        data = json.loads(response.content)
+        self.assertTrue(data['success'])
+        self.assertFalse(HasilRekomendasi.objects.filter(id=self.hasil_siswa.id).exists())
+
+
+
