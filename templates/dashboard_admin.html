@@ -136,7 +136,7 @@ body.light-mode .skeleton-box {
 
 .sb-brand{padding:1.5rem;border-bottom:1px solid var(--border);}
 .sb-logo{font-size:1.2rem;font-weight:800;
-  background:linear-gradient(135deg,var(--orange),#f97316);
+  background:linear-gradient(135deg,#6c5ce7,#a855f7);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .sb-role{
   display:inline-flex;align-items:center;gap:.35rem;margin-top:.4rem;
@@ -573,7 +573,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
 .logo-text {
   font-size: 1.35rem;
   font-weight: 800;
-  background: linear-gradient(135deg, var(--blue), var(--indigo));
+  background: linear-gradient(135deg, #6c5ce7, #a855f7);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: var(--text);
@@ -757,7 +757,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
   border-bottom: 1px solid rgba(108, 92, 231, 0.09) !important;
 }
 .light-mode .sb-logo {
-  background: linear-gradient(135deg, var(--indigo), #a855f7) !important;
+  background: linear-gradient(135deg, #6c5ce7, #a855f7) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
 }
@@ -1011,13 +1011,13 @@ tr:hover td{background:rgba(255,255,255,.02);}
   position: relative;
   width: 90px;
   height: 90px;
-  background: linear-gradient(135deg, #4f8ef7, #6366f1);
+  background: linear-gradient(135deg, #6c5ce7, #a855f7);
   border-radius: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1.8rem;
-  box-shadow: 0 0 35px rgba(99, 102, 241, 0.45);
+  box-shadow: 0 0 35px rgba(108, 92, 231, 0.45);
   animation: logoGlow 3s infinite ease-in-out;
 }
 .premium-loader-icon {
@@ -1027,9 +1027,12 @@ tr:hover td{background:rgba(255,255,255,.02);}
 .premium-loader-title {
   font-size: 1.85rem;
   font-weight: 800;
-  color: #ffffff;
+  background: linear-gradient(135deg, #6c5ce7, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 0.35rem;
   letter-spacing: -0.5px;
+  display: inline-block;
 }
 .premium-loader-subtitle {
   font-size: 0.72rem;
@@ -1050,13 +1053,10 @@ tr:hover td{background:rgba(255,255,255,.02);}
 .premium-loader-bar-inner {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, #4f8ef7, #6366f1);
+  background: linear-gradient(90deg, #6c5ce7, #a855f7);
   border-radius: 99px;
-  box-shadow: 0 0 10px rgba(99, 102, 241, 0.7);
+  box-shadow: 0 0 10px rgba(108, 92, 231, 0.7);
   animation: fillBar 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-.light-mode .premium-loader-title {
-  color: #0f172a;
 }
 .light-mode .premium-loader-subtitle {
   color: #64748b;
@@ -1085,8 +1085,8 @@ tr:hover td{background:rgba(255,255,255,.02);}
   100% { width: 100%; }
 }
 @keyframes logoGlow {
-  0%, 100% { box-shadow: 0 0 30px rgba(99, 102, 241, 0.4); }
-  55% { box-shadow: 0 0 45px rgba(99, 102, 241, 0.65); }
+  0%, 100% { box-shadow: 0 0 30px rgba(108, 92, 231, 0.4); }
+  55% { box-shadow: 0 0 45px rgba(108, 92, 231, 0.65); }
 }
 
 /* ── NEWSROOM STYLING ── */
@@ -2856,8 +2856,8 @@ tr:hover td{background:rgba(255,255,255,.02);}
     <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="url(#logo-grad-nav)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
       <defs>
         <linearGradient id="logo-grad-nav" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="var(--blue)" />
-          <stop offset="100%" stop-color="var(--indigo)" />
+          <stop offset="0%" stop-color="#6c5ce7" />
+          <stop offset="100%" stop-color="#a855f7" />
         </linearGradient>
       </defs>
       <path d="M22 10v6M2 10l10-5 10 5-10 5z" />

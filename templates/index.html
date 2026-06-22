@@ -91,7 +91,7 @@ nav {
 .logo-text {
   font-size: 1.35rem;
   font-weight: 800;
-  background: linear-gradient(135deg, var(--blue), var(--indigo));
+  background: linear-gradient(135deg, #6c5ce7, #a855f7);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: var(--text);
@@ -1171,13 +1171,13 @@ textarea.form-input {
   position: relative;
   width: 90px;
   height: 90px;
-  background: linear-gradient(135deg, #4f8ef7, #6366f1);
+  background: linear-gradient(135deg, #6c5ce7, #a855f7);
   border-radius: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1.8rem;
-  box-shadow: 0 0 35px rgba(99, 102, 241, 0.45);
+  box-shadow: 0 0 35px rgba(108, 92, 231, 0.45);
   animation: logoGlow 3s infinite ease-in-out;
 }
 .premium-loader-icon {
@@ -1187,9 +1187,12 @@ textarea.form-input {
 .premium-loader-title {
   font-size: 1.85rem;
   font-weight: 800;
-  color: #ffffff;
+  background: linear-gradient(135deg, #6c5ce7, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 0.35rem;
   letter-spacing: -0.5px;
+  display: inline-block;
 }
 .premium-loader-subtitle {
   font-size: 0.72rem;
@@ -1210,13 +1213,10 @@ textarea.form-input {
 .premium-loader-bar-inner {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, #4f8ef7, #6366f1);
+  background: linear-gradient(90deg, #6c5ce7, #a855f7);
   border-radius: 99px;
-  box-shadow: 0 0 10px rgba(99, 102, 241, 0.7);
+  box-shadow: 0 0 10px rgba(108, 92, 231, 0.7);
   animation: fillBar 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-.light-mode .premium-loader-title {
-  color: #0f172a;
 }
 .light-mode .premium-loader-subtitle {
   color: #64748b;
@@ -1229,8 +1229,8 @@ textarea.form-input {
   100% { width: 100%; }
 }
 @keyframes logoGlow {
-  0%, 100% { box-shadow: 0 0 30px rgba(99, 102, 241, 0.4); }
-  50% { box-shadow: 0 0 45px rgba(99, 102, 241, 0.65); }
+  0%, 100% { box-shadow: 0 0 30px rgba(108, 92, 231, 0.4); }
+  50% { box-shadow: 0 0 45px rgba(108, 92, 231, 0.65); }
 }
 
 
@@ -1357,8 +1357,8 @@ textarea.form-input {
     <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="url(#logo-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
       <defs>
         <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="var(--blue)" />
-          <stop offset="100%" stop-color="var(--indigo)" />
+          <stop offset="0%" stop-color="#6c5ce7" />
+          <stop offset="100%" stop-color="#a855f7" />
         </linearGradient>
       </defs>
       <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
@@ -1696,8 +1696,8 @@ textarea.form-input {
         <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="url(#logo-grad-footer)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <defs>
             <linearGradient id="logo-grad-footer" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="var(--blue)" />
-              <stop offset="100%" stop-color="var(--indigo)" />
+              <stop offset="0%" stop-color="#6c5ce7" />
+              <stop offset="100%" stop-color="#a855f7" />
             </linearGradient>
           </defs>
           <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
