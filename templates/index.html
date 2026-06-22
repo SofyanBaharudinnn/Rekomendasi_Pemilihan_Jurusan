@@ -1212,386 +1212,101 @@ textarea.form-input {
   50% { box-shadow: 0 0 45px rgba(99, 102, 241, 0.65); }
 }
 
-/* 3D HERO DASHBOARD MOCKUP */
-.hero-dashboard-3d {
-  position: relative;
-  width: 100%;
-  max-width: 580px;
-  height: 420px;
-  perspective: 2000px;
-  transform-style: preserve-3d;
+
+
+/* Responsive Nav Auth and Tentang Cards */
+.nav-auth-mobile {
+  display: none;
+}
+.nav-auth-desktop {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  /* CSS Variables for 3D rotation, translation, and depth */
-  --ry: -22deg;
-  --rx: 16deg;
-  --rz: 3deg;
-  --ty: 0px;
-  --tz1: 120px;
-  --tz2: 160px;
-  --tz3: 140px;
-}
-.hero-dashboard-3d:hover {
-  --ry: -16deg;
-  --rx: 11deg;
-  --rz: 1deg;
-  --ty: -8px;
-  --tz1: 150px;
-  --tz2: 190px;
-  --tz3: 170px;
 }
 
-/* Base glowing sphere behind dashboard */
-.db-glow {
-  position: absolute;
-  width: 350px;
-  height: 350px;
-  background: radial-gradient(circle, rgba(108, 92, 231, 0.28) 0%, rgba(99, 102, 241, 0) 70%);
-  filter: blur(30px);
-  transform: translateZ(-100px);
-  pointer-events: none;
-}
-
-/* Main Dashboard Panel */
-.db-panel {
-  width: 490px;
-  height: 340px;
-  background: rgba(10, 10, 18, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: -15px 25px 50px rgba(0, 0, 0, 0.55);
-  transform: rotateY(var(--ry)) rotateX(var(--rx)) rotateZ(var(--rz)) translateY(var(--ty));
-  transform-style: preserve-3d;
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s ease;
-  display: flex;
-  overflow: hidden;
-}
-
-.hero-dashboard-3d:hover .db-panel {
-  box-shadow: -25px 35px 70px rgba(108, 92, 231, 0.18);
-}
-
-/* Sidebar Mockup */
-.db-sidebar {
-  width: 60px;
-  background: rgba(255, 255, 255, 0.015);
-  border-right: 1px solid rgba(255, 255, 255, 0.05);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1.2rem 0;
+.check-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.2rem;
+  margin-top: 2rem;
 }
-.db-sidebar-logo {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--accent-blue);
-  box-shadow: 0 0 8px var(--accent-blue);
-  margin-bottom: 0.3rem;
+.check-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  transition: all 0.3s ease;
+  text-align: left;
 }
-.db-sidebar-item {
-  width: 26px;
-  height: 26px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.03);
+.check-item:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-blue);
+  box-shadow: 0 8px 24px rgba(108, 92, 231, 0.05);
+}
+.check-icon-wrapper {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.75rem;
-  color: var(--muted);
+  flex-shrink: 0;
 }
-.db-sidebar-item.active {
-  background: rgba(108, 92, 231, 0.15);
-  color: var(--accent-blue);
-  border: 1px solid rgba(108, 92, 231, 0.25);
+.check-icon-wrapper.purple {
+  background: rgba(108, 92, 231, 0.08);
+  border: 1px solid rgba(108, 92, 231, 0.15);
 }
-
-/* Content Area Mockup */
-.db-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 1.2rem 1.4rem;
-  gap: 0.9rem;
-}
-
-/* Header & Top Bar Mockup */
-.db-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-  padding-bottom: 0.5rem;
-}
-.db-header h4 {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: 0.02em;
-}
-.db-badge-mock {
-  font-size: 0.62rem;
-  padding: 0.15rem 0.5rem;
-  border-radius: 20px;
-  background: rgba(16, 185, 129, 0.1);
-  color: #10b981;
-  font-weight: 600;
+.check-icon-wrapper.green {
+  background: rgba(16, 185, 129, 0.08);
   border: 1px solid rgba(16, 185, 129, 0.15);
 }
-
-/* Stats Row Mockup */
-.db-stats-row {
-  display: flex;
-  gap: 0.8rem;
+.check-icon-wrapper.blue {
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.15);
 }
-.db-mini-card {
-  flex: 1;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-  padding: 0.5rem 0.7rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
+.check-icon-wrapper.orange {
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.15);
 }
-.db-mini-card .lbl {
-  font-size: 0.6rem;
-  color: var(--muted);
-  font-weight: 500;
-}
-.db-mini-card .val {
-  font-size: 1rem;
-  font-weight: 800;
-  color: #fff;
-}
-
-/* Chart Widget Mockup */
-.db-chart-widget {
-  flex: 1;
-  background: rgba(255, 255, 255, 0.015);
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  border-radius: 12px;
-  padding: 0.7rem 0.9rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-.db-chart-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.db-chart-header h5 {
-  font-size: 0.7rem;
-  color: #fff;
+.check-text {
+  font-size: 0.95rem;
   font-weight: 600;
-}
-.db-chart-legend {
-  font-size: 0.6rem;
-  color: var(--muted);
-}
-.db-chart-bars {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  height: 75px;
-  padding: 0 0.2rem;
-}
-.db-chart-bar-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.3rem;
-  width: 14%;
-}
-.db-chart-bar {
-  width: 100%;
-  border-radius: 3px 3px 0 0;
-  background: linear-gradient(to top, rgba(108, 92, 231, 0.2), var(--accent-blue));
-}
-.db-chart-bar-wrap:nth-child(even) .db-chart-bar {
-  background: linear-gradient(to top, rgba(16, 185, 129, 0.2), #10b981);
-}
-.db-chart-label {
-  font-size: 0.5rem;
-  color: var(--muted);
-}
-
-/* Floating 3D Cards */
-.db-float-card {
-  position: absolute;
-  background: rgba(15, 15, 25, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-radius: 14px;
-  padding: 0.6rem 1rem;
-  box-shadow: -10px 15px 35px rgba(0, 0, 0, 0.45);
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  pointer-events: none;
-  transform-style: preserve-3d;
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s ease;
-  z-index: 5;
-}
-
-.db-float-card h5 {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #fff;
-  margin: 0;
-}
-.db-float-card p {
-  font-size: 0.6rem;
-  color: var(--muted);
-  margin: 0.1rem 0 0 0;
-  font-weight: 500;
-}
-.db-float-card .icon-wrap {
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9rem;
-  background: rgba(108, 92, 231, 0.15);
-  color: var(--accent-blue);
-  border: 1px solid rgba(108, 92, 231, 0.25);
-}
-.db-float-card.fc-success .icon-wrap {
-  background: rgba(16, 185, 129, 0.15);
-  color: #10b981;
-  border-color: rgba(16, 185, 129, 0.25);
-}
-
-/* Floating Card Positions (Translated Z) */
-.fc-1 {
-  top: 18%;
-  left: -40px;
-  transform: rotateY(var(--ry)) rotateX(var(--rx)) rotateZ(var(--rz)) translateY(var(--ty)) translateZ(var(--tz1));
-  animation: floatZ1 6s ease-in-out infinite;
-}
-.fc-2 {
-  bottom: 15%;
-  right: -30px;
-  transform: rotateY(var(--ry)) rotateX(var(--rx)) rotateZ(var(--rz)) translateY(var(--ty)) translateZ(var(--tz2));
-  animation: floatZ2 5.5s ease-in-out infinite;
-}
-.fc-3 {
-  top: 42%;
-  right: -50px;
-  transform: rotateY(var(--ry)) rotateX(var(--rx)) rotateZ(var(--rz)) translateY(var(--ty)) translateZ(var(--tz3));
-  animation: floatZ3 6.5s ease-in-out infinite;
-}
-
-@keyframes floatZ1 {
-  0%, 100% { transform: rotateY(var(--ry)) rotateX(var(--rx)) rotateZ(var(--rz)) translateY(calc(var(--ty) + 0px)) translateZ(var(--tz1)); }
-  50%      { transform: rotateY(var(--ry)) rotateX(var(--rx)) rotateZ(var(--rz)) translateY(calc(var(--ty) - 10px)) translateZ(var(--tz1)); }
-}
-@keyframes floatZ2 {
-  0%, 100% { transform: rotateY(var(--ry)) rotateX(var(--rx)) rotateZ(var(--rz)) translateY(calc(var(--ty) + 0px)) translateZ(var(--tz2)); }
-  50%      { transform: rotateY(var(--ry)) rotateX(var(--rx)) rotateZ(var(--rz)) translateY(calc(var(--ty) + 10px)) translateZ(var(--tz2)); }
-}
-@keyframes floatZ3 {
-  0%, 100% { transform: rotateY(var(--ry)) rotateX(var(--rx)) rotateZ(var(--rz)) translateY(calc(var(--ty) + 0px)) translateZ(var(--tz3)); }
-  50%      { transform: rotateY(var(--ry)) rotateX(var(--rx)) rotateZ(var(--rz)) translateY(calc(var(--ty) - 8px)) translateZ(var(--tz3)); }
-}
-
-/* Light Mode Overrides for 3D Dashboard Mockup */
-.light-mode .db-panel {
-  background: rgba(255, 255, 255, 0.85);
-  border-color: rgba(108, 92, 231, 0.1);
-  box-shadow: -15px 25px 50px rgba(108, 92, 231, 0.08);
-}
-.light-mode .hero-dashboard-3d:hover .db-panel {
-  box-shadow: -25px 35px 70px rgba(108, 92, 231, 0.15);
-}
-.light-mode .db-sidebar {
-  background: rgba(0, 0, 0, 0.015);
-  border-right-color: rgba(0, 0, 0, 0.05);
-}
-.light-mode .db-sidebar-item {
-  background: rgba(0, 0, 0, 0.02);
-  color: var(--muted);
-}
-.light-mode .db-sidebar-item.active {
-  background: rgba(108, 92, 231, 0.08);
-  color: var(--accent-blue);
-  border-color: rgba(108, 92, 231, 0.15);
-}
-.light-mode .db-header {
-  border-bottom-color: rgba(0, 0, 0, 0.04);
-}
-.light-mode .db-header h4 {
-  color: var(--text);
-}
-.light-mode .db-mini-card {
-  background: #ffffff;
-  border-color: rgba(108, 92, 231, 0.06);
-  box-shadow: 0 4px 12px rgba(108, 92, 231, 0.03);
-}
-.light-mode .db-mini-card .val {
-  color: var(--text);
-}
-.light-mode .db-chart-widget {
-  background: #ffffff;
-  border-color: rgba(108, 92, 231, 0.06);
-  box-shadow: 0 4px 12px rgba(108, 92, 231, 0.03);
-}
-.light-mode .db-chart-header h5 {
-  color: var(--text);
-}
-.light-mode .db-float-card {
-  background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(108, 92, 231, 0.1);
-  box-shadow: -10px 15px 35px rgba(108, 92, 231, 0.1);
-}
-.light-mode .db-float-card h5 {
   color: var(--text);
 }
 
-/* Responsive: Scale Mockup for Mobile devices (Keep 3D Isometric View & Perfectly Centered) */
-@media (max-width: 1024px) {
-  .hero-dashboard-3d {
-    width: 580px;
-    margin-left: calc(50% - 290px);
-    transform: scale(0.85);
-    transform-origin: center center;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
-}
 @media (max-width: 768px) {
-  .hero-dashboard-3d {
-    width: 580px;
-    margin-left: calc(50% - 290px);
-    transform: scale(0.70);
-    transform-origin: center center;
-    margin-top: -2rem;
-    margin-bottom: -2rem;
+  .nav-auth-desktop {
+    display: none !important;
   }
-}
-@media (max-width: 480px) {
-  .hero-dashboard-3d {
-    width: 580px;
-    margin-left: calc(50% - 290px);
-    transform: scale(0.52);
-    transform-origin: center center;
-    margin-top: -4.5rem;
-    margin-bottom: -4.5rem;
+  .nav-auth-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 1rem;
+    width: 100%;
+  }
+  .nav-auth-mobile .btn-nav-outline,
+  .nav-auth-mobile .btn-nav {
+    display: block;
+    text-align: center;
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 0.8rem;
   }
 }
 
-/* Preserve 3D context for Tentang section to prevent clipping/flattening */
-.about-grid,
-.about-grid .reveal-right {
-  transform-style: preserve-3d;
+@media (max-width: 576px) {
+  .check-grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+  }
 }
 </style>
 </head>
@@ -1623,15 +1338,26 @@ textarea.form-input {
     <a href="#fitur">Fitur</a>
     <a href="#tentang">Tentang</a>
     <a href="#kontak">Hubungi Kami</a>
+    <div class="nav-auth-mobile">
+      {% if user.is_authenticated %}
+        <a href="{% if user.is_staff %}{% url 'dashboard_admin' %}{% else %}{% url 'dashboard_user' %}{% endif %}" class="btn-nav-outline">Dashboard</a>
+        <a href="{% url 'logout' %}" class="btn-nav">Keluar</a>
+      {% else %}
+        <a href="{% url 'login' %}" class="btn-nav-outline">Masuk</a>
+        <a href="{% url 'register' %}" class="btn-nav">Daftar Akun &rarr;</a>
+      {% endif %}
+    </div>
   </div>
   <div style="display:flex;gap:.8rem;align-items:center;">
-    {% if user.is_authenticated %}
-      <a href="{% if user.is_staff %}{% url 'dashboard_admin' %}{% else %}{% url 'dashboard_user' %}{% endif %}" class="btn-nav-outline">Dashboard</a>
-      <a href="{% url 'logout' %}" class="btn-nav">Keluar</a>
-    {% else %}
-      <a href="{% url 'login' %}" class="btn-nav-outline">Masuk</a>
-      <a href="{% url 'register' %}" class="btn-nav">Daftar Akun &rarr;</a>
-    {% endif %}
+    <div class="nav-auth-desktop" style="display:flex;gap:.8rem;align-items:center;">
+      {% if user.is_authenticated %}
+        <a href="{% if user.is_staff %}{% url 'dashboard_admin' %}{% else %}{% url 'dashboard_user' %}{% endif %}" class="btn-nav-outline">Dashboard</a>
+        <a href="{% url 'logout' %}" class="btn-nav">Keluar</a>
+      {% else %}
+        <a href="{% url 'login' %}" class="btn-nav-outline">Masuk</a>
+        <a href="{% url 'register' %}" class="btn-nav">Daftar Akun &rarr;</a>
+      {% endif %}
+    </div>
     <button class="nav-mobile-toggle" id="nav-mobile-toggle" aria-label="Toggle Menu">☰</button>
   </div>
 </nav>
@@ -1882,105 +1608,48 @@ textarea.form-input {
 <section id="tentang">
   <div class="section-label reveal">TENTANG SISTEM</div>
   <h2 class="section-title reveal" style="transition-delay: 0.1s;">DI BANGUN UNTUK <span>GENERASI PENERUS</span></h2>
-  <div class="about-grid">
-    <div class="reveal-left">
-      <p style="color:var(--muted);line-height:1.8;margin-bottom:1rem">Banyak Siswa SMA/SMK Mengalami Kebingungan & Kecemasan Dalam Memilih Jurusan Kuliah. Fenomena "Salah Jurusan" Berdampak Pada Motivasi Belajar & Tingginya Angka Putus kuliah.</p>
-      <p style="color:var(--muted);line-height:1.8">JurusanKu ID Hadir Sebagai Solusi Cerdas Berbasis Decision Tree Yang Dapat Diakses Kapan Saja, Melengkapi Peran Guru BK Yang Terbatas Waktu & Kapasitas.</p>
-      <div class="check-list">
-        <div>✅ Algoritma Decision Tree Machine Learning</div>
-        <div>✅ Dibangun Dengan Python & Django</div>
-        <div>✅ Akurasi Model 91% Tervalidasi</div>
-        <div>✅ Gratis Dan Mudah Diakses Siswa</div>
+  <div class="about-container reveal" style="max-width: 800px; margin: 0 auto; text-align: center;">
+    <p style="color:var(--muted);line-height:1.8;margin-bottom:1.2rem;font-size:1.1rem;">Banyak Siswa SMA/SMK Mengalami Kebingungan & Kecemasan Dalam Memilih Jurusan Kuliah. Fenomena "Salah Jurusan" Berdampak Pada Motivasi Belajar & Tingginya Angka Putus kuliah.</p>
+    <p style="color:var(--muted);line-height:1.8;font-size:1.1rem;margin-bottom:2rem;">JurusanKu ID Hadir Sebagai Solusi Cerdas Berbasis Decision Tree Yang Dapat Diakses Kapan Saja, Melengkapi Peran Guru BK Yang Terbatas Waktu & Kapasitas.</p>
+    
+    <div class="check-grid">
+      <div class="check-item">
+        <div class="check-icon-wrapper purple">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6c5ce7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="18" cy="4" r="3" />
+            <circle cx="6" cy="12" r="3" />
+            <circle cx="18" cy="20" r="3" />
+            <path d="M9 12h3a3 3 0 0 0 3-3V7a3 3 0 0 1 3-3" />
+            <path d="M9 12h3a3 3 0 0 1 3 3v5a3 3 0 0 0 3 3" />
+          </svg>
+        </div>
+        <span class="check-text">Algoritma Decision Tree ML</span>
       </div>
-    </div>
-    <div class="reveal-right">
-      <div class="hero-dashboard-3d">
-        <!-- Glow behind -->
-        <div class="db-glow"></div>
-        
-        <!-- Main panel -->
-        <div class="db-panel">
-          <!-- Sidebar -->
-          <div class="db-sidebar">
-            <div class="db-sidebar-logo"></div>
-            <div class="db-sidebar-item active">📊</div>
-            <div class="db-sidebar-item">👥</div>
-            <div class="db-sidebar-item">⚙️</div>
-          </div>
-          
-          <!-- Content -->
-          <div class="db-content">
-            <div class="db-header">
-              <h4>Dashboard Admin</h4>
-              <div class="db-badge-mock">Decision Tree AI</div>
-            </div>
-            
-            <div class="db-stats-row">
-              <div class="db-mini-card">
-                <span class="lbl">Akurasi Model</span>
-                <span class="val">91.2%</span>
-              </div>
-              <div class="db-mini-card">
-                <span class="lbl">Total Siswa</span>
-                <span class="val">1,280+</span>
-              </div>
-            </div>
-            
-            <div class="db-chart-widget">
-              <div class="db-chart-header">
-                <h5>Statistik Minat Jurusan</h5>
-                <span class="db-chart-legend">Bulan ini</span>
-              </div>
-              <div class="db-chart-bars">
-                <div class="db-chart-bar-wrap">
-                  <div class="db-chart-bar" style="height: 65px;"></div>
-                  <span class="db-chart-label">IT</span>
-                </div>
-                <div class="db-chart-bar-wrap">
-                  <div class="db-chart-bar" style="height: 40px;"></div>
-                  <span class="db-chart-label">Medis</span>
-                </div>
-                <div class="db-chart-bar-wrap">
-                  <div class="db-chart-bar" style="height: 55px;"></div>
-                  <span class="db-chart-label">Bisnis</span>
-                </div>
-                <div class="db-chart-bar-wrap">
-                  <div class="db-chart-bar" style="height: 30px;"></div>
-                  <span class="db-chart-label">Seni</span>
-                </div>
-                <div class="db-chart-bar-wrap">
-                  <div class="db-chart-bar" style="height: 60px;"></div>
-                  <span class="db-chart-label">Teknik</span>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="check-item">
+        <div class="check-icon-wrapper green">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 17l6-6-6-6M12 19h8" />
+          </svg>
         </div>
-        
-        <!-- Floating 3D Cards -->
-        <div class="db-float-card fc-1">
-          <div class="icon-wrap">🤖</div>
-          <div>
-            <h5>AI Core Active</h5>
-            <p>Model Terlatih</p>
-          </div>
+        <span class="check-text">Dibangun Dengan Python & Django</span>
+      </div>
+      <div class="check-item">
+        <div class="check-icon-wrapper blue">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            <path d="m9 11 2 2 4-4" />
+          </svg>
         </div>
-        
-        <div class="db-float-card fc-2 fc-success">
-          <div class="icon-wrap">⚡</div>
-          <div>
-            <h5>Analisis Cepat</h5>
-            <p>&lt; 10 Detik</p>
-          </div>
+        <span class="check-text">Akurasi Model 91% Tervalidasi</span>
+      </div>
+      <div class="check-item">
+        <div class="check-icon-wrapper orange">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+            <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
+          </svg>
         </div>
-        
-        <div class="db-float-card fc-3">
-          <div class="icon-wrap">✨</div>
-          <div>
-            <h5>7+ Jurusan</h5>
-            <p>Rekomendasi Akurat</p>
-          </div>
-        </div>
+        <span class="check-text">Gratis Dan Mudah Diakses Siswa</span>
       </div>
     </div>
   </div>
@@ -2282,60 +1951,45 @@ try {
     const heroClock = new THREE.Clock();
     let camTargetX = 0, camTargetY = 2;
 
-    if (isMobileDevice) {
-      const t = 1.5;
+    (function animateHero() {
+      requestAnimationFrame(animateHero);
+      const t = heroClock.getElapsedTime();
+      const pulse = 1 + 0.04 * Math.sin(t * 2.2);
+      coreMesh.scale.setScalar(pulse);
+      innerMat.opacity = 0.35 + 0.18 * Math.sin(t * 1.8);
+      wireMesh.rotation.y = t * 0.15;
+      wireMesh.rotation.z = t * 0.08;
+      pointLight1.intensity = 5 + 2 * Math.sin(t * 1.5);
+      orbitRings.forEach((ring, i) => { ring.rotation.z = t * 0.02 * (i % 2 === 0 ? 1 : -1); });
       majorMeshes.forEach(m => {
         const angle = t * m.speed + m.phase;
-        m.mesh.position.set(Math.cos(angle) * m.orbitR, Math.sin(angle) * m.orbitR * Math.sin(m.incl), Math.sin(angle) * m.orbitR * Math.cos(m.incl));
+        const x = Math.cos(angle) * m.orbitR;
+        const zRaw = Math.sin(angle) * m.orbitR;
+        const y = zRaw * Math.sin(m.incl);
+        const z = zRaw * Math.cos(m.incl);
+        m.mesh.position.set(x, y, z);
         m.mesh.rotation.y = t * 1.2;
+        const glow = m.mesh.children[0];
+        if (glow) glow.rotation.x = t * 0.5;
       });
       streamParticles.forEach(p => {
         const angle = t * p.speed + p.phase;
-        p.mesh.position.set(Math.cos(angle) * p.orbitR, Math.sin(angle) * p.orbitR * Math.sin(p.incl), Math.sin(angle) * p.orbitR * Math.cos(p.incl));
+        const x = Math.cos(angle) * p.orbitR;
+        const zRaw = Math.sin(angle) * p.orbitR;
+        const y = zRaw * Math.sin(p.incl);
+        const z = zRaw * Math.cos(p.incl);
+        p.mesh.position.set(x, y, z);
+        p.mesh.material.opacity = 0.3 + 0.5 * Math.abs(Math.sin(angle * 0.5));
       });
-      updateConnLines(majorMeshes);
+      if (Math.round(t * 60) % 3 === 0) updateConnLines(majorMeshes);
+      camTargetX += (heroMX * 1.5 - camTargetX) * 0.04;
+      camTargetY += (2 + heroMY * 1.0 - camTargetY) * 0.04;
+      heroCamera.position.x = camTargetX;
+      heroCamera.position.y = camTargetY;
+      heroCamera.lookAt(0, 0, 0);
+      heroScene.rotation.y = t * 0.06;
       heroRenderer.render(heroScene, heroCamera);
-    } else {
-      (function animateHero() {
-        requestAnimationFrame(animateHero);
-        const t = heroClock.getElapsedTime();
-        const pulse = 1 + 0.04 * Math.sin(t * 2.2);
-        coreMesh.scale.setScalar(pulse);
-        innerMat.opacity = 0.35 + 0.18 * Math.sin(t * 1.8);
-        wireMesh.rotation.y = t * 0.15;
-        wireMesh.rotation.z = t * 0.08;
-        pointLight1.intensity = 5 + 2 * Math.sin(t * 1.5);
-        orbitRings.forEach((ring, i) => { ring.rotation.z = t * 0.02 * (i % 2 === 0 ? 1 : -1); });
-        majorMeshes.forEach(m => {
-          const angle = t * m.speed + m.phase;
-          const x = Math.cos(angle) * m.orbitR;
-          const zRaw = Math.sin(angle) * m.orbitR;
-          const y = zRaw * Math.sin(m.incl);
-          const z = zRaw * Math.cos(m.incl);
-          m.mesh.position.set(x, y, z);
-          m.mesh.rotation.y = t * 1.2;
-          const glow = m.mesh.children[0];
-          if (glow) glow.rotation.x = t * 0.5;
-        });
-        streamParticles.forEach(p => {
-          const angle = t * p.speed + p.phase;
-          const x = Math.cos(angle) * p.orbitR;
-          const zRaw = Math.sin(angle) * p.orbitR;
-          const y = zRaw * Math.sin(p.incl);
-          const z = zRaw * Math.cos(p.incl);
-          p.mesh.position.set(x, y, z);
-          p.mesh.material.opacity = 0.3 + 0.5 * Math.abs(Math.sin(angle * 0.5));
-        });
-        if (Math.round(t * 60) % 3 === 0) updateConnLines(majorMeshes);
-        camTargetX += (heroMX * 1.5 - camTargetX) * 0.04;
-        camTargetY += (2 + heroMY * 1.0 - camTargetY) * 0.04;
-        heroCamera.position.x = camTargetX;
-        heroCamera.position.y = camTargetY;
-        heroCamera.lookAt(0, 0, 0);
-        heroScene.rotation.y = t * 0.06;
-        heroRenderer.render(heroScene, heroCamera);
-      })();
-    }
+    })();
   }
 } catch (e) {
   console.warn("WebGL hero education galaxy failed to initialize:", e);
