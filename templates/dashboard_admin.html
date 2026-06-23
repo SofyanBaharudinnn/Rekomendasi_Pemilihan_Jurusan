@@ -1852,6 +1852,76 @@ tr:hover td{background:rgba(255,255,255,.02);}
     font-size: 0.75rem !important;
   }
 }
+
+/* AI CAREER MENTOR LAYOUT */
+.mentor-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 3.2fr) minmax(0, 8.8fr);
+  gap: 1.5rem;
+  align-items: stretch;
+  height: calc(100vh - 240px);
+  min-height: 520px;
+}
+.mentor-sidebar-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.1rem !important;
+  height: 100%;
+  min-width: 0;
+  background: var(--dark2) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 16px !important;
+}
+.mentor-chat-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0 !important;
+  height: 100%;
+  overflow: hidden;
+  background: var(--dark2) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 16px !important;
+  position: relative;
+}
+.mentor-chat-header {
+  padding: 1rem 1.3rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  background: var(--dark3) !important;
+}
+.mentor-chat-input-bar {
+  padding: 0.9rem 1.2rem;
+  border-top: 1px solid var(--border);
+  background: var(--dark3) !important;
+  flex-shrink: 0;
+}
+.mentor-chat-input {
+  flex: 1;
+  border-radius: 12px !important;
+  padding: 0.75rem 1rem !important;
+}
+.chat-session-item.active {
+  background: rgba(79, 142, 247, 0.15) !important;
+  border-color: var(--blue) !important;
+  box-shadow: 0 4px 12px rgba(79, 142, 247, 0.15);
+}
+@media (max-width: 768px) {
+  .mentor-grid {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: auto;
+    gap: 1rem;
+  }
+  .mentor-sidebar-card {
+    height: 250px;
+  }
+  .mentor-chat-card {
+    height: 500px;
+  }
+}
 </style>
 </head>
 <body>
@@ -2160,6 +2230,12 @@ tr:hover td{background:rgba(255,255,255,.02);}
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path></svg>
       </span>
       Riwayat Tes
+    </button>
+    <button class="sb-item" id="sb-mentor" onclick="goto('mentor',this)">
+      <span class="sb-icon">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"></rect><circle cx="12" cy="5" r="2"></circle><path d="M12 7v4"></path><line x1="8" y1="16" x2="8" y2="16"></line><line x1="16" y1="16" x2="16" y2="16"></line></svg>
+      </span>
+      AI Career Mentor
     </button>
   </nav>
   <div class="sb-footer">
@@ -2846,6 +2922,66 @@ tr:hover td{background:rgba(255,255,255,.02);}
       </div>
     </div>
 
+    <!-- ══════════════════════════════════════════════════════════════════════
+         PAGE: AI CAREER MENTOR
+         ══════════════════════════════════════════════════════════════════════ -->
+    <div class="page" id="page-mentor">
+      <div class="ph">
+        <div class="ph-left">
+          <h2>AI Career Mentor</h2>
+          <p>Konsultasikan perencanaan karir, hasil rekomendasi prodi, dan tips UTBK bersama asisten AI Anda</p>
+        </div>
+      </div>
+
+      <!-- Layout Kolom Ganda (Glassmorphic) -->
+      <div class="mentor-grid">
+        <!-- Sisi Kiri: Daftar Sesi Chat -->
+        <div class="card mentor-sidebar-card">
+          <button class="btn btn-primary btn-sm" onclick="createChatSession()" style="width: 100%; justify-content: center; margin-bottom: 1rem; flex-shrink: 0;">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.3rem;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            Sesi Baru
+          </button>
+          <div id="chat-sessions-list" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 0.4rem; padding-right: 0.25rem;">
+            <div style="color: var(--muted); font-size: 0.78rem; text-align: center; padding: 2rem 0;">Memuat sesi...</div>
+          </div>
+        </div>
+
+        <!-- Sisi Kanan: Ruang Percakapan Chat -->
+        <div class="card mentor-chat-card" id="chat-box-container">
+          <!-- Header Chat -->
+          <div class="mentor-chat-header">
+            <div style="display: flex; align-items: center; gap: 0.6rem; min-width: 0;">
+              <div style="width: 38px; height: 38px; border-radius: 10px; background: rgba(99, 102, 241, 0.1); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0;">🤖</div>
+              <div style="min-width: 0;">
+                <h3 id="chat-active-title" style="font-size: 0.9rem; font-weight: 700; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Pilih Sesi Konseling</h3>
+                <p id="chat-active-status" style="font-size: 0.72rem; color: var(--muted); margin-top: 0.05rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Silakan pilih atau buat sesi di sebelah kiri</p>
+              </div>
+            </div>
+            <button id="btn-delete-active-session" class="btn btn-red btn-xs" onclick="deleteActiveSession()" style="display: none;" title="Hapus sesi ini">Hapus Sesi</button>
+          </div>
+
+          <!-- Body Chat / Bubble Area -->
+          <div id="chat-messages-body" style="flex: 1; overflow-y: auto; padding: 1.25rem 1.4rem; display: flex; flex-direction: column; gap: 1rem;">
+            <div style="margin: auto; text-align: center; max-width: 320px; color: var(--muted); padding: 2rem 0;">
+              <span style="font-size: 2.2rem; display: block; margin-bottom: 0.5rem;">💬</span>
+              <h4 style="font-size: 0.85rem; font-weight: 700; color: var(--text); margin-bottom: 0.25rem;">Konseling Karir Virtual</h4>
+              <p style="font-size: 0.75rem; line-height: 1.45;">Pilih salah satu sesi obrolan di sebelah kiri atau buat sesi baru untuk berkonsultasi mengenai pilihan jurusan dan rencana karir Anda.</p>
+            </div>
+          </div>
+
+          <!-- Input Chat Bar -->
+          <div class="mentor-chat-input-bar" style="display: none;" id="chat-input-bar">
+            <form onsubmit="sendChatMessage(event)" style="display: flex; gap: 0.75rem; align-items: center;">
+              <input type="text" id="chat-message-input" class="form-input mentor-chat-input" placeholder="Tanyakan apa saja tentang karir atau rekomendasi prodi..." autocomplete="off">
+              <button type="submit" class="btn btn-primary" style="padding: 0.72rem 1.25rem; border-radius: 12px; flex-shrink: 0;" id="btn-chat-send">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div><!-- /content -->
 
   <footer class="footer">
@@ -2984,6 +3120,7 @@ const pageTitles={
   'tes-baru':['Tes Baru','Lakukan tes rekomendasi prodi Anda'],
   riwayat:['Riwayat Tes','Lihat hasil dan unduh PDF riwayat tes Anda'],
   pesan:['Pesan Kontak','Melihat dan mengelola pesan masuk dari form Hubungi Kami'],
+  mentor:['AI Career Mentor','Konsultasikan perencanaan karir, hasil rekomendasi prodi, dan tips UTBK bersama asisten AI Anda'],
 };
 function goto(page, btn){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -3025,6 +3162,7 @@ function goto(page, btn){
   if(page==='tes-baru') loadPerbandingan();
   if(page==='riwayat') loadRiwayat();
   if(page==='pesan') loadPesan();
+  if(page==='mentor') loadChatSessions();
   
   // Close sidebar on mobile after navigation
   toggleSidebar(false);
@@ -4845,6 +4983,281 @@ window.addEventListener('load', function() {
     }, 1200);
   }
 });
+
+// ==============================================================================
+//  AI CAREER MENTOR CHAT JS
+// ==============================================================================
+let activeChatSessionId = null;
+
+async function loadChatSessions(selectLast = true) {
+  const container = document.getElementById('chat-sessions-list');
+  container.innerHTML = `<div style="color:var(--muted); font-size:0.75rem; text-align:center; padding:2rem 0;">Memuat sesi...</div>`;
+  
+  try {
+    const data = await api('/api/chat/sessions/');
+    if (data.sessions && data.sessions.length > 0) {
+      container.innerHTML = data.sessions.map(s => `
+        <div class="user-pill chat-session-item" id="session-${s.id}" onclick="selectChatSession(${s.id})" style="border-radius:10px; padding:0.6rem; margin-bottom:0.1rem; display:flex; justify-content:space-between; align-items:center;">
+          <div style="min-width:0; flex:1; display:flex; align-items:center; gap:0.5rem;">
+            <span style="font-size:1.1rem; flex-shrink:0;">💬</span>
+            <div style="min-width:0; text-align:left;">
+              <div style="font-size:0.8rem; font-weight:600; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" class="sess-title">${s.title}</div>
+              <div style="font-size:0.65rem; color:var(--muted); margin-top:0.05rem;">${s.updated_at}</div>
+            </div>
+          </div>
+          <button onclick="event.stopPropagation(); deleteChatSession(${s.id})" style="background:none; border:none; color:var(--muted); cursor:pointer; font-size:0.85rem; padding:0.2rem; display:inline-flex; align-items:center; justify-content:center; hover:color:var(--red);" title="Hapus Sesi">✕</button>
+        </div>
+      `).join('');
+      
+      // Auto select the first (most recently updated) session
+      if (selectLast && data.sessions.length > 0) {
+        selectChatSession(data.sessions[0].id);
+      }
+    } else {
+      container.innerHTML = `<div style="color:var(--muted); font-size:0.75rem; text-align:center; padding:2.5rem 0;">Belum ada sesi chat. Klik "+ Sesi Baru" di atas untuk memulai.</div>`;
+      resetChatArea();
+    }
+  } catch(e) {
+    console.error(e);
+    container.innerHTML = `<div style="color:var(--red); font-size:0.75rem; text-align:center; padding:2rem 0;">Gagal memuat sesi chat</div>`;
+  }
+}
+
+function resetChatArea() {
+  activeChatSessionId = null;
+  document.getElementById('chat-active-title').textContent = 'Pilih Sesi Konseling';
+  document.getElementById('chat-active-status').textContent = 'Silakan pilih atau buat sesi di sebelah kiri';
+  document.getElementById('chat-input-bar').style.display = 'none';
+  document.getElementById('btn-delete-active-session').style.display = 'none';
+  document.getElementById('chat-messages-body').innerHTML = `
+    <div style="margin: auto; text-align: center; max-width: 320px; color: var(--muted); padding: 2rem 0;">
+      <span style="font-size: 2.2rem; display: block; margin-bottom: 0.5rem;">💬</span>
+      <h4 style="font-size: 0.85rem; font-weight: 700; color: var(--text); margin-bottom: 0.25rem;">Konseling Karir Virtual</h4>
+      <p style="font-size: 0.75rem; line-height: 1.45;">Pilih salah satu sesi obrolan di sebelah kiri atau buat sesi baru untuk berkonsultasi mengenai pilihan jurusan dan rencana karir Anda.</p>
+    </div>
+  `;
+}
+
+async function createChatSession() {
+  try {
+    const res = await api('/api/chat/sessions/', { method: 'POST' });
+    if (res.success) {
+      toast('Sesi baru berhasil dibuat', 'success');
+      await loadChatSessions(false);
+      selectChatSession(res.session.id);
+    } else {
+      toast(res.error || 'Gagal membuat sesi baru', 'error');
+    }
+  } catch(e) {
+    toast('Gagal membuat sesi chat', 'error');
+  }
+}
+
+async function selectChatSession(id) {
+  activeChatSessionId = id;
+  
+  // Highlight active session
+  document.querySelectorAll('.chat-session-item').forEach(el => el.classList.remove('active'));
+  const activeItem = document.getElementById(`session-${id}`);
+  if (activeItem) activeItem.classList.add('active');
+  
+  document.getElementById('chat-messages-body').innerHTML = `<div style="color:var(--muted); font-size:0.75rem; text-align:center; margin:auto; padding:2rem 0;">Memuat percakapan...</div>`;
+  
+  try {
+    const data = await api(`/api/chat/sessions/${id}/`);
+    document.getElementById('chat-active-title').textContent = data.session_title;
+    document.getElementById('chat-active-status').textContent = 'Terhubung dengan AI Career Mentor';
+    document.getElementById('chat-input-bar').style.display = 'block';
+    document.getElementById('btn-delete-active-session').style.display = 'block';
+    
+    const body = document.getElementById('chat-messages-body');
+    if (data.messages && data.messages.length > 0) {
+      body.innerHTML = data.messages.map(m => renderMessageBubble(m)).join('');
+      scrollToBottom();
+    } else {
+      body.innerHTML = `<div style="color:var(--muted); font-size:0.75rem; text-align:center; margin:auto;">Mulai obrolan Anda dengan mengetik di bawah.</div>`;
+    }
+  } catch(e) {
+    console.error(e);
+    toast('Gagal memuat detail obrolan', 'error');
+  }
+}
+
+function renderMessageBubble(m) {
+  const isUser = m.sender === 'user';
+  
+  // Convert Markdown link or basic formatting in AI content
+  let contentHtml = m.content
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\n/g, '<br>');
+    
+  if (isUser) {
+    return `
+      <div style="display:flex; justify-content:flex-end; align-items:flex-start; gap:0.6rem; margin-bottom:0.25rem;">
+        <div style="max-width:75%; text-align:right;">
+          <div style="background:linear-gradient(135deg, var(--blue), var(--indigo)); color:white; border-radius:14px 14px 0 14px; padding:0.65rem 0.9rem; font-size:0.825rem; display:inline-block; line-height:1.45; text-align:left; word-break:break-word; box-shadow:0 2px 10px rgba(99,102,241,0.15);">${contentHtml}</div>
+          <div style="font-size:0.62rem; color:var(--muted); margin-top:0.25rem; padding-right:0.2rem;">${m.created_at} &bull; Anda</div>
+        </div>
+      </div>
+    `;
+  } else {
+    return `
+      <div style="display:flex; justify-content:flex-start; align-items:flex-start; gap:0.65rem; margin-bottom:0.25rem;">
+        <div style="width:32px; height:32px; border-radius:8px; background:rgba(99, 102, 241, 0.1); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; margin-top:0.1rem;" title="AI Mentor">🤖</div>
+        <div style="max-width:75%;">
+          <div style="background:var(--dark3); border:1px solid var(--border); color:var(--text); border-radius:0 14px 14px 14px; padding:0.65rem 0.9rem; font-size:0.825rem; display:inline-block; line-height:1.55; word-break:break-word; box-shadow:0 2px 8px rgba(0,0,0,0.1);">${contentHtml}</div>
+          <div style="font-size:0.62rem; color:var(--muted); margin-top:0.25rem; padding-left:0.2rem;">${m.created_at} &bull; AI Career Mentor</div>
+        </div>
+      </div>
+    `;
+  }
+}
+
+async function sendChatMessage(e) {
+  e.preventDefault();
+  if (!activeChatSessionId) return;
+  
+  const input = document.getElementById('chat-message-input');
+  const btn = document.getElementById('btn-chat-send');
+  const msgText = input.value.trim();
+  
+  if (!msgText) return;
+  
+  // Disable input & button
+  input.value = '';
+  input.disabled = true;
+  btn.disabled = true;
+  
+  const body = document.getElementById('chat-messages-body');
+  
+  // Remove empty states if present
+  const emptyState = body.querySelector('div[style*="margin:auto"]');
+  if (emptyState) emptyState.remove();
+  
+  // Render user message locally
+  const tempTime = new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+  const userBubble = renderMessageBubble({ sender: 'user', content: msgText, created_at: tempTime });
+  body.innerHTML += userBubble;
+  scrollToBottom();
+  
+  // Show Typing Indicator
+  const typingId = 'typing-indicator-' + Date.now();
+  body.innerHTML += `
+    <div style="display:flex; justify-content:flex-start; align-items:flex-start; gap:0.65rem; margin-bottom:0.25rem;" id="${typingId}">
+      <div style="width:32px; height:32px; border-radius:8px; background:rgba(99, 102, 241, 0.1); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; margin-top:0.1rem;">🤖</div>
+      <div style="max-width:75%;">
+        <div style="background:var(--dark3); border:1px solid var(--border); color:var(--text); border-radius:0 14px 14px 14px; padding:0.5rem 0.9rem; font-size:0.825rem; display:inline-block;">
+          <div class="typing-indicator" style="display:flex; align-items:center; gap:3px; height:12px;">
+            <span style="width:4px; height:4px; border-radius:50%; background:var(--muted); display:inline-block; animation:bounceTyping 1.4s infinite 0s;"></span>
+            <span style="width:4px; height:4px; border-radius:50%; background:var(--muted); display:inline-block; animation:bounceTyping 1.4s infinite 0.2s;"></span>
+            <span style="width:4px; height:4px; border-radius:50%; background:var(--muted); display:inline-block; animation:bounceTyping 1.4s infinite 0.4s;"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  scrollToBottom();
+  
+  // Add bounce typing style if not already in document
+  if (!document.getElementById('bounce-typing-style')) {
+    const style = document.createElement('style');
+    style.id = 'bounce-typing-style';
+    style.textContent = `
+      @keyframes bounceTyping {
+        0%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-4px); }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+  
+  try {
+    const res = await api(`/api/chat/sessions/${activeChatSessionId}/send/`, {
+      method: 'POST',
+      body: JSON.stringify({ message: msgText })
+    });
+    
+    // Remove typing indicator
+    const indicator = document.getElementById(typingId);
+    if (indicator) indicator.remove();
+    
+    if (res.success) {
+      // Render AI response
+      body.innerHTML += renderMessageBubble(res.ai_message);
+      scrollToBottom();
+      
+      // Update session title if renamed by backend
+      if (res.session_title) {
+        document.getElementById('chat-active-title').textContent = res.session_title;
+        const activeItem = document.getElementById(`session-${activeChatSessionId}`);
+        if (activeItem) {
+          const titleEl = activeItem.querySelector('.sess-title');
+          if (titleEl) titleEl.textContent = res.session_title;
+        }
+      }
+      
+      // Update points in sidebar and topbar if applicable
+      if (res.user_poin && typeof profileData !== 'undefined' && profileData) {
+        const pointDiff = res.user_poin - profileData.poin;
+        if (pointDiff > 0) {
+          toast(`Selamat! Anda mendapatkan +${pointDiff} Poin karena berkonsultasi`, 'success');
+          profileData.poin = res.user_poin;
+          const sbPoin = document.getElementById('sbPoin');
+          if (sbPoin) sbPoin.textContent = res.user_poin;
+          const tbPoin = document.getElementById('tbPoin');
+          if (tbPoin) tbPoin.textContent = res.user_poin;
+          const homePoin = document.getElementById('homePoin');
+          if (homePoin) homePoin.textContent = res.user_poin;
+        }
+      }
+    } else {
+      toast(res.error || 'Terjadi kesalahan sistem AI', 'error');
+    }
+  } catch(e) {
+    const indicator = document.getElementById(typingId);
+    if (indicator) indicator.remove();
+    toast('Gagal terhubung dengan server AI', 'error');
+  } finally {
+    input.disabled = false;
+    btn.disabled = false;
+    input.focus();
+  }
+}
+
+async function deleteChatSession(id) {
+  if (!confirm('Apakah Anda yakin ingin menghapus sesi obrolan ini beserta seluruh riwayat pesannya?')) return;
+  
+  try {
+    const res = await api(`/api/chat/sessions/${id}/delete/`, { method: 'DELETE' });
+    if (res.success) {
+      toast('Sesi obrolan berhasil dihapus', 'success');
+      
+      // If we deleted the currently active session
+      if (activeChatSessionId === id) {
+        resetChatArea();
+      }
+      
+      await loadChatSessions(activeChatSessionId === id);
+    } else {
+      toast(res.error || 'Gagal menghapus sesi', 'error');
+    }
+  } catch(e) {
+    toast('Gagal menghapus sesi chat', 'error');
+  }
+}
+
+async function deleteActiveSession() {
+  if (activeChatSessionId) {
+    await deleteChatSession(activeChatSessionId);
+  }
+}
+
+function scrollToBottom() {
+  const body = document.getElementById('chat-messages-body');
+  if (body) body.scrollTop = body.scrollHeight;
+}
 </script>
 </body>
 </html>
