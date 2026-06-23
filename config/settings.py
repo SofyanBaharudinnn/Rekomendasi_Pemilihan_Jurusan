@@ -3,9 +3,14 @@ Django settings for JurusanKu ID project.
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Load environment variables from .env file
+load_dotenv(BASE_DIR / '.env')
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -13,12 +18,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ═══════════════════════════════════════════════════════════════════════════════
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-9ah5s_qe%k!#th)6_nvso6__3=3nv9drdon(+y6emgi8fma9!h'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-fallback-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ['*']
+# Parse ALLOWED_HOSTS from environment
+allowed_hosts_env = os.environ.get('DJANGO_ALLOWED_HOSTS', '*')
+ALLOWED_HOSTS = [host.strip() for host in allowed_hosts_env.split(',') if host.strip()]
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -129,6 +136,12 @@ SESSION_COOKIE_SAMESITE = 'Lax'    # CSRF protection
 X_FRAME_OPTIONS = 'DENY'
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
+
+# HTTPS settings for production
+if not DEBUG:
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
