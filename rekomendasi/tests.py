@@ -1,5 +1,5 @@
 # pyrefly: ignore [missing-import]
-from django.test import TestCase
+from django.test import TestCase, override_settings
 # pyrefly: ignore [missing-import]
 from django.contrib.auth.models import User
 # pyrefly: ignore [missing-import]
@@ -327,6 +327,7 @@ class AICareerMentorAPITests(TestCase):
         response_other = self.client.get(url)
         self.assertEqual(response_other.status_code, 403)
 
+    @override_settings(GEMINI_API_KEY="")
     def test_send_message_simulation(self):
         self.client.login(username='siswa_test', password='testpassword')
         session = ChatSession.objects.create(user=self.siswa, title='Sesi Test')
