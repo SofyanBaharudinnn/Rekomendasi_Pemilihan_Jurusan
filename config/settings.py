@@ -4,6 +4,7 @@ Django settings for JurusanKu ID project.
 
 from pathlib import Path
 import os
+# pyrefly: ignore [missing-import]
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
