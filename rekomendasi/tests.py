@@ -4,7 +4,7 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 # pyrefly: ignore [missing-import]
 from django.urls import reverse
-from rekomendasi.models import ProfilSiswa, HasilRekomendasi, PesanKontak
+from rekomendasi.models import ProfilSiswa, HasilRekomendasi, PesanKontak, ChatSession, ChatMessage
 import json
 
 class AdminUserDetailAPITests(TestCase):
@@ -259,6 +259,101 @@ class RiwayatDeleteAPITests(TestCase):
         data = json.loads(response.content)
         self.assertTrue(data['success'])
         self.assertFalse(HasilRekomendasi.objects.filter(id=self.hasil_siswa.id).exists())
+
+
+class AICareerMentorAPITests(TestCase):
+    def setUp(self):
+        self.siswa = User.objects.create_user(
+            username='siswa_test',
+            email='siswa_test@test.id',
+            password='testpassword'
+        )
+        self.other_user = User.objects.create_user(
+            username='siswa2_test',
+            email='siswa2_test@test.id',
+            password='testpassword'
+        )
+        
+    def test_anonymous_access_denied(self):
+        url = reverse('api_chat_sessions')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 401)
+        
+        response_post = self.client.post(url)
+        self.assertEqual(response_post.status_code, 401)
+        
+    def test_create_and_list_sessions(self):
+        self.client.login(username='siswa_test', password='testpassword')
+        
+        # POST to create session
+        url = reverse('api_chat_sessions')
+        response = self.client.post(url, data=json.dumps({'title': 'Diskusi Informatika'}), content_type='application/json')
+        self.assertEqual(response.status_code, 200)
+        data = json.loads(response.content)
+        self.assertTrue(data['success'])
+        self.assertEqual(data['session']['title'], 'Diskusi Informatika')
+        
+        # Verify automatic greeting was created
+        session_id = data['session']['id']
+        session = ChatSession.objects.get(id=session_id)
+        self.assertEqual(session.messages.count(), 1)
+        self.assertEqual(session.messages.first().sender, 'ai')
+        
+        # GET to list sessions
+        response_get = self.client.get(url)
+        self.assertEqual(response_get.status_code, 200)
+        data_get = json.loads(response_get.content)
+        self.assertEqual(len(data_get['sessions']), 1)
+        self.assertEqual(data_get['sessions'][0]['id'], session_id)
+        self.assertEqual(data_get['sessions'][0]['title'], 'Diskusi Informatika')
+
+    def test_chat_history_and_permission(self):
+        self.client.login(username='siswa_test', password='testpassword')
+        session = ChatSession.objects.create(user=self.siswa, title='Sesi Test')
+        ChatMessage.objects.create(session=session, sender='user', content='Halo Mentor')
+        ChatMessage.objects.create(session=session, sender='ai', content='Halo Siswa')
+        
+        url = reverse('api_chat_history', kwargs={'session_id': session.id})
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        data = json.loads(response.content)
+        self.assertEqual(len(data['messages']), 2)
+        self.assertEqual(data['messages'][0]['sender'], 'user')
+        self.assertEqual(data['messages'][1]['sender'], 'ai')
+        
+        # Login as other user to test permission denied
+        self.client.logout()
+        self.client.login(username='siswa2_test', password='testpassword')
+        response_other = self.client.get(url)
+        self.assertEqual(response_other.status_code, 403)
+
+    def test_send_message_simulation(self):
+        self.client.login(username='siswa_test', password='testpassword')
+        session = ChatSession.objects.create(user=self.siswa, title='Sesi Test')
+        
+        url = reverse('api_chat_send', kwargs={'session_id': session.id})
+        payload = {'message': 'Bagaimana prospek kerja IT?'}
+        response = self.client.post(url, data=json.dumps(payload), content_type='application/json')
+        self.assertEqual(response.status_code, 200)
+        
+        data = json.loads(response.content)
+        self.assertTrue(data['success'])
+        self.assertEqual(data['user_message']['content'], 'Bagaimana prospek kerja IT?')
+        self.assertIn('Koneksi ke AI Career Mentor berhasil', data['ai_message']['content']) # Mock warning message
+        
+        # Verify saved in DB
+        self.assertEqual(session.messages.count(), 2)
+        
+    def test_delete_session(self):
+        self.client.login(username='siswa_test', password='testpassword')
+        session = ChatSession.objects.create(user=self.siswa, title='Sesi Hapus')
+        
+        url = reverse('api_chat_session_delete', kwargs={'session_id': session.id})
+        response = self.client.delete(url)
+        self.assertEqual(response.status_code, 200)
+        data = json.loads(response.content)
+        self.assertTrue(data['success'])
+        self.assertFalse(ChatSession.objects.filter(id=session.id).exists())
 
 
 

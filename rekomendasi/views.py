@@ -22,7 +22,8 @@ from functools import wraps
 from .models import (HasilRekomendasi, JurusanInfo, JurusanDetail,
                      Artikel, FAQ, ModelVersion,
                      ProfilSiswa, UserBadge, RiwayatPoin,
-                     Testimoni, ForumPost, ForumComment, AktivitasLog, PesanKontak)
+                     Testimoni, ForumPost, ForumComment, AktivitasLog, PesanKontak,
+                     ChatSession, ChatMessage)
 from .security import (
     generate_captcha, validate_captcha, set_captcha_session,
     log_activity,
@@ -1462,4 +1463,261 @@ def api_admin_pesan_delete(request, pesan_id):
     pesan.delete()
     return JsonResponse({'success': True})
 
+
+# ═══════════════════════════════════════════════════════════════════════════════
+#  AI CAREER MENTOR VIEWS
+# ═══════════════════════════════════════════════════════════════════════════════
+@user_api_required
+def api_chat_sessions(request):
+    """GET: List all chat sessions for the logged-in user.
+    POST: Create a new chat session."""
+    if request.method == 'GET':
+        sessions = ChatSession.objects.filter(user=request.user).order_by('-updated_at')
+        data = []
+        for s in sessions:
+            data.append({
+                'id': s.id,
+                'title': s.title,
+                'created_at': s.created_at.strftime('%d/%m/%Y %H:%M'),
+                'updated_at': s.updated_at.strftime('%d/%m/%Y %H:%M'),
+            })
+        return JsonResponse({'sessions': data})
+        
+    elif request.method == 'POST':
+        try:
+            # Judul default adalah Konseling Karir Baru
+            title = 'Konseling Karir Baru'
+            
+            # Jika ada payload judul kustom
+            if request.body:
+                try:
+                    payload = json.loads(request.body)
+                    if payload.get('title'):
+                        title = payload.get('title').strip()[:150]
+                except Exception:
+                    pass
+
+            session = ChatSession.objects.create(user=request.user, title=title)
+            
+            # Tambahkan greeting awal otomatis dari AI ke DB
+            greeting = f"Halo {request.user.get_full_name() or request.user.username}! Saya adalah AI Career Mentor Anda. Ada yang bisa saya bantu diskusikan tentang minat atau hasil rekomendasi jurusan Anda hari ini?"
+            ChatMessage.objects.create(session=session, sender='ai', content=greeting)
+
+            return JsonResponse({
+                'success': True,
+                'session': {
+                    'id': session.id,
+                    'title': session.title,
+                    'created_at': session.created_at.strftime('%d/%m/%Y %H:%M'),
+                }
+            })
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+    
+    return JsonResponse({'error': 'Method not allowed'}, status=405)
+
+
+@user_api_required
+def api_chat_history(request, session_id):
+    """GET: Retrieve chat messages for a specific session."""
+    session = get_object_or_404(ChatSession, pk=session_id)
+    if not request.user.is_staff and session.user != request.user:
+        return JsonResponse({'error': 'Permission denied'}, status=403)
+        
+    messages_qs = session.messages.all().order_by('created_at')
+    data = []
+    for msg in messages_qs:
+        data.append({
+            'id': msg.id,
+            'sender': msg.sender,
+            'content': msg.content,
+            'created_at': msg.created_at.strftime('%H:%M'),
+        })
+    return JsonResponse({'messages': data, 'session_title': session.title})
+
+
+@user_api_required
+@require_POST
+def api_chat_send(request, session_id):
+    """POST: Send a new message, call Gemini API, save and return AI response."""
+    session = get_object_or_404(ChatSession, pk=session_id)
+    if not request.user.is_staff and session.user != request.user:
+        return JsonResponse({'error': 'Permission denied'}, status=403)
+        
+    try:
+        data = json.loads(request.body)
+        user_message_text = data.get('message', '').strip()
+        if not user_message_text:
+            return JsonResponse({'error': 'Pesan tidak boleh kosong.'}, status=400)
+            
+        # 1. Simpan pesan user ke DB
+        user_msg = ChatMessage.objects.create(session=session, sender='user', content=user_message_text)
+        
+        # Auto-rename judul sesi jika masih bernilai default 'Konseling Karir Baru'
+        if session.title == 'Konseling Karir Baru':
+            clean_text = user_message_text.strip()
+            clean_text = " ".join(clean_text.split())
+            if len(clean_text) > 30:
+                session.title = clean_text[:27] + "..."
+            else:
+                session.title = clean_text
+            session.save(update_fields=['title', 'updated_at'])
+        else:
+            session.save(update_fields=['updated_at'])
+        
+        # Inisialisasi API Key dari settings
+        api_key = django_settings.GEMINI_API_KEY
+        if not api_key:
+            # Fallback ke mock response yang mendidik jika API key belum diset
+            mock_content = (
+                "Halo! Koneksi ke AI Career Mentor berhasil disimulasikan. Namun, saat ini administrator belum mengatur kunci API `GEMINI_API_KEY` di server. "
+                "Untuk mengaktifkan konseling AI yang sesungguhnya secara gratis, silakan masukkan variabel lingkungan `GEMINI_API_KEY` dari Google AI Studio ke dalam pengaturan sistem Anda.\n\n"
+                "Sebagai simulasi bimbingan: Saya melihat Anda sangat tertarik untuk merencanakan karir masa depan Anda. Silakan hubungi admin Anda untuk melanjutkan percakapan cerdas ini!"
+            )
+            ai_msg = ChatMessage.objects.create(session=session, sender='ai', content=mock_content)
+            
+            # Beri poin gamifikasi
+            profil, _ = ProfilSiswa.objects.get_or_create(user=request.user)
+            profil.tambah_poin(2, 'Berinteraksi dengan AI Mentor')
+            
+            return JsonResponse({
+                'success': True,
+                'user_message': {
+                    'id': user_msg.id,
+                    'content': user_msg.content,
+                    'created_at': user_msg.created_at.strftime('%H:%M')
+                },
+                'ai_message': {
+                    'id': ai_msg.id,
+                    'content': ai_msg.content,
+                    'created_at': ai_msg.created_at.strftime('%H:%M')
+                },
+                'session_title': session.title,
+                'user_poin': profil.poin
+            })
+            
+        # 2. Ambil konteks siswa (profil & hasil rekomendasi terbaru)
+        profil, _ = ProfilSiswa.objects.get_or_create(user=request.user)
+        latest_rec = HasilRekomendasi.objects.filter(user=request.user).first()
+        
+        # Buat context profil
+        profile_context = (
+            f"Nama: {request.user.get_full_name() or request.user.username}\n"
+            f"Sekolah: {profil.sekolah or 'Belum diisi'}\n"
+            f"Kelas: {profil.kelas or 'Belum diisi'}\n"
+            f"Kota: {profil.kota or 'Belum diisi'}\n"
+            f"Bio: {profil.bio or 'Belum diisi'}\n"
+        )
+        
+        # Buat context rekomendasi
+        rec_context = ""
+        if latest_rec:
+            rec_context = (
+                f"Hasil rekomendasi teratas: {latest_rec.jurusan}\n"
+                f"Nilai Akademik: Matematika ({latest_rec.nilai_mat}), Bahasa ({latest_rec.nilai_bhs}), IPA ({latest_rec.nilai_ipa}), IPS ({latest_rec.nilai_ips})\n"
+                f"Minat: Teknologi ({latest_rec.minat_tek}), Seni ({latest_rec.minat_sen}), Bisnis ({latest_rec.minat_bis}), Kesehatan ({latest_rec.minat_kes})\n"
+                f"Pilihan Top 3 Jurusan Lainnya: {', '.join([item['jurusan'] + ' (' + str(item['persen']) + '%)' for item in latest_rec.top3_data])}\n"
+            )
+        else:
+            rec_context = "Siswa belum pernah melakukan tes rekomendasi jurusan kuliah.\n"
+            
+        system_instruction = (
+            "Kamu adalah AI Career Mentor (Konselor Karir Virtual) yang ramah, profesional, dan empatik untuk siswa sekolah menengah (SMA/SMK) di Indonesia. "
+            "Tugas utamanya adalah membantu siswa merencanakan masa depan akademik, memahami hasil tes jurusan mereka, "
+            "mengeksplorasi karir, dan memberikan bimbingan belajar/tips UTBK.\n\n"
+            "Gunakan informasi profil dan hasil tes rekomendasi berikut untuk mempersonalisasi setiap jawabanmu:\n"
+            "--- PROFIL SISWA ---\n"
+            f"{profile_context}\n"
+            "--- HASIL REKOMENDASI TERAKHIR ---\n"
+            f"{rec_context}\n"
+            "--- KETENTUAN JAWABAN ---\n"
+            "1. Panggil siswa dengan namanya agar lebih akrab.\n"
+            "2. Gunakan bahasa Indonesia yang santun, kasual, suportif, dan memotivasi khas anak muda.\n"
+            "3. Jika siswa belum melakukan tes, sarankan mereka untuk melakukan tes rekomendasi terlebih dahulu di platform JurusanKu ID.\n"
+            "4. Berikan jawaban terstruktur dengan bullet points jika membahas opsi karir atau universitas agar mudah dibaca.\n"
+            "5. Meskipun fokus utamamu adalah bimbingan karir dan pendidikan, kamu tetap diperbolehkan menjawab pertanyaan umum lainnya di luar konteks tersebut dengan ramah jika ditanyakan oleh siswa."
+        )
+        
+        # 3. Load model Gemini dan kirim pesan
+        # pyrefly: ignore [missing-import]
+        import google.generativeai as genai
+        genai.configure(api_key=api_key)
+        
+        # Load history dari database (maksimal 15 pesan terakhir)
+        db_messages = session.messages.all().order_by('created_at')
+        
+        # Format history untuk API Gemini (menggunakan schema role: user/model)
+        # Catatan: Kita tidak menyertakan pesan user terakhir yang baru saja kita simpan, 
+        # karena akan dikirim lewat send_message(). Jadi ambil N-1 pesan sebelumnya.
+        history = []
+        for msg in db_messages[:db_messages.count()-1]:
+            history.append({
+                'role': 'user' if msg.sender == 'user' else 'model',
+                'parts': [msg.content]
+            })
+            
+        # Konfigurasi Google Search Grounding secara langsung menggunakan Protobuf
+        google_search_tool = genai.protos.Tool(
+            google_search=genai.protos.Tool.GoogleSearch()
+        )
+        
+        model = genai.GenerativeModel(
+            model_name='gemini-flash-latest',
+            system_instruction=system_instruction,
+            tools=[google_search_tool]
+        )
+        
+        chat = model.start_chat(history=history)
+        response = chat.send_message(user_message_text)
+        ai_response_text = response.text
+        
+        # 4. Simpan respon AI ke DB
+        ai_msg = ChatMessage.objects.create(session=session, sender='ai', content=ai_response_text)
+        
+        # 5. Poin gamifikasi: Cek apakah hari ini sudah melebihi limit poin untuk chat
+        today_chat_count = RiwayatPoin.objects.filter(
+            user=request.user, 
+            alasan='Berinteraksi dengan AI Mentor',
+            created_at__date=timezone.now().date()
+        ).count()
+        
+        user_poin = profil.poin
+        if today_chat_count < 3:
+            profil.tambah_poin(2, 'Berinteraksi dengan AI Mentor')
+            user_poin = profil.poin
+            # Cek badge poin_100
+            if profil.poin >= 100:
+                cek_dan_beri_badge(request.user, 'poin_100')
+                
+        return JsonResponse({
+            'success': True,
+            'user_message': {
+                'id': user_msg.id,
+                'content': user_msg.content,
+                'created_at': user_msg.created_at.strftime('%H:%M')
+            },
+            'ai_message': {
+                'id': ai_msg.id,
+                'content': ai_msg.content,
+                'created_at': ai_msg.created_at.strftime('%H:%M')
+            },
+            'session_title': session.title,
+            'user_poin': user_poin
+        })
+        
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
+
+
+@user_api_required
+def api_chat_session_delete(request, session_id):
+    """DELETE: Safely delete a chat session."""
+    session = get_object_or_404(ChatSession, pk=session_id)
+    if not request.user.is_staff and session.user != request.user:
+        return JsonResponse({'error': 'Permission denied'}, status=403)
+        
+    if request.method == 'DELETE':
+        session.delete()
+        return JsonResponse({'success': True})
+    return JsonResponse({'error': 'Method not allowed'}, status=405)
 

@@ -90,4 +90,10 @@ urlpatterns = [
     path('api/admin/pesan/', views.api_admin_pesan_list, name='api_admin_pesan_list'),
     path('api/admin/pesan/<int:pesan_id>/delete/', views.api_admin_pesan_delete, name='api_admin_pesan_delete'),
 
+    # ── Chat AI API ──────────────────────────────────────────────────
+    path('api/chat/sessions/', views.api_chat_sessions, name='api_chat_sessions'),
+    path('api/chat/sessions/<int:session_id>/', views.api_chat_history, name='api_chat_history'),
+    path('api/chat/sessions/<int:session_id>/send/', views.api_chat_send, name='api_chat_send'),
+    path('api/chat/sessions/<int:session_id>/delete/', views.api_chat_session_delete, name='api_chat_session_delete'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

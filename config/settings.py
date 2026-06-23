@@ -198,3 +198,9 @@ LOGIN_REDIRECT_URL = '/dashboard/'
 LOGOUT_REDIRECT_URL = '/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# ═══════════════════════════════════════════════════════════════════════════════
+#  GEMINI API CONFIGURATION
+# ═══════════════════════════════════════════════════════════════════════════════
+import os
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")

@@ -324,3 +324,40 @@ class PesanKontak(models.Model):
         return f"{self.nama} — {self.subjek}"
 
 
+# ─── AI CAREER MENTOR CHAT ───────────────────────────────────────────────────
+class ChatSession(models.Model):
+    """Sesi percakapan antara user dengan AI Career Mentor."""
+    user       = models.ForeignKey(User, on_delete=models.CASCADE, related_name='chat_sessions')
+    title      = models.CharField(max_length=150, default='Sesi Konseling Baru')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-updated_at']
+        verbose_name = 'Sesi Chat AI'
+        verbose_name_plural = 'Sesi Chat AI'
+
+    def __str__(self):
+        return f"{self.user.username} — {self.title} ({self.updated_at.strftime('%d/%m/%Y %H:%M')})"
+
+
+class ChatMessage(models.Model):
+    """Pesan individual di dalam sesi percakapan."""
+    SENDER_CHOICES = [
+        ('user', 'Siswa'),
+        ('ai', 'AI Mentor'),
+    ]
+    session    = models.ForeignKey(ChatSession, on_delete=models.CASCADE, related_name='messages')
+    sender     = models.CharField(max_length=10, choices=SENDER_CHOICES)
+    content    = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['created_at']
+        verbose_name = 'Pesan Chat AI'
+        verbose_name_plural = 'Pesan Chat AI'
+
+    def __str__(self):
+        return f"{self.sender.upper()}: {self.content[:50]}"
+
+
