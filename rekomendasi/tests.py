@@ -345,6 +345,27 @@ class AICareerMentorAPITests(TestCase):
         # Verify saved in DB
         self.assertEqual(session.messages.count(), 2)
         
+    @override_settings(GEMINI_API_KEY="dummy_key")
+    def test_send_message_rate_limited(self):
+        from unittest.mock import patch
+        from google.api_core.exceptions import ResourceExhausted
+
+        self.client.login(username='siswa_test', password='testpassword')
+        session = ChatSession.objects.create(user=self.siswa, title='Sesi Test')
+        url = reverse('api_chat_send', kwargs={'session_id': session.id})
+        payload = {'message': 'Bagaimana prospek kerja IT?'}
+
+        with patch('google.generativeai.GenerativeModel') as mock_model_class:
+            mock_model = mock_model_class.return_value
+            mock_chat = mock_model.start_chat.return_value
+            mock_chat.send_message.side_effect = ResourceExhausted("Rate limit exceeded")
+            
+            response = self.client.post(url, data=json.dumps(payload), content_type='application/json')
+            
+        self.assertEqual(response.status_code, 429)
+        data = json.loads(response.content)
+        self.assertIn('rate limit', data['error'].lower())
+
     def test_delete_session(self):
         self.client.login(username='siswa_test', password='testpassword')
         session = ChatSession.objects.create(user=self.siswa, title='Sesi Hapus')

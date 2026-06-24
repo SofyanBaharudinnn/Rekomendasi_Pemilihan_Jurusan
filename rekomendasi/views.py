@@ -1706,6 +1706,14 @@ def api_chat_send(request, session_id):
         })
         
     except Exception as e:
+        try:
+            from google.api_core.exceptions import ResourceExhausted
+            if isinstance(e, ResourceExhausted):
+                return JsonResponse({
+                    'error': 'Batas kuota atau rate limit (429) API Gemini terlampaui. Silakan tunggu beberapa saat sebelum mencoba kembali.'
+                }, status=429)
+        except ImportError:
+            pass
         return JsonResponse({'error': str(e)}, status=500)
 
 
