@@ -961,18 +961,39 @@ def api_ml_retrain(request):
         
         # Temukan executable python yang benar (terutama di uwsgi / PythonAnywhere)
         python_exe = sys.executable
-        if 'python' not in os.path.basename(python_exe).lower():
-            candidates = [
-                os.path.join(sys.prefix, 'bin', 'python'),
-                os.path.join(sys.prefix, 'bin', 'python3'),
-                os.path.join(sys.prefix, 'Scripts', 'python.exe'),
-            ]
-            for candidate in candidates:
-                if os.path.exists(candidate):
-                    python_exe = candidate
-                    break
-            else:
-                python_exe = 'python' if os.name == 'nt' else 'python3'
+        project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        
+        candidates = [
+            os.path.join(project_root, 'venv', 'bin', 'python'),
+            os.path.join(project_root, 'venv', 'bin', 'python3'),
+            os.path.join(project_root, 'env', 'bin', 'python'),
+            os.path.join(project_root, 'venv', 'Scripts', 'python.exe'),
+            os.path.join(sys.prefix, 'bin', 'python'),
+            os.path.join(sys.prefix, 'bin', 'python3'),
+            os.path.join(sys.prefix, 'Scripts', 'python.exe'),
+        ]
+        
+        # Tambahkan kandidat dari sys.path
+        for path in sys.path:
+            if 'site-packages' in path:
+                parts = path.split(os.sep)
+                for name in ['venv', 'env', '.virtualenvs']:
+                    if name in parts:
+                        idx = parts.index(name)
+                        venv_path = os.sep.join(parts[:idx + (2 if name == '.virtualenvs' else 1)])
+                        candidates.append(os.path.join(venv_path, 'bin', 'python'))
+                        candidates.append(os.path.join(venv_path, 'bin', 'python3'))
+                        candidates.append(os.path.join(venv_path, 'Scripts', 'python.exe'))
+                        
+        found = False
+        for candidate in candidates:
+            if os.path.exists(candidate):
+                python_exe = candidate
+                found = True
+                break
+                
+        if not found and 'python' not in os.path.basename(python_exe).lower():
+            python_exe = 'python' if os.name == 'nt' else 'python3'
 
         result=subprocess.run([python_exe,train_script],capture_output=True,text=True,timeout=120)
         if result.returncode != 0:
@@ -1253,18 +1274,39 @@ def run_background_retrain(user):
             
             # Temukan executable python yang benar (terutama di uwsgi / PythonAnywhere)
             python_exe = sys.executable
-            if 'python' not in os.path.basename(python_exe).lower():
-                candidates = [
-                    os.path.join(sys.prefix, 'bin', 'python'),
-                    os.path.join(sys.prefix, 'bin', 'python3'),
-                    os.path.join(sys.prefix, 'Scripts', 'python.exe'),
-                ]
-                for candidate in candidates:
-                    if os.path.exists(candidate):
-                        python_exe = candidate
-                        break
-                else:
-                    python_exe = 'python' if os.name == 'nt' else 'python3'
+            project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            
+            candidates = [
+                os.path.join(project_root, 'venv', 'bin', 'python'),
+                os.path.join(project_root, 'venv', 'bin', 'python3'),
+                os.path.join(project_root, 'env', 'bin', 'python'),
+                os.path.join(project_root, 'venv', 'Scripts', 'python.exe'),
+                os.path.join(sys.prefix, 'bin', 'python'),
+                os.path.join(sys.prefix, 'bin', 'python3'),
+                os.path.join(sys.prefix, 'Scripts', 'python.exe'),
+            ]
+            
+            # Tambahkan kandidat dari sys.path
+            for path in sys.path:
+                if 'site-packages' in path:
+                    parts = path.split(os.sep)
+                    for name in ['venv', 'env', '.virtualenvs']:
+                        if name in parts:
+                            idx = parts.index(name)
+                            venv_path = os.sep.join(parts[:idx + (2 if name == '.virtualenvs' else 1)])
+                            candidates.append(os.path.join(venv_path, 'bin', 'python'))
+                            candidates.append(os.path.join(venv_path, 'bin', 'python3'))
+                            candidates.append(os.path.join(venv_path, 'Scripts', 'python.exe'))
+                            
+            found = False
+            for candidate in candidates:
+                if os.path.exists(candidate):
+                    python_exe = candidate
+                    found = True
+                    break
+                    
+            if not found and 'python' not in os.path.basename(python_exe).lower():
+                python_exe = 'python' if os.name == 'nt' else 'python3'
 
             # Run the training script python
             result = subprocess.run([python_exe, train_script], capture_output=True, text=True, timeout=120)
