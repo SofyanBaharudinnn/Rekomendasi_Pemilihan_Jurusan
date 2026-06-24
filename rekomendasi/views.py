@@ -958,7 +958,23 @@ def api_ml_retrain(request):
     try:
         ModelVersion.objects.filter(status='active').update(status='archived')
         train_script=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),'ml_model','train_best.py')
-        result=subprocess.run([sys.executable,train_script],capture_output=True,text=True,timeout=120)
+        
+        # Temukan executable python yang benar (terutama di uwsgi / PythonAnywhere)
+        python_exe = sys.executable
+        if 'python' not in os.path.basename(python_exe).lower():
+            candidates = [
+                os.path.join(sys.prefix, 'bin', 'python'),
+                os.path.join(sys.prefix, 'bin', 'python3'),
+                os.path.join(sys.prefix, 'Scripts', 'python.exe'),
+            ]
+            for candidate in candidates:
+                if os.path.exists(candidate):
+                    python_exe = candidate
+                    break
+            else:
+                python_exe = 'python' if os.name == 'nt' else 'python3'
+
+        result=subprocess.run([python_exe,train_script],capture_output=True,text=True,timeout=120)
         if result.returncode != 0:
             return JsonResponse({
                 'success': False,
@@ -1234,8 +1250,24 @@ def run_background_retrain(user):
     def run():
         try:
             train_script = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'ml_model', 'train_best.py')
+            
+            # Temukan executable python yang benar (terutama di uwsgi / PythonAnywhere)
+            python_exe = sys.executable
+            if 'python' not in os.path.basename(python_exe).lower():
+                candidates = [
+                    os.path.join(sys.prefix, 'bin', 'python'),
+                    os.path.join(sys.prefix, 'bin', 'python3'),
+                    os.path.join(sys.prefix, 'Scripts', 'python.exe'),
+                ]
+                for candidate in candidates:
+                    if os.path.exists(candidate):
+                        python_exe = candidate
+                        break
+                else:
+                    python_exe = 'python' if os.name == 'nt' else 'python3'
+
             # Run the training script python
-            result = subprocess.run([sys.executable, train_script], capture_output=True, text=True, timeout=120)
+            result = subprocess.run([python_exe, train_script], capture_output=True, text=True, timeout=120)
             if result.returncode != 0:
                 print(f"Background retrain failed (exit code {result.returncode}): {result.stderr or result.stdout}")
                 return
