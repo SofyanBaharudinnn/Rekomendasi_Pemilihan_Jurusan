@@ -60,7 +60,7 @@ if not os.path.exists(dataset_path):
     df.to_csv(dataset_path, sep=';', index=False)
     print(f"Dataset berhasil dibuat di {dataset_path}")
 else:
-    df = pd.read_csv(dataset_path, sep=';')
+    df = pd.read_csv(dataset_path, sep=None, engine='python')
     # Hapus kolom kosong jika ada
     df = df.dropna(axis=1, how='all')
     df.columns = df.columns.str.strip()
