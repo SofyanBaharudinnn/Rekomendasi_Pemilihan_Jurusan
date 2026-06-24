@@ -16,13 +16,55 @@ dataset_path = os.path.join(current_dir, 'dataset.csv')
 model_path = os.path.join(current_dir, 'model.pkl')
 
 if not os.path.exists(dataset_path):
-    print(f"ERROR: File dataset tidak ditemukan di {dataset_path}")
-    exit(1)
+    # Generate original dataset
+    n = 1000
+    data = {
+        'nilai_matematika': np.random.randint(50, 100, n),
+        'nilai_bahasa':     np.random.randint(50, 100, n),
+        'nilai_ipa':        np.random.randint(50, 100, n),
+        'nilai_ips':        np.random.randint(50, 100, n),
+        'minat_teknologi':  np.random.randint(1, 6, n),
+        'minat_seni':       np.random.randint(1, 6, n),
+        'minat_bisnis':     np.random.randint(1, 6, n),
+        'minat_kesehatan':  np.random.randint(1, 6, n),
+    }
 
-# Membaca dataset
-df = pd.read_csv(dataset_path, sep=';')
-df = df.dropna(axis=1, how='all')
-df.columns = df.columns.str.strip()
+    jurusan = []
+    for i in range(n):
+        mat = data['nilai_matematika'][i]
+        bhs = data['nilai_bahasa'][i]
+        ipa = data['nilai_ipa'][i]
+        ips = data['nilai_ips'][i]
+        tek = data['minat_teknologi'][i]
+        sen = data['minat_seni'][i]
+        bis = data['minat_bisnis'][i]
+        kes = data['minat_kesehatan'][i]
+
+        if mat > 75 and tek >= 4:
+            jurusan.append('Teknik Informatika')
+        elif ipa > 75 and kes >= 4:
+            jurusan.append('Kedokteran')
+        elif mat > 70 and bis >= 4:
+            jurusan.append('Manajemen')
+        elif bhs > 75 and sen >= 4:
+            jurusan.append('Sastra')
+        elif ips > 75 and bis >= 3:
+            jurusan.append('Akuntansi')
+        elif ipa > 70:
+            jurusan.append('Biologi')
+        else:
+            jurusan.append('Pendidikan')
+
+    data['jurusan'] = jurusan
+    df = pd.DataFrame(data)
+    df.to_csv(dataset_path, sep=';', index=False)
+    print(f"Dataset berhasil dibuat di {dataset_path}")
+else:
+    df = pd.read_csv(dataset_path, sep=';')
+    # Hapus kolom kosong jika ada
+    df = df.dropna(axis=1, how='all')
+    df.columns = df.columns.str.strip()
+    print(f"Membaca dataset dari {dataset_path}")
 
 X = df.drop('jurusan', axis=1)
 y = df['jurusan']

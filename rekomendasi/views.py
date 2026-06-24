@@ -957,13 +957,21 @@ def api_ml_status(request):
 def api_ml_retrain(request):
     try:
         ModelVersion.objects.filter(status='active').update(status='archived')
-        train_script=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),'ml_model','train.py')
+        train_script=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),'ml_model','train_best.py')
         result=subprocess.run([sys.executable,train_script],capture_output=True,text=True,timeout=120)
-        akurasi=0.925
+        
+        algoritma = 'Decision Tree'
+        akurasi = 0.90
         for line in result.stdout.splitlines():
-            if 'Akurasi:' in line:
-                try: akurasi=float(line.split(':')[1].strip().replace('%',''))/100
-                except Exception: pass
+            if 'Model terbaik terpilih:' in line:
+                try:
+                    parts = line.split('Model terbaik terpilih:')[1].strip()
+                    algo_part, acc_part = parts.split('(Akurasi:')
+                    algoritma = algo_part.strip()
+                    akurasi = float(acc_part.replace('%', '').replace(')', '').strip()) / 100.0
+                except Exception:
+                    pass
+
         latest=ModelVersion.objects.order_by('-created_at').first()
         try: ver_num=float(latest.versi)+0.1 if latest else 1.0
         except Exception: ver_num=1.1
@@ -975,7 +983,7 @@ def api_ml_retrain(request):
             with open(dataset_path, 'r') as f:
                 dataset_size = sum(1 for line in f) - 1
                 
-        ModelVersion.objects.create(versi=ver_str,akurasi=akurasi,algoritma='Decision Tree',
+        ModelVersion.objects.create(versi=ver_str,akurasi=akurasi,algoritma=algoritma,
             dataset_size=dataset_size,status='active',catatan='Retrain via dashboard admin',created_by=request.user)
         return JsonResponse({'success':True,'versi':ver_str,'akurasi':akurasi,'akurasi_pct':f"{akurasi*100:.1f}%",'output':result.stdout[-500:]})
     except subprocess.TimeoutExpired:
@@ -1220,15 +1228,19 @@ import threading
 def run_background_retrain(user):
     def run():
         try:
-            train_script = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'ml_model', 'train.py')
+            train_script = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'ml_model', 'train_best.py')
             # Run the training script python
             result = subprocess.run([sys.executable, train_script], capture_output=True, text=True, timeout=120)
             
-            akurasi = 0.925
+            algoritma = 'Decision Tree'
+            akurasi = 0.90
             for line in result.stdout.splitlines():
-                if 'Akurasi:' in line:
+                if 'Model terbaik terpilih:' in line:
                     try:
-                        akurasi = float(line.split(':')[1].strip().replace('%',''))/100
+                        parts = line.split('Model terbaik terpilih:')[1].strip()
+                        algo_part, acc_part = parts.split('(Akurasi:')
+                        algoritma = algo_part.strip()
+                        akurasi = float(acc_part.replace('%', '').replace(')', '').strip()) / 100.0
                     except Exception:
                         pass
 
@@ -1250,7 +1262,7 @@ def run_background_retrain(user):
             ModelVersion.objects.create(
                 versi=ver_str,
                 akurasi=akurasi,
-                algoritma='Ensemble (Voting)',
+                algoritma=algoritma,
                 dataset_size=dataset_size,
                 status='active',
                 catatan='Retrain otomatis via feedback user',

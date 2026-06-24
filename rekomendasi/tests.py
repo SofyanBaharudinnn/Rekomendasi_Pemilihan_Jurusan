@@ -260,6 +260,40 @@ class RiwayatDeleteAPITests(TestCase):
         self.assertTrue(data['success'])
         self.assertFalse(HasilRekomendasi.objects.filter(id=self.hasil_siswa.id).exists())
 
+    def test_admin_retrain_model_success(self):
+        from unittest.mock import patch
+        import subprocess
+        
+        self.client.login(username='admin', password='adminpassword')
+        url = reverse('api_ml_retrain')
+        
+        mock_output = (
+            "Membaca dataset dari C:\\Users\\Sofyan-LEGION\\jurusan-rekomendasi\\ml_model\\dataset.csv\n"
+            "Ukuran training data: 707, testing data: 304\n"
+            "--------------------------------------------------\n"
+            "Akurasi Decision Tree: 90.13%\n"
+            "Akurasi Random Forest: 94.41%\n"
+            "Akurasi Gradient Boosting: 100.00%\n"
+            "--------------------------------------------------\n"
+            "Model terbaik terpilih: Gradient Boosting (Akurasi: 100.00%)\n"
+            "Sukses mengekspor model terbaik ke C:\\Users\\Sofyan-LEGION\\jurusan-rekomendasi\\ml_model\\model.pkl\n"
+        )
+        
+        with patch('subprocess.run') as mock_run:
+            mock_run.return_value = subprocess.CompletedProcess(
+                args=['python', 'ml_model/train_best.py'],
+                returncode=0,
+                stdout=mock_output,
+                stderr=''
+            )
+            response = self.client.post(url)
+            
+        self.assertEqual(response.status_code, 200)
+        data = json.loads(response.content)
+        self.assertTrue(data['success'])
+        self.assertEqual(data['versi'], '1.0')
+        self.assertEqual(data['akurasi_pct'], '100.0%')
+
 
 class AICareerMentorAPITests(TestCase):
     def setUp(self):

@@ -58,7 +58,7 @@ if not os.path.exists(dataset_path):
 
     data['jurusan'] = jurusan
     df = pd.DataFrame(data)
-    df.to_csv(dataset_path, index=False)
+    df.to_csv(dataset_path, sep=';', index=False)
     print(f"Dataset berhasil dibuat di {dataset_path}")
 else:
     df = pd.read_csv(dataset_path, sep=';')
