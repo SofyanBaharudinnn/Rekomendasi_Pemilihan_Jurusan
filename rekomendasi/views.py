@@ -999,7 +999,7 @@ def api_ml_retrain(request):
         if result.returncode != 0:
             return JsonResponse({
                 'success': False,
-                'error': f"Proses training gagal (exit code {result.returncode}): {result.stderr or result.stdout}"
+                'error': f"Proses training gagal (exit code {result.returncode}): {result.stderr or result.stdout} | SYS_PATH: {sys.path} | PREFIX: {sys.prefix} | EXE: {python_exe}"
             })
         
         algoritma = 'Decision Tree'
