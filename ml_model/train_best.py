@@ -60,7 +60,28 @@ if not os.path.exists(dataset_path):
     df.to_csv(dataset_path, sep=';', index=False)
     print(f"Dataset berhasil dibuat di {dataset_path}")
 else:
-    df = pd.read_csv(dataset_path, sep=None, engine='python')
+    # Bersihkan dan samakan pemisah (semicolon) jika ada baris yang rusak
+    import csv
+    cleaned_rows = []
+    with open(dataset_path, 'r', encoding='utf-8') as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            if ';' in line:
+                parts = [p.strip() for p in line.split(';')]
+            else:
+                parts = [p.strip() for p in line.split(',')]
+            while parts and parts[-1] == '':
+                parts.pop()
+            if len(parts) >= 9:
+                cleaned_rows.append(parts[:9])
+                
+    with open(dataset_path, 'w', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f, delimiter=';')
+        writer.writerows(cleaned_rows)
+
+    df = pd.read_csv(dataset_path, sep=';')
     # Hapus kolom kosong jika ada
     df = df.dropna(axis=1, how='all')
     df.columns = df.columns.str.strip()

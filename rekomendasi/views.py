@@ -959,6 +959,11 @@ def api_ml_retrain(request):
         ModelVersion.objects.filter(status='active').update(status='archived')
         train_script=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),'ml_model','train_best.py')
         result=subprocess.run([sys.executable,train_script],capture_output=True,text=True,timeout=120)
+        if result.returncode != 0:
+            return JsonResponse({
+                'success': False,
+                'error': f"Proses training gagal (exit code {result.returncode}): {result.stderr or result.stdout}"
+            })
         
         algoritma = 'Decision Tree'
         akurasi = 0.90
@@ -1231,6 +1236,9 @@ def run_background_retrain(user):
             train_script = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'ml_model', 'train_best.py')
             # Run the training script python
             result = subprocess.run([sys.executable, train_script], capture_output=True, text=True, timeout=120)
+            if result.returncode != 0:
+                print(f"Background retrain failed (exit code {result.returncode}): {result.stderr or result.stdout}")
+                return
             
             algoritma = 'Decision Tree'
             akurasi = 0.90
@@ -1294,7 +1302,7 @@ def api_user_feedback(request):
         dataset_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'ml_model', 'dataset.csv')
 
         with open(dataset_path, mode='a', newline='', encoding='utf-8') as f:
-            writer = csv.writer(f)
+            writer = csv.writer(f, delimiter=';')
             writer.writerow([
                 hr.nilai_mat, hr.nilai_bhs, hr.nilai_ipa, hr.nilai_ips,
                 hr.minat_tek, hr.minat_sen, hr.minat_bis, hr.minat_kes,
