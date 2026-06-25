@@ -218,3 +218,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # ═══════════════════════════════════════════════════════════════════════════════
 import os
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
+ENABLE_GEMINI_SEARCH = os.environ.get("ENABLE_GEMINI_SEARCH", "False") == "True"

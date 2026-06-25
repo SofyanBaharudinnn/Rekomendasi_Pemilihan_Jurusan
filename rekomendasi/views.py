@@ -1750,20 +1750,41 @@ def api_chat_send(request, session_id):
                 'parts': [msg.content]
             })
             
-        # Konfigurasi Google Search Grounding secara langsung menggunakan Protobuf
-        google_search_tool = genai.protos.Tool(
-            google_search=genai.protos.Tool.GoogleSearch()
-        )
+        # Ambil konfigurasi pencarian web dari settings
+        enable_search = getattr(django_settings, 'ENABLE_GEMINI_SEARCH', False)
         
-        model = genai.GenerativeModel(
-            model_name='gemini-flash-latest',
-            system_instruction=system_instruction,
-            tools=[google_search_tool]
-        )
-        
-        chat = model.start_chat(history=history)
-        response = chat.send_message(user_message_text)
-        ai_response_text = response.text
+        ai_response_text = ""
+        primary_failed = False
+
+        if enable_search:
+            try:
+                # Coba dengan Google Search Grounding terlebih dahulu
+                google_search_tool = genai.protos.Tool(
+                    google_search=genai.protos.Tool.GoogleSearch()
+                )
+                model = genai.GenerativeModel(
+                    model_name='gemini-flash-latest',
+                    system_instruction=system_instruction,
+                    tools=[google_search_tool]
+                )
+                chat = model.start_chat(history=history)
+                response = chat.send_message(user_message_text)
+                ai_response_text = response.text
+            except Exception as search_error:
+                # Jika gagal (misal 429 atau error API), catat dan tandai untuk fallback
+                primary_failed = True
+                print(f"Gemini Search Grounding failed: {search_error}. Falling back to standard model.")
+
+        # Jika pencarian dimatikan atau jika percobaan pertama gagal
+        if not enable_search or primary_failed:
+            # Fallback ke model standar tanpa tools tambahan
+            model = genai.GenerativeModel(
+                model_name='gemini-flash-latest',
+                system_instruction=system_instruction
+            )
+            chat = model.start_chat(history=history)
+            response = chat.send_message(user_message_text)
+            ai_response_text = response.text
         
         # 4. Simpan respon AI ke DB
         ai_msg = ChatMessage.objects.create(session=session, sender='ai', content=ai_response_text)
