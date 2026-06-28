@@ -363,7 +363,7 @@ class AICareerMentorAPITests(TestCase):
 
     @override_settings(GEMINI_API_KEY="")
     def test_send_message_simulation(self):
-        self.client.login(userna            me='siswa_test', password='testpassword')
+        self.client.login(username='siswa_test', password='testpassword')
         session = ChatSession.objects.create(user=self.siswa, title='Sesi Test')
         
         url = reverse('api_chat_send', kwargs={'session_id': session.id})
