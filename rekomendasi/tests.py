@@ -382,6 +382,7 @@ class AICareerMentorAPITests(TestCase):
     @override_settings(GEMINI_API_KEY="dummy_key")
     def test_send_message_rate_limited(self):
         from unittest.mock import patch
+        # pyrefly: ignore [missing-import]
         from google.api_core.exceptions import ResourceExhausted
 
         self.client.login(username='siswa_test', password='testpassword')

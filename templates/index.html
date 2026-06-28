@@ -1863,29 +1863,132 @@ try {
     pointLight3.position.set(-4, -2, 2);
     heroScene.add(pointLight3);
 
-    // ── AI CORE SPHERE (center) ──
-    const coreGeo = new THREE.SphereGeometry(1.1, isMobileDevice ? 16 : 64, isMobileDevice ? 16 : 64);
-    const coreMat = new THREE.MeshPhongMaterial({
-      color: 0x3b82f6,
-      emissive: 0x1d4ed8,
-      emissiveIntensity: 0.6,
+    // ── 3D AI ROBOT (center) ──
+    const robotGroup = new THREE.Group();
+    heroScene.add(robotGroup);
+
+    // White metal material
+    const metalMat = new THREE.MeshPhongMaterial({
+      color: 0xf1f5f9,
+      emissive: 0x0f172a,
       shininess: 120,
-      transparent: true,
-      opacity: 0.92,
+      specular: 0xffffff
     });
-    const coreMesh = new THREE.Mesh(coreGeo, coreMat);
-    heroScene.add(coreMesh);
+    
+    // Dark visor/face material
+    const visorMat = new THREE.MeshPhongMaterial({
+      color: 0x0f172a,
+      shininess: 150
+    });
 
-    // Inner glowing core
-    const innerGeo = new THREE.SphereGeometry(0.65, isMobileDevice ? 16 : 32, isMobileDevice ? 16 : 32);
-    const innerMat = new THREE.MeshBasicMaterial({ color: 0x93c5fd, transparent: true, opacity: 0.5 });
-    heroScene.add(new THREE.Mesh(innerGeo, innerMat));
+    // Glowing accent material (purple/indigo/blue)
+    const glowMat = new THREE.MeshBasicMaterial({
+      color: 0x6366f1
+    });
 
-    // Wireframe overlay on core
-    const wireGeo = new THREE.IcosahedronGeometry(1.15, 1);
-    const wireMat = new THREE.MeshBasicMaterial({ color: 0x60a5fa, wireframe: true, transparent: true, opacity: 0.18 });
-    const wireMesh = new THREE.Mesh(wireGeo, wireMat);
-    heroScene.add(wireMesh);
+    // Eye material (glowing green/cyan)
+    const eyeMat = new THREE.MeshBasicMaterial({
+      color: 0x10b981
+    });
+
+    // Torso (Body)
+    const torsoGeo = new THREE.CylinderGeometry(0.8, 0.6, 1.6, 32);
+    const torsoMesh = new THREE.Mesh(torsoGeo, metalMat);
+    torsoMesh.position.y = 0;
+    robotGroup.add(torsoMesh);
+
+    // Glowing Chest Screen
+    const chestGeo = new THREE.BoxGeometry(0.6, 0.4, 0.2);
+    const chestMesh = new THREE.Mesh(chestGeo, glowMat);
+    chestMesh.position.set(0, 0.2, 0.7);
+    torsoMesh.add(chestMesh);
+
+    // Head Group (for bobbing/tilting animation)
+    const headGroup = new THREE.Group();
+    headGroup.position.y = 1.2;
+    robotGroup.add(headGroup);
+
+    // Head Spherical Shell
+    const headGeo = new THREE.SphereGeometry(0.75, 32, 32);
+    const headMesh = new THREE.Mesh(headGeo, metalMat);
+    headGroup.add(headMesh);
+
+    // Dark Visor (Face)
+    const faceGeo = new THREE.SphereGeometry(0.7, 32, 32);
+    const faceMesh = new THREE.Mesh(faceGeo, visorMat);
+    faceMesh.scale.set(1.0, 0.75, 0.4);
+    faceMesh.position.set(0, 0, 0.25);
+    headGroup.add(faceMesh);
+
+    // Glowing Eyes (Happy Arches)
+    const eyeLeftGeo = new THREE.BoxGeometry(0.12, 0.04, 0.1);
+    const eyeLeft = new THREE.Mesh(eyeLeftGeo, eyeMat);
+    eyeLeft.position.set(-0.25, 0.05, 0.55);
+    headGroup.add(eyeLeft);
+
+    const eyeRightGeo = new THREE.BoxGeometry(0.12, 0.04, 0.1);
+    const eyeRight = new THREE.Mesh(eyeRightGeo, eyeMat);
+    eyeRight.position.set(0.25, 0.05, 0.55);
+    headGroup.add(eyeRight);
+
+    // Headphones/Ears
+    const earGeo = new THREE.CylinderGeometry(0.2, 0.2, 0.15, 16);
+    const earLeft = new THREE.Mesh(earGeo, glowMat);
+    earLeft.position.set(-0.8, 0, 0);
+    earLeft.rotation.z = Math.PI / 2;
+    headGroup.add(earLeft);
+
+    const earRight = new THREE.Mesh(earGeo, glowMat);
+    earRight.position.set(0.8, 0, 0);
+    earRight.rotation.z = Math.PI / 2;
+    headGroup.add(earRight);
+
+    // Shoulders
+    const shoulderGeo = new THREE.SphereGeometry(0.2, 16, 16);
+    const shoulderLeft = new THREE.Mesh(shoulderGeo, metalMat);
+    shoulderLeft.position.set(-1.0, 0.5, 0);
+    torsoMesh.add(shoulderLeft);
+
+    const shoulderRight = new THREE.Mesh(shoulderGeo, metalMat);
+    shoulderRight.position.set(1.0, 0.5, 0);
+    torsoMesh.add(shoulderRight);
+
+    // Arms
+    const armGeo = new THREE.CylinderGeometry(0.1, 0.08, 0.8, 16);
+    const armLeft = new THREE.Mesh(armGeo, metalMat);
+    armLeft.position.set(0, -0.4, 0);
+    shoulderLeft.add(armLeft);
+
+    const armRight = new THREE.Mesh(armGeo, metalMat);
+    armRight.position.set(0, -0.4, 0);
+    shoulderRight.add(armRight);
+
+    // Hands
+    const handGeo = new THREE.SphereGeometry(0.12, 16, 16);
+    const handLeft = new THREE.Mesh(handGeo, glowMat);
+    handLeft.position.set(0, -0.45, 0);
+    armLeft.add(handLeft);
+
+    const handRight = new THREE.Mesh(handGeo, glowMat);
+    handRight.position.set(0, -0.45, 0);
+    armRight.add(handRight);
+
+    // Thruster Base (Jet)
+    const jetGeo = new THREE.ConeGeometry(0.3, 0.5, 16);
+    const jetMesh = new THREE.Mesh(jetGeo, glowMat);
+    jetMesh.position.set(0, -1.0, 0);
+    torsoMesh.add(jetMesh);
+
+    // Glowing Jet Flame
+    const flameGeo = new THREE.CylinderGeometry(0.2, 0.01, 0.6, 16);
+    const flameMat = new THREE.MeshBasicMaterial({
+      color: 0x6366f1,
+      transparent: true,
+      opacity: 0.7
+    });
+    const flameMesh = new THREE.Mesh(flameGeo, flameMat);
+    flameMesh.position.set(0, -0.4, 0);
+    jetMesh.add(flameMesh);
 
     // ── ORBIT RINGS (decorative ellipses) ──
     function makeOrbitRing(radius, inclination, color, opacity = 0.22) {
@@ -1973,10 +2076,11 @@ try {
     const connLinesGroup = new THREE.Group();
     heroScene.add(connLinesGroup);
 
-    function updateConnLines(majorMeshes) {
+     function updateConnLines(majorMeshes) {
       connLinesGroup.clear();
       majorMeshes.forEach(m => {
-        const pts = [new THREE.Vector3(0,0,0), m.mesh.position.clone()];
+        // Connect lines dynamically to the floating robot chest screen position
+        const pts = [new THREE.Vector3(0, robotGroup.position.y + 0.2, 0), m.mesh.position.clone()];
         const geo = new THREE.BufferGeometry().setFromPoints(pts);
         connLinesGroup.add(new THREE.Line(geo, connLinesMat));
       });
@@ -1999,11 +2103,23 @@ try {
     (function animateHero() {
       requestAnimationFrame(animateHero);
       const t = heroClock.getElapsedTime();
-      const pulse = 1 + 0.04 * Math.sin(t * 2.2);
-      coreMesh.scale.setScalar(pulse);
-      innerMat.opacity = 0.35 + 0.18 * Math.sin(t * 1.8);
-      wireMesh.rotation.y = t * 0.15;
-      wireMesh.rotation.z = t * 0.08;
+      
+      // Floating/Hovering movement for the entire robot
+      robotGroup.position.y = Math.sin(t * 1.5) * 0.25;
+      
+      // Head Bobbing & Tilting (looking around)
+      headGroup.rotation.y = Math.sin(t * 0.8) * 0.15;
+      headGroup.rotation.x = Math.sin(t * 0.5) * 0.08;
+      
+      // Arm waving/floating movement
+      shoulderLeft.rotation.z = -Math.PI / 8 + Math.sin(t * 2.0) * 0.12;
+      shoulderRight.rotation.z = Math.PI / 8 - Math.sin(t * 2.0) * 0.12;
+      
+      // Thruster flame flicker
+      flameMesh.scale.y = 1.0 + Math.sin(t * 15) * 0.25;
+      flameMesh.scale.x = 1.0 + Math.cos(t * 15) * 0.15;
+      flameMesh.scale.z = 1.0 + Math.cos(t * 15) * 0.15;
+
       pointLight1.intensity = 5 + 2 * Math.sin(t * 1.5);
       orbitRings.forEach((ring, i) => { ring.rotation.z = t * 0.02 * (i % 2 === 0 ? 1 : -1); });
       majorMeshes.forEach(m => {

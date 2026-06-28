@@ -1822,6 +1822,7 @@ def api_chat_send(request, session_id):
         
     except Exception as e:
         try:
+            # pyrefly: ignore [missing-import]
             from google.api_core.exceptions import ResourceExhausted
             if isinstance(e, ResourceExhausted):
                 return JsonResponse({
